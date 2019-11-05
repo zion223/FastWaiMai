@@ -1,0 +1,59 @@
+{
+  "code": 0,
+  "message": "OK",
+  "data": [
+    {
+      "id": 242,
+      "session": "中国文学",
+      "goods": [
+        {
+          "goods_id":3,
+          "goods_thumb": "http://apis.juhe.cn/goodbook/img/93b469cf22ef86b40ce84a6c63b95e82.jpg",
+          "goods_name": "微观历史"
+        },
+        {
+          "goods_id":4,
+          "goods_thumb": "http://apis.juhe.cn/goodbook/img/98ca508f94ea736aa904708092bc838b.jpg",
+          "goods_name": "梦里花落知多少"
+        },
+        {
+          "goods_id":5,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌3"
+        },
+        {
+          "goods_id":6,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌4"
+        }
+      ]
+    },
+    {
+      "id": 252,
+      "session": "标题2",
+      "goods": [
+        {
+          "goods_id":7,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌5"
+        },
+        {
+          "goods_id":8,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌5"
+        },
+        {
+          "goods_id":9,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌6"
+        },
+        {
+          "goods_id":10,
+          "goods_thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg",
+          "goods_name": "品牌7"
+        }
+      ]
+    }
+
+  ]
+}
