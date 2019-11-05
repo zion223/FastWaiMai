@@ -98,13 +98,13 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 					@Override
 					public void onClick(View v) {
 						//不与后端进行数据交互
-						tvCount.setText(String.valueOf(count-1));
+						tvCount.setText(Integer.valueOf(tvCount.getText().toString()) - 1);
 					}
 				});
 				iconPlus.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						tvCount.setText(String.valueOf(count+1));
+						tvCount.setText(Integer.valueOf(tvCount.getText().toString()) + 1);
 					}
 				});
 				break;
