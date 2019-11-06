@@ -8,6 +8,7 @@ import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * 左边栏分类数据转换器
@@ -15,8 +16,8 @@ import java.util.ArrayList;
 public class VerticalListDataConverter extends DataConverter {
 
 	@Override
-	public ArrayList<MultipleItemEntity> convert() {
-		final ArrayList<MultipleItemEntity> dataList = new ArrayList<>();
+	public LinkedList<MultipleItemEntity> convert() {
+		final LinkedList<MultipleItemEntity> dataList = new LinkedList<>();
 		final JSONArray dataArray = JSONObject.parseObject(getJsonData()).getJSONArray("result");
 
 		final int dataSize = dataArray.size();
