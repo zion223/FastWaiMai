@@ -113,9 +113,11 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 					@Override
 					public void onClick(View v) {
 						//不与后端进行数据交互
-						Integer minusCount = Integer.valueOf(tvCount.getText().toString()) - 1;
+						final Integer minusCount = Integer.valueOf(tvCount.getText().toString()) - 1;
 						if(!(minusCount == 0)){
 							tvCount.setText(String.valueOf(Integer.valueOf(tvCount.getText().toString()) - 1));
+							//在entity中更新数量
+							entity.setField(ShopCartItemFields.COUNT, minusCount);
 							mTotalPrice -= price;
 							if(mCartItemListener != null){
 								mCartItemListener.onItemClick(mTotalPrice);
@@ -131,8 +133,9 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 				iconPlus.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-
+						final Integer plusCount = Integer.valueOf(tvCount.getText().toString()) + 1;
 						tvCount.setText(String.valueOf(Integer.valueOf(tvCount.getText().toString()) + 1));
+						entity.setField(ShopCartItemFields.COUNT, plusCount);
 						mTotalPrice += price;
 						if(mCartItemListener != null){
 							mCartItemListener.onItemClick(mTotalPrice);
