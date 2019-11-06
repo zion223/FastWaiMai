@@ -52,7 +52,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess {
 	@BindView(R2.id.tv_shop_cart_pay)
 	AppCompatTextView tvShopCartPay;
 
-	//全选
+	//购物车商品全选
 	@OnClick(R2.id.icon_shop_cart_select_all)
 	void iconShopCartSelectAll(){
 		final int tag = (int) mIconSelectAll.getTag();
