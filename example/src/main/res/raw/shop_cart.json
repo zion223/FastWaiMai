@@ -15,15 +15,23 @@
       "desc": "商品描述2",
       "id": "2",
       "count": 2,
-      "price": 23.00,
+      "price": 2.00,
       "thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg"
     },
     {
       "title": "商品标题3",
       "desc": "商品描述3",
+      "id": "3",
+      "count": 1,
+      "price": 3.00,
+      "thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg"
+    },
+    {
+      "title": "商品标题4",
+      "desc": "商品描述4",
       "id": "4",
       "count": 1,
-      "price": 4.50,
+      "price": 3.00,
       "thumb": "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg"
     }
   ]

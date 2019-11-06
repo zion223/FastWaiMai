@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
@@ -162,25 +163,42 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 	}
 
 
+    @Override
+    public void onItemDragMoving(RecyclerView.ViewHolder source, RecyclerView.ViewHolder target) {
+        int from = source.getAdapterPosition() - getHeaderLayoutCount();
+        int to = target.getAdapterPosition() - getHeaderLayoutCount();
 
-	@Override
-	public boolean onItemMove(int fromPosition, int position) {
-		Collections.swap(getData(), fromPosition, position);
-		notifyItemMoved(fromPosition, position);
-		return false;
-	}
+        if (from < to) {
+            for (int i = from; i < to; i++) {
+                Collections.swap(mData, i, i + 1);
+            }
+        } else {
+            for (int i = from; i > to; i--) {
+                Collections.swap(mData, i, i - 1);
+            }
+        }
+        notifyItemMoved(source.getAdapterPosition(), target.getAdapterPosition());
+    }
 
-	@Override
+    @Override
 	public boolean onItemRemove(int position) {
-		final MultipleItemEntity removedEntity = getData().get(position);
-		getData().remove(position);
-		notifyItemRangeRemoved(position, getData().size());
+
+        final MultipleItemEntity removedEntity = mData.get(position);
+		mData.remove(position);
+
+		notifyItemRemoved(position);
 		final int count = removedEntity.getField(ShopCartItemFields.COUNT);
 		final double price = removedEntity.getField(ShopCartItemFields.PRICE);
 		if(mCartItemListener != null){
-			mCartItemListener.checkItemCount();
-			mCartItemListener.onItemClick(getTotalPrice() - count*price);
-		}
+		    if(mData.size() == 0){
+                mCartItemListener.checkItemCount();
+            }
+            final double currentTotalPrice =  getTotalPrice() - count*price;
+            mTotalPrice = currentTotalPrice;
+			mCartItemListener.onItemClick(currentTotalPrice);
+		}else{
+		    throw new NullPointerException("mCartItemListener is null!!!");
+        }
 		return true;
 	}
 }

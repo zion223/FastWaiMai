@@ -123,7 +123,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess,ICa
 	}
 
 	/**
-	 * 后台服务器交互生成订单
+	 * 提交到后台服务器生成订单
 	 */
 	private void createOrder(){
 

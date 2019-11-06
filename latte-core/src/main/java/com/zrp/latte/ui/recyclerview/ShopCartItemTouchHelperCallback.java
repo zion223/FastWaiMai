@@ -58,10 +58,18 @@ public class ShopCartItemTouchHelperCallback extends ItemTouchHelper.Callback {
 		// 在拖拽过程中不断地调用adapter.notifyItemMoved(from,to);
 		if (srcHolder.getItemViewType() != targetHolder.getItemViewType()) {
 			return false;
+		}else{
+			return true;
 		}
-		//在拖拽的过程中不断调用adapter.notifyItemMoved(from,to);
-		boolean result = moveListener.onItemMove(srcHolder.getAdapterPosition(), targetHolder.getAdapterPosition());
-		return result;
+
+	}
+
+	@Override
+	public void onMoved(RecyclerView recyclerView, RecyclerView.ViewHolder source, int fromPos, RecyclerView.ViewHolder target, int toPos, int x, int y) {
+		super.onMoved(recyclerView, source, fromPos, target, toPos, x, y);
+
+		moveListener.onItemDragMoving(source, target);
+
 	}
 
 	//侧滑的时候回调的方法
@@ -77,7 +85,7 @@ public class ShopCartItemTouchHelperCallback extends ItemTouchHelper.Callback {
 	public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
 		//判断选中状态
 		if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-			viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getContext().getResources().getColor(R.color.cardview_dark_background));
+			viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getContext().getResources().getColor(R.color.colorAccent));
 		}
 		super.onSelectedChanged(viewHolder, actionState);
 
