@@ -6,6 +6,7 @@ import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -127,6 +128,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 							}
 						}else{
 							//显示Dialog是否要移除此项商品
+                            Toast.makeText(mContext,R.string.count2zero,Toast.LENGTH_SHORT).show();
 						}
 
 					}
