@@ -9,18 +9,19 @@ import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class ShopCartDataConverter extends DataConverter {
 
 	@Override
-	public ArrayList<MultipleItemEntity> convert() {
-		final ArrayList<MultipleItemEntity> dataList = new ArrayList<>();
+	public LinkedList<MultipleItemEntity> convert() {
+		final LinkedList<MultipleItemEntity> dataList = new LinkedList<>();
 		final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
 
 		final int size = dataArray.size();
 		for(int i = 0; i < size; i++ ){
 			final JSONObject data = dataArray.getJSONObject(i);
-			final Float price = data.getFloatValue("price");
+			final Double price = data.getDoubleValue("price");
 			final String id = data.getString("id");
 			final Integer count = data.getIntValue("count");
 			final String title = data.getString("title");

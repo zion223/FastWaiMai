@@ -19,20 +19,35 @@ import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
 import com.zrp.latte.ui.recycler.MultipleViewHolder;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTouchMoveListener {
 
 	private boolean mIsSelectedAll = false;
+	private ICartItemListener mCartItemListener = null;
 
+
+	private double mTotalPrice = 0.00;
 	private static final RequestOptions OPTIONS = new RequestOptions()
 			.diskCacheStrategy(DiskCacheStrategy.ALL)
 			.centerCrop()
 			.dontAnimate();
 
-	protected ShopCartAdapter(List<MultipleItemEntity> data) {
+	protected ShopCartAdapter(LinkedList<MultipleItemEntity> data) {
 		super(data);
-		init();
+		//第一次初始化价格
+		for(MultipleItemEntity entity:data){
+			final double currentPrice = entity.getField(ShopCartItemFields.PRICE);
+			final int currentCount = entity.getField(ShopCartItemFields.COUNT);
+			final double total = currentCount * currentPrice;
+			mTotalPrice += total;
+		}
+		//添加布局
+		initItemType();
+	}
+	private void initItemType(){
+		addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
 	}
 
 	@Override
@@ -46,7 +61,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 				final String title = entity.getField(ShopCartItemFields.TITLE);
 				final String desc = entity.getField(ShopCartItemFields.DESC);
 				final int count = entity.getField(ShopCartItemFields.COUNT);
-				final float price = entity.getField(ShopCartItemFields.PRICE);
+				final double price = entity.getField(ShopCartItemFields.PRICE);
 				//final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
 
 				//取出布局中的控件
@@ -93,18 +108,37 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 						}
 					}
 				});
-				//商品数量加减
+				//商品数量加减 更新购物车价格
 				iconMinus.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View v) {
 						//不与后端进行数据交互
-						tvCount.setText(Integer.valueOf(tvCount.getText().toString()) - 1);
+						Integer minusCount = Integer.valueOf(tvCount.getText().toString()) - 1;
+						if(!(minusCount == 0)){
+							tvCount.setText(String.valueOf(Integer.valueOf(tvCount.getText().toString()) - 1));
+							mTotalPrice -= price;
+							if(mCartItemListener != null){
+								mCartItemListener.onItemClick(mTotalPrice);
+							}else{
+								throw new NullPointerException("mCartItemListener is null!!!!!");
+							}
+						}else{
+							//显示Dialog是否要移除此项商品
+						}
+
 					}
 				});
 				iconPlus.setOnClickListener(new View.OnClickListener(){
 					@Override
 					public void onClick(View v) {
-						tvCount.setText(Integer.valueOf(tvCount.getText().toString()) + 1);
+
+						tvCount.setText(String.valueOf(Integer.valueOf(tvCount.getText().toString()) + 1));
+						mTotalPrice += price;
+						if(mCartItemListener != null){
+							mCartItemListener.onItemClick(mTotalPrice);
+						}else{
+							throw new NullPointerException("mCartItemListener is null!!!!!");
+						}
 					}
 				});
 				break;
@@ -117,9 +151,13 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 		this.mIsSelectedAll = mIsSelectedAll;
 	}
 
-	private void init(){
-		addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
+	public void setCartItemListener(ICartItemListener cartItemListener) {
+		this.mCartItemListener = cartItemListener;
 	}
+	public double getTotalPrice() {
+		return mTotalPrice;
+	}
+
 
 
 	@Override
@@ -131,8 +169,15 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 
 	@Override
 	public boolean onItemRemove(int position) {
+		final MultipleItemEntity removedEntity = getData().get(position);
 		getData().remove(position);
 		notifyItemRangeRemoved(position, getData().size());
+		final int count = removedEntity.getField(ShopCartItemFields.COUNT);
+		final double price = removedEntity.getField(ShopCartItemFields.PRICE);
+		if(mCartItemListener != null){
+			mCartItemListener.checkItemCount();
+			mCartItemListener.onItemClick(getTotalPrice() - count*price);
+		}
 		return true;
 	}
 }

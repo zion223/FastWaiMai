@@ -1,15 +1,16 @@
 package com.zrp.latte.ui.recycler;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public abstract class DataConverter {
 
     //仅限首页使用
-    protected final ArrayList<MultipleItemEntity> ENTITYS = new ArrayList<>();
+    protected final LinkedList<MultipleItemEntity> ENTITYS = new LinkedList<>();
 
     private String mJonData = null;
 
-    public abstract ArrayList<MultipleItemEntity> convert();
+    public abstract LinkedList<MultipleItemEntity> convert();
 
     public DataConverter setJsonData(String jsonData){
         this.mJonData = jsonData;

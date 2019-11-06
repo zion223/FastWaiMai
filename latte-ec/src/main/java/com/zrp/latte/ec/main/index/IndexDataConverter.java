@@ -11,6 +11,7 @@ import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public final class IndexDataConverter extends DataConverter {
 
 
     @Override
-    public ArrayList<MultipleItemEntity> convert() {
+    public LinkedList<MultipleItemEntity> convert() {
 
         Log.d("get",getJsonData());
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");

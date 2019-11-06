@@ -25,12 +25,13 @@ import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class ShopCartDelegate extends BottomItemDelegate implements ISuccess {
+public class ShopCartDelegate extends BottomItemDelegate implements ISuccess,ICartItemListener {
 
 
 	private ShopCartAdapter mAdapter;
@@ -109,10 +110,27 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess {
 	void shopCartClear(){
 		mAdapter.getData().clear();
 		mAdapter.notifyDataSetChanged();
+		mTvTotalPrice.setText("0");
 		checkItemCount();
 	}
 
-	private void checkItemCount(){
+	/**
+	 * 结算
+	 */
+	@OnClick(R2.id.tv_shop_cart_pay)
+	void shopCartPay(){
+
+	}
+
+	/**
+	 * 后台服务器交互生成订单
+	 */
+	private void createOrder(){
+
+	}
+
+	@Override
+	public void checkItemCount() {
 		final int totalCount = mAdapter.getItemCount();
 		if(totalCount == 0){
 			//购物车中没有商品
@@ -130,7 +148,6 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess {
 			mRecyclerView.setVisibility(View.VISIBLE);
 		}
 	}
-
 
 
 
@@ -161,19 +178,26 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess {
 
 	@Override
 	public void onSuccess(String response) {
-		final ArrayList<MultipleItemEntity> data =
+		final LinkedList<MultipleItemEntity> data =
 				new ShopCartDataConverter().setJsonData(response).convert();
 		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
 		mAdapter = new ShopCartAdapter(data);
+		mAdapter.setCartItemListener(this);
 		final ItemTouchHelper.Callback callback = new ShopCartItemTouchHelperCallback(mAdapter);
 		final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
 		itemTouchHelper.attachToRecyclerView(mRecyclerView);
 		mRecyclerView.setAdapter(mAdapter);
 		mRecyclerView.setLayoutManager(manager);
 		checkItemCount();
+		final double totalPrice = mAdapter.getTotalPrice();
+		mTvTotalPrice.setText(String.valueOf(totalPrice));
 	}
 
 
-
+	@Override
+	public void onItemClick(double totalPrice) {
+		final String price = String.valueOf(totalPrice);
+		mTvTotalPrice.setText(price);
+	}
 
 }

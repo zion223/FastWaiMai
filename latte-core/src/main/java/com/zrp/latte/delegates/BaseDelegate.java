@@ -25,6 +25,7 @@ import retrofit2.http.DELETE;
 
 public abstract class BaseDelegate extends Fragment implements ISupportFragment {
 
+    //代理Delegate
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
     private Unbinder mUnbinder = null;
     protected FragmentActivity _mActivity = null;
