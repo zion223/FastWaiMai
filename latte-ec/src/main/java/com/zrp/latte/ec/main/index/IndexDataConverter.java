@@ -23,7 +23,7 @@ public final class IndexDataConverter extends DataConverter {
     @Override
     public LinkedList<MultipleItemEntity> convert() {
 
-        Log.d("get",getJsonData());
+
         final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
 
         final List<String> banners = (List<String>) JSON.parseObject(getJsonData()).get("banners");

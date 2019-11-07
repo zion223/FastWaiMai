@@ -28,9 +28,8 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 
 	private boolean mIsSelectedAll = false;
 	private ICartItemListener mCartItemListener = null;
-
-
 	private double mTotalPrice = 0.00;
+
 	private static final RequestOptions OPTIONS = new RequestOptions()
 			.diskCacheStrategy(DiskCacheStrategy.ALL)
 			.centerCrop()
@@ -38,7 +37,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 
 	protected ShopCartAdapter(LinkedList<MultipleItemEntity> data) {
 		super(data);
-		//第一次初始化价格
+		//第一次初始化总价格
 		for(MultipleItemEntity entity:data){
 			final double currentPrice = entity.getField(ShopCartItemFields.PRICE);
 			final int currentCount = entity.getField(ShopCartItemFields.COUNT);
@@ -46,9 +45,6 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 			mTotalPrice += total;
 		}
 		//添加布局
-		initItemType();
-	}
-	private void initItemType(){
 		addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
 	}
 

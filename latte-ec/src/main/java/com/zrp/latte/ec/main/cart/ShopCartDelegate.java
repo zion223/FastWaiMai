@@ -19,6 +19,7 @@ import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
+import com.zrp.latte.ec.pay.FastPay;
 import com.zrp.latte.ui.recyclerview.ShopCartItemTouchHelperCallback;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
@@ -119,7 +120,8 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess,ICa
 	 */
 	@OnClick(R2.id.tv_shop_cart_pay)
 	void shopCartPay(){
-
+		//TODO 后台生成订单进行支付
+		FastPay.create(this).beginPayDialog();
 	}
 
 	/**

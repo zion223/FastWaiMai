@@ -71,14 +71,7 @@ public  abstract class BottomItemDelegate extends LatteDelegate{
     }
 
     @Override
-    public Object setLayout() {
-        return null;
-    }
-
-    @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 
     }
-
-
 }

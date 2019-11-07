@@ -28,6 +28,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
     //代理Delegate
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
     private Unbinder mUnbinder = null;
+    //代理Activity 绑定生命周期
     protected FragmentActivity _mActivity = null;
 
     public abstract Object setLayout();
