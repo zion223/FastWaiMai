@@ -348,4 +348,7 @@
     <color name="viewfinder_mask">#60000000</color>
     <color name="header">#58567D</color>
     <color name="grgray">#686868</color>
+    <color name="abate_icon_color">#bbbbbb</color>
+    <color name="default_icon_color">#999999</color>
+    <color name="pressed_icon_color">#e53e42</color>
 </resources>

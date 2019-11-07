@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginBottom="5dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:background="@android:color/white">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_Gray" />
+    <ImageView
+        android:id="@+id/iv_discount_img"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/user_8" />
+
+    <TextView
+        android:id="@+id/tv_discount_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="50dp"
+        android:layout_weight="1"
+        android:text="生活卷"
+        android:textColor="@color/tv_Black" />
+
+    <TextView
+        android:id="@+id/tv_discount_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40dp"
+        android:gravity="center_vertical"
+        android:text="一卡在手，逛店无忧" />
+
+    <ImageView
+        android:id="@+id/iv_discount_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/arrow_expend_right" />
+</RelativeLayout>
