@@ -34,12 +34,14 @@ public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<DiscountCardB
         switch (helper.getItemViewType()){
             case DiscountCardItemType.ITEM_NORMAL:
                 helper.setText(R.id.tv_discount_name,item.getDiscountCardName());
-                helper.setText(R.id.tv_discount_detail,item.getDiscountCardDetail());
+                helper.setText(R.id.tv_discount_more,item.getDiscountCardDetail());
                 final ImageView discountImgView = helper.getView(R.id.iv_discount_img);
                 Glide.with(mContext)
                         .load(item.getDiscountCardUrlId())
                         .apply(OPTIONS)
                         .into(discountImgView);
+                final ImageView detailView = helper.getView(R.id.iv_discount_detail);
+                detailView.setOnClickListener(item.getOnClickListener());
 
         }
     }

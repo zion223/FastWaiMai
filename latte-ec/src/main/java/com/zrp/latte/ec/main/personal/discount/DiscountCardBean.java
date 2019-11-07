@@ -14,6 +14,7 @@ public class DiscountCardBean implements MultiItemEntity {
     private String mDiscountCardDetail = null;
     private LatteDelegate mDelegate = null;
     private int mId = 0;
+
     private View.OnClickListener mOnClickListener = null;
     @IdRes
     private int mDiscountCardUrlId = 0;
@@ -29,9 +30,6 @@ public class DiscountCardBean implements MultiItemEntity {
         this.mDiscountCardUrlId = mDiscountCardUrlId;
     }
 
-
-
-
     @Override
     public int getItemType() {
         return mItemType;
@@ -45,7 +43,6 @@ public class DiscountCardBean implements MultiItemEntity {
         return mDiscountCardDetail;
     }
 
-
     public LatteDelegate getDelegate() {
         return mDelegate;
     }
@@ -55,7 +52,11 @@ public class DiscountCardBean implements MultiItemEntity {
     }
 
     public View.OnClickListener getOnClickListener() {
-        return mOnClickListener;
+        if(mOnClickListener != null){
+            return mOnClickListener;
+        }else{
+            throw new NullPointerException("OnClickListener is null!!!");
+        }
     }
 
 
