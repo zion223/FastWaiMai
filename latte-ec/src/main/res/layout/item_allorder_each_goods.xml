@@ -29,6 +29,7 @@
                 android:id="@+id/tv_item_allorder_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
                 android:padding="@dimen/padding_10dp"
                 android:text="2016秋季新款女装简约纯色百搭衬衫"
                 android:textColor="@color/contents_text"

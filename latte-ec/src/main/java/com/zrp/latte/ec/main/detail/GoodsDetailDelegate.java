@@ -11,6 +11,17 @@ import com.zrp.latte.delegates.LatteDelegate;
 
 public class GoodsDetailDelegate extends LatteDelegate{
 
+	private static final String ARGS_GOODS_ID = "ARGS_GOODS_ID";
+
+	private int mGoodsId = -1;
+	public static GoodsDetailDelegate create(int goodsId){
+		final Bundle args = new Bundle();
+		args.putInt(ARGS_GOODS_ID, goodsId);
+		final GoodsDetailDelegate delegate = new GoodsDetailDelegate();
+		delegate.setArguments(args);
+
+		return delegate;
+	}
 	@Override
 	public Object setLayout() {
 		return R.layout.delegate_goods_detail;
@@ -21,9 +32,13 @@ public class GoodsDetailDelegate extends LatteDelegate{
 
 	}
 
-
-	public static GoodsDetailDelegate create(){
-		return new GoodsDetailDelegate();
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		final Bundle args = getArguments();
+		if(args != null){
+			mGoodsId = args.getInt(ARGS_GOODS_ID);
+		}
 	}
 
 	/**

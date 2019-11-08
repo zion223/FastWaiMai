@@ -26,18 +26,25 @@ public class OrderListDataConverter extends DataConverter {
             //每一个订单
             final JSONObject orderObject = orderArray.getJSONObject(i);
             //订单ID
-            final int orderId = orderObject.getIntValue("orderCode");
+            final String orderId = orderObject.getString("orderCode");
             //订单创建时间
             final String createTime = orderObject.getString("createTime");
             //订单总价格
             final Double totalPrice = orderObject.getDoubleValue("totalPrice");
-            //订单状态
+            /**
+             * 订单状态:
+             *      0: 未付款
+             *      1: 代发货
+             *      2: 待收货
+             *      3: 评价
+             *      4: 退款/售后
+             *
+             *
+             */
             final String orderStatus = orderObject.getString("orderStatus");
             //获取当前订单下的商品
             final JSONArray goodsArray = orderObject.getJSONArray("orderDetailList");
             final int goodsSize = goodsArray.size();
-
-
 
             final MultipleItemEntity headerEntity = MultipleItemEntity.builder()
                     .setItemType(OrderListItemType.ITEM_ORDER_LIST_HEADER)
@@ -71,6 +78,12 @@ public class OrderListDataConverter extends DataConverter {
             ENTITYS.add(footEntity);
 
         }
+        /**
+         *  ENTITYS 添加数据的顺序影响显示的顺序
+         *      headerEntity
+         *      contentEntity
+         *      footEntity
+         */
 
         return ENTITYS;
     }

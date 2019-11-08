@@ -34,8 +34,8 @@ public class OrderDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         super.onBindView(savedInstanceState, view);
-
     }
+
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {

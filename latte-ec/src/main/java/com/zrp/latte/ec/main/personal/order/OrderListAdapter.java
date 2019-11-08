@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.order;
 
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.widget.ImageView;
 
@@ -41,8 +42,11 @@ public class OrderListAdapter extends BaseMultiItemQuickAdapter<MultipleItemEnti
 
         switch (helper.getItemViewType()){
             case OrderListItemType.ITEM_ORDER_LIST_HEADER:
-                Integer orderId = item.getField(OrderItemFields.ORDER_ID);
+                //订单ID
+                String orderId = item.getField(OrderItemFields.ORDER_ID);
+                //创建时间
                 String createTime = item.getField(OrderItemFields.CREATE_TIME);
+                //订单状态
                 String orderStatus = item.getField(OrderItemFields.PAY_STATE);
                 final AppCompatTextView orderIdView = helper.getView(R.id.tv_item_allorder_orderid);
                 helper.setText(R.id.tv_item_allorder_state, orderStatus);
@@ -53,10 +57,15 @@ public class OrderListAdapter extends BaseMultiItemQuickAdapter<MultipleItemEnti
                 final String goodsName = item.getField(OrderItemFields.PRODUCT_NAME);
                 final String goodsPic = item.getField(OrderItemFields.PRODUCT_IMG);
                 final double goodsPrice = item.getField(OrderItemFields.PRODUCT_PRICE);
-                final int count =item.getField(OrderItemFields.PRODUCT_COUNT);
+                final int count = item.getField(OrderItemFields.PRODUCT_COUNT);
                 helper.setText(R.id.tv_item_allorder_title, goodsName);
                 helper.setText(R.id.tv_item_allorder_item_num, "共"+count+"件");
                 helper.setText(R.id.tv_item_allorder_item_price, goodsPrice+"");
+                final AppCompatImageView imgThumb = helper.getView(R.id.iv_discount_img);
+                Glide.with(mContext)
+                        .load(goodsPic)
+                        .apply(OPTIONS)
+                        .into(imgThumb);
                 break;
             case OrderListItemType.ITEM_ORDER_LIST_FOOTER:
                 final Double totalPrice = item.getField(OrderItemFields.TOTAL_PRICE);
