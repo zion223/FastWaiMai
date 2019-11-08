@@ -53,7 +53,7 @@ public class MultipleRecyclerAdapter extends
         switch (holder.getItemViewType()){
             case ItemType.TEXT:
                 text = entity.getField(MultipleFields.TEXT);
-                holder.setText(R.id.text_single,text);
+                holder.setText(R.id.text_single, text);
                 break;
             case ItemType.TEXT_IMAGE:
                 text = entity.getField(MultipleFields.TEXT);
@@ -76,20 +76,17 @@ public class MultipleRecyclerAdapter extends
                     bannerImages = entity.getField(MultipleFields.BANNERS);
                     final ConvenientBanner<String> convenientBanner = holder.getView(R.id.banner_recycler_item);
                     //BannerCreator
-                    BannerCreator.setDefault(convenientBanner,bannerImages,this);
+                    BannerCreator.setDefault(convenientBanner, bannerImages,this);
                     mIsInitBanner = true;
                 }
-
         }
-
-
     }
     private void init(){
         //设置不同的Item布局
         addItemType(ItemType.TEXT, R.layout.item_multiple_text);
-        addItemType(ItemType.IMAGE,R.layout.item_multiple_image);
-        addItemType(ItemType.TEXT_IMAGE,R.layout.item_multiple_image_text);
-        addItemType(ItemType.BANNER,R.layout.item_multiple_banner);
+        addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
+        addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
+        addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
 
         //设置宽度的监听
         setSpanSizeLookup(this);

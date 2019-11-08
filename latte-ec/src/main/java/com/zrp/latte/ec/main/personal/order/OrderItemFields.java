@@ -1,12 +1,14 @@
 package com.zrp.latte.ec.main.personal.order;
 
 public enum OrderItemFields {
-    PRICE,
-    TIME,
-    COUNT,
+
+    ORDER_ID,
+    CREATE_TIME,
     SHOP_NAME,
-    ORDERID,
+    TOTAL_PRICE,
     PAY_STATE,
-    GOODIMG,
-    GOODNAME,
+    PRODUCT_IMG,
+    PRODUCT_NAME,
+    PRODUCT_PRICE,
+    PRODUCT_COUNT,
 }

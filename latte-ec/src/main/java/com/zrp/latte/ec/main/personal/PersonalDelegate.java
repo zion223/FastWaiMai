@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,12 +21,14 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardAdapter;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardBean;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardItemType;
+import com.zrp.latte.ec.main.personal.order.OrderDelegate;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class PersonalDelegate extends BottomItemDelegate {
@@ -121,6 +124,11 @@ public class PersonalDelegate extends BottomItemDelegate {
         final DiscountCardAdapter discountCardAdapter = new DiscountCardAdapter(discountCardData);
         mRvDiscountCard.setAdapter(discountCardAdapter);
         //订单数据绑定
+
+    }
+    @OnClick(R2.id.tv_all_order)
+    void allOrder(){
+        getSupportDelegate().start(new OrderDelegate());
 
     }
 

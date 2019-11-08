@@ -1,0 +1,75 @@
+{
+  "message":"OK",
+  "status":200,
+  "results":{
+    "pageSize":10,
+    "pageNo":1,
+    "rowCount":4,
+    "pageCount":1,
+    "pageSizeList":{
+
+      }
+    },
+    "resultList":[
+      {
+        "id":21,
+        "orderCode":20161104114915467,
+        "shopName":"",
+        "totalPrice": 288.0,
+        "createTime":"2018-5-11 5:40",
+        "orderStatus":"待支付",
+        "orderDetailList":[
+          {
+            "id":1,
+            "productId":2,
+            "productName":"狼牙狼蛛键盘",
+            "productPic":"http://img2.3lian.com/2014/c7/25/d/40.jpg",
+            "price":110.5,
+            "count":2
+          },
+          {
+            "id":2,
+            "productId":3,
+            "productName":"牧马人鼠标",
+            "productPic":"http://img2.3lian.com/2014/c7/25/d/41.jpg",
+            "price":110.5,
+            "count":2
+          },
+          {
+            "id":3,
+            "productId":4,
+            "productName":"大牧马人鼠标",
+            "productPic":"http://img2.3lian.com/2014/c7/25/d/41.jpg",
+            "price":25,
+            "count":2
+          }
+        ]
+      },
+      {
+        "id":22,
+        "orderCode":20171104114915467,
+        "shopName":"",
+        "totalPrice": 300.0,
+        "createTime":"2018-5-11 5:40",
+        "orderStatus":"待支付",
+        "orderDetailList":[
+          {
+            "id":1,
+            "productId":2,
+            "productName":"牧马人键盘",
+            "productPic":"http://img2.3lian.com/2014/c7/25/d/41.jpg",
+            "price":110.5,
+            "count":2
+          },
+          {
+            "id":2,
+            "productId":3,
+            "productName":"酷睿处理器",
+            "productPic":"http://imgsrc.baidu.com/forum/pic/item/b64543a98226cffc8872e00cb9014a90f603ea30.jpg",
+            "price":110.5,
+            "count":2
+          }
+        ]
+      }
+      ]
+  }

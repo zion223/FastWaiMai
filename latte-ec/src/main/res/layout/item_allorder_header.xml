@@ -3,23 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/ll_item_allorder_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/white"
-            >
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/tv_item_allorder_orderid"
@@ -28,8 +25,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/padding_10dp"
                 android:background="@color/white"
-                android:text="订单编号：1111111111111"
-                />
+                android:text="订单编号：1111111111111" />
 
             <TextView
                 android:id="@+id/tv_item_allorder_state"
@@ -37,8 +33,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_10dp"
                 android:textColor="@color/red"
-                android:text="待支付"
-                />
+                android:text="待支付" />
 
         </LinearLayout>
 
