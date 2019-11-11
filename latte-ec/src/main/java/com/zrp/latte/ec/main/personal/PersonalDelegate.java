@@ -18,6 +18,7 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
+import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardAdapter;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardBean;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardItemType;
@@ -55,6 +56,8 @@ public class PersonalDelegate extends BottomItemDelegate {
     LinearLayout llAfterMarket;
     @BindView(R2.id.rv_discount_card)
     RecyclerView mRvDiscountCard;
+    @BindView(R2.id.tv_address_list)
+    TextView mTvPersonalAddress;
 
 
     /**
@@ -71,6 +74,25 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
+        //模拟优惠券数据
+        final ArrayList discountCardData = initDiscardCountList();
+
+        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        mRvDiscountCard.setLayoutManager(manager);
+        final DiscountCardAdapter discountCardAdapter = new DiscountCardAdapter(discountCardData);
+        mRvDiscountCard.setAdapter(discountCardAdapter);
+        //收货地址
+        mTvPersonalAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //跳转到 AddressDelegate
+                getSupportDelegate().start(new AddressDelegate());
+            }
+        });
+    }
+
+    @NonNull
+    private ArrayList initDiscardCountList() {
         //优惠劵卡包数据绑定
         final DiscountCardBean bean1 = new DiscountCardBean.Builder()
                 .setDelegate(this)
@@ -118,19 +140,12 @@ public class PersonalDelegate extends BottomItemDelegate {
         discountCardData.add(bean1);
         discountCardData.add(bean2);
         discountCardData.add(bean3);
-
-        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        mRvDiscountCard.setLayoutManager(manager);
-        final DiscountCardAdapter discountCardAdapter = new DiscountCardAdapter(discountCardData);
-        mRvDiscountCard.setAdapter(discountCardAdapter);
-        //订单数据绑定
-
+        return discountCardData;
     }
+
     @OnClick(R2.id.tv_all_order)
     void allOrder(){
         getSupportDelegate().start(new OrderDelegate());
-
     }
-
 
 }

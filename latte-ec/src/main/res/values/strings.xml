@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">LatteEC</string>
     <string name="count2zero">该宝贝不能减少了哟</string>
 </resources>

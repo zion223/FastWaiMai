@@ -66,7 +66,9 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         for(Map.Entry<BottomTabBean,BottomItemDelegate> item: ITEMS.entrySet()){
            final BottomTabBean bean = item.getKey();
            final BottomItemDelegate delegate = item.getValue();
+           //对应的Delegate
            ITEM_DELEGATES.add(delegate);
+           //底层Tab
            TAB_BEANS.add(bean);
         }
     }

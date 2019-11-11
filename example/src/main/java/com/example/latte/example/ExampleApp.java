@@ -23,11 +23,10 @@ public class ExampleApp extends MultiDexApplication {
 
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
-        interceptors.add(new DebugInterceptor("api/sort_content",R.raw.sort_content_data));
-        interceptors.add(new DebugInterceptor("api/sort",R.raw.sort_list_data));
-        interceptors.add(new DebugInterceptor("api/books",R.raw.books));
+        interceptors.add(new DebugInterceptor("api/index",R.raw.index));
         interceptors.add(new DebugInterceptor("api/shop_cart",R.raw.shop_cart));
         interceptors.add(new DebugInterceptor("api/order",R.raw.order));
+        interceptors.add(new DebugInterceptor("api/address",R.raw.address));
 
         Latte.init(this)
                 //.withApiHost("http://192.168.1.54:8082/bookstore/api/")

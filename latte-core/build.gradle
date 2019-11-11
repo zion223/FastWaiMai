@@ -79,6 +79,9 @@ dependencies {
     compile 'me.dm7.barcodescanner:zbar:1.9.3'
     //动态权限申请
     compile 'pub.devrel:easypermissions:1.0.1'
+    //支付相关库
+    compile 'io.github.mayubao:pay_library:1.0.1'
+
     implementation project(path: ':latte-annotations')
 
 }
