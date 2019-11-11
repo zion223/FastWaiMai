@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <include android:id="@+id/top" layout="@layout/goods_detail_top_menu"/>
 
@@ -22,7 +22,7 @@
                 android:id="@+id/banner_recycler_item"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="#0000000"/>
+                android:background="@color/contents_text"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -36,14 +36,14 @@
                     android:gravity="center_vertical|left"
                     android:paddingLeft="10dp"
                     android:text="时尚女衣  流行女衣  连衣裙  半身裙  尽在恋上猫女衣坊 店铺地址：http//yecaoly.taobao.com"
-                    android:textColor="#000000"/>
+                    android:textColor="@color/contents_text"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:background="#CCCCCC"/>
+                    android:background="@color/gray"/>
 
                 <ImageView
                     android:id="@+id/iv_baby_collection"
@@ -60,7 +60,7 @@
                 android:layout_marginLeft="10dp"
                 android:gravity="left"
                 android:text="￥100"
-                android:textColor="#CC3366"
+                android:textColor="@color/red"
                 android:textSize="22sp" />
 
             <LinearLayout
@@ -93,14 +93,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_margin="10dp"
-                android:background="#CCCCCC" />
+                android:background="@color/gray" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="宝贝评价"
-                android:textColor="#000000"
+                android:textColor="@color/contents_text"
                 android:textSize="18sp" />
 
             <!--评价
@@ -118,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:background="#FFFFFF" >
+        android:background="@color/white" >
 
         <ImageView
             android:id="@+id/put_in"
@@ -143,7 +143,7 @@
         android:id="@+id/all_choice_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#90000000"
+        android:background="@color/gray"
         android:orientation="horizontal"
         android:visibility="gone"
         >
