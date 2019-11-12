@@ -13,13 +13,13 @@ import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.delegates.LatteDelegate;
-import com.zrp.latte.ec.main.personal.order.OrderListAdapter;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class AddressDelegate extends LatteDelegate {
@@ -28,6 +28,7 @@ public class AddressDelegate extends LatteDelegate {
     IconTextView mIconAddressAdd;
     @BindView(R2.id.rv_address)
     RecyclerView mRvAddress;
+
     private AddressAdapter mAdapter = null;
 
     @Override
@@ -60,4 +61,10 @@ public class AddressDelegate extends LatteDelegate {
                 .get();
     }
 
+
+
+    @OnClick(R2.id.icon_address_return)
+    public void onViewClickedReturn() {
+        getSupportDelegate().pop();
+    }
 }

@@ -32,8 +32,8 @@ import butterknife.OnClick;
 
 public class AddressEditDelegate extends LatteDelegate {
 
-    @BindView(R2.id.icon_address_save)
-    IconTextView mIconAddressSave;
+    @BindView(R2.id.tv_address_save)
+    TextView mTvAddressSave;
     @BindView(R2.id.edit_address_name)
     EditText mEditAddressName;
     @BindView(R2.id.edit_address_phone)
@@ -42,6 +42,8 @@ public class AddressEditDelegate extends LatteDelegate {
     TextView mTextAddressDetail;
     @BindView(R2.id.icon_address_pick)
     IconTextView mIconAddressPick;
+    @BindView(R2.id.icon_address_edit_return)
+    IconTextView mIconAddressReturn;
     @BindView(R2.id.sc_default_address_compat)
     SwitchCompat mScDefaultAddress;
     @BindView(R2.id.btn_delete_address)
@@ -49,13 +51,15 @@ public class AddressEditDelegate extends LatteDelegate {
     @BindView(R2.id.ll_address_pick)
     LinearLayout mLinearLayout;
 
+    private Integer id = 0;
     private String name = null;
     private String phone = null;
     private String address = null;
     private boolean isDefault = false;
 
-    public static AddressEditDelegate create(String name, String phone, String address, Boolean isDefault) {
+    public static AddressEditDelegate create(Integer id,String name, String phone, String address, Boolean isDefault) {
         final Bundle args = new Bundle();
+        args.putInt("id", id);
         args.putString("name", name);
         args.putString("phone", phone);
         args.putString("address", address);
@@ -70,6 +74,7 @@ public class AddressEditDelegate extends LatteDelegate {
         super.onCreate(savedInstanceState);
         final Bundle args = getArguments();
         if (args != null) {
+            id = args.getInt("id");
             name = args.getString("name");
             phone = args.getString("phone");
             address = args.getString("address");
@@ -92,21 +97,6 @@ public class AddressEditDelegate extends LatteDelegate {
         mBtnDeleteAddress.setFocusable(isDefault);
     }
 
-//    @OnClick({R2.id.icon_address_save, R2.id.icon_address_pick, R2.id.sc_default_address_compat, R2.id.btn_delete_address})
-//    public void onViewClicked(View view) {
-//        switch (view.getId()) {
-//            case R2.id.icon_address_save:
-//                break;
-//            case R2.id.icon_address_pick:
-//
-//
-//                break;
-//            case R2.id.sc_default_address_compat:
-//                break;
-//            case R2.id.btn_delete_address:
-//                break;
-//        }
-//    }
 
     @OnClick(R2.id.icon_address_pick)
     void onClickPickAddress(){
@@ -119,12 +109,17 @@ public class AddressEditDelegate extends LatteDelegate {
                 mLinearLayout.removeAllViews();
             }
         });
-
+        selector.setOnDialogCloseListener(new AddressSelector.OnDialogCloseListener() {
+            @Override
+            public void dialogclose() {
+                mLinearLayout.removeAllViews();
+            }
+        });
         View view = selector.getView();
         mLinearLayout.addView(view);
     }
 
-    @OnClick(R2.id.icon_address_save)
+    @OnClick(R2.id.tv_address_save)
     void onClickSaveAddress(){
         RestClient.builder()
                 .url("")
@@ -138,5 +133,26 @@ public class AddressEditDelegate extends LatteDelegate {
                 })
                 .build()
                 .get();
+    }
+    @OnClick(R2.id.icon_address_edit_return)
+    void onClickReturn(){
+        getSupportDelegate().pop();
+    }
+
+    @OnClick(R2.id.btn_delete_address)
+    void onClickDeleteAddress(){
+        RestClient.builder()
+                .url("")
+                .parmas("id", id)
+                .loader(getContext())
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        getSupportDelegate().pop();
+                    }
+                })
+                .build()
+                .get();
+
     }
 }

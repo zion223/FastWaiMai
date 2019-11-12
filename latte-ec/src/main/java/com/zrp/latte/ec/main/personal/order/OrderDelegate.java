@@ -5,23 +5,30 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 
 public class OrderDelegate extends BottomItemDelegate {
 
     @BindView(R2.id.rv_all_order)
     RecyclerView mRvAllOrder;
+
+
     private OrderListAdapter mAdapter = null;
 
     //TODO TAB切换不同状态的订单
@@ -59,4 +66,9 @@ public class OrderDelegate extends BottomItemDelegate {
 
     }
 
+
+    @OnClick(R2.id.icon_order_return)
+    public void onViewClickedReturn() {
+        getSupportDelegate().pop();
+    }
 }

@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_orange_dark">
+        android:layout_height="50dp"
+        android:background="@color/app_main">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -16,7 +17,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:gravity="center"
                 android:text="{fa-angle-left}"
                 android:textColor="@android:color/darker_gray"
@@ -33,16 +35,19 @@
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_save"
+            <TextView
+                android:id="@+id/tv_address_save"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:text="{fa-floppy-o}"
-                android:textColor="@android:color/black"
-                android:textSize="30sp" />
+                android:paddingTop="5dp"
+                android:layout_gravity="center_vertical"
+                android:layout_centerVertical="true"
+                android:textSize="15dp"
+                android:textColor="@color/black"
+                android:singleLine="false"
+                android:text="保存"/>
 
         </RelativeLayout>
 

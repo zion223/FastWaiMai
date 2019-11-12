@@ -66,8 +66,5 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:text="编辑" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg_Gray" />
+
 </RelativeLayout>

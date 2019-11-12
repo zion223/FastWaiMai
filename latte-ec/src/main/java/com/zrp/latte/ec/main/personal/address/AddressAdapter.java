@@ -42,7 +42,7 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                     public void onClick(View v) {
                         //编辑单个地址
                         //Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
-                        DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(name, phone, address, isDefault));
+                        DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(id, name, phone, address, isDefault));
                     }
                 });
 
