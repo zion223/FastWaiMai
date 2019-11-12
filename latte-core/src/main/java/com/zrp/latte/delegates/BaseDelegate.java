@@ -19,11 +19,14 @@ import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportFragment;
 import me.yokeyword.fragmentation.SupportActivityDelegate;
 import me.yokeyword.fragmentation.SupportFragmentDelegate;
+import me.yokeyword.fragmentation.SwipeBackLayout;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 import retrofit2.http.DELETE;
 
 public abstract class BaseDelegate extends Fragment implements ISupportFragment {
+
+
 
     //代理Delegate
     private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
@@ -75,6 +78,8 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         onBindView(savedInstanceState, rootView);
         return rootView;
     }
+
+
 
     public final ProxyActivity getProxyActivity() {
         return (ProxyActivity) _mActivity;

@@ -61,7 +61,7 @@ public class OrderListAdapter extends BaseMultiItemQuickAdapter<MultipleItemEnti
                 helper.setText(R.id.tv_item_allorder_title, goodsName);
                 helper.setText(R.id.tv_item_allorder_item_num, "共"+count+"件");
                 helper.setText(R.id.tv_item_allorder_item_price, goodsPrice+"");
-                final AppCompatImageView imgThumb = helper.getView(R.id.iv_discount_img);
+                final AppCompatImageView imgThumb = helper.getView(R.id.iv_item_allorder_pic);
                 Glide.with(mContext)
                         .load(goodsPic)
                         .apply(OPTIONS)

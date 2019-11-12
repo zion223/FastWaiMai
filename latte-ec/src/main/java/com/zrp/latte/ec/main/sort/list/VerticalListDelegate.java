@@ -25,8 +25,10 @@ import butterknife.Unbinder;
 
 public class VerticalListDelegate extends LatteDelegate {
 
-	@BindView(R2.id.rv_vertical_menu_list)
+	@BindView(R2.id.rv_menu_list)
 	RecyclerView mRecyclerView;
+
+	private SortRecyclerAdapter mAdapter = null;
 
 	@Override
 	public Object setLayout() {
@@ -35,6 +37,7 @@ public class VerticalListDelegate extends LatteDelegate {
 
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
+
 		initRecyclerView();
 	}
 
@@ -60,8 +63,8 @@ public class VerticalListDelegate extends LatteDelegate {
 						final List<MultipleItemEntity> data =
 							new VerticalListDataConverter().setJsonData(response).convert();
 						final SortDelegate delegate = getParentDelegate();
-						final SortRecyclerAdapter adapter = new SortRecyclerAdapter(data,delegate);
-						mRecyclerView.setAdapter(adapter);
+						mAdapter = new SortRecyclerAdapter(data, delegate);
+						mRecyclerView.setAdapter(mAdapter);
 					}
 				})
 				.build()

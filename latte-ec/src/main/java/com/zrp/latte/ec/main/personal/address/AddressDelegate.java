@@ -50,8 +50,9 @@ public class AddressDelegate extends LatteDelegate {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        final DataConverter converter = new AddressDataConverter().setJsonData(response);
-                        mAdapter = new AddressAdapter(converter.convert());
+                        final DataConverter converter =
+                                new AddressDataConverter().setJsonData(response);
+                        mAdapter = new AddressAdapter(converter.convert(), AddressDelegate.this);
                         mRvAddress.setAdapter(mAdapter);
                     }
                 })

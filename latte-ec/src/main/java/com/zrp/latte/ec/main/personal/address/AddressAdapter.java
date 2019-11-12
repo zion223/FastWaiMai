@@ -15,8 +15,11 @@ import java.util.List;
 
 public class AddressAdapter extends MultipleRecyclerAdapter {
 
-    protected AddressAdapter(List<MultipleItemEntity> data) {
+    private final AddressDelegate DELEGATE;
+
+    protected AddressAdapter(List<MultipleItemEntity> data, AddressDelegate delegate) {
         super(data);
+        DELEGATE = delegate;
         addItemType(AddressItemType.ITEM_ADDRESS, R.layout.item_address);
     }
 
@@ -38,7 +41,8 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                     @Override
                     public void onClick(View v) {
                         //编辑单个地址
-                        Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(mContext, id, Toast.LENGTH_SHORT).show();
+                        DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(name, phone, address, isDefault));
                     }
                 });
 

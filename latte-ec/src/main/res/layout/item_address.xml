@@ -4,13 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_marginBottom="5dp"
+    android:paddingTop="3dp"
     android:gravity="center"
     android:orientation="horizontal"
     android:background="@android:color/white">
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/bg_Gray" />
+
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -68,4 +66,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp"
         android:text="编辑" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/bg_Gray" />
 </RelativeLayout>

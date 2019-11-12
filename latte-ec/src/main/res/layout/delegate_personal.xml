@@ -378,20 +378,11 @@
                     android:src="@drawable/arrow_expend_right" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/bg_Gray" />
 
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/rv_discount_card">
-
-            </android.support.v7.widget.RecyclerView>
-
-
-
+                android:id="@+id/rv_discount_card"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
