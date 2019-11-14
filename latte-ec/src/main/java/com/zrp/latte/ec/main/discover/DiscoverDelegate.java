@@ -24,7 +24,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
 	@Override
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		super.onLazyInitView(savedInstanceState);
-		final WebDelegateImpl webDelegate = WebDelegateImpl.create("second.html");
+		final WebDelegateImpl webDelegate = WebDelegateImpl.create("index.html");
 		webDelegate.setTopDelegate(this.getParentDelegate());
 		//loadFragment
 		getSupportDelegate().loadRootFragment(R.id.web_discovery_container, webDelegate);
