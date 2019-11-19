@@ -1,0 +1,35 @@
+{
+  "code":0,
+  "message":"OK",
+  "data":{
+    "content":"内容描述",
+    "banners":[
+      "",
+      ""
+    ],
+    "tabs":[
+      {
+        "name":"商品详情",
+        "pictures":[
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "name":"规格参数",
+        "pictures":[
+          "",
+          ""
+        ]
+      }
+    ],
+    "specification":"规格参数",
+    "inventory":"商品中包含了哪些东西",
+    "id":1,
+    "name":"小米5c 3gb+64gb 金色",
+    "description":"经典旗舰机型性价比之王 NVIDIA Tegra 4 四核 1.8GHz （移动版）",
+    "price": 1200.0,
+    "thumb":""
+  }
+}

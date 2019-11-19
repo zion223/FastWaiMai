@@ -1,131 +1,182 @@
 package com.zrp.latte.ec.main.detail;
 
-import android.annotation.SuppressLint;
-import android.os.Build;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.ContentFrameLayout;
+import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
+import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
-import com.ycbjie.slide.SlideLayout;
-import com.ycbjie.slide.VerticalScrollView;
+import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.delegates.LatteDelegate;
+import com.zrp.latte.ec.detail.GoodsInfoDelegate;
+import com.zrp.latte.ec.detail.TabPagerAdapter;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
+import com.zrp.latte.ui.banner.HolderCreator;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
-public class GoodsDetailDelegate extends LatteDelegate{
-
-
-	@BindView(R2.id.slideDetailsLayout)
-	SlideLayout mSlideDetailsLayout;
-	@BindView(R2.id.tv_goods_title)
-	TextView mTvGoodsTitle;
-	@BindView(R2.id.tv_new_price)
-	TextView mTvNewPrice;
-	@BindView(R2.id.tv_old_price)
-	TextView mTvOldPrice;
-	@BindView(R2.id.tv_current_goods)
-	TextView mTvCurrentGoods;
-	@BindView(R2.id.ll_current_goods)
-	LinearLayout mLlCurrentGoods;
-	@BindView(R2.id.iv_ensure)
-	ImageView mIvEnsure;
-	@BindView(R2.id.tv_comment_count)
-	TextView mTvCommentCount;
-	@BindView(R2.id.tv_good_comment)
-	TextView mTvGoodComment;
-	@BindView(R2.id.iv_comment_right)
-	ImageView mIvCommentRight;
-	@BindView(R2.id.ll_comment)
-	LinearLayout mLlComment;
-	@BindView(R2.id.ll_empty_comment)
-	LinearLayout mLlEmptyComment;
-	@BindView(R2.id.ll_recommend)
-	LinearLayout mLlRecommend;
-	@BindView(R2.id.tv_bottom_view)
-	TextView mTvBottomView;
-	@BindView(R2.id.scrollView)
-	VerticalScrollView mScrollView;
-
-	private static final String ARGS_GOODS_ID = "ARGS_GOODS_ID";
-
-	private int mGoodsId = -1;
-
-	public static GoodsDetailDelegate create(int goodsId){
-		final Bundle args = new Bundle();
-		args.putInt(ARGS_GOODS_ID, goodsId);
-		final GoodsDetailDelegate delegate = new GoodsDetailDelegate();
-		delegate.setArguments(args);
-
-		return delegate;
-	}
-	@Override
-	public Object setLayout() {
-		return R.layout.delegate_goods_detail;
-	}
-
-	@Override
-	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-		initSlideDetailsLayout();
-	}
-
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		final Bundle args = getArguments();
-		if(args != null){
-			mGoodsId = args.getInt(ARGS_GOODS_ID);
-		}
-	}
-
-	@Override
-	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-		super.onLazyInitView(savedInstanceState);
-        mTvGoodsTitle.setText("这是第"+ mGoodsId+"件商品");
-		RestClient.builder()
-				.url("")
-				.parmas("goodsId",mGoodsId)
-				.success(new ISuccess() {
-					@Override
-					public void onSuccess(String response) {
-						//绑定数据
-
-					}
-				})
-				.build()
-				.get();
-	}
+public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.OnOffsetChangedListener {
 
 
-	@Override
-	public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-		return super.onCreateAnimation(transit, enter, nextAnim);
-	}
-	private void initSlideDetailsLayout() {
-		mSlideDetailsLayout.setOnSlideDetailsListener(new SlideLayout.OnSlideDetailsListener() {
-			@Override
-			public void onStatusChanged(SlideLayout.Status status) {
-				if (status == SlideLayout.Status.OPEN) {
-					//当前为图文详情页
-					mTvBottomView.setText("下拉回到商品详情");
-				} else {
-					//当前为商品详情页
-					mTvBottomView.setText("继续上拉，查看图文详情");
-				}
-			}
-		});
-	}
+    private static final String ARGS_GOODS_ID = "ARGS_GOODS_ID";
 
+    @BindView(R2.id.detail_banner)
+    ConvenientBanner mBanner;
+    @BindView(R2.id.frame_goods_info)
+    ContentFrameLayout mFrameGoodsInfo;
+    @BindView(R2.id.tv_detail_title_text)
+    AppCompatTextView mTvDetailTitleText;
+    @BindView(R2.id.goods_detail_toolbar)
+    Toolbar mGoodsDetailToolbar;
+    @BindView(R2.id.collapsing_toolbar_detail)
+    CollapsingToolbarLayout mCollapsingToolbarDetail;
+    @BindView(R2.id.tab_layout)
+    TabLayout mTabLayout;
+    @BindView(R2.id.app_bar_detail)
+    AppBarLayout mAppBar;
+    @BindView(R2.id.view_pager)
+    ViewPager mViewPager;
+    @BindView(R2.id.icon_favor)
+    IconTextView mIconFavor;
+    @BindView(R2.id.rl_favor)
+    RelativeLayout mRlFavor;
+    @BindView(R2.id.icon_shop_cart)
+    IconTextView mIconShopCart;
+    @BindView(R2.id.rl_shop_cart)
+    RelativeLayout mRlShopCart;
+    @BindView(R2.id.rl_add_shop_cart)
+    RelativeLayout mRlAddShopCart;
+    @BindView(R2.id.ll_bottom)
+    LinearLayoutCompat mLlBottom;
+
+
+    private int mGoodsId = -1;
+
+    public static GoodsDetailDelegate create(int goodsId) {
+        final Bundle args = new Bundle();
+        args.putInt(ARGS_GOODS_ID, goodsId);
+        final GoodsDetailDelegate delegate = new GoodsDetailDelegate();
+        delegate.setArguments(args);
+        return delegate;
+    }
+
+    @Override
+    public Object setLayout() {
+        return R.layout.delegate_goods_detail;
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
+        mCollapsingToolbarDetail.setContentScrimColor(Color.WHITE);
+        mAppBar.addOnOffsetChangedListener(this);
+        initData();
+        initTabLayout();
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final Bundle args = getArguments();
+        if (args != null) {
+            mGoodsId = args.getInt(ARGS_GOODS_ID);
+        }
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+    }
+
+    private void initData() {
+        RestClient.builder()
+                .url("api/goodsdetail")
+                //.parmas("goodsId", mGoodsId)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        //绑定数据
+                        final JSONObject data = JSON.parseObject(response).getJSONObject("data");
+                        initBanner(data);
+                        initGoodsInfo(data);
+                        initPager(data);
+                    }
+                })
+                .build()
+                .get();
+    }
+
+    private void initBanner(JSONObject data) {
+
+        final JSONArray bannerArray = data.getJSONArray("banners");
+        final ArrayList<String> banners = new ArrayList<>();
+        final int size = bannerArray.size();
+        for(int i=0; i<size; i++){
+            final String banner = bannerArray.getString(i);
+            banners.add(banner);
+        }
+        mBanner.setPages(new HolderCreator(), banners)
+                .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_normal})
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
+                .setPageTransformer(new DefaultTransformer())
+                .startTurning(3000)
+                .setCanLoop(true);
+    }
+
+    private void initGoodsInfo(JSONObject data) {
+        final String goodsdata = data.toJSONString();
+        getSupportDelegate().loadRootFragment(R.id.frame_goods_info, GoodsInfoDelegate.create(goodsdata));
+
+    }
+
+    private void initPager(JSONObject data) {
+        final TabPagerAdapter adapter = new TabPagerAdapter(getFragmentManager(), data);
+        mViewPager.setAdapter(adapter);
+    }
+
+    private void initTabLayout() {
+        //固定不能滑动,标签多时会被挤压
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        mTabLayout.setBackgroundColor(Color.WHITE);
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        return super.onCreateAnimation(transit, enter, nextAnim);
+    }
+
+
+    @OnClick(R2.id.icon_goods_back)
+    public void onViewClickedReturn() {
+        getSupportDelegate().pop();
+    }
+
+    @Override
+    public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+    }
 }

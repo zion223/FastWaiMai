@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_alignParentBottom="true"
+    android:baselineAligned="true"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/rl_favor"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:paddingBottom="5dp">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/icon_favor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="{fa-heart-o}"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="喜欢"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_shop_cart"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:paddingBottom="5dp">
+
+        <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/icon_shop_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="{fa-shopping-cart}"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="购物车"
+            android:textSize="12sp" />
+
+        <!--<com.zrp.latte.ui.widget.CircleTextView
+            android:id="@+id/tv_shopping_cart_amount"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignEnd="@+id/icon_shop_cart"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/icon_shop_cart"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            tools:ignore="RtlHardcoded" />-->
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_add_shop_cart"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@android:color/holo_orange_dark"
+        android:gravity="center_horizontal">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="加入购物车"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+</android.support.v7.widget.LinearLayoutCompat>

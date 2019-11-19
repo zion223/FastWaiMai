@@ -1,27 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <com.ycbjie.slide.SlideLayout
-        android:id="@+id/slideDetailsLayout"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:default_panel="front"
-        app:duration="200"
-        app:percent="0.1">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/fl_shop_main"
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <include layout="@layout/include_shop_main"/>
-        </FrameLayout>
 
-        <include layout="@layout/include_shop_detail"/>
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@android:color/transparent">
 
-    </com.ycbjie.slide.SlideLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-</LinearLayout>
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/detail_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp" />
+                    <!--使用Fragment 降低耦合 -->
+                    <android.support.v7.widget.ContentFrameLayout
+                        android:id="@+id/frame_goods_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/detail_banner" />
+                </RelativeLayout>
+
+                <!--要放在下面  否则CollapsingToolbarLayout 和 CoordinatorLayout不能正确的处理上下滑动的事件 -->
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/goods_detail_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:layout_collapseMode="pin">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.joanzapata.iconify.widget.IconTextView
+                            android:id="@+id/icon_goods_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="12dp"
+                            android:gravity="center"
+                            android:text="{fa-chevron-left}"
+                            android:textColor="@android:color/black"
+                            android:textSize="26sp" />
+
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/tv_detail_title_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="商品详情"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp" />
+                    </RelativeLayout>
+                </android.support.v7.widget.Toolbar>
+                <!--如果将TabLayout写在这里，将透明-->
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <!-- 配合ViewPager-->
+            <!--tabIndicatorColor：指示器的颜色-->
+            <!--tabIndicatorHeight：指示器的高度，可设置为0，相当于没有指示器-->
+            <!--tabTextColor：Tab未选中时字体的颜色-->
+            <!--tabSelectedTextColor：Tab选中时字体的颜色-->
+            <!--tabTextAppearance：Tab内文字的样式，TabLayout没有提供直接属性设置文字大小，需通过该属性指定style样式从而改变文字大小-->
+            <!--tabMode：Tab的显示模式，默认为fixed（固定不能滑动，标签很多时会被挤压），可设置为scrollable（标签很多时可向左滑动）-->
+            <!--tabGravity：内容的显示模式，可选center（居中）和fill（填充）-->
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:tabTextColor="@color/black"
+                app:tabSelectedTextColor="@color/pink"/>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/layout_goods_detail_bottom" />
+
+</RelativeLayout>

@@ -3,9 +3,7 @@ package com.zrp.latte.ec.main.detail;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,12 +66,5 @@ public class ShopMainFragment extends LatteDelegate {
 
     }
 
-    public void changBottomView(boolean isDetail) {
-        if (isDetail) {
-            mTvBottomView.setText("下拉回到商品详情");
-        } else {
-            mTvBottomView.setText("继续上拉，查看图文详情");
-        }
-    }
 
 }
