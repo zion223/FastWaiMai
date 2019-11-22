@@ -6,6 +6,7 @@ import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,10 +17,14 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
@@ -85,9 +90,6 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     @BindView(R2.id.tv_shopping_cart_amount)
     CircleTextView mCircleTextView;
 
-    @BindView(R2.id.circle_image_view)
-    CircleImageView mCircleImageView;
-
 
     private int mGoodsId = -1;
 
@@ -101,23 +103,33 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     @OnClick(R2.id.rl_add_shop_cart)
     public void onViewClicked() {
-        //final CircleImageView circleImageView = new CircleImageView(getContext());
-//        Glide.with(this)
-//                .load(mGoodsThumbUrl)
-//                .apply(OPTIONS)
-//                .into(mCircleImageView);
+        final CircleImageView circleImageView = new CircleImageView(getContext());
+        Glide.with(this)
+                .load(mGoodsThumbUrl)
+                .apply(OPTIONS)
+                .into(circleImageView);
         mShopCount++;
         mCircleTextView.setVisibility(View.VISIBLE);
         mCircleTextView.setText(String.valueOf(mShopCount));
-        addShopToCart(mIconShopCart);
+        addShopToCart(circleImageView);
     }
     private void addShopToCart(final View imageView){
+        final LinearLayout.LayoutParams params;
         int[] parentLocation = new int[2];
         int[] addLocation = new int[2];
         final float[] mCurrentPosition = new float[2];
         mRlAddShopCart.getLocationInWindow(addLocation);
-        //540 2010
+        //240 475
         mRlAddShopCart.getLocationOnScreen(parentLocation);
+        //75 240
+        //像素
+        final DisplayMetrics metrics = new DisplayMetrics();
+
+        getSupportDelegate().getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        final int iconWidth = mIconShopCart.getWidth();
+        final int iconHeidht = mIconShopCart.getHeight();
+        final int height = mRlAddShopCart.getHeight();
+        final int width = mRlAddShopCart.getWidth();
         float startX = 120;
         float startY = 480;
         int[] iconLocation = new int[2];
@@ -125,13 +137,22 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
         mIconShopCart.getLocationInWindow(iconLocation);
         float toX = 100;
         float toY = 360;
+        final Drawable drawable = ((ImageView)imageView).getDrawable();
+        if(drawable != null){
+            params = new LinearLayout.LayoutParams(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        }else{
+            params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT);
+        }
 
+        imageView.setLayoutParams(params);
+        mRlAddShopCart.addView(imageView);
         Path path = new Path();
         //path.moveTo(startX, startY);
         path.moveTo(0, 0);
-        //path.quadTo((startX + toX) / 2, startY, toX, toY);
-        //path.quadTo(-500, -350, 100, 50);
-        path.cubicTo(-100, -100, -50, -800, 0, 0);
+
+
+        path.cubicTo(width + width/2, height, 0, -1000,  -iconWidth,0);
         final PathMeasure mPathMeasure = new PathMeasure(path, false);
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
         valueAnimator.setDuration(500);
@@ -155,7 +176,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
             @Override
             public void onAnimationEnd(Animator animation) {
-
+                imageView.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -181,10 +202,6 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
         mCircleTextView.setCircleBackground(Color.RED);
         initData();
         initTabLayout();
-        Glide.with(this)
-                .load(mGoodsThumbUrl)
-                .apply(OPTIONS)
-                .into(mCircleImageView);
     }
 
 

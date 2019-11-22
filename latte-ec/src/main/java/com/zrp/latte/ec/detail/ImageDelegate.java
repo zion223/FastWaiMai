@@ -51,7 +51,7 @@ public class ImageDelegate extends LatteDelegate {
         final ArrayList<String> pictures = getArguments().getStringArrayList(ARGS_PICTURE);
         final ArrayList<MultipleItemEntity> entities = new ArrayList<>();
         final int size = pictures.size();
-        for(int i=0; i<size; i++){
+        for(int i = 0; i < size; i++){
             final String pic = pictures.get(i);
             final MultipleItemEntity entity = MultipleItemEntity.builder()
                     .setItemType(ItemType.SINGLE_BIG_IMAGE)
