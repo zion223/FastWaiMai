@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_margin="@dimen/dp_4"
         android:layout_weight="4"
         android:background="@android:color/white" />
 

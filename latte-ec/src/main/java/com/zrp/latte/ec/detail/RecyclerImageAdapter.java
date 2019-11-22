@@ -1,10 +1,7 @@
 package com.zrp.latte.ec.detail;
 
 import android.support.v7.widget.AppCompatImageView;
-import android.widget.ImageView;
-
 import com.bumptech.glide.Glide;
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.ui.recycler.ItemType;

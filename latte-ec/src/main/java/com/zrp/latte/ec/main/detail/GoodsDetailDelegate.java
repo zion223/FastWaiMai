@@ -1,7 +1,11 @@
 package com.zrp.latte.ec.main.detail;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,8 +18,8 @@ import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
@@ -23,6 +27,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
@@ -32,11 +39,15 @@ import com.zrp.latte.ec.detail.TabPagerAdapter;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.banner.HolderCreator;
+import com.zrp.latte.ui.widget.CircleTextView;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.OnOffsetChangedListener {
 
@@ -71,9 +82,84 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     RelativeLayout mRlAddShopCart;
     @BindView(R2.id.ll_bottom)
     LinearLayoutCompat mLlBottom;
+    @BindView(R2.id.tv_shopping_cart_amount)
+    CircleTextView mCircleTextView;
+
+    @BindView(R2.id.circle_image_view)
+    CircleImageView mCircleImageView;
 
 
     private int mGoodsId = -1;
+
+    private String mGoodsThumbUrl = "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg";
+    private int mShopCount = 0;
+    private static final RequestOptions OPTIONS = new RequestOptions()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .centerCrop()
+            .dontAnimate()
+            .override(100, 100);
+
+    @OnClick(R2.id.rl_add_shop_cart)
+    public void onViewClicked() {
+        //final CircleImageView circleImageView = new CircleImageView(getContext());
+//        Glide.with(this)
+//                .load(mGoodsThumbUrl)
+//                .apply(OPTIONS)
+//                .into(mCircleImageView);
+        mShopCount++;
+        mCircleTextView.setVisibility(View.VISIBLE);
+        mCircleTextView.setText(String.valueOf(mShopCount));
+        addShopToCart(mIconShopCart);
+    }
+    private void addShopToCart(final View imageView){
+        int[] parentLocation = new int[2];
+        int[] addLocation = new int[2];
+        final float[] mCurrentPosition = new float[2];
+        mRlAddShopCart.getLocationInWindow(addLocation);
+        //540 2010
+        mRlAddShopCart.getLocationOnScreen(parentLocation);
+        float startX = 120;
+        float startY = 480;
+        int[] iconLocation = new int[2];
+        //一个控件在其父窗口中的坐标位置
+        mIconShopCart.getLocationInWindow(iconLocation);
+        float toX = 100;
+        float toY = 360;
+
+        Path path = new Path();
+        //path.moveTo(startX, startY);
+        path.moveTo(0, 0);
+        //path.quadTo((startX + toX) / 2, startY, toX, toY);
+        //path.quadTo(-500, -350, 100, 50);
+        path.cubicTo(-100, -100, -50, -800, 0, 0);
+        final PathMeasure mPathMeasure = new PathMeasure(path, false);
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
+        valueAnimator.setDuration(500);
+        //线性插值器:匀速动画
+        valueAnimator.setInterpolator(new LinearInterpolator());
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float value = (float) animation.getAnimatedValue();
+                mPathMeasure.getPosTan(value, mCurrentPosition, null);
+                imageView.setTranslationX(mCurrentPosition[0]);
+                imageView.setTranslationY(mCurrentPosition[1]);
+            }
+        });
+        valueAnimator.start();
+        valueAnimator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                imageView.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+
+            }
+        });
+
+    }
 
     public static GoodsDetailDelegate create(int goodsId) {
         final Bundle args = new Bundle();
@@ -92,8 +178,13 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         mCollapsingToolbarDetail.setContentScrimColor(Color.WHITE);
         mAppBar.addOnOffsetChangedListener(this);
+        mCircleTextView.setCircleBackground(Color.RED);
         initData();
         initTabLayout();
+        Glide.with(this)
+                .load(mGoodsThumbUrl)
+                .apply(OPTIONS)
+                .into(mCircleImageView);
     }
 
 
@@ -134,7 +225,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
         final JSONArray bannerArray = data.getJSONArray("banners");
         final ArrayList<String> banners = new ArrayList<>();
         final int size = bannerArray.size();
-        for(int i=0; i<size; i++){
+        for (int i = 0; i < size; i++) {
             final String banner = bannerArray.getString(i);
             banners.add(banner);
         }
@@ -179,4 +270,5 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
     }
+
 }

@@ -116,7 +116,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
         itemTitle.setTextColor(mClickedColor);
         //切换Fragment  showFragment hideFragment
-        getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag),ITEM_DELEGATES.get(mCurrentDelegate));
+        getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
 
         mCurrentDelegate = tag;
 
