@@ -51,12 +51,12 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 						final int currentPosition = holder.getAdapterPosition();
 						if(mPrePosition != currentPosition){
 							//还原上次状态
-							getData().get(mPrePosition).setField(MultipleFields.TAG,false);
+							getData().get(mPrePosition).setField(MultipleFields.TAG, false);
 							notifyItemChanged(mPrePosition);
 
 
 							//更新item状态
-							entity.setField(MultipleFields.TAG,true);
+							entity.setField(MultipleFields.TAG, true);
 							notifyItemChanged(currentPosition);
 
 							mPrePosition = currentPosition;
@@ -71,13 +71,13 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 				});
 				if(isClicked){
 					viewLine.setVisibility(View.VISIBLE);
-					textView.setTextColor(ContextCompat.getColor(mContext,R.color.app_main));
-					viewLine.setBackgroundColor(ContextCompat.getColor(mContext,R.color.app_main));
+					textView.setTextColor(ContextCompat.getColor(mContext, R.color.app_main));
+					viewLine.setBackgroundColor(ContextCompat.getColor(mContext, R.color.app_main));
 					itemView.setBackgroundColor(Color.WHITE);
 				}else {
 					viewLine.setVisibility(View.INVISIBLE);
-					textView.setTextColor(ContextCompat.getColor(mContext,R.color.we_chat_black));
-					viewLine.setBackgroundColor(ContextCompat.getColor(mContext,R.color.item_background));
+					textView.setTextColor(ContextCompat.getColor(mContext, R.color.we_chat_black));
+					viewLine.setBackgroundColor(ContextCompat.getColor(mContext, R.color.item_background));
 				}
 
 				holder.setText(R.id.tv_vertical_item_name,text);

@@ -5,9 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -20,8 +18,6 @@ import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 public class VerticalListDelegate extends LatteDelegate {
 
@@ -55,7 +51,7 @@ public class VerticalListDelegate extends LatteDelegate {
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		super.onLazyInitView(savedInstanceState);
 		RestClient.builder()
-				.url("http://apis.juhe.cn/goodbook/catalog?key=4f2a6e2eb200a619fb39f2c54860d519&dtype=json")
+				.url("api/sort")
 				.loader(getContext())
 				.success(new ISuccess() {
 					@Override

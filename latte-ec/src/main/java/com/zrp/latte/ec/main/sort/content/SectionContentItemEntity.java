@@ -1,13 +1,15 @@
 package com.zrp.latte.ec.main.sort.content;
 
-/**
- * 图书详情实体类
- */
+
 public class SectionContentItemEntity {
 
 	private int mGoodsId = 0;
 	private String mGoodsName = null;
 	private String mGoodsThumb = null;
+
+	private String mGoodsSpec = null;
+	private String mGoodsPrice = null;
+	private String mGoodsOriginPrice = null;
 
 	public int getGoodsId() {
 		return mGoodsId;
@@ -31,5 +33,29 @@ public class SectionContentItemEntity {
 
 	public void setGoodsThumb(String mGoodsThumb) {
 		this.mGoodsThumb = mGoodsThumb;
+	}
+
+	public String getGoodsDetail() {
+		return mGoodsSpec;
+	}
+
+	public void setGoodsDetail(String mGoodsDetail) {
+		this.mGoodsSpec = mGoodsDetail;
+	}
+
+	public String getGoodsPrice() {
+		return mGoodsPrice;
+	}
+
+	public void setGoodsPrice(String mGoodsPrice) {
+		this.mGoodsPrice = mGoodsPrice;
+	}
+
+	public String getGoodsOldPrice() {
+		return mGoodsOriginPrice;
+	}
+
+	public void setGoodsOldPrice(String mGoodsOldPrice) {
+		this.mGoodsOriginPrice = mGoodsOldPrice;
 	}
 }

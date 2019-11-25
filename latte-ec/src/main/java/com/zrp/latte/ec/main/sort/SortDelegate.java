@@ -31,7 +31,7 @@ public class SortDelegate extends BottomItemDelegate {
 		getSupportDelegate().loadRootFragment(R.id.vertical_list_container,listDelegate);
 
 		//加载右边内容栏   默认的内容栏
-		getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(242));
+		getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(0));
 	}
 
 }

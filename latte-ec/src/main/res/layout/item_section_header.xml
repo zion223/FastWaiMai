@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
+    android:background="@color/app_background"
     android:layout_width="match_parent"
     android:layout_height="60dp">
 
@@ -10,10 +12,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|left"
-        android:paddingLeft="10dp"
+        android:paddingStart="5dp"
         android:textColor="@color/we_chat_black"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry" />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/more"
@@ -21,9 +24,10 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center|right"
-        android:paddingRight="10dp"
+        android:paddingEnd="5dp"
         android:textColor="@color/we_chat_black"
-        android:text="more >"/>
+        android:text="more >"
+        tools:ignore="RtlSymmetry" />
 
 
 </LinearLayout>

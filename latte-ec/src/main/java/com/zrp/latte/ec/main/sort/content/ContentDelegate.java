@@ -3,9 +3,11 @@ package com.zrp.latte.ec.main.sort.content;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -43,16 +45,12 @@ public class ContentDelegate extends BottomItemDelegate {
 		}
 	}
 
-	/**
-	 *	第一次加载时 categoryId=242  中国文学
-	 *	ContentDelegate提供的实例化方法
-	 */
+
 	public static ContentDelegate newInstance(Integer categoryId) {
 		final ContentDelegate contentDelegate = new ContentDelegate();
 		final Bundle bundle = new Bundle();
 		bundle.putInt(ARG_CATEGORY_ID, categoryId);
 		contentDelegate.setArguments(bundle);
-
 		return contentDelegate;
 	}
 
@@ -61,23 +59,23 @@ public class ContentDelegate extends BottomItemDelegate {
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		super.onBindView(savedInstanceState, view);
 		//瀑布流
-		final StaggeredGridLayoutManager manager =
-				new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+//		final StaggeredGridLayoutManager manager =
+//				new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
 		mRecyclerView.setLayoutManager(manager);
 		initData();
 	}
 
 	private void initData(){
 		RestClient.builder()
-				.url("http://apis.juhe.cn/goodbook/query?key=4f2a6e2eb200a619fb39f2c54860d519&catalog_id="+ mCategoryId +"&rn=0&rn=15")
-				//.url("api/sort_content")
+				.url("api/content/" + mCategoryId)
 				.success(new ISuccess() {
 					@Override
 					public void onSuccess(String response) {
 						//获取数据
 						 mData = new SectionDataConverter().convert(response);
 						 final SectionAdapter sectionAdapter =
-								 new SectionAdapter(R.layout.item_section_content,R.layout.item_section_header,mData);
+								 new SectionAdapter(R.layout.item_section_content, R.layout.item_section_header, mData);
 						 mRecyclerView.setAdapter(sectionAdapter);
 
 					}

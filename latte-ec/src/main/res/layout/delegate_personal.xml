@@ -219,6 +219,7 @@
                     android:orientation="vertical">
 
                     <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/icon_order_0"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_gravity="center_horizontal"

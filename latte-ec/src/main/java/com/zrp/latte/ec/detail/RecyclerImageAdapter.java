@@ -4,7 +4,6 @@ import android.support.v7.widget.AppCompatImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;

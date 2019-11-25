@@ -18,14 +18,14 @@ public class VerticalListDataConverter extends DataConverter {
 	@Override
 	public LinkedList<MultipleItemEntity> convert() {
 		final LinkedList<MultipleItemEntity> dataList = new LinkedList<>();
-		final JSONArray dataArray = JSONObject.parseObject(getJsonData()).getJSONArray("result");
+		final JSONArray dataArray = JSONObject.parseObject(getJsonData()).getJSONObject("data").getJSONArray("cate");
 
 		final int dataSize = dataArray.size();
 
 		for(int i=0; i<dataSize; i++){
 			final JSONObject data = dataArray.getJSONObject(i);
 			final Integer categoryId = data.getIntValue("id");
-			final String category = data.getString("catalog");
+			final String category = data.getString("name");
 			final MultipleItemEntity entity = MultipleItemEntity.builder()
 					.setField(MultipleFields.ITEM_TYPE, ItemType.VERTICAL_MENU_LIST)
 					.setField(MultipleFields.ID, categoryId)

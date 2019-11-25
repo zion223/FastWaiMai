@@ -1,27 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="1dp"
+    android:padding="1dp"
     android:background="@android:color/white">
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/iv"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
         android:scaleType="fitXY"
         android:adjustViewBounds="true"
         android:layout_margin="@dimen/dp_10"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp" />
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
+        />
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        android:textColor="@color/we_chat_black"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/margin_3dp">
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/we_chat_black"
+            android:text="土鸡蛋8枚"
+            android:textSize="14sp" />
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_goods_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/we_chat_black"
+            android:layout_marginLeft="@dimen/margin_3dp"
+            android:text="民生鸡蛋 物美价廉"
+            android:textSize="12sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:textColor="@color/red"
+                android:text="￥22.00"
+                android:textSize="13sp"/>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_origin_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:textColor="@color/we_chat_black"
+                android:text="￥22.00"
+                android:textSize="13sp"/>
+            <ImageView
+                android:id="@+id/iv_add_shopcart"
+                android:src="@drawable/cat"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/margin_5dp"
+                tools:ignore="RtlHardcoded" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/bg_Gray" />
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 </LinearLayout>

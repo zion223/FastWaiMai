@@ -28,9 +28,16 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/order",R.raw.order));
         interceptors.add(new DebugInterceptor("api/address",R.raw.address));
         interceptors.add(new DebugInterceptor("api/goodsdetail",R.raw.goods_detail_1));
+        interceptors.add(new DebugInterceptor("api/sort",R.raw.categories));
+
+        interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
+        interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));
+        interceptors.add(new DebugInterceptor("api/content/2",R.raw.lk003));
+        for(int i = 4;i < 16;i ++){
+            interceptors.add(new DebugInterceptor("api/content/"+i,R.raw.lk003));
+        }
 
         Latte.init(this)
-                //.withApiHost("http://192.168.1.54:8082/bookstore/api/")
                 .withApiHost("http://192.168.1.54:8082/bookstore/")
                 .withInterceptors(interceptors)
                 .withIcon(new FontAwesomeModule())
