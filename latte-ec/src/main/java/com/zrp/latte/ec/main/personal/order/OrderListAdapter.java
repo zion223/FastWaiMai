@@ -2,7 +2,6 @@ package com.zrp.latte.ec.main.personal.order;
 
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
-import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -12,8 +11,6 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class OrderListAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, BaseViewHolder> {

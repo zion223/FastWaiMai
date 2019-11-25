@@ -29,6 +29,7 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/address",R.raw.address));
         interceptors.add(new DebugInterceptor("api/goodsdetail",R.raw.goods_detail_1));
         interceptors.add(new DebugInterceptor("api/sort",R.raw.categories));
+        interceptors.add(new DebugInterceptor("api/discount",R.raw.discount));
 
         interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));

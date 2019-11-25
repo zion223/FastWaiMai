@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -17,7 +16,7 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardAdapter;
 import com.zrp.latte.ec.main.personal.discount.DiscountCardDataConverter;
-import com.zrp.latte.ec.main.personal.order.OrderDelegate;
+import com.zrp.latte.ec.main.personal.order.OrderPageViewDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
@@ -101,7 +100,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
     @OnClick(R2.id.tv_all_order)
     void allOrder(){
-        getSupportDelegate().start(new OrderDelegate());
+        getSupportDelegate().start(new OrderPageViewDelegate());
     }
 
 }
