@@ -9,7 +9,7 @@ import android.support.annotation.ColorInt;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 
-//商品详情页商品数量
+
 public class CircleTextView extends AppCompatTextView {
 
     private Paint PAINT = null;
@@ -22,7 +22,7 @@ public class CircleTextView extends AppCompatTextView {
         super(context, attrs);
         PAINT = new Paint();
         FILTER = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
-        PAINT.setColor(Color.WHITE);
+        PAINT.setColor(Color.RED);
         PAINT.setAntiAlias(true);
     }
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tb_shop_cart"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@android:color/holo_orange_dark"
+        android:gravity="center">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="评价晒单"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/top_tv_comment_commit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:text="提交"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_order_comment"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/img_order_comment"
+            android:text="评分"
+            android:textColor="@color/contents_text" />
+
+        <com.zrp.latte.ui.widget.StarLayout
+            android:id="@+id/custom_star_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_comment_title"
+            android:layout_toRightOf="@id/img_order_comment" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_order_comment"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/white"
+        android:gravity="top|left"
+        android:hint="写下评论"
+        android:padding="10dp" />
+
+    <!--<com.flj.latte.ui.widget.AutoPhotoLayout
+        android:id="@+id/custom_auto_photo_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon_size="10sp"
+        app:item_margin="3"
+        app:line_count="5"
+        app:max_count="5" />-->
+
+</LinearLayout>

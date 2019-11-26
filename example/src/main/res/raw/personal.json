@@ -1,7 +1,14 @@
 {
   "code":0,
   "message":"OK",
-  "data":[
+  "order":{
+    "ALL":10,
+    "PAY":2,
+    "RECEIVE":3,
+    "EVALUATE":3,
+    "AFTERMARKET":2
+  },
+  "discount":[
     {
       "id":1,
       "name":"生活卷",
@@ -20,6 +27,5 @@
       "detail":"一卡在手,光店无忧",
       "img":""
     }
-
   ]
 }

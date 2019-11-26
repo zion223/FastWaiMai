@@ -25,10 +25,22 @@ import butterknife.OnClick;
 
 public class OrderPageViewDelegate extends BottomItemDelegate {
 
+
+    private static final String ARGS_CURRENT_ITEM = "ARGS_CURRENT_ITEM";
+
     @BindView(R2.id.tl_order_status)
     TabLayout mTabLayout;
     @BindView(R2.id.vp_order)
     ViewPager mViewPager;
+
+    public static OrderPageViewDelegate create(int item) {
+        final Bundle args = new Bundle();
+        args.putInt(ARGS_CURRENT_ITEM, item);
+        final OrderPageViewDelegate delegate = new OrderPageViewDelegate();
+        delegate.setArguments(args);
+        return delegate;
+    }
+
 
     @Override
     public Object setLayout() {
@@ -38,20 +50,7 @@ public class OrderPageViewDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         super.onBindView(savedInstanceState, view);
-        RestClient.builder()
-                .url("api/order")
-                //.parmas("goodsId", mGoodsId)
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        //绑定数据
-                        final JSONObject data = JSON.parseObject(response).getJSONObject("data");
-
-                    }
-                })
-                .build()
-                .get();
-        final String[] mTitles = {"全部订单", "代支付", "待收货", "代评价", "售后"};
+        final String[] mTitles = {"全部订单", "待支付", "待收货", "待评价", "售后"};
 
         final List<Fragment> mFragments = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -61,11 +60,15 @@ public class OrderPageViewDelegate extends BottomItemDelegate {
 
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(5);
+        final Bundle arg = getArguments();
+        final int item = arg.getInt(ARGS_CURRENT_ITEM);
+        //设置当前item位置
+        mViewPager.setCurrentItem(item);
+
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabLayout.setBackgroundColor(Color.WHITE);
         mTabLayout.setupWithViewPager(mViewPager);
     }
-
 
 
     @OnClick(R2.id.icon_order_return)

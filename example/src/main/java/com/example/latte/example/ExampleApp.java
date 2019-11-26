@@ -23,14 +23,25 @@ public class ExampleApp extends MultiDexApplication {
 
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
+        //首页数据
         interceptors.add(new DebugInterceptor("api/books",R.raw.index));
+        //购物车数据
         interceptors.add(new DebugInterceptor("api/shop_cart",R.raw.shop_cart));
-        interceptors.add(new DebugInterceptor("api/order",R.raw.order));
+        //订单数据
+        interceptors.add(new DebugInterceptor("api/order/0",R.raw.order_all));
+        interceptors.add(new DebugInterceptor("api/order/1",R.raw.order_pay));
+        interceptors.add(new DebugInterceptor("api/order/2",R.raw.order_receive));
+        interceptors.add(new DebugInterceptor("api/order/3",R.raw.order_evaluate));
+        interceptors.add(new DebugInterceptor("api/order/4",R.raw.order_after_market));
+        //收货地址
         interceptors.add(new DebugInterceptor("api/address",R.raw.address));
+        //商品详情
         interceptors.add(new DebugInterceptor("api/goodsdetail",R.raw.goods_detail_1));
+        //分页左边栏
         interceptors.add(new DebugInterceptor("api/sort",R.raw.categories));
-        interceptors.add(new DebugInterceptor("api/discount",R.raw.discount));
-
+        //个人页面数据
+        interceptors.add(new DebugInterceptor("api/personal",R.raw.personal));
+        //分页右边栏
         interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));
         interceptors.add(new DebugInterceptor("api/content/2",R.raw.lk003));

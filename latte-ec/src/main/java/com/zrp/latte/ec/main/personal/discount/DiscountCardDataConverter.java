@@ -14,7 +14,7 @@ public class DiscountCardDataConverter extends DataConverter {
 
     @Override
     public LinkedList<MultipleItemEntity> convert() {
-        final JSONArray discountArray = JSON.parseObject(getJsonData()).getJSONArray("data");
+        final JSONArray discountArray = JSON.parseArray(getJsonData());
         final int discountSize = discountArray.size();
         for(int  i= 0; i < discountSize; i++){
             final JSONObject discountObject = discountArray.getJSONObject(i);

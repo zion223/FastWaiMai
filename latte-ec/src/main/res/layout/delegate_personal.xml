@@ -207,118 +207,172 @@
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:background="@android:color/white"
+                android:layout_alignParentBottom="true"
                 android:baselineAligned="true"
                 android:orientation="horizontal">
 
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/ll_pay"
+                <RelativeLayout
+                    android:id="@+id/rl_pay"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="1">
 
                     <com.joanzapata.iconify.widget.IconTextView
                         android:id="@+id/icon_order_0"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:text="{fa-credit-card}"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <android.support.v7.widget.AppCompatTextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待付款"
                         android:textSize="10sp" />
+                    <com.zrp.latte.ui.widget.CircleTextView
+                        android:id="@+id/tv_order_status_0"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignEnd="@+id/icon_order_0"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/icon_order_0"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/ll_receive"
+                <RelativeLayout
+                    android:id="@+id/rl_receive"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="1">
 
                     <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/icon_order_1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        android:layout_centerHorizontal="true"
                         android:gravity="center"
                         android:text="{fa-truck}"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待收货"
                         android:textSize="10sp" />
+                    <com.zrp.latte.ui.widget.CircleTextView
+                        android:id="@+id/tv_order_status_1"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignEnd="@+id/icon_order_1"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/icon_order_1"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_evaluate"
+                <RelativeLayout
+                    android:id="@+id/rl_evaluate"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="1">
 
                     <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/icon_order_2"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:text="{fa-clone}"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待评价"
                         android:textSize="10sp" />
+                    <com.zrp.latte.ui.widget.CircleTextView
+                        android:id="@+id/tv_order_status_2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignEnd="@+id/icon_order_2"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/icon_order_2"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:id="@+id/ll_after_market"
+                <RelativeLayout
+                    android:id="@+id/rl_after_market"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_weight="1">
 
                     <com.joanzapata.iconify.widget.IconTextView
+                        android:id="@+id/icon_order_3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="center_horizontal"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:text="{fa-comments-o}"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="5dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="售后"
                         android:textSize="10sp" />
+                    <com.zrp.latte.ui.widget.CircleTextView
+                        android:id="@+id/tv_order_status_3"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignEnd="@+id/icon_order_3"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignRight="@+id/icon_order_3"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="12sp"
+                        tools:ignore="RtlHardcoded" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
