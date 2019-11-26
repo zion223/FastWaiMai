@@ -38,12 +38,6 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
         }
         Latte.getConfigurator().withActivity(this);
         StatusBarCompat.translucentStatusBar(this,true);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-
-            }
-        });
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.zrp.latte.ec.main.cart;
 
 public enum ShopCartItemFields {
+	ORIGIN_PRICE,
 	TITLE,
 	DESC,
 	COUNT,

@@ -84,8 +84,6 @@ public class PersonalDelegate extends BottomItemDelegate {
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 
-
-
         RestClient.builder()
                 .url("api/personal")
                 .success(new ISuccess() {

@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
         android:layout_marginTop="45dp">
 
         <LinearLayout
@@ -206,8 +207,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:background="@android:color/white"
                 android:layout_alignParentBottom="true"
+                android:background="@android:color/white"
                 android:baselineAligned="true"
                 android:orientation="horizontal">
 
@@ -230,21 +231,22 @@
                     <android.support.v7.widget.AppCompatTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待付款"
                         android:textSize="10sp" />
+
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_0"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_alignEnd="@+id/icon_order_0"
-                        android:layout_alignParentTop="true"
                         android:layout_alignRight="@+id/icon_order_0"
-                        android:layout_marginRight="20dp"
+                        android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
@@ -262,8 +264,8 @@
                         android:id="@+id/icon_order_1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:text="{fa-truck}"
                         android:textSize="20sp" />
@@ -271,21 +273,22 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待收货"
                         android:textSize="10sp" />
+
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_1"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_alignEnd="@+id/icon_order_1"
-                        android:layout_alignParentTop="true"
                         android:layout_alignRight="@+id/icon_order_1"
-                        android:layout_marginRight="20dp"
+                        android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
@@ -312,21 +315,22 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="待评价"
                         android:textSize="10sp" />
+
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_2"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_alignEnd="@+id/icon_order_2"
-                        android:layout_alignParentTop="true"
                         android:layout_alignRight="@+id/icon_order_2"
-                        android:layout_marginRight="20dp"
+                        android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
@@ -352,21 +356,22 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
                         android:layout_marginBottom="15dp"
                         android:gravity="center"
                         android:text="售后"
                         android:textSize="10sp" />
+
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_3"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
                         android:layout_alignEnd="@+id/icon_order_3"
-                        android:layout_alignParentTop="true"
                         android:layout_alignRight="@+id/icon_order_3"
-                        android:layout_marginRight="20dp"
+                        android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
+                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
                         android:textSize="12sp"
@@ -381,6 +386,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/bg_Gray_light" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -405,10 +411,12 @@
                     android:layout_marginRight="10dp"
                     android:src="@drawable/arrow_expend_right" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/bg_Gray_light" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -435,15 +443,72 @@
 
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_discount_card"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/rv_discount_card"/>
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/bg_Gray_light" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="联系客服"
+                    android:textColor="@color/tv_Black"
+                    android:textSize="17sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="30dp"
+                    android:gravity="center_vertical"
+                    android:text="客服时间7:00-12:00" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/arrow_expend_right" />
+            </LinearLayout>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/bg_Gray_light" />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:text="意见反馈"
+                    android:textColor="@color/tv_Black"
+                    android:textSize="17sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/arrow_expend_right" />
+            </LinearLayout>
         </LinearLayout>
+
+
 
     </ScrollView>
 

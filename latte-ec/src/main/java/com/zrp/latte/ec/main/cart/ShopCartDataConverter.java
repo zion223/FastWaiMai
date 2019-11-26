@@ -15,7 +15,6 @@ public class ShopCartDataConverter extends DataConverter {
 
 	@Override
 	public LinkedList<MultipleItemEntity> convert() {
-		final LinkedList<MultipleItemEntity> dataList = new LinkedList<>();
 		final JSONArray dataArray = JSON.parseObject(getJsonData()).getJSONArray("data");
 
 		final int size = dataArray.size();
@@ -39,9 +38,9 @@ public class ShopCartDataConverter extends DataConverter {
 					.setField(ShopCartItemFields.IS_SELECTED, false)
 					.setField(ShopCartItemFields.POSITION, i)
 					.build();
-			dataList.add(entity);
+			ENTITYS.add(entity);
 		}
 
-		return dataList;
+		return ENTITYS;
 	}
 }
