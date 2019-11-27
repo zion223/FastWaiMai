@@ -1,33 +1,29 @@
 package com.zrp.latte.ec.main.sort.content;
 
-import com.chad.library.adapter.base.entity.SectionEntity;
 
-public class SectionBean extends SectionEntity<SectionContentItemEntity> {
+import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
-	private boolean mIsMore = false;
-	private int mId = -1;
+import java.util.List;
 
-	public SectionBean(boolean isHeader, String header) {
-		super(isHeader, header);
+public class SectionBean {
+
+	private List<String> headers;
+
+	private List<List<MultipleItemEntity>> datas;
+
+	public List<String> getHeaders() {
+		return headers;
 	}
 
-	public SectionBean(SectionContentItemEntity sectionContentItemEntity) {
-		super(sectionContentItemEntity);
+	public void setHeaders(List<String> headers) {
+		this.headers = headers;
 	}
 
-	public boolean isMore() {
-		return mIsMore;
+	public List<List<MultipleItemEntity>> getDatas() {
+		return datas;
 	}
 
-	public void setIsMore(boolean mIsMore) {
-		this.mIsMore = mIsMore;
-	}
-
-	public int getId() {
-		return mId;
-	}
-
-	public void setId(int mId) {
-		this.mId = mId;
+	public void setDatas(List<List<MultipleItemEntity>> datas) {
+		this.datas = datas;
 	}
 }

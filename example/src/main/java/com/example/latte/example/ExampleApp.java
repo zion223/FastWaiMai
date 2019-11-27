@@ -47,7 +47,7 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));
         interceptors.add(new DebugInterceptor("api/content/2",R.raw.lk003));
-        for(int i = 4;i < 16;i ++){
+        for(int i = 3;i < 16;i ++){
             interceptors.add(new DebugInterceptor("api/content/"+i,R.raw.lk003));
         }
 

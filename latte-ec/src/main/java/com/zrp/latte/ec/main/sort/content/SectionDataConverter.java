@@ -3,53 +3,56 @@ package com.zrp.latte.ec.main.sort.content;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zrp.latte.ec.main.cart.ShopCartItemFields;
+import com.zrp.latte.ui.recycler.MultipleFields;
+import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SectionDataConverter {
 
-	final List<SectionBean> convert(String json) {
+	final SectionBean convert(String json) {
 
-		final List<SectionBean> dataList = new ArrayList();
-		final JSONObject goodsObject = JSON.parseObject(json).getJSONObject("data").getJSONArray("cate").getJSONObject(0);
+		final SectionBean sectionBeanNew = new SectionBean();
 
-		final String catrgoryId = goodsObject.getString("id");
-		final String catrgory = goodsObject.getString("name");
+		final JSONArray dataArray = JSON.parseObject(json)
+				.getJSONObject("data")
+				.getJSONArray("cate");
+		final List<String> header = new ArrayList<>();
+		final List<List<MultipleItemEntity>> data = new ArrayList<>();
 
-		final SectionBean sectionTitleBean = new SectionBean(true, catrgory);
-		//标题ID
-		//TODO
-		sectionTitleBean.setId(1);
-		//显示更多More
-		sectionTitleBean.setIsMore(false);
-		dataList.add(sectionTitleBean);
-		final JSONArray goodsArray = goodsObject.getJSONArray("products");
-		//解析goods
-		final int goodsSize = goodsArray.size();
-		for (int j = 0; j < goodsSize; j++) {
-			final JSONObject good = goodsArray.getJSONObject(j);
-			//final Integer goodsId = good.getIntValue("goods_id");
-			//商品图片url
-			final String goodsThumb = good.getString("small_image");
-			//商品名称
-			final String goodsName = good.getString("name");
-			final String goodsSpec = good.getString("spec");
-			final String price = good.getString("price");
-			final String originPrice = good.getString("origin_price");
-			//封装 SectionContentItemEntity
-			final SectionContentItemEntity entity = new SectionContentItemEntity();
+		final int size = dataArray.size();
+		for(int i = 0; i < size; i++){
+			final JSONObject dataObject = dataArray.getJSONObject(i);
+			//dataObject.getString("id");
+			final String name = dataObject.getString("name");
+			header.add(name);
+			final JSONArray products = dataObject.getJSONArray("products");
+			final int productSize = products.size();
+			final List<MultipleItemEntity> entities = new ArrayList<>();
+			for(int j = 0;j < productSize; j++) {
 
-			entity.setGoodsId(2);
-			entity.setGoodsDetail(goodsSpec);
-			entity.setGoodsOldPrice(originPrice);
-			entity.setGoodsPrice(price);
-			entity.setGoodsName(goodsName);
-			entity.setGoodsThumb(goodsThumb);
-			//添加到List
-			dataList.add(new SectionBean(entity));
+				final JSONObject good = products.getJSONObject(j);
+				final String goodsThumb = good.getString("small_image");
+				final String goodsName = good.getString("name");
+				final String goodsSpec = good.getString("spec");
+				final String price = good.getString("price");
+				final String originPrice = good.getString("origin_price");
+				final MultipleItemEntity entity = MultipleItemEntity.builder()
+						.setItemType(ContentItemType.ITEM_NORMAL)
+						.setField(MultipleFields.TEXT, goodsName)
+						.setField(MultipleFields.SPEC, goodsSpec)
+						.setField(MultipleFields.IMAGE_URL, goodsThumb)
+						.setField(ShopCartItemFields.PRICE, price)
+						.setField(ShopCartItemFields.ORIGIN_PRICE, originPrice)
+						.build();
+				entities.add(entity);
+			}
+			data.add(entities);
 		}
-
-		return dataList;
+		sectionBeanNew.setDatas(data);
+		sectionBeanNew.setHeaders(header);
+		return sectionBeanNew;
 	}
 }

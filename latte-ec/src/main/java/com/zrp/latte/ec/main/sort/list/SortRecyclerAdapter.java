@@ -3,7 +3,6 @@ package com.zrp.latte.ec.main.sort.list;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.View;
 
 import com.example.latte.latte_ec.R;

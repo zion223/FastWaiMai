@@ -9,7 +9,6 @@ import android.widget.Toast;
 import com.zrp.latte.activities.ProxyActivity;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.LatteDelegate;
-import com.zrp.latte.ec.launcher.LauncherDelegate;
 
 import com.zrp.latte.ec.main.EcBottomDelegate;
 import com.zrp.latte.ec.sign.ISignListener;

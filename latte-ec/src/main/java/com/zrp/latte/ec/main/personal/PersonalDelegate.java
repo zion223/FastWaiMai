@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,8 +36,8 @@ public class PersonalDelegate extends BottomItemDelegate {
     TextView tvTopEdit;
     @BindView(R2.id.img_user_avatar)
     ImageView imgUserAvatar;
-    @BindView(R2.id.textView1)
-    TextView textView1;
+    @BindView(R2.id.tv_user_name)
+    TextView mTvUserName;
     @BindView(R2.id.tv_all_order)
     TextView tvAllOrder;
     @BindView(R2.id.rv_discount_card)

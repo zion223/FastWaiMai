@@ -2,11 +2,12 @@ package com.zrp.latte.ui.recycler;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.io.Serializable;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.util.LinkedHashMap;
 
-public class MultipleItemEntity implements MultiItemEntity {
+public class MultipleItemEntity implements MultiItemEntity,Serializable {
 
 
     private final ReferenceQueue<LinkedHashMap<Object,Object>> ITEM_QUENE = new ReferenceQueue<>();

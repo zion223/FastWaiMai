@@ -20,7 +20,7 @@ public class OrderDelegate extends BottomItemDelegate {
 
     private static final String ARGS_ORDER_STATUS = "ARGS_ORDER_STATUS";
 
-    @BindView(R2.id.rv_all_order)
+    @BindView(R2.id.rv_all_normal)
     RecyclerView mRvAllOrder;
 
 
@@ -46,7 +46,7 @@ public class OrderDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_personal_order;
+        return R.layout.delegate_normal_recyclerview;
     }
 
 
