@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-import com.zrp.latte.ec.main.sort.content.ContentDelegate;
+import com.zrp.latte.ec.main.sort.content.ContentPageViewDelegate;
 import com.zrp.latte.ec.main.sort.list.VerticalListDelegate;
 
 public class SortDelegate extends BottomItemDelegate {
@@ -31,8 +31,8 @@ public class SortDelegate extends BottomItemDelegate {
 		getSupportDelegate().loadRootFragment(R.id.vertical_list_container,listDelegate);
 
 		//加载右边内容栏   默认的内容栏
-		//getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(0));
-		getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentDelegate.newInstance(0));
+		//getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentPageViewDelegate.newInstance(0));
+		getSupportDelegate().loadRootFragment(R.id.sort_content_container, ContentPageViewDelegate.newInstance(0));
 	}
 
 }

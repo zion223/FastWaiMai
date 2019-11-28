@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
-import com.zrp.latte.ec.main.sort.content.ContentDelegate;
+import com.zrp.latte.ec.main.sort.content.ContentPageViewDelegate;
 import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
@@ -84,11 +84,11 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
 	}
 
 	private void showContent(Integer categoryId) {
-		final ContentDelegate contentDelegate = ContentDelegate.newInstance(categoryId);
-		final LatteDelegate latteDelegate = SupportHelper.findFragment(DELEGATE.getChildFragmentManager(),ContentDelegate.class);
+		final ContentPageViewDelegate contentPageViewDelegate = ContentPageViewDelegate.newInstance(categoryId);
+		final LatteDelegate latteDelegate = SupportHelper.findFragment(DELEGATE.getChildFragmentManager(),ContentPageViewDelegate.class);
 		if(latteDelegate != null){
 			//替换Delegate
-			latteDelegate.getSupportDelegate().replaceFragment(contentDelegate,false);
+			latteDelegate.getSupportDelegate().replaceFragment(contentPageViewDelegate,false);
 		}
 	}
 

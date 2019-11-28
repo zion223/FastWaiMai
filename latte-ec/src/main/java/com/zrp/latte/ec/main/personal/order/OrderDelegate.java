@@ -59,6 +59,7 @@ public class OrderDelegate extends BottomItemDelegate {
         final int status = arguments.getInt(ARGS_ORDER_STATUS);
         RestClient.builder()
                 .url("api/order/" + status)
+                .loader(getContext())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {

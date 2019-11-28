@@ -9,13 +9,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
+import com.zrp.latte.ui.tab.TabPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +53,7 @@ public class OrderPageViewDelegate extends BottomItemDelegate {
         for (int i = 0; i < 5; i++) {
             mFragments.add(OrderDelegate.create(i));
         }
-        final OrderTabPagerAdapter adapter = new OrderTabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
+        final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
 
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(5);
