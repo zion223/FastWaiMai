@@ -31,7 +31,7 @@
                 android:layout_marginTop="@dimen/margin_7dp"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:text="编辑收货地址"
+                android:text="@string/editaddress"
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
@@ -47,7 +47,7 @@
                 android:textSize="15dp"
                 android:textColor="@color/black"
                 android:singleLine="false"
-                android:text="保存"/>
+                android:text="@string/save"/>
 
         </RelativeLayout>
 
@@ -58,8 +58,7 @@
         android:layout_height="50dp"
         android:paddingLeft="10dp"
         android:background="@null"
-        android:textSize="15dp"
-        android:text="姓名"/>
+        android:textSize="15sp"/>
 
     <View
         android:layout_width="match_parent"
@@ -78,8 +77,7 @@
             android:gravity="center_vertical"
             android:background="@null"
             android:paddingLeft="10dp"
-            android:textSize="15dp"
-            android:text="15078383333"/>
+            android:textSize="15sp"/>
 
         <com.joanzapata.iconify.widget.IconTextView
             android:layout_width="wrap_content"
@@ -110,9 +108,8 @@
             android:paddingTop="5dp"
             android:layout_gravity="center_vertical"
             android:layout_centerVertical="true"
-            android:textSize="15dp"
-            android:singleLine="false"
-            android:text="山东省青岛市市南区国际动漫产业园"/>
+            android:textSize="15sp"
+            android:singleLine="false"/>
 
         <com.joanzapata.iconify.widget.IconTextView
             android:id="@+id/icon_address_pick"
@@ -144,7 +141,7 @@
             android:paddingTop="13dp"
             android:layout_gravity="center_vertical"
             android:textSize="14dp"
-            android:text="设为默认地址"/>
+            android:text="@string/setdefaultaddress"/>
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/sc_default_address_compat"
             android:layout_width="wrap_content"
@@ -171,7 +168,7 @@
             android:paddingTop="13dp"
             android:layout_gravity="center_vertical"
             android:textSize="14dp"
-            android:text="地址标签"/>
+            android:text="@string/addresstab"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -179,7 +176,7 @@
             android:layout_marginRight="20dp"
             android:paddingTop="13dp"
             android:textSize="14dp"
-            android:text="更多"/>
+            android:text="@string/more"/>
         <com.joanzapata.iconify.widget.IconTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -206,7 +203,7 @@
         android:textColor="@color/red"
         android:paddingLeft="15dp"
         android:background="@color/white"
-        android:text="删除收货地址"/>
+        android:text="@string/deleteaddress"/>
 
     <LinearLayout
         android:id="@+id/ll_address_pick"

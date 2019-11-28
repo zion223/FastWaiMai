@@ -2,4 +2,25 @@
 
     <string name="app_name">LatteEC</string>
     <string name="count2zero">该宝贝不能减少了哟</string>
+    <string name="shopcarttitle">我的收货地址管理</string>
+    <string name="editaddress">编辑收货地址</string>
+    <string name="save">保存</string>
+    <string name="setdefaultaddress">设为默认地址</string>
+    <string name="addresstab">地址标签</string>
+    <string name="more">更多</string>
+    <string name="deleteaddress">删除收货地址</string>
+    <string name="mydiscount">我的优惠券</string>
+    <string name="exchange">兑换</string>
+    <string name="discovertitle">发现</string>
+    <string name="goodsdetail">商品详情</string>
+    <string name="myorder">我的订单</string>
+    <string name="clear">清空</string>
+    <string name="shopcart">购物车</string>
+    <string name="delete">删除</string>
+    <string name="guessyoulike">猜你喜欢</string>
+    <string name="selectall">全选</string>
+    <string name="total">合计</string>
+    <string name="computer">结算</string>
+    <string name="canclepay">取消支付</string>
+    <string name="edit">编辑</string>
 </resources>

@@ -12,7 +12,6 @@ import com.example.latte.latte_ec.R;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, BaseViewHolder> implements View.OnClickListener {
 
@@ -29,7 +28,7 @@ public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<MultipleItemE
      */
     public DiscountCardAdapter(LinkedList<MultipleItemEntity> data) {
         super(data);
-        addItemType(DiscountCardItemType.ITEM_NORMAL, R.layout.arrow_discount_layout);
+        addItemType(DiscountCardItemType.ITEM_NORMAL, R.layout.item_discount_layout);
     }
 
     @Override

@@ -34,7 +34,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:text="￥"
             android:textColor="@color/app_main"
             android:textSize="20sp" />
 
@@ -43,7 +42,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="1299"
             android:textColor="@color/app_main"
             android:textSize="20sp" />
     </android.support.v7.widget.LinearLayoutCompat>

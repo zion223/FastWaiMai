@@ -23,7 +23,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:text="清空"
+                android:text="@string/clear"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
@@ -33,7 +33,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
                 android:gravity="center"
-                android:text="购物车"
+                android:text="@string/shopcart"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 tools:ignore="HardcodedText" />
@@ -46,7 +46,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center"
-                android:text="删除"
+                android:text="@string/delete"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 tools:ignore="HardcodedText,RtlHardcoded" />
@@ -85,7 +85,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center"
-                    android:text="猜你喜欢" />
+                    android:text="@string/guessyoulike" />
 
                 <View
                     android:layout_width="0dp"
@@ -147,7 +147,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="全选"
+                android:text="@string/selectall"
                 android:textColor="@color/app_main" />
         </android.support.v7.widget.LinearLayoutCompat>
         <!--全选部分结束-->
@@ -165,7 +165,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="合计"
+                android:text="@string/total"
                 android:textColor="@android:color/darker_gray"
                 tools:ignore="HardcodedText" />
 
@@ -189,7 +189,7 @@
             android:layout_weight="1"
             android:background="@color/app_main"
             android:gravity="center"
-            android:text="结算"
+            android:text="@string/computer"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
