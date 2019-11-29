@@ -28,13 +28,13 @@ public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<MultipleItemE
      */
     public DiscountCardAdapter(LinkedList<MultipleItemEntity> data) {
         super(data);
-        addItemType(DiscountCardItemType.ITEM_NORMAL, R.layout.item_discount_card_layout);
+        addItemType(DiscountCardItemType.ITEM_NORMAL_CARD, R.layout.item_discount_card_layout);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, MultipleItemEntity item) {
         switch (helper.getItemViewType()){
-            case DiscountCardItemType.ITEM_NORMAL:
+            case DiscountCardItemType.ITEM_NORMAL_CARD:
                 final String name = item.getField(DiscountItemFields.NAME);
                 helper.setText(R.id.tv_discount_name, name);
                 final String detail = item.getField(DiscountItemFields.DETAIL);

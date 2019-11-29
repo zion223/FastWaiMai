@@ -23,7 +23,7 @@ public class DiscountCardDataConverter extends DataConverter {
             final String imgUrl = discountObject.getString("img");
 
             final MultipleItemEntity entity = MultipleItemEntity.builder()
-                    .setItemType(DiscountCardItemType.ITEM_NORMAL)
+                    .setItemType(DiscountCardItemType.ITEM_NORMAL_CARD)
                     .setField(DiscountItemFields.NAME, name)
                     .setField(DiscountItemFields.DETAIL, detail)
                     .setField(DiscountItemFields.IMG, R.drawable.user_9)
