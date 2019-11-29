@@ -1,6 +1,5 @@
 package com.zrp.latte.ec.main.personal;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,8 +15,8 @@ import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
-import com.zrp.latte.ec.main.personal.discount.DiscountCardAdapter;
-import com.zrp.latte.ec.main.personal.discount.DiscountCardDataConverter;
+import com.zrp.latte.ec.main.personal.discountcard.DiscountCardAdapter;
+import com.zrp.latte.ec.main.personal.discountcard.DiscountCardDataConverter;
 import com.zrp.latte.ec.main.personal.order.OrderPageViewDelegate;
 import com.zrp.latte.ec.main.personal.order.OrderStatusType;
 import com.zrp.latte.net.RestClient;

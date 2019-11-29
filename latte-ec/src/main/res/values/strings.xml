@@ -23,4 +23,5 @@
     <string name="computer">结算</string>
     <string name="canclepay">取消支付</string>
     <string name="edit">编辑</string>
+    <string name="exchange_code">请输入520兑换</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.discount;
+package com.zrp.latte.ec.main.personal.discountcard;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -28,7 +28,7 @@ public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<MultipleItemE
      */
     public DiscountCardAdapter(LinkedList<MultipleItemEntity> data) {
         super(data);
-        addItemType(DiscountCardItemType.ITEM_NORMAL, R.layout.item_discount_layout);
+        addItemType(DiscountCardItemType.ITEM_NORMAL, R.layout.item_discount_card_layout);
     }
 
     @Override
