@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:paddingTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="{fa-angle-left}"
                 android:textColor="@android:color/darker_gray"
@@ -41,7 +41,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/white">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/tv_exchange_code"
             android:layout_width="0dp"
@@ -50,6 +51,7 @@
             android:gravity="center_vertical"
             android:layout_margin="5dp"
             android:layout_marginLeft="10dp"
+            android:background="@color/white"
             android:hint="@string/exchange_code"/>
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_exchange"

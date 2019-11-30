@@ -28,7 +28,7 @@ public class DiscountCardAdapter extends BaseMultiItemQuickAdapter<MultipleItemE
      */
     public DiscountCardAdapter(LinkedList<MultipleItemEntity> data) {
         super(data);
-        addItemType(DiscountCardItemType.ITEM_NORMAL_CARD, R.layout.item_discount_card_layout);
+        addItemType(DiscountCardItemType.ITEM_NORMAL_CARD, R.layout.item_personal_discount);
     }
 
     @Override

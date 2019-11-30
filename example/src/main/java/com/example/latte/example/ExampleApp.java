@@ -47,6 +47,9 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));
         interceptors.add(new DebugInterceptor("api/content/2",R.raw.lk003));
+        //优惠券
+        interceptors.add(new DebugInterceptor("api/discount/0",R.raw.avaliable_discount));
+        interceptors.add(new DebugInterceptor("api/discount/1",R.raw.unavaliable_discount));
         for(int i = 3;i < 16;i ++){
             interceptors.add(new DebugInterceptor("api/content/"+i,R.raw.lk003));
         }

@@ -13,6 +13,9 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
+import com.zrp.latte.ui.recycler.MultipleItemEntity;
+
+import java.util.LinkedList;
 
 import butterknife.BindView;
 
@@ -36,6 +39,24 @@ public class DiscountDelegate extends BottomItemDelegate {
         super.onBindView(savedInstanceState, view);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
+        Bundle arguments = getArguments();
+        final int status = arguments.getInt(ARGS_DISCOUNT_STATUS);
+        RestClient.builder()
+                .url("api/discount/" + status)
+                .loader(getContext())
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        final DataConverter converter = new DiscountDataConverter().setJsonData(response);
+                        LinkedList<MultipleItemEntity> entities = converter.convert();
+
+                        mAdapter = new DiscountAdapter(entities);
+                        recyclerView.setAdapter(mAdapter);
+
+                    }
+                })
+                .build()
+                .get();
 
     }
     public static DiscountDelegate create(int orderStatus) {
@@ -46,28 +67,6 @@ public class DiscountDelegate extends BottomItemDelegate {
         return delegate;
     }
 
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
-        Bundle arguments = getArguments();
-        final int status = arguments.getInt(ARGS_DISCOUNT_STATUS);
-        RestClient.builder()
-                .url("api/discount/" + status)
-                .loader(getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        final DataConverter converter = new DiscountDataConverter().setJsonData(response);
 
-                        mAdapter = new DiscountAdapter(converter.convert());
-                        recyclerView.setAdapter(mAdapter);
-
-                    }
-                })
-                .build()
-                .get();
-
-
-    }
 
 }

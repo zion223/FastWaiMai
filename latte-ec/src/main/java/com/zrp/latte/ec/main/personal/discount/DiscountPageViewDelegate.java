@@ -42,7 +42,7 @@ public class DiscountPageViewDelegate extends BottomItemDelegate {
 
         final List<Fragment> mFragments = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
-           mFragments.add(new DiscountDelegate());
+           mFragments.add(DiscountDelegate.create(i));
         }
         final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
 
@@ -52,8 +52,6 @@ public class DiscountPageViewDelegate extends BottomItemDelegate {
         mTabLayout.setBackgroundColor(Color.WHITE);
         mTabLayout.setupWithViewPager(mViewPager);
     }
-
-
 
 
     @OnClick(R2.id.icon_discount_return)

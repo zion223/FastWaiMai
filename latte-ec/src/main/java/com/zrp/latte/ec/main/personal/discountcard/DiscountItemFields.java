@@ -4,5 +4,7 @@ public enum DiscountItemFields {
     ID,
     NAME,
     DETAIL,
-    IMG
+    IMG,
+    MONEY,
+    EXPIRE_TINE
 }

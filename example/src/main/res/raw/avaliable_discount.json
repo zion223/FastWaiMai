@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "code": 0,
+  "msg": "ok",
+  "data": [
+    {
+      "id":1,
+      "disocuntmoney":"1.5:元",
+      "expiretime":"2019.11.30-2019.12.30"
+    },
+    {
+      "id":1,
+      "disocuntmoney":"4:元",
+      "expiretime":"2019.11.25-2019.12.25"
+    }
+  ]
+}

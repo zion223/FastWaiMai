@@ -1,9 +1,11 @@
 package com.zrp.latte.ec.main.personal.order;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -49,10 +51,9 @@ public class OrderDelegate extends BottomItemDelegate {
         return R.layout.delegate_normal_recyclerview;
     }
 
-
     @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
+        super.onBindView(savedInstanceState, view);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRvAllOrder.setLayoutManager(manager);
         Bundle arguments = getArguments();
@@ -71,9 +72,8 @@ public class OrderDelegate extends BottomItemDelegate {
                 })
                 .build()
                 .get();
-
-
     }
+
 
 
 }
