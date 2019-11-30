@@ -135,7 +135,14 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 
 	@OnClick(R2.id.iv_goto_discount)
-	public void onViewClicked() {
+	public void onViewClickedDiscount() {
 		getSupportDelegate().start(new DiscountPageViewDelegate());
+	}
+
+
+
+	@OnClick(R2.id.iv_edit_profile)
+	public void onViewClickedEditDetail() {
+
 	}
 }

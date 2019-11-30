@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="60dp"
         android:layout_weight="1"
         android:text="生活卷"
         android:textColor="@color/tv_Black" />

@@ -49,7 +49,6 @@ public class DiscountDelegate extends BottomItemDelegate {
                     public void onSuccess(String response) {
                         final DataConverter converter = new DiscountDataConverter().setJsonData(response);
                         LinkedList<MultipleItemEntity> entities = converter.convert();
-
                         mAdapter = new DiscountAdapter(entities);
                         recyclerView.setAdapter(mAdapter);
 

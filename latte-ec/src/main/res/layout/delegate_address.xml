@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:paddingTop="10dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 android:gravity="center"
                 android:text="{fa-angle-left}"
                 android:textColor="@android:color/darker_gray"
