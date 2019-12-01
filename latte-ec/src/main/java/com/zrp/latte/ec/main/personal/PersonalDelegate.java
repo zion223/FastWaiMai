@@ -22,6 +22,7 @@ import com.zrp.latte.ec.main.personal.discountcard.DiscountCardAdapter;
 import com.zrp.latte.ec.main.personal.discountcard.DiscountCardDataConverter;
 import com.zrp.latte.ec.main.personal.order.OrderPageViewDelegate;
 import com.zrp.latte.ec.main.personal.order.OrderStatusType;
+import com.zrp.latte.ec.main.personal.profile.ProfileDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
@@ -53,7 +54,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 	CircleTextView mTvOrderEvaluate;
 	@BindView(R2.id.tv_order_status_3)
 	CircleTextView mTvOrderAfterMarket;
-	Unbinder unbinder;
 
 
 	/**
@@ -143,6 +143,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 	@OnClick(R2.id.iv_edit_profile)
 	public void onViewClickedEditDetail() {
-
+		getSupportDelegate().start(new ProfileDelegate());
 	}
 }

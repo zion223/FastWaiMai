@@ -14,8 +14,8 @@ class DiscountAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, Base
 
     public DiscountAdapter(List<MultipleItemEntity> data) {
         super(data);
-        addItemType(DiscountCardItemType.ITEM_NORMAL_AVAILIABLE, R.layout.item_discount_available);
-        addItemType(DiscountCardItemType.ITEM_NORMAL_UNAVAILIABLE, R.layout.item_discount_unavailable);
+        addItemType(DiscountCardItemType.ITEM_NORMAL_AVAILIABLE, R.layout.item_discount_available_card);
+        addItemType(DiscountCardItemType.ITEM_NORMAL_UNAVAILIABLE, R.layout.item_discount_unavailable_text);
     }
 
     @Override

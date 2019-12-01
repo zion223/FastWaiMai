@@ -15,6 +15,20 @@
             android:layout_height="match_parent"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_index_status"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:tabIndicatorColor="@color/pink"
+        app:tabIndicatorHeight="3dp"
+        app:tabTextColor="@android:color/black"
+        app:tabSelectedTextColor="@color/colorPrimaryDark">
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_index"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_index"
@@ -63,7 +77,6 @@
                 android:textSize="25sp"/>
 
         </android.support.v7.widget.LinearLayoutCompat>
-
 
     </android.support.v7.widget.Toolbar>
 

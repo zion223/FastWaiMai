@@ -18,6 +18,5 @@ public class ProfileDelegate extends BottomItemDelegate {
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		super.onBindView(savedInstanceState, view);
-
 	}
 }
