@@ -53,41 +53,16 @@ public class RefreshHandler implements
 
     @Override
     public void onRefresh() {
-        refresh();
+        //refresh();
     }
 
     /**
      * 首页的数据
-     * @param url
-     * @param size
-     * QueryBooksRequest
-     * 	 int page = 1;
-     * 	 int size = 10;
-     * 	 String sort = "";
-     * 	 int priceGt;
-     * 	 int priceLte;
-     * 	 boolean isMobile;
-     * QueryBooksResponse
-     *      String code;
-     *      String message;
-     *      Integer size;
-     *      Integer page;
-     *      ArrayList<String> banners;
-     *      int total;
-     *      List<T> data;
      */
     public void firstPage(String url,Integer size){
         BEAN.setPageSize(size);
-        final JSONObject param = new JSONObject();
-        param.put("page",1);
-        param.put("size",size);
-        param.put("sort","");
-        param.put("priceGt",0);
-        param.put("priceLte",0);
-        param.put("isMobile",1);
         RestClient.builder()
                 .url(url)
-                .raw(param.toJSONString())
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -100,7 +75,7 @@ public class RefreshHandler implements
                         mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
                         mAdapter.openLoadAnimation();
                         //加载更多 回调
-                        mAdapter.setOnLoadMoreListener(RefreshHandler.this,RECYCLERVIEW);
+                        //mAdapter.setOnLoadMoreListener(RefreshHandler.this,RECYCLERVIEW);
                         RECYCLERVIEW.setAdapter(mAdapter);
                         BEAN.addIndex();
                     }
@@ -139,17 +114,8 @@ public class RefreshHandler implements
                 public void run() {
                     Log.d("RefreshHandler","onLoadMoreRequested "+" currentData:"+ mAdapter.getData().size()
                             +" pageIndex:"+index +" pageSize:"+ pageSize+ " total:"+total);
-                    // page++
-                    final JSONObject param = new JSONObject();
-                    param.put("page",index);
-                    param.put("size",BEAN.getPageSize());
-                    param.put("sort","");
-                    param.put("priceGt",0);
-                    param.put("priceLte",0);
-                    param.put("isMobile",1);
                     RestClient.builder()
                             .url("api/books")
-                            .raw(param.toJSONString())
                             .success(new ISuccess() {
                                 @Override
                                 public void onSuccess(String response) {
@@ -186,6 +152,6 @@ public class RefreshHandler implements
 
     @Override
     public void onLoadMoreRequested() {
-        loadMoreData();
+        //loadMoreData();
     }
 }

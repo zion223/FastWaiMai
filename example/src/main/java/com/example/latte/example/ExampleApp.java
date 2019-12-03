@@ -25,6 +25,8 @@ public class ExampleApp extends MultiDexApplication {
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
         //首页数据
         interceptors.add(new DebugInterceptor("api/books",R.raw.home));
+        //首页特色专区
+        interceptors.add(new DebugInterceptor("api/spec",R.raw.home_spec));
         //购物车数据
         interceptors.add(new DebugInterceptor("api/shopcart",R.raw.shop_cart));
         //订单数据

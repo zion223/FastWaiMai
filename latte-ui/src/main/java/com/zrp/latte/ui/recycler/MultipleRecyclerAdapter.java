@@ -1,8 +1,10 @@
 package com.zrp.latte.ui.recycler;
 
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
@@ -26,7 +28,6 @@ public class MultipleRecyclerAdapter extends
 
     private static final RequestOptions RECYCLE_OPTIONS =
             new RequestOptions()
-                    //.centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .dontAnimate();
 
@@ -50,30 +51,6 @@ public class MultipleRecyclerAdapter extends
         final ArrayList<String> bannerImages;
 
         switch (holder.getItemViewType()){
-            case ItemType.SORT:
-                text = entity.getField(MultipleFields.TEXT);
-                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
-                holder.setText(R.id.tv_sort, text);
-                Glide.with(mContext)
-                        .load(imgUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_sort));
-                break;
-            case ItemType.TEXT_IMAGE:
-                text = entity.getField(MultipleFields.TEXT);
-                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext)
-                        .load(imgUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.img_multiple));
-                holder.setText(R.id.tv_multiple, text);
-                break;
-            case ItemType.IMAGE:
-                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
-                Glide.with(mContext)
-                        .load(imgUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.img_single));
             case ItemType.BANNER:
                 if(!mIsInitBanner){
                     //初始化
@@ -89,10 +66,39 @@ public class MultipleRecyclerAdapter extends
                         .load(gifUrl)
                         .apply(RECYCLE_OPTIONS)
                         .into((ImageView) holder.getView(R.id.iv_index_gif));
+                final ImageView adView = holder.getView(R.id.iv_index_ad);
+                adView.setBackgroundColor(Color.RED);
                 Glide.with(mContext)
                         .load(textUrl)
                         .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_index_ad));
+                        .into(adView);
+                break;
+            case ItemType.SORT:
+                text = entity.getField(MultipleFields.TEXT);
+                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
+                holder.setText(R.id.tv_sort, text);
+                Glide.with(mContext)
+                        .load(imgUrl)
+                        .apply(RECYCLE_OPTIONS)
+                        .into((ImageView) holder.getView(R.id.iv_sort));
+                break;
+            case ItemType.SPEC_ZONE:
+                text = entity.getField(MultipleFields.TEXT);
+                String subTitle = entity.getField(MultipleFields.TITLE);
+                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
+                String imgUrlTwo = entity.getField(MultipleFields.IMAGE_URL_TWO);
+                Glide.with(mContext)
+                        .load(imgUrl)
+                        .apply(RECYCLE_OPTIONS)
+                        .into((ImageView) holder.getView(R.id.iv_spec_imgae_one));
+                Glide.with(mContext)
+                        .load(imgUrlTwo)
+                        .apply(RECYCLE_OPTIONS)
+                        .into((ImageView) holder.getView(R.id.iv_spec_imgae_two));
+                holder.setText(R.id.tv_spec_title, text);
+                holder.setText(R.id.tv_spec_subtitle, subTitle);
+                break;
+
         }
     }
     private void init(){
@@ -100,8 +106,9 @@ public class MultipleRecyclerAdapter extends
         //addItemType(ItemType.TEXT, R.layout.item_multiple_text);
         //addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
         //addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
-        addItemType(ItemType.BANNER, R.layout.item_multiple_banner_new);
+        addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
         addItemType(ItemType.SORT, R.layout.item_multiple_sort);
+        //addItemType(ItemType.SPEC_ZONE, R.layout.item_multiple_spec);
 
         //设置宽度的监听
         setSpanSizeLookup(this);
@@ -114,11 +121,6 @@ public class MultipleRecyclerAdapter extends
     @Override
     public int getSpanSize(GridLayoutManager gridLayoutManager, int position) {
         return getData().get(position).getField(MultipleFields.SPAN_SIZE);
-    }
-
-    @Override
-    public void setSpanSizeLookup(SpanSizeLookup spanSizeLookup) {
-        super.setSpanSizeLookup(spanSizeLookup);
     }
 
     @Override
