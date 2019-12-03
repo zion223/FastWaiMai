@@ -2,10 +2,8 @@ package com.zrp.latte.ui.banner;
 
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
 import com.bigkoo.convenientbanner.ConvenientBanner;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.example.latte.ui.R;
-import com.zrp.latte.ui.launcher.LauncherHolderCreator;
 
 import java.util.ArrayList;
 

@@ -12,8 +12,6 @@ import com.zrp.latte.ec.main.cart.ShopCartItemFields;
 import com.zrp.latte.ec.main.cart.ShopCartItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
-import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
-import com.zrp.latte.ui.recycler.MultipleViewHolder;
 
 import java.util.List;
 

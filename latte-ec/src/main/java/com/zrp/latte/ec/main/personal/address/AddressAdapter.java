@@ -2,10 +2,8 @@ package com.zrp.latte.ec.main.personal.address;
 
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
-import com.zrp.latte.ec.main.personal.order.OrderItemFields;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;

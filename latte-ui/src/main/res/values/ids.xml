@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="star_count" type="id"/>
+    <item name="star_is_selected" type="id"/>
+</resources>

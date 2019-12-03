@@ -13,7 +13,7 @@ import com.zrp.latte.ui.recycler.MultipleViewHolder;
 
 import java.util.List;
 
-public class RecyclerImageAdapter extends MultipleRecyclerAdapter{
+public class RecyclerImageAdapter extends MultipleRecyclerAdapter {
 
     public RecyclerImageAdapter(List<MultipleItemEntity> data) {
         super(data);

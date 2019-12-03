@@ -7,6 +7,6 @@ public class ItemType {
     public static final int BANNER = 4;
     public static final int VERTICAL_MENU_LIST = 5;
     public static final int SINGLE_BIG_IMAGE = 6;
-
+    public static final int SORT = 7;
 
 }

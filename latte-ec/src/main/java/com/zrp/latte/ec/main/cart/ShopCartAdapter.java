@@ -22,7 +22,6 @@ import com.zrp.latte.ui.recycler.MultipleViewHolder;
 
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.List;
 
 public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTouchMoveListener {
 

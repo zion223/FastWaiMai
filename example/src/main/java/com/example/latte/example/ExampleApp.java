@@ -24,7 +24,7 @@ public class ExampleApp extends MultiDexApplication {
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
         //首页数据
-        interceptors.add(new DebugInterceptor("api/books",R.raw.index));
+        interceptors.add(new DebugInterceptor("api/books",R.raw.home));
         //购物车数据
         interceptors.add(new DebugInterceptor("api/shopcart",R.raw.shop_cart));
         //订单数据

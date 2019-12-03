@@ -17,7 +17,7 @@ import com.zrp.latte.ui.banner.BannerCreator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultipleRecyclerAdapter extends
+public class MultipleRecyclerAdapterOld extends
         BaseMultiItemQuickAdapter<MultipleItemEntity,MultipleViewHolder>
         implements BaseQuickAdapter.SpanSizeLookup, OnItemClickListener {
 
@@ -26,19 +26,19 @@ public class MultipleRecyclerAdapter extends
 
     private static final RequestOptions RECYCLE_OPTIONS =
             new RequestOptions()
-                    //.centerCrop()
+                    .centerCrop()
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .dontAnimate();
 
-    public static MultipleRecyclerAdapter create(List<MultipleItemEntity> data){
-        return new MultipleRecyclerAdapter(data);
+    public static MultipleRecyclerAdapterOld create(List<MultipleItemEntity> data){
+        return new MultipleRecyclerAdapterOld(data);
     }
 
-    public static MultipleRecyclerAdapter create(DataConverter converter){
-        return new MultipleRecyclerAdapter(converter.convert());
+    public static MultipleRecyclerAdapterOld create(DataConverter converter){
+        return new MultipleRecyclerAdapterOld(converter.convert());
     }
 
-    protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
+    protected MultipleRecyclerAdapterOld(List<MultipleItemEntity> data) {
         super(data);
         init();
     }
@@ -50,14 +50,9 @@ public class MultipleRecyclerAdapter extends
         final ArrayList<String> bannerImages;
 
         switch (holder.getItemViewType()){
-            case ItemType.SORT:
+            case ItemType.TEXT:
                 text = entity.getField(MultipleFields.TEXT);
-                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
-                holder.setText(R.id.tv_sort, text);
-                Glide.with(mContext)
-                        .load(imgUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_sort));
+                holder.setText(R.id.text_single, text);
                 break;
             case ItemType.TEXT_IMAGE:
                 text = entity.getField(MultipleFields.TEXT);
@@ -83,25 +78,14 @@ public class MultipleRecyclerAdapter extends
                     BannerCreator.setDefault(convenientBanner, bannerImages,this);
                     mIsInitBanner = true;
                 }
-                String gifUrl = entity.getField(MultipleFields.BANNER_GIF);
-                String textUrl = entity.getField(MultipleFields.BANNER_TEXT);
-                Glide.with(mContext)
-                        .load(gifUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_index_gif));
-                Glide.with(mContext)
-                        .load(textUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_index_ad));
         }
     }
     private void init(){
         //设置不同的Item布局
-        //addItemType(ItemType.TEXT, R.layout.item_multiple_text);
-        //addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
-        //addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
-        addItemType(ItemType.BANNER, R.layout.item_multiple_banner_new);
-        addItemType(ItemType.SORT, R.layout.item_multiple_sort);
+        addItemType(ItemType.TEXT, R.layout.item_multiple_text);
+        addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
+        addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
+        addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
 
         //设置宽度的监听
         setSpanSizeLookup(this);
@@ -117,11 +101,6 @@ public class MultipleRecyclerAdapter extends
     }
 
     @Override
-    public void setSpanSizeLookup(SpanSizeLookup spanSizeLookup) {
-        super.setSpanSizeLookup(spanSizeLookup);
-    }
-
-    @Override
     protected MultipleViewHolder createBaseViewHolder(View view) {
         return MultipleViewHolder.create(view);
     }
@@ -130,5 +109,4 @@ public class MultipleRecyclerAdapter extends
     public void onItemClick(int position) {
 
     }
-
 }
