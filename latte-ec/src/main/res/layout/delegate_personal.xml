@@ -10,7 +10,8 @@
         android:id="@+id/goods_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        app:layout_collapseMode="pin">
+        app:layout_collapseMode="pin"
+        android:background="@color/red">
 
         <RelativeLayout
             android:layout_width="match_parent"

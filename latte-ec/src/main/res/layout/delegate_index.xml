@@ -10,41 +10,43 @@
         android:layout_width="0dp"
         android:layout_height="0dp">
     </android.support.v4.widget.SwipeRefreshLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_index"
+        android:fillViewport="true">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_index_spec"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    </LinearLayout>
-    </ScrollView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_index"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_index_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:background="@color/white"/>
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_index_sort"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/pink"
+                app:tabIndicatorHeight="3dp"
+                app:tabTextColor="@android:color/black"
+                app:tabSelectedTextColor="@color/colorPrimaryDark"/>
+            <com.zrp.latte.ui.viewpager.CustomViewPager
+                android:id="@+id/vp_index_sort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tl_index_status"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:tabIndicatorColor="@color/pink"
-        app:tabIndicatorHeight="3dp"
-        app:tabTextColor="@android:color/black"
-        app:tabSelectedTextColor="@color/colorPrimaryDark">
-    </android.support.design.widget.TabLayout>
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_index"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v4.view.ViewPager>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_index"
@@ -79,7 +81,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="4"
                 android:background="@drawable/rounded_edittext"
-                android:hint="search"
+                android:hint="@string/search"
                 android:paddingLeft="20dp"/>
             <com.joanzapata.iconify.widget.IconTextView
                 android:id="@+id/icon_index_message"

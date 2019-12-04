@@ -75,25 +75,7 @@ public final class IndexDataConverter extends DataConverter {
 //                    .build();
 //            ENTITYS.add(saleEntity);
 //        }
-//        final JSONArray specArray = homeObject.getJSONArray("special_zone");
-//        final int specSize = specArray.size();
-//        for (int l = 0; l < specSize; l++) {
-//            final JSONObject specObj = specArray.getJSONObject(l);
-//            final String title = specObj.getString("title");
-//            final String subtitle = specObj.getString("subtitle");
-//            final String subImg1 = specObj.getString("imageOne");
-//            final String subImg2 = specObj.getString("imageTwo");
-//
-//            final MultipleItemEntity specEntity = MultipleItemEntity.builder()
-//                    .setField(MultipleFields.ITEM_TYPE, ItemType.SPEC_ZONE)
-//                    .setField(MultipleFields.TEXT, title)
-//                    .setField(MultipleFields.TITLE, subtitle)
-//                    .setField(MultipleFields.SPAN_SIZE, 5)
-//                    .setField(MultipleFields.IMAGE_URL, subImg1)
-//                    .setField(MultipleFields.IMAGE_URL_TWO, subImg2)
-//                    .build();
-//            ENTITYS.add(specEntity);
-//        }
+
 
 
         return ENTITYS;

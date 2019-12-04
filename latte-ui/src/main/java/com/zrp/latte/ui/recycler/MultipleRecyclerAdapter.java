@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
@@ -82,23 +81,6 @@ public class MultipleRecyclerAdapter extends
                         .apply(RECYCLE_OPTIONS)
                         .into((ImageView) holder.getView(R.id.iv_sort));
                 break;
-            case ItemType.SPEC_ZONE:
-                text = entity.getField(MultipleFields.TEXT);
-                String subTitle = entity.getField(MultipleFields.TITLE);
-                imgUrl = entity.getField(MultipleFields.IMAGE_URL);
-                String imgUrlTwo = entity.getField(MultipleFields.IMAGE_URL_TWO);
-                Glide.with(mContext)
-                        .load(imgUrl)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_spec_imgae_one));
-                Glide.with(mContext)
-                        .load(imgUrlTwo)
-                        .apply(RECYCLE_OPTIONS)
-                        .into((ImageView) holder.getView(R.id.iv_spec_imgae_two));
-                holder.setText(R.id.tv_spec_title, text);
-                holder.setText(R.id.tv_spec_subtitle, subTitle);
-                break;
-
         }
     }
     private void init(){

@@ -1,41 +1,48 @@
 package com.zrp.latte.ec.main.index;
 
 import android.Manifest;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.app.Latte;
-import com.zrp.latte.delegates.bottom.BaseBottomDelegate;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-import com.zrp.latte.ec.main.EcBottomDelegate;
 import com.zrp.latte.ec.main.index.scaner.ScannerDelegate;
 import com.zrp.latte.ec.main.index.spec.SpecZoneAdapter;
 import com.zrp.latte.ec.main.index.spec.SpecZoneBean;
 import com.zrp.latte.ec.main.index.spec.SpecZoneDataConverter;
+import com.zrp.latte.ec.main.personal.order.OrderDelegate;
 import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.IError;
-import com.zrp.latte.net.callback.IFailure;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.camera.CameraRequestCodes;
 import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
 import com.zrp.latte.ui.refresh.RefreshHandler;
+import com.zrp.latte.ui.tab.TabPagerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
@@ -53,11 +60,16 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     Toolbar mToolBar;
     @BindView(R2.id.rv_index_spec)
     RecyclerView mSpecRecyclerView;
+    @BindView(R2.id.tl_index_sort)
+    TabLayout mTabLayout;
+    @BindView(R2.id.vp_index_sort)
+    ViewPager mViewPager;
 
     private RefreshHandler mRefreshHandler = null;
     private MultipleRecyclerAdapter mAdapter = null;
 
     private List<SpecZoneBean> mSpecData = null;
+
     @OnClick(R2.id.icon_index_scan)
     void onClickScan() {
         //扫描二维码
@@ -87,14 +99,46 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
+        final String[] mTitles = {"全部", "晚餐", "人气", "必选"};
+
+        final List<Fragment> mFragments = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            mFragments.add(new IndexTabDelegate());
+        }
+        final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
+
+        mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //selectionViewPager(position);
+                View view = mViewPager.getChildAt(position);
+                int height = view.getMeasuredHeight();
+                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mViewPager.getLayoutParams();
+                layoutParams.height = height;
+                mViewPager.setLayoutParams(layoutParams);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        mTabLayout.setBackgroundColor(Color.WHITE);
+        mTabLayout.setupWithViewPager(mViewPager);
         //加载广告数据
         RestClient.builder()
                 .url("api/books")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        //得到 page 和 pageSize 再次查询时  page + 1
-                        final JSONObject object = JSONObject.parseObject(response);
 
                         mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(response));
                         mAdapter.openLoadAnimation();
@@ -117,6 +161,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
                 })
                 .build()
                 .post();
+
+
     }
 
     private void initRecyclerView() {
@@ -129,10 +175,9 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
         //final EcBottomDelegate ecBottomDelegate = getParentDelegate();
 
-        //传递this 跳转时有EcBottomDelegate 传递ecBottomDelegate 跳转时无EcBottomDelegate
+        //传递this 跳转时有EcBottomDelegate 传递getParentDelegate():ecBottomDelegate 跳转时无EcBottomDelegate
         mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(this));
 
-        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         final StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mSpecRecyclerView.setLayoutManager(staggeredGridLayoutManager);
     }
@@ -159,6 +204,5 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
         }
     }
-
 
 }

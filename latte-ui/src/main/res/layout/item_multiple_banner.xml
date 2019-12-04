@@ -15,9 +15,8 @@
         <com.bigkoo.convenientbanner.ConvenientBanner
             android:id="@+id/banner_recycler_item"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
+            android:layout_height="200dp"
+           />
     </android.support.v7.widget.CardView>
 
     <ImageView

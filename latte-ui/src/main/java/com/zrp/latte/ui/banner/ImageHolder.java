@@ -14,9 +14,10 @@ public class ImageHolder implements Holder<String> {
     private AppCompatImageView mImageView;
 
     private static final RequestOptions BANNER_OPTIONS = new RequestOptions()
+            .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
-            .dontAnimate()
-            .centerCrop();
+            .dontAnimate();
+
 
 
     @Override
