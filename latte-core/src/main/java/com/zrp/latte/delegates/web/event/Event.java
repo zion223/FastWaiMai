@@ -11,7 +11,6 @@ public abstract class Event implements IEvent {
 	private String mAction = null;
 	private WebDelegate mWebDelegate = null;
 	private String mUrl = null;
-	private WebView mWebView = null;
 
 	public Context getContent() {
 		return mContent;
@@ -50,6 +49,6 @@ public abstract class Event implements IEvent {
 	}
 
 	public void setWebView(WebView mWebView) {
-		this.mWebView = mWebView;
+		WebView mWebView1 = mWebView;
 	}
 }

@@ -4,11 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.zrp.latte.ui.recycler.DataConverter;
-import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class ShopCartDataConverter extends DataConverter {

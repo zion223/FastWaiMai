@@ -1,7 +1,5 @@
 package com.zrp.latte.net.interceptor;
 
-import android.util.Log;
-
 import com.zrp.latte.util.file.FileUtil;
 
 import java.io.IOException;

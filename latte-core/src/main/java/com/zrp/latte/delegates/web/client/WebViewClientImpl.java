@@ -1,6 +1,5 @@
 package com.zrp.latte.delegates.web.client;
 
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 
 import com.zrp.latte.delegates.web.WebDelegate;

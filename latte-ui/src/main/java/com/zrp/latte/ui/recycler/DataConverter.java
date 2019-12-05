@@ -1,6 +1,5 @@
 package com.zrp.latte.ui.recycler;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 public abstract class DataConverter {

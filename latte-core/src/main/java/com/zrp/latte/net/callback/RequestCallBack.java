@@ -1,9 +1,6 @@
 package com.zrp.latte.net.callback;
 
 
-import android.os.Handler;
-
-
 import com.zrp.latte.ui.loader.LatteLoader;
 import com.zrp.latte.ui.loader.LoaderStyle;
 

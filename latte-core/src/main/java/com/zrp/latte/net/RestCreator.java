@@ -37,7 +37,7 @@ public class RestCreator {
     private static final class OKHttpHolder{
 
         public static final int TIME_OUT = 60;
-        private static OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
         private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigType.INTERCEPTOR.name());
         private static OkHttpClient.Builder addInterceptor(){
             if(INTERCEPTORS != null && !INTERCEPTORS.isEmpty()){

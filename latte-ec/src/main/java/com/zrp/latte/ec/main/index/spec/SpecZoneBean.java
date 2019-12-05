@@ -20,7 +20,7 @@ public class SpecZoneBean extends SectionEntity<SpecZoneItemEntity> {
     }
 
     public void setIsMore(boolean isMore) {
-        this.mIsMore = mIsMore;
+        this.mIsMore = isMore;
     }
 
     public int getId() {
@@ -28,6 +28,6 @@ public class SpecZoneBean extends SectionEntity<SpecZoneItemEntity> {
     }
 
     public void setId(int id) {
-        this.mId = mId;
+        this.mId = id;
     }
 }

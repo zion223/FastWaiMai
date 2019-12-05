@@ -9,7 +9,7 @@ import com.example.latte.latte.R;
 
 public class ShopCartItemTouchHelperCallback extends ItemTouchHelper.Callback {
 
-	private IItemTouchMoveListener moveListener;
+	private final IItemTouchMoveListener moveListener;
 
 	public ShopCartItemTouchHelperCallback(IItemTouchMoveListener moveListener) {
 		this.moveListener = moveListener;
@@ -56,11 +56,7 @@ public class ShopCartItemTouchHelperCallback extends ItemTouchHelper.Callback {
 	@Override
 	public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder srcHolder, RecyclerView.ViewHolder targetHolder) {
 		// 在拖拽过程中不断地调用adapter.notifyItemMoved(from,to);
-		if (srcHolder.getItemViewType() != targetHolder.getItemViewType()) {
-			return false;
-		}else{
-			return true;
-		}
+		return srcHolder.getItemViewType() == targetHolder.getItemViewType();
 
 	}
 

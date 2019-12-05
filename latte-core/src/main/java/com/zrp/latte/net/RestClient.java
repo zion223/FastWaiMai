@@ -1,7 +1,6 @@
 package com.zrp.latte.net;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.zrp.latte.net.callback.IError;
 import com.zrp.latte.net.callback.IFailure;
@@ -35,7 +34,7 @@ public class RestClient {
     private final IFailure FAILURE;
     private final IError ERROR;
     private final RequestBody BODY;
-    private LoaderStyle LOADER_STYLE;
+    private final LoaderStyle LOADER_STYLE;
     private final File FILE;
     private Context CONTEXT;
 

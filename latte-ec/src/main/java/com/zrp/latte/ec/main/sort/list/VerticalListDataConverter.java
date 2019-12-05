@@ -7,7 +7,6 @@ import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**

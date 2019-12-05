@@ -9,9 +9,7 @@ import com.zrp.latte.ui.recycler.DataConverter;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 public class ShopCartLikeConverter extends DataConverter {
 

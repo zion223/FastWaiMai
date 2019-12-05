@@ -13,12 +13,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
@@ -28,7 +24,6 @@ import com.zrp.latte.ec.main.index.scaner.ScannerDelegate;
 import com.zrp.latte.ec.main.index.spec.SpecZoneAdapter;
 import com.zrp.latte.ec.main.index.spec.SpecZoneBean;
 import com.zrp.latte.ec.main.index.spec.SpecZoneDataConverter;
-import com.zrp.latte.ec.main.personal.order.OrderDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.camera.CameraRequestCodes;
@@ -40,9 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
@@ -99,43 +92,10 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
-        final String[] mTitles = {"全部", "晚餐", "人气", "必选"};
-
-        final List<Fragment> mFragments = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            mFragments.add(new IndexTabDelegate());
-        }
-        final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
-
-        mViewPager.setAdapter(adapter);
-        mViewPager.setOffscreenPageLimit(4);
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                //selectionViewPager(position);
-                View view = mViewPager.getChildAt(position);
-                int height = view.getMeasuredHeight();
-                LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mViewPager.getLayoutParams();
-                layoutParams.height = height;
-                mViewPager.setLayoutParams(layoutParams);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        mTabLayout.setBackgroundColor(Color.WHITE);
-        mTabLayout.setupWithViewPager(mViewPager);
-        //加载广告数据
+        initTabLayout();
+        //加载广告数据和分类数据
         RestClient.builder()
-                .url("api/books")
+                .url("api/home")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -163,6 +123,22 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
                 .post();
 
 
+    }
+
+    private void initTabLayout() {
+        final String[] mTitles = {"全部", "晚餐", "人气", "必选"};
+
+        final List<Fragment> mFragments = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            mFragments.add(new IndexTabDelegate());
+        }
+        final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
+
+        mViewPager.setAdapter(adapter);
+        mViewPager.setOffscreenPageLimit(4);
+        mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+        mTabLayout.setBackgroundColor(Color.WHITE);
+        mTabLayout.setupWithViewPager(mViewPager);
     }
 
     private void initRecyclerView() {

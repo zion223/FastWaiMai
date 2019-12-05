@@ -5,7 +5,6 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.zrp.latte.delegates.LatteDelegate;
-import com.zrp.latte.ec.main.detail.GoodsDetailDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
 import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
@@ -17,7 +16,7 @@ import com.zrp.latte.ui.recycler.MultipleItemEntity;
  */
 public class IndexItemClickListener extends SimpleClickListener {
 
-    private LatteDelegate DELEGATE;
+    private final LatteDelegate DELEGATE;
 
     private IndexItemClickListener(LatteDelegate delegate){
         this.DELEGATE = delegate;

@@ -17,7 +17,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -49,9 +48,7 @@ import com.zrp.latte.ui.widget.CircleTextView;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.OnOffsetChangedListener {
@@ -93,7 +90,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     private int mGoodsId = -1;
 
-    private String mGoodsThumbUrl = "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg";
+    private final String mGoodsThumbUrl = "http://img3m5.ddimg.cn/44/26/27903095-1_l_3.jpg";
     private int mShopCount = 0;
     private static final RequestOptions OPTIONS = new RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.ALL)

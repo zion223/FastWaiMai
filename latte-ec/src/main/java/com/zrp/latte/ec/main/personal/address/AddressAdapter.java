@@ -15,7 +15,7 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
 
     private final AddressDelegate DELEGATE;
 
-    protected AddressAdapter(List<MultipleItemEntity> data, AddressDelegate delegate) {
+    AddressAdapter(List<MultipleItemEntity> data, AddressDelegate delegate) {
         super(data);
         DELEGATE = delegate;
         addItemType(AddressItemType.ITEM_ADDRESS, R.layout.item_address);

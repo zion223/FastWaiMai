@@ -1,12 +1,10 @@
 package com.zrp.latte.net.interceptor;
 
-import java.io.IOException;
 import java.util.LinkedHashMap;
 
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
-import okhttp3.Response;
 
 public abstract class BaseInterceptor implements Interceptor {
 

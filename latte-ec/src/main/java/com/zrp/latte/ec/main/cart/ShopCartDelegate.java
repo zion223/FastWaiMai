@@ -12,9 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ViewStubCompat;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -24,10 +22,8 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeAdapter;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeConverter;
 import com.zrp.latte.ec.main.index.IndexDelegate;
-import com.zrp.latte.ec.pay.FastPay;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
-import com.zrp.latte.ui.recycler.DataConverter;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.recyclerview.ShopCartItemTouchHelperCallback;
 
@@ -36,9 +32,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener {
 
@@ -133,8 +127,8 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
      */
     @OnClick(R2.id.tv_shop_cart_pay)
     void shopCartPay() {
-        //TODO 后台生成订单进行支付
-        FastPay.create(this).beginPayDialog();
+        //TODO 后台生成订单进行支付 提交订单确认Delegate
+        //FastPay.create(this).beginPayDialog();
     }
 
     /**
