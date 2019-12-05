@@ -1,5 +1,5 @@
 # FastEC
-慕课网课程App通用电商框架设计
+仿写 https://github.com/Geek-James/ddBuy 项目安卓版本
 
 ## APP截图
 ![avatar](/example/src/main/res/drawable/index1.png)
