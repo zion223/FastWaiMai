@@ -2,7 +2,7 @@
 仿写 https://github.com/Geek-James/ddBuy 项目安卓版本
 
 ## APP截图
-![avatar](/example/src/main/res/drawable/index1.png)
+![avatar](/example/src/main/res/drawable/index1.png width="100" height="200")
 ![avatar](/example/src/main/res/drawable/index2.png)
 ![avatar](/example/src/main/res/drawable/index3.png)
 ![avatar](/example/src/main/res/drawable/index4.png)
