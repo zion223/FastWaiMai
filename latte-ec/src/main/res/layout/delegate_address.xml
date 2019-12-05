@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_return"
+                android:id="@+id/icon_address_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
     </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_address"
+        android:id="@+id/rv_address_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

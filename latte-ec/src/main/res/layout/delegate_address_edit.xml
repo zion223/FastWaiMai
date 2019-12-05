@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_edit_return"
+                android:id="@+id/icon_address_edit_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/tv_address_save"
+                android:id="@+id/tv_address_edit_save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -53,7 +53,7 @@
 
     </android.support.v7.widget.Toolbar>
     <EditText
-        android:id="@+id/edit_address_name"
+        android:id="@+id/edit_address_edit_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:paddingLeft="10dp"
@@ -70,7 +70,7 @@
         android:layout_height="40dp"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/edit_address_phone"
+            android:id="@+id/edit_address_edit_phone"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="8"
@@ -100,7 +100,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/text_address_detail"
+            android:id="@+id/tv_address_edit_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="8"
@@ -112,7 +112,7 @@
             android:singleLine="false"/>
 
         <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/icon_address_pick"
+            android:id="@+id/icon_address_edit_pick"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -143,7 +143,7 @@
             android:textSize="14dp"
             android:text="@string/setdefaultaddress"/>
         <android.support.v7.widget.SwitchCompat
-            android:id="@+id/sc_default_address_compat"
+            android:id="@+id/sc_address_edit_compat"
             android:layout_width="wrap_content"
             android:layout_height="46dp"
             android:layout_alignParentRight="true"
@@ -195,7 +195,7 @@
         android:background="@color/app_background"
         />
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_delete_address"
+        android:id="@+id/btn_address_edit_delete"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center_vertical"

@@ -26,7 +26,7 @@ public class AddressDelegate extends LatteDelegate {
 
     @BindView(R2.id.icon_address_add)
     IconTextView mIconAddressAdd;
-    @BindView(R2.id.rv_address)
+    @BindView(R2.id.rv_address_view)
     RecyclerView mRvAddress;
 
     private AddressAdapter mAdapter = null;
@@ -63,7 +63,7 @@ public class AddressDelegate extends LatteDelegate {
 
 
 
-    @OnClick(R2.id.icon_address_return)
+    @OnClick(R2.id.icon_address_back)
     public void onViewClickedReturn() {
         getSupportDelegate().pop();
     }

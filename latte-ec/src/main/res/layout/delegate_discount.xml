@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_discount_return"
+                android:id="@+id/icon_discount_back"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -44,7 +44,7 @@
         android:orientation="horizontal"
         android:background="@color/white">
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/tv_exchange_code"
+            android:id="@+id/tv_discount_exchange_code"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="7"
@@ -54,7 +54,7 @@
             android:background="@color/white"
             android:hint="@string/exchange_code"/>
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_exchange"
+            android:id="@+id/btn_discount_exchange"
             android:layout_margin="@dimen/margin_5dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -75,7 +75,7 @@
         app:tabTextColor="@android:color/black"/>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_discount"
+        android:id="@+id/vp_discount_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

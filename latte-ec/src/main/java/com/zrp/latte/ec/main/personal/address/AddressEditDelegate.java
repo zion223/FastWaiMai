@@ -27,26 +27,25 @@ import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AddressEditDelegate extends LatteDelegate {
 
-    @BindView(R2.id.tv_address_save)
+    @BindView(R2.id.tv_address_edit_save)
     TextView mTvAddressSave;
-    @BindView(R2.id.edit_address_name)
+    @BindView(R2.id.edit_address_edit_name)
     EditText mEditAddressName;
-    @BindView(R2.id.edit_address_phone)
+    @BindView(R2.id.edit_address_edit_phone)
     EditText mEditAddressPhone;
-    @BindView(R2.id.text_address_detail)
+    @BindView(R2.id.tv_address_edit_detail)
     TextView mTextAddressDetail;
-    @BindView(R2.id.icon_address_pick)
+    @BindView(R2.id.icon_address_edit_pick)
     IconTextView mIconAddressPick;
     @BindView(R2.id.icon_address_edit_return)
     IconTextView mIconAddressReturn;
-    @BindView(R2.id.sc_default_address_compat)
+    @BindView(R2.id.sc_address_edit_compat)
     SwitchCompat mScDefaultAddress;
-    @BindView(R2.id.btn_delete_address)
+    @BindView(R2.id.btn_address_edit_delete)
     AppCompatButton mBtnDeleteAddress;
     @BindView(R2.id.ll_address_pick)
     LinearLayout mLinearLayout;
@@ -98,7 +97,7 @@ public class AddressEditDelegate extends LatteDelegate {
     }
 
 
-    @OnClick(R2.id.icon_address_pick)
+    @OnClick(R2.id.icon_address_edit_pick)
     void onClickPickAddress(){
 
         AddressSelector selector = new AddressSelector(getContext());
@@ -119,7 +118,7 @@ public class AddressEditDelegate extends LatteDelegate {
         mLinearLayout.addView(view);
     }
 
-    @OnClick(R2.id.tv_address_save)
+    @OnClick(R2.id.tv_address_edit_save)
     void onClickSaveAddress(){
         RestClient.builder()
                 .url("")
@@ -139,7 +138,7 @@ public class AddressEditDelegate extends LatteDelegate {
         getSupportDelegate().pop();
     }
 
-    @OnClick(R2.id.btn_delete_address)
+    @OnClick(R2.id.btn_address_edit_delete)
     void onClickDeleteAddress(){
         RestClient.builder()
                 .url("")

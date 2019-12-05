@@ -25,11 +25,11 @@ import butterknife.OnClick;
 
 public class DiscountPageViewDelegate extends BottomItemDelegate {
 
-	@BindView(R2.id.tv_exchange_code)
+	@BindView(R2.id.tv_discount_exchange_code)
 	TextInputEditText mTvExchangeCode;
 	@BindView(R2.id.tl_discount_status)
 	TabLayout mTabLayout;
-	@BindView(R2.id.vp_discount)
+	@BindView(R2.id.vp_discount_pager)
 	ViewPager mViewPager;
 
 
@@ -57,14 +57,14 @@ public class DiscountPageViewDelegate extends BottomItemDelegate {
 	}
 
 
-	@OnClick(R2.id.icon_discount_return)
+	@OnClick(R2.id.icon_discount_back)
 	public void onViewClickedReturn() {
 		getSupportDelegate().pop();
 	}
 
 
 
-	@OnClick(R2.id.btn_exchange)
+	@OnClick(R2.id.btn_discount_exchange)
 	public void onViewClickedExchange() {
 		Toast.makeText(Latte.getApplication(), "已经兑换了",Toast.LENGTH_SHORT).show();
 	}
