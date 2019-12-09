@@ -35,7 +35,7 @@ public class IndexItemClickListener extends SimpleClickListener {
 //        DELEGATE.getSupportDelegate().start(goodsDetailDelegate);
         Integer type = entity.getField(MultipleFields.ITEM_TYPE);
         if(type.equals(ItemType.SORT)){
-            DELEGATE.getSupportDelegate().start(new SortDelegate());
+            DELEGATE.getSupportDelegate().showHideFragment(new SortDelegate());
         }
     }
 
