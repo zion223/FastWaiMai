@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">latte-ui</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_cancel">取消</string>
 </resources>

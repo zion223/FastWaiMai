@@ -58,7 +58,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @BindView(R2.id.vp_index_sort)
     ViewPager mViewPager;
 
-    private RefreshHandler mRefreshHandler = null;
+    //private RefreshHandler mRefreshHandler = null;
     private MultipleRecyclerAdapter mAdapter = null;
 
     private List<SpecZoneBean> mSpecData = null;
@@ -83,7 +83,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
+        //mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
     }
 
 
@@ -102,7 +102,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
                         mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(response));
                         mAdapter.openLoadAnimation();
-                        //加载更多 回调
                         mRecycleView.setAdapter(mAdapter);
                     }
                 })
@@ -145,15 +144,15 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         //总的SpanCount大小4 通过spanSize进行填充
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 10);
         mRecycleView.setLayoutManager(manager);
-        //添加分割线
 
+        //添加分割线
         //mRecycleView.addItemDecoration(BaseDecoration.create(ContextCompat.getColor(getContext(), R.color.app_background), 5));
 
         //final EcBottomDelegate ecBottomDelegate = getParentDelegate();
 
         //传递this 跳转时有EcBottomDelegate 传递getParentDelegate():ecBottomDelegate 跳转时无EcBottomDelegate
         mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(this));
-
+		//瀑布流
         final StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mSpecRecyclerView.setLayoutManager(staggeredGridLayoutManager);
     }
