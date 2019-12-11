@@ -44,6 +44,7 @@ public class ContentDelegate extends BottomItemDelegate {
         if(entities != null){
             final SectionAdapter mAdapter = new SectionAdapter(entities);
             recyclerView.setAdapter(mAdapter);
+            //recyclerView.addOnItemTouchListener(ContentItemClickListener.create(getParentDelegate()));
         }
     }
 

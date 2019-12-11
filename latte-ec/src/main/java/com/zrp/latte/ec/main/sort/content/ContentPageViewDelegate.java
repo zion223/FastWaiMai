@@ -73,7 +73,7 @@ public class ContentPageViewDelegate extends BottomItemDelegate {
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        //获取数据
+
                         mData = new SectionDataConverter().convert(response);
                         final String[] mTitles = new String[mData.getHeaders().size()];
                         if(mData.getHeaders() != null){

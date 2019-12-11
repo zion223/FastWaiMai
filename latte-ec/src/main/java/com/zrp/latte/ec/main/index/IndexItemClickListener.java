@@ -5,6 +5,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.zrp.latte.delegates.LatteDelegate;
+import com.zrp.latte.ec.main.detail.GoodsDetailDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
 import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
@@ -31,11 +32,11 @@ public class IndexItemClickListener extends SimpleClickListener {
 //        //取出商品ID
 //        final int goodsId = entity.getField(MultipleFields.ID);
 //        //根据ID不同查询不同的Delegate
-//        final GoodsDetailDelegate goodsDetailDelegate = GoodsDetailDelegate.create(goodsId);
-//        DELEGATE.getSupportDelegate().start(goodsDetailDelegate);
+        final GoodsDetailDelegate goodsDetailDelegate = GoodsDetailDelegate.create(1);
+        DELEGATE.getSupportDelegate().start(goodsDetailDelegate);
         Integer type = entity.getField(MultipleFields.ITEM_TYPE);
         if(type.equals(ItemType.SORT)){
-            DELEGATE.getSupportDelegate().showHideFragment(new SortDelegate());
+            //DELEGATE.getSupportDelegate().showHideFragment(new SortDelegate());
         }
     }
 

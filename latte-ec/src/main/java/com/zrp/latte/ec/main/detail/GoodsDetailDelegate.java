@@ -1,12 +1,6 @@
 package com.zrp.latte.ec.main.detail;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,12 +12,8 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.ContentFrameLayout;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
@@ -42,6 +32,7 @@ import com.zrp.latte.ec.detail.GoodsInfoDelegate;
 import com.zrp.latte.ec.detail.TabPagerAdapter;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
+import com.zrp.latte.ui.animation.BazierAnimation;
 import com.zrp.latte.ui.banner.HolderCreator;
 import com.zrp.latte.ui.widget.CircleTextView;
 
@@ -108,75 +99,10 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
         mShopCount++;
         mCircleTextView.setVisibility(View.VISIBLE);
         mCircleTextView.setText(String.valueOf(mShopCount));
-        addShopToCart(circleImageView);
-    }
-    private void addShopToCart(final View imageView){
-        final LinearLayout.LayoutParams params;
-        int[] parentLocation = new int[2];
-        int[] addLocation = new int[2];
-        final float[] mCurrentPosition = new float[2];
-        mRlAddShopCart.getLocationInWindow(addLocation);
-        //240 475
-        mRlAddShopCart.getLocationOnScreen(parentLocation);
-        //75 240
-        //像素
-        final DisplayMetrics metrics = new DisplayMetrics();
-
-        getSupportDelegate().getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        final int iconWidth = mIconShopCart.getWidth();
-        final int iconHeidht = mIconShopCart.getHeight();
-        final int height = mRlAddShopCart.getHeight();
-        final int width = mRlAddShopCart.getWidth();
-        float startX = 120;
-        float startY = 480;
-        int[] iconLocation = new int[2];
-        //一个控件在其父窗口中的坐标位置
-        mIconShopCart.getLocationInWindow(iconLocation);
-        float toX = 100;
-        float toY = 360;
-        final Drawable drawable = ((ImageView)imageView).getDrawable();
-        if(drawable != null){
-            params = new LinearLayout.LayoutParams(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-        }else{
-            params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-        }
-
-        imageView.setLayoutParams(params);
-        mRlAddShopCart.addView(imageView);
-        Path path = new Path();
-        //path.moveTo(startX, startY);
-        path.moveTo(0, 0);
-
-
-        path.cubicTo(width + width/2, height, 0, -1000,  -iconWidth,0);
-        final PathMeasure mPathMeasure = new PathMeasure(path, false);
-        ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
-        valueAnimator.setDuration(500);
-        //线性插值器:匀速动画
-        valueAnimator.setInterpolator(new LinearInterpolator());
-        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float value = (float) animation.getAnimatedValue();
-                mPathMeasure.getPosTan(value, mCurrentPosition, null);
-                imageView.setTranslationX(mCurrentPosition[0]);
-                imageView.setTranslationY(mCurrentPosition[1]);
-            }
-        });
-        valueAnimator.start();
-        valueAnimator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-                imageView.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                imageView.setVisibility(View.INVISIBLE);
-            }
-        });
-
+        float[] minPosition = new float[2];
+        minPosition[0] = 0;
+        minPosition[1] = -1000;
+        BazierAnimation.addToShopCart(circleImageView, mRlAddShopCart, minPosition, mIconShopCart);
     }
 
     public static GoodsDetailDelegate create(int goodsId) {

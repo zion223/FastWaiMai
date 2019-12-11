@@ -3,6 +3,7 @@ package com.zrp.latte.ec.main.sort.content;
 import android.graphics.Paint;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,10 +16,13 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.ec.main.cart.ShopCartItemFields;
+import com.zrp.latte.ui.animation.BazierAnimation;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SectionAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, BaseViewHolder> {
 
@@ -34,7 +38,7 @@ public class SectionAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity
 	}
 
 	@Override
-	protected void convert(BaseViewHolder helper, MultipleItemEntity item) {
+	protected void convert(final BaseViewHolder helper, MultipleItemEntity item) {
         switch (helper.getItemViewType()){
             case ContentItemType.ITEM_NORMAL:
                 final String goodsName = item.getField(MultipleFields.TEXT);
@@ -63,6 +67,19 @@ public class SectionAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity
                     public void onClick(View v) {
                         //添加到购物车
                         Toast.makeText(Latte.getApplication(), goodsName + "已经加入购物车", Toast.LENGTH_SHORT).show();
+	                    final CircleImageView circleImageView = new CircleImageView(Latte.getApplication());
+	                    Glide.with(Latte.getApplication())
+			                    .applyDefaultRequestOptions(RECYCLE_OPTIONS)
+			                    .load(goodsThumb)
+			                    .into(circleImageView);
+	                    final FrameLayout fromView = helper.getView(R.id.fl_section_shopcart);
+	                    float[] minPosition = new float[2];
+	                    minPosition[0] = 0;
+	                    minPosition[1] = -500;
+	                    float[] targetPosition = new float[2];
+	                    targetPosition[0] = 0;
+	                    targetPosition[1] = 2000;
+	                    BazierAnimation.addToShopCart(circleImageView, fromView, minPosition, targetPosition);
                     }
                 });
                 break;
@@ -70,5 +87,7 @@ public class SectionAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity
                 break;
         }
 	}
+
+
 
 }

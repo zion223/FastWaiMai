@@ -151,7 +151,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         //final EcBottomDelegate ecBottomDelegate = getParentDelegate();
 
         //传递this 跳转时有EcBottomDelegate 传递getParentDelegate():ecBottomDelegate 跳转时无EcBottomDelegate
-        mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(this));
+        mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(getParentDelegate()));
 		//瀑布流
         final StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mSpecRecyclerView.setLayoutManager(staggeredGridLayoutManager);
