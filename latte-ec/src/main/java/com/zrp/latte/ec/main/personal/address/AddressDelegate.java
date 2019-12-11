@@ -34,12 +34,6 @@ public class AddressDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-
-    }
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRvAddress.setLayoutManager(manager);
         RestClient.builder()
@@ -56,7 +50,6 @@ public class AddressDelegate extends LatteDelegate {
                 .build()
                 .get();
     }
-
 
 
     @OnClick(R2.id.icon_address_back)

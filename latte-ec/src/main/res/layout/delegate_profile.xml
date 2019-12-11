@@ -48,9 +48,9 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -58,12 +58,17 @@
             android:textSize="15sp"
             android:textColor="@color/black"
             android:text="头像"/>
-
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
         <com.joanzapata.iconify.widget.IconTextView
+            android:id="@+id/icon_profile_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/margin_15dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:text="{fa-angle-right}"
@@ -77,8 +82,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -87,7 +92,7 @@
             android:textColor="@color/black"
             android:text="昵称"/>
 
-        <EditText
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10dp"
@@ -96,8 +101,7 @@
             android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:background="@null"
-            android:hint="昵称"
-            android:inputType="" />
+            android:hint="昵称" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -106,8 +110,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -117,6 +121,7 @@
             android:text="性别"/>
 
         <TextView
+            android:id="@+id/tv_profile_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10dp"
@@ -134,8 +139,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -145,6 +150,7 @@
             android:text="生日"/>
 
         <TextView
+            android:id="@+id/tv_profile_birth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_10dp"
@@ -162,8 +168,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
-            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -197,9 +203,5 @@
         android:background="@color/white"
         android:text="退出登录"/>
 
-    <LinearLayout
-        android:id="@+id/ll_address_pick"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"/>
+
 </LinearLayout>

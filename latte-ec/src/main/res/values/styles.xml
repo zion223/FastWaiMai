@@ -3,6 +3,5 @@
     <style name="anim_choose_up_from_bottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/h_fragment_enter</item>
         <item name="android:windowExitAnimation">@anim/h_fragment_exit</item>
-            
     </style>
 </resources>

@@ -23,8 +23,8 @@ public class ExampleApp extends MultiDexApplication {
 
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
-        //首页数据
-        interceptors.add(new DebugInterceptor("api/hone",R.raw.home));
+        //首页广告数据
+        interceptors.add(new DebugInterceptor("api/home",R.raw.home));
         //首页特色专区
         interceptors.add(new DebugInterceptor("api/spec",R.raw.home_spec));
         //购物车数据
@@ -57,7 +57,7 @@ public class ExampleApp extends MultiDexApplication {
         }
 
         Latte.init(this)
-                .withApiHost("http://192.168.1.54:8082/bookstore/")
+                .withApiHost("http://192.168.1.54:8082")
                 .withInterceptors(interceptors)
                 .withIcon(new FontAwesomeModule())
                 .withJavascriptInterface("latte")

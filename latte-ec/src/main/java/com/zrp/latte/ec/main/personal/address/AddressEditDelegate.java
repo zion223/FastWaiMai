@@ -41,8 +41,6 @@ public class AddressEditDelegate extends LatteDelegate {
     TextView mTextAddressDetail;
     @BindView(R2.id.icon_address_edit_pick)
     IconTextView mIconAddressPick;
-    @BindView(R2.id.icon_address_edit_return)
-    IconTextView mIconAddressReturn;
     @BindView(R2.id.sc_address_edit_compat)
     SwitchCompat mScDefaultAddress;
     @BindView(R2.id.btn_address_edit_delete)
@@ -133,7 +131,7 @@ public class AddressEditDelegate extends LatteDelegate {
                 .build()
                 .get();
     }
-    @OnClick(R2.id.icon_address_edit_return)
+    @OnClick(R2.id.icon_address_edit_back)
     void onClickReturn(){
         getSupportDelegate().pop();
     }

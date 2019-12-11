@@ -26,4 +26,8 @@
     <string name="exchange_code">请输入520兑换</string>
     <string name="profile">个人资料</string>
     <string name="search">search</string>
+    <string name="settle">填写订单</string>
+    <string name="man">帅哥</string>
+    <string name="female">美女</string>
+    <string name="choose_address">选择收货地址</string>
 </resources>

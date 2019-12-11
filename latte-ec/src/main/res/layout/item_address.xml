@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
+    android:layout_height="75dp"
     android:layout_marginBottom="5dp"
     android:paddingTop="3dp"
     android:gravity="center"
@@ -16,16 +16,16 @@
         android:src="@drawable/cat"/>
 
     <LinearLayout
+        android:id="@+id/ll_address"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_address_name"
             android:layout_width="0.5dp"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="55dp"
             android:layout_weight="1"
             android:textSize="13sp"
@@ -35,8 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_weight="7"
             android:textColor="@color/gray" />
     </LinearLayout>
@@ -45,10 +44,11 @@
     <TextView
         android:id="@+id/tv_address_detail"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_address"
         android:layout_marginLeft="55dp"
         android:layout_marginRight="50dp"
+        android:paddingBottom="@dimen/margin_5dp"
         android:textSize="12sp"
         android:textColor="@color/tv_Black" />
 
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
+        android:layout_marginRight="15dp"
         android:text="@string/edit" />
 
 </RelativeLayout>

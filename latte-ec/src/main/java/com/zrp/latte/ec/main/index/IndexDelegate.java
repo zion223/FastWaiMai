@@ -58,7 +58,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @BindView(R2.id.vp_index_sort)
     ViewPager mViewPager;
 
-    //private RefreshHandler mRefreshHandler = null;
+    private RefreshHandler mRefreshHandler = null;
     private MultipleRecyclerAdapter mAdapter = null;
 
     private List<SpecZoneBean> mSpecData = null;
@@ -83,7 +83,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-        //mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
     }
 
 

@@ -74,7 +74,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 		mTvPersonalAddress.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				getSupportDelegate().start(new AddressDelegate());
+				getParentDelegate().getSupportDelegate().start(new AddressDelegate());
 			}
 		});
 	}
@@ -106,39 +106,39 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 	@OnClick(R2.id.tv_all_order)
 	void onClickAllOrder() {
-		getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.ALL));
+		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.ALL));
 	}
 
 	@OnClick(R2.id.rl_pay)
 	void onClickedPay() {
-		getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.PAY));
+		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.PAY));
 	}
 
 	@OnClick(R2.id.rl_receive)
 	void onClickedReceive() {
-		getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.RECEIVE));
+		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.RECEIVE));
 	}
 
 	@OnClick(R2.id.rl_evaluate)
 	void onClickedEvaluate() {
-		getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.EVALUATE));
+		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.EVALUATE));
 	}
 
 	@OnClick(R2.id.rl_after_market)
 	void onClickedAfterMarket() {
-		getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.AFTER_MARKET));
+		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.AFTER_MARKET));
 	}
 
 
 	@OnClick(R2.id.iv_goto_discount)
 	public void onViewClickedDiscount() {
-		getSupportDelegate().start(new DiscountPageViewDelegate());
+		getParentDelegate().getSupportDelegate().start(new DiscountPageViewDelegate());
 	}
 
 
 
 	@OnClick(R2.id.iv_edit_profile)
 	public void onViewClickedEditDetail() {
-		getSupportDelegate().start(new ProfileDelegate());
+		getParentDelegate().getSupportDelegate().start(new ProfileDelegate());
 	}
 }

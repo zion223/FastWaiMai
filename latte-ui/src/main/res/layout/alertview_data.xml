@@ -58,19 +58,19 @@
         android:paddingBottom="10dp"
         android:paddingTop="10dp">
 
-        <com.limxing.library.LoopView.LoopView
+        <com.zrp.latte.ui.datepicker.LoopView.LoopView
             android:id="@+id/year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.1" />
 
-        <com.limxing.library.LoopView.LoopView
+        <com.zrp.latte.ui.datepicker.LoopView.LoopView
             android:id="@+id/month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.1" />
 
-        <com.limxing.library.LoopView.LoopView
+        <com.zrp.latte.ui.datepicker.LoopView.LoopView
             android:id="@+id/day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
