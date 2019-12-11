@@ -81,10 +81,11 @@ public final class BazierAnimation {
         }
 
         imageView.setLayoutParams(params);
+
         fromView.addView(imageView);
         Path path = new Path();
         //path.moveTo(width / 2, -height / 2);
-        path.cubicTo(0,0, 0, -1500, -1000,2000);
+        path.cubicTo(0,0, -200, -800, -300,1000);
         final PathMeasure mPathMeasure = new PathMeasure(path, false);
         ValueAnimator valueAnimator = ValueAnimator.ofFloat(0, mPathMeasure.getLength());
         valueAnimator.setDuration(5000);
@@ -108,7 +109,7 @@ public final class BazierAnimation {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                //imageView.setVisibility(View.INVISIBLE);
+                imageView.setVisibility(View.INVISIBLE);
             }
         });
     }
