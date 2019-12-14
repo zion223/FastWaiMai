@@ -141,7 +141,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     }
 
     private void initRecyclerView() {
-        //总的SpanCount大小4 通过spanSize进行填充
+        //总的SpanCount大小10 通过spanSize进行填充
         final GridLayoutManager manager = new GridLayoutManager(getContext(), 10);
         mRecycleView.setLayoutManager(manager);
 
@@ -151,7 +151,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         //final EcBottomDelegate ecBottomDelegate = getParentDelegate();
 
         //传递this 跳转时有EcBottomDelegate 传递getParentDelegate():ecBottomDelegate 跳转时无EcBottomDelegate
-        mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(getParentDelegate()));
+        mRecycleView.addOnItemTouchListener(IndexItemClickListener.create(this));
 		//瀑布流
         final StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mSpecRecyclerView.setLayoutManager(staggeredGridLayoutManager);

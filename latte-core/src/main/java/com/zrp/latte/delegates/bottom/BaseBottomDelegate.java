@@ -28,7 +28,7 @@ import me.yokeyword.fragmentation.ISupportFragment;
  */
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener{
 
-    private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
+    public static final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
 
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();

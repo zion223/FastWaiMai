@@ -24,7 +24,7 @@ public class IndexTabDelegate extends LatteDelegate {
 
 
     @BindView(R2.id.rv_all_normal)
-    RecyclerView mNormalReclclerView;
+    RecyclerView mTabReclclerView;
 
 
     @Override
@@ -41,14 +41,16 @@ public class IndexTabDelegate extends LatteDelegate {
                     @Override
                     public void onSuccess(String response) {
                         final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-                        mNormalReclclerView.setLayoutManager(gridLayoutManager);
+                        mTabReclclerView.setLayoutManager(gridLayoutManager);
                         final List<MultipleItemEntity> data = new ShopCartLikeConverter().setJsonData(response).convert();
                         final ShopCartLikeAdapter likeAdapter = new ShopCartLikeAdapter(data);
-                        mNormalReclclerView.setAdapter(likeAdapter);
+                        mTabReclclerView.setAdapter(likeAdapter);
+	                    mTabReclclerView.addOnItemTouchListener(IndexItemClickListener.create(IndexTabDelegate.this));
                     }
                 })
                 .build()
                 .get();
+
     }
 
 }
