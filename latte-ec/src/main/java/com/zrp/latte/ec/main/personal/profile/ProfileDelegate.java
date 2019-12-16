@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.profile;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,27 +12,42 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.joanzapata.iconify.widget.IconTextView;
+import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ui.datepicker.DatePickerDialog;
 import com.zrp.latte.ui.datepicker.OnConfirmeListener;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
+import de.hdodenhof.circleimageview.CircleImageView;
+import pub.devrel.easypermissions.EasyPermissions;
 
 
 public class ProfileDelegate extends BottomItemDelegate implements View.OnClickListener {
 
+	private static final String ARGS_PROFILE_NAME = "ARGS_PROFILE_NAME";
+	private static final String ARGS_PROFILE_PHONE = "ARGS_PROFILE_PHONE";
+	private static final String ARGS_PROFILE_SEX = "ARGS_PROFILE_SEX";
+	private static final String ARGS_PROFILE_BIRTH = "ARGS_PROFILE_BIRTH";
+	private static final String ARGS_PROFILE_AVATAR = "ARGS_PROFILE_AVATAR";
 
+	@BindView(R2.id.iv_profile_photo)
+	CircleImageView mIvAvatar;
+	@BindView(R2.id.tv_profile_nickname)
+	TextView mTvNickname;
 	@BindView(R2.id.tv_profile_gender)
-	TextView tvProfileGender;
+	TextView mTvGender;
 	@BindView(R2.id.tv_profile_birth)
-	TextView tvProfileBirth;
-
-
+	TextView mTvBirth;
+	@BindView(R2.id.tv_profile_phone)
+	TextView mTvPhone;
+	@BindView(R2.id.icon_profile_photo_edit)
+	IconTextView iconProfilePhotoEdit;
 
 	private AlertDialog mGenderDialog;
 
@@ -40,10 +56,39 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 		return R.layout.delegate_profile;
 	}
 
+	public static ProfileDelegate create(int avatar, String nickName, String sex, String birth, String phone) {
+		final Bundle args = new Bundle();
+		args.putString(ARGS_PROFILE_NAME, nickName);
+		args.putInt(ARGS_PROFILE_AVATAR, avatar);
+		args.putString(ARGS_PROFILE_SEX, sex);
+		args.putString(ARGS_PROFILE_BIRTH, birth);
+		args.putString(ARGS_PROFILE_PHONE, phone);
+		final ProfileDelegate delegate = new ProfileDelegate();
+		delegate.setArguments(args);
+		return delegate;
+	}
+
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		super.onBindView(savedInstanceState, view);
 		mGenderDialog = new AlertDialog.Builder(getContext()).create();
+		final Bundle profile = getArguments();
+		//个人头像
+		final int avatar = profile.getInt(ARGS_PROFILE_AVATAR);
+		mIvAvatar.setImageResource(avatar);
+		//昵称
+		final String name = profile.getString(ARGS_PROFILE_NAME);
+		mTvNickname.setText(name);
+		// 性别
+		final String sex = profile.getString(ARGS_PROFILE_SEX);
+		mTvGender.setText(sex);
+		//生日
+		final String birth = profile.getString(ARGS_PROFILE_BIRTH);
+		mTvBirth.setText(birth);
+		//手机号码
+		final String phone = profile.getString(ARGS_PROFILE_PHONE);
+		String phoneNumber = phone.substring(0, 3) + "****" + phone.substring(7, phone.length());
+		mTvPhone.setText(phoneNumber);
 	}
 
 
@@ -77,10 +122,10 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 	public void onClick(View v) {
 		int id = v.getId();
 		if (id == R.id.btn_dialog_profile_male) {
-			tvProfileGender.setText("帅哥");
+			mTvGender.setText("帅哥");
 			mGenderDialog.dismiss();
 		} else if (id == R.id.btn_dialog_profile_female) {
-			tvProfileGender.setText("美女");
+			mTvGender.setText("美女");
 			mGenderDialog.dismiss();
 		}
 	}
@@ -91,14 +136,26 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 		new DatePickerDialog("请选择日期", getContext(), 1991, 2019, new OnConfirmeListener() {
 			@Override
 			public void result(String date) {
-				tvProfileBirth.setText(date);
+				mTvBirth.setText(date);
 			}
 		}).show();
 	}
 
 
-	@OnClick(R2.id.icon_profile_photo)
+	@OnClick(R2.id.icon_profile_photo_edit)
 	public void onViewClickedChoosePhoto() {
+		String[] perms = {Manifest.permission.CAMERA};
+		//EasyPermission中请求的权限需要在Manifest中申请
+		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
+			//
+		} else {
+			EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
+		}
+	}
 
+
+	@OnClick(R2.id.tv_prpfile_edit_save)
+	public void onViewClickedSave() {
+		Toast.makeText(Latte.getApplication(), "此功能暂未实现",Toast.LENGTH_SHORT).show();
 	}
 }

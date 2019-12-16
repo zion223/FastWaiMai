@@ -1,30 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/bg_White">
 
-    <!--<include layout="@layout/personal_top_menu" />-->
     <android.support.v7.widget.Toolbar
         android:id="@+id/goods_detail_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        app:layout_collapseMode="pin"
-        android:background="@color/red">
-
+        android:background="@color/red"
+        app:layout_collapseMode="pin">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/red">
-
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:background="@color/red"
                 android:text="我的"
                 android:textColor="@android:color/white"
-                android:background="@color/red"
                 android:textSize="20sp" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -39,26 +36,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/red"
                 android:orientation="vertical"
                 android:paddingTop="15dp">
-
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
-
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_user_avatar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/tao_user_2" />
-
                     <TextView
                         android:id="@+id/tv_user_name"
                         android:layout_width="wrap_content"
@@ -68,7 +61,6 @@
                         android:layout_toRightOf="@+id/img_user_avatar"
                         android:text="恋上猫女衣坊"
                         android:textColor="@color/bg_White" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,14 +68,12 @@
                         android:layout_alignLeft="@+id/tv_user_name"
                         android:layout_alignBottom="@+id/img_user_avatar"
                         android:src="@drawable/user_1" />
-
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignBottom="@+id/img_user_avatar"
                         android:layout_toRightOf="@+id/tv_user_name"
                         android:src="@drawable/user_2" />
-
                     <ImageView
                         android:id="@+id/iv_edit_profile"
                         android:layout_width="wrap_content"
@@ -91,9 +81,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/arrow_expend_right" />
-
                 </RelativeLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,20 +90,17 @@
                     android:orientation="horizontal"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp">
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="180"
                             android:textColor="@color/tv_White" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -124,28 +109,23 @@
                             android:text="收藏的宝贝"
                             android:textColor="@color/tv_White" />
                     </LinearLayout>
-
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="7dp"
                         android:background="@color/bg_White" />
-
-
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="28"
                             android:textColor="@color/tv_White" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -264,16 +244,14 @@
 
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_0"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/icon_order_0"
-                        android:layout_alignRight="@+id/icon_order_0"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_toRightOf="@+id/icon_order_0"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
-                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         tools:ignore="RtlHardcoded" />
 
                 </RelativeLayout>
@@ -306,16 +284,14 @@
 
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_1"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/icon_order_1"
-                        android:layout_alignRight="@+id/icon_order_1"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_toRightOf="@+id/icon_order_1"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
-                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         tools:ignore="RtlHardcoded" />
 
                 </RelativeLayout>
@@ -348,16 +324,14 @@
 
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_2"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/icon_order_2"
-                        android:layout_alignRight="@+id/icon_order_2"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_toRightOf="@+id/icon_order_2"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
-                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
+                        android:textSize="11sp"
                         tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
@@ -389,17 +363,14 @@
 
                     <com.zrp.latte.ui.widget.CircleTextView
                         android:id="@+id/tv_order_status_3"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignEnd="@+id/icon_order_3"
-                        android:layout_alignRight="@+id/icon_order_3"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_toRightOf="@+id/icon_order_3"
                         android:layout_alignParentTop="true"
                         android:layout_marginTop="2dp"
-                        android:layout_marginRight="20dp"
                         android:gravity="center"
                         android:textColor="@android:color/white"
-                        android:textSize="12sp"
-                        tools:ignore="RtlHardcoded" />
+                        android:textSize="11sp" />
 
                 </RelativeLayout>
 
@@ -476,6 +447,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:background="@color/bg_Gray_light" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -492,6 +464,7 @@
                     android:text="联系客服"
                     android:textColor="@color/tv_Black"
                     android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -500,16 +473,19 @@
                     android:layout_marginRight="30dp"
                     android:gravity="center_vertical"
                     android:text="客服时间7:00-12:00" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/arrow_expend_right" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/bg_Gray_light" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -517,6 +493,7 @@
                 android:orientation="horizontal"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp">
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -525,6 +502,7 @@
                     android:text="意见反馈"
                     android:textColor="@color/tv_Black"
                     android:textSize="17sp" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -532,7 +510,6 @@
                     android:src="@drawable/arrow_expend_right" />
             </LinearLayout>
         </LinearLayout>
-
 
 
     </ScrollView>

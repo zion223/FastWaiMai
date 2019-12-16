@@ -87,6 +87,8 @@ public class PersonalDelegate extends BottomItemDelegate {
 				.success(new ISuccess() {
 					@Override
 					public void onSuccess(String response) {
+
+
 						final JSONObject order = JSON.parseObject(response).getJSONObject("order");
 						//不同状态订单数量
 						mTvOrderPay.setText(String.valueOf(order.getIntValue("PAY")));
@@ -139,6 +141,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 	@OnClick(R2.id.iv_edit_profile)
 	public void onViewClickedEditDetail() {
-		getParentDelegate().getSupportDelegate().start(new ProfileDelegate());
+		getParentDelegate().getSupportDelegate().start(
+				ProfileDelegate.create(R.drawable.avatar, "恋上猫女衣坊","美女","1997年10月10日","15078383333"));
 	}
 }

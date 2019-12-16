@@ -29,7 +29,7 @@
                 android:layout_marginTop="@dimen/margin_5dp"
                 android:padding="@dimen/padding_10dp"
                 android:text="2016秋季新款女装简约纯色百搭衬衫"
-                android:textColor="@color/contents_text" />
+                android:textColor="@color/black" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="应付金额："
             android:padding="@dimen/padding_10dp"
-            android:textColor="@color/contents_text"
+            android:textColor="@color/black"
             />
 
         <TextView

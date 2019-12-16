@@ -49,7 +49,7 @@
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/img_order_comment"
             android:text="评分"
-            android:textColor="@color/contents_text" />
+            android:textColor="@color/black" />
 
         <com.zrp.latte.ui.widget.StarLayout
             android:id="@+id/custom_star_layout"
