@@ -58,8 +58,7 @@ public class ProfileDelegate extends BottomItemDelegate implements RadioButton.O
 	TextView mTvBirth;
 	@BindView(R2.id.tv_profile_phone)
 	TextView mTvPhone;
-	@BindView(R2.id.icon_profile_photo_edit)
-	IconTextView iconProfilePhotoEdit;
+
 
 	private AlertDialog mGenderDialog;
 	private String gender;
@@ -145,7 +144,7 @@ public class ProfileDelegate extends BottomItemDelegate implements RadioButton.O
 
 	@OnClick(R2.id.tv_profile_birth)
 	public void onViewClickedBirth() {
-		new DatePickerDialog("请选择日期", getContext(), 1991, 2019, new OnConfirmeListener() {
+		new DatePickerDialog("请选择日期",getContext(), 1991, 2019, new OnConfirmeListener() {
 			@Override
 			public void result(String date) {
 				mTvBirth.setText(date);
@@ -154,7 +153,7 @@ public class ProfileDelegate extends BottomItemDelegate implements RadioButton.O
 	}
 
 
-	@OnClick(R2.id.icon_profile_photo_edit)
+	@OnClick(R2.id.iv_profile_photo)
 	public void onViewClickedChoosePhoto() {
 		String[] perms = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 		//EasyPermission中请求的权限需要在Manifest中申请

@@ -74,19 +74,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_3dp"
             android:layout_marginBottom="@dimen/margin_3dp"
-            android:layout_marginRight="5dp"/>
-        <com.joanzapata.iconify.widget.IconTextView
-            android:id="@+id/icon_profile_photo_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/margin_15dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:text="{fa-angle-right}"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="30sp" />
+            android:layout_marginRight="25dp"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -117,9 +105,9 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:background="@null"
+            android:textSize="13sp"
             android:hint="昵称" />
     </LinearLayout>
     <View
@@ -151,9 +139,9 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:background="@null"
+            android:textSize="13sp"
             android:hint="性别" />
     </LinearLayout>
     <View
@@ -186,9 +174,9 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:background="@null"
+            android:textSize="13sp"
             android:hint="生日" />
     </LinearLayout>
     <View
@@ -221,9 +209,9 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="5dp"
             android:gravity="center_vertical"
             android:background="@null"
+            android:textSize="13sp"
             android:hint="手机号" />
     </LinearLayout>
     <View
