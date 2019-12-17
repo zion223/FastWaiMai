@@ -13,6 +13,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import pub.devrel.easypermissions.EasyPermissions;
 
 
-public class ProfileDelegate extends BottomItemDelegate implements View.OnClickListener {
+public class ProfileDelegate extends BottomItemDelegate implements RadioButton.OnCheckedChangeListener {
 
 	private static final String ARGS_PROFILE_NAME = "ARGS_PROFILE_NAME";
 	private static final String ARGS_PROFILE_PHONE = "ARGS_PROFILE_PHONE";
@@ -60,6 +62,9 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 	IconTextView iconProfilePhotoEdit;
 
 	private AlertDialog mGenderDialog;
+	private String gender;
+	private String male;
+	private String female;
 
 	@Override
 	public Object setLayout() {
@@ -81,6 +86,8 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		super.onBindView(savedInstanceState, view);
+		male = this.getString(R.string.man);
+		female = this.getString(R.string.female);
 		mGenderDialog = new AlertDialog.Builder(getContext()).create();
 		final Bundle profile = getArguments();
 		//个人头像
@@ -89,9 +96,9 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 		//昵称
 		final String name = profile.getString(ARGS_PROFILE_NAME);
 		mTvNickname.setText(name);
-		// 性别
-		final String sex = profile.getString(ARGS_PROFILE_SEX);
-		mTvGender.setText(sex);
+		//性别
+		gender = profile.getString(ARGS_PROFILE_SEX);
+		mTvGender.setText(gender);
 		//生日
 		final String birth = profile.getString(ARGS_PROFILE_BIRTH);
 		mTvBirth.setText(birth);
@@ -114,29 +121,24 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 		if (window != null) {
 			window.setContentView(R.layout.dialog_profile_sex);
 			window.setGravity(Gravity.BOTTOM);
+
+			if (gender.equals(male)) {
+				((RadioButton) window.findViewById(R.id.btn_dialog_profile_male)).setChecked(true);
+			} else {
+				((RadioButton) window.findViewById(R.id.btn_dialog_profile_female)).setChecked(true);
+			}
 			//设置弹出动画
-			window.setWindowAnimations(R.style.anim_choose_up_from_bottom);
+			window.setWindowAnimations(R.style.anim_panel_up_from_bottom);
 			window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 			//设置属性
 			final WindowManager.LayoutParams params = window.getAttributes();
 			params.width = WindowManager.LayoutParams.MATCH_PARENT;
-			//FLAG_DIM_BEHIND:窗口之后的内容变暗  FLAG_BLUR_BEHIND: 窗口之后的内容变模糊。
+			//FLAG_DIM_BEHIND: 窗口之后的内容变暗  FLAG_BLUR_BEHIND: 窗口之后的内容变模糊。
 			params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 			window.setAttributes(params);
-			window.findViewById(R.id.btn_dialog_profile_male).setOnClickListener(this);
-			window.findViewById(R.id.btn_dialog_profile_female).setOnClickListener(this);
-		}
-	}
+			((RadioButton) window.findViewById(R.id.btn_dialog_profile_male)).setOnCheckedChangeListener(this);
+			((RadioButton) window.findViewById(R.id.btn_dialog_profile_female)).setOnCheckedChangeListener(this);
 
-	@Override
-	public void onClick(View v) {
-		int id = v.getId();
-		if (id == R.id.btn_dialog_profile_male) {
-			mTvGender.setText("帅哥");
-			mGenderDialog.dismiss();
-		} else if (id == R.id.btn_dialog_profile_female) {
-			mTvGender.setText("美女");
-			mGenderDialog.dismiss();
 		}
 	}
 
@@ -159,9 +161,10 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
 			CallBackManager.getInstance().addCallback(CallBackType.ON_CROP, new IGlobalCallback() {
 				@Override
-				public void executeCallBack(Object args) {
+				public void executeCallBack(Object uri) {
+					//更新UI
 					Glide.with(getContext())
-							.load(args)
+							.load(uri)
 							.into(mIvAvatar);
 				}
 			});
@@ -174,14 +177,14 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 
 	@OnClick(R2.id.tv_prpfile_edit_save)
 	public void onViewClickedSave() {
-		Toast.makeText(Latte.getApplication(), "此功能暂未实现",Toast.LENGTH_SHORT).show();
+		Toast.makeText(Latte.getApplication(), "此功能暂未实现", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
-		if(resultCode == RESULT_OK){
-			switch (requestCode){
+		if (resultCode == RESULT_OK) {
+			switch (requestCode) {
 				case CameraRequestCodes.TAKE_PHOTO:
 					final Uri resultUri = CameraImageBean.getInstance().getPath();
 					UCrop.of(resultUri, resultUri)
@@ -201,8 +204,7 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 				case CameraRequestCodes.CROP_PHOTO:
 					final Uri cropUri = UCrop.getOutput(data);
 					//拿到剪裁后的数据进行处理
-					@SuppressWarnings("unchecked")
-					final IGlobalCallback<Uri> callback = CallBackManager
+					@SuppressWarnings("unchecked") final IGlobalCallback<Uri> callback = CallBackManager
 							.getInstance()
 							.getCallback(CallBackType.ON_CROP);
 					if (callback != null) {
@@ -217,5 +219,18 @@ public class ProfileDelegate extends BottomItemDelegate implements View.OnClickL
 
 			}
 		}
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+		if (buttonView.getId() == R.id.btn_dialog_profile_male && isChecked) {
+			mTvGender.setText(male);
+			gender = male;
+		} else if(buttonView.getId() == R.id.btn_dialog_profile_male && isChecked){
+			mTvGender.setText(female);
+			gender = female;
+		}
+		mGenderDialog.dismiss();
 	}
 }
