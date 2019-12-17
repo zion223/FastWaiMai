@@ -1,5 +1,6 @@
 package com.zrp.latte.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -77,6 +78,5 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         super.onBackPressed();
         DELEGATE.onBackPressed();
     }
-
 
 }

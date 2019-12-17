@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/photodialog_btn_take"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/btn_border_takephoto"
+        android:gravity="center"
+        android:text="拍照"
+        android:textColor="#323232" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:gravity="center" />
+
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/photodialog_btn_native"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_border_nativephoto"
+        android:gravity="center"
+        android:text="本地"
+        android:textColor="#323232" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:gravity="center" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/photodialog_btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_border"
+        android:gravity="center"
+        android:text="取消"
+        android:textColor="#323232" />
+
+</android.support.v7.widget.LinearLayoutCompat>

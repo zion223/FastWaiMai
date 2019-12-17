@@ -70,11 +70,11 @@
             android:text="头像"/>
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_profile_photo"
-            android:layout_width="20dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_3dp"
             android:layout_marginBottom="@dimen/margin_3dp"
-            android:layout_marginRight="8dp"/>
+            android:layout_marginRight="5dp"/>
         <com.joanzapata.iconify.widget.IconTextView
             android:id="@+id/icon_profile_photo_edit"
             android:layout_width="wrap_content"
@@ -113,7 +113,8 @@
             android:id="@+id/tv_profile_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
@@ -146,7 +147,8 @@
             android:id="@+id/tv_profile_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
@@ -180,7 +182,8 @@
             android:id="@+id/tv_profile_birth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"
@@ -214,7 +217,8 @@
             android:id="@+id/tv_profile_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_15dp"
+            android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
             android:layout_marginRight="5dp"

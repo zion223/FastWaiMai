@@ -39,6 +39,11 @@ public class CircleTextView extends AppCompatTextView {
         setMeasuredDimension(max, max);
     }
 
+	@Override
+	protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+		super.onLayout(changed, left, top, right, bottom);
+	}
+
     @Override
     public void draw(Canvas canvas) {
         canvas.setDrawFilter(FILTER);
@@ -46,4 +51,6 @@ public class CircleTextView extends AppCompatTextView {
                 Math.max(getWidth(), getHeight()) / 2, PAINT);
         super.draw(canvas);
     }
+
+
 }
