@@ -30,4 +30,5 @@
     <string name="man">帅哥</string>
     <string name="female">美女</string>
     <string name="choose_address">选择收货地址</string>
+    <string name="goshop">去购物</string>
 </resources>

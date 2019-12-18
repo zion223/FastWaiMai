@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="去购物"
+        android:text="@string/goshop"
         android:textColor="@color/app_main"
         android:textSize="20sp" />
 </RelativeLayout>
