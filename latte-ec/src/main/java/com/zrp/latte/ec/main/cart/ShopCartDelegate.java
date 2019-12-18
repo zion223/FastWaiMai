@@ -21,6 +21,7 @@ import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeAdapter;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeConverter;
+import com.zrp.latte.ec.main.cart.settle.SettleDelegate;
 import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
@@ -129,6 +130,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     void shopCartPay() {
         //TODO 后台生成订单进行支付 提交订单确认Delegate
         //FastPay.create(this).beginPayDialog();
+        getParentDelegate().getSupportDelegate().start(new SettleDelegate());
     }
 
     /**
