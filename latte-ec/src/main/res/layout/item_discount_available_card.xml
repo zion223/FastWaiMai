@@ -11,7 +11,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
 
         <RelativeLayout
             android:layout_width="0dp"
@@ -55,7 +57,10 @@
                 android:textSize="12sp"
                 android:text="最多优惠1.5元"/>
         </RelativeLayout>
-
+        <wowo.kjt.library.TicketDivideLine
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:line_orientation="line_vertical" />
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"

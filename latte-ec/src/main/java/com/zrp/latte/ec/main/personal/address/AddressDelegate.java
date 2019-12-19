@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.address;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
@@ -14,16 +16,18 @@ import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
+import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class AddressDelegate extends LatteDelegate {
+public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.OnItemClickListener {
 
     @BindView(R2.id.icon_address_add)
     IconTextView mIconAddressAdd;
     @BindView(R2.id.rv_address_view)
     RecyclerView mRvAddress;
+
 
     private AddressAdapter mAdapter = null;
 
@@ -44,6 +48,7 @@ public class AddressDelegate extends LatteDelegate {
                         final DataConverter converter =
                                 new AddressDataConverter().setJsonData(response);
                         mAdapter = new AddressAdapter(converter.convert(), AddressDelegate.this);
+                        mAdapter.setOnItemClickListener(AddressDelegate.this);
                         mRvAddress.setAdapter(mAdapter);
                     }
                 })
@@ -54,6 +59,16 @@ public class AddressDelegate extends LatteDelegate {
 
     @OnClick(R2.id.icon_address_back)
     public void onViewClickedReturn() {
+        getSupportDelegate().pop();
+    }
+
+    @Override
+    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+        final MultipleItemEntity address = (MultipleItemEntity) adapter.getData().get(position);
+        final Bundle bundle = new Bundle();
+        bundle.putSerializable("address", address);
+        getSupportDelegate().setFragmentResult(RESULT_OK, bundle);
+        getSupportDelegate().onDestroy();
         getSupportDelegate().pop();
     }
 }

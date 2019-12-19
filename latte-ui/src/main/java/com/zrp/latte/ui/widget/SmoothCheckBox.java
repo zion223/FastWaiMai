@@ -20,13 +20,6 @@ import android.widget.Checkable;
 
 import com.example.latte.ui.R;
 
-/**
- * Author : andy
- * Date   : 16/1/21 11:28
- * Email  : andyxialm@gmail.com
- * Github : github.com/andyxialm
- * Description : A custom CheckBox with animation for Android
- */
 
 public class SmoothCheckBox extends View implements Checkable {
 	private static final String KEY_INSTANCE_STATE = "InstanceState";
@@ -53,7 +46,7 @@ public class SmoothCheckBox extends View implements Checkable {
 
 	private boolean mChecked;
 	private boolean mTickDrawing;
-	private OnCheckedChangeListener mListener;
+	private OnSmoothCheckedChangeListener mListener;
 
 	public SmoothCheckBox(Context context) {
 		this(context, null);
@@ -153,11 +146,13 @@ public class SmoothCheckBox extends View implements Checkable {
 
 	@Override
 	public void setChecked(boolean checked) {
-		mChecked = checked;
-		reset();
-		invalidate();
-		if (mListener != null) {
-			mListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
+		if(mChecked != checked){
+			mChecked = checked;
+			reset();
+			invalidate();
+			if (mListener != null) {
+				mListener.onSmoothCheckedChanged(SmoothCheckBox.this, mChecked);
+			}
 		}
 	}
 
@@ -177,7 +172,7 @@ public class SmoothCheckBox extends View implements Checkable {
 				startUnCheckedAnimation();
 			}
 			if (mListener != null) {
-				mListener.onCheckedChanged(SmoothCheckBox.this, mChecked);
+				mListener.onSmoothCheckedChanged(SmoothCheckBox.this, mChecked);
 			}
 
 		} else {
@@ -402,12 +397,12 @@ public class SmoothCheckBox extends View implements Checkable {
 		return Color.argb(currentA, currentR, currentG, currentB);
 	}
 
-	public void setOnCheckedChangeListener(OnCheckedChangeListener l) {
+	public void setOnSmoothCheckedChangeListener(OnSmoothCheckedChangeListener l) {
 		this.mListener = l;
 	}
 
-	public interface OnCheckedChangeListener {
-		void onCheckedChanged(SmoothCheckBox checkBox, boolean isChecked);
+	public interface OnSmoothCheckedChangeListener {
+		void onSmoothCheckedChanged(SmoothCheckBox checkBox, boolean isChecked);
 	}
 	public static int dp2px(Context context, float dipValue) {
 		final float scale = context.getResources().getDisplayMetrics().density;

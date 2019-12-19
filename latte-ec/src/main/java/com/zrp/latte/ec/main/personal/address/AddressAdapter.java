@@ -43,6 +43,8 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                         DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(id, name, phone, address, isDefault));
                     }
                 });
+            default:
+                break;
 
         }
     }

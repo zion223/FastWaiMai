@@ -2,7 +2,7 @@
 
     <string name="app_name">LatteEC</string>
     <string name="count2zero">该宝贝不能减少了哟</string>
-    <string name="shopcarttitle">我的收货地址管理</string>
+    <string name="shopcarttitle">收货地址</string>
     <string name="editaddress">编辑收货地址</string>
     <string name="save">保存</string>
     <string name="setdefaultaddress">设为默认地址</string>
