@@ -13,7 +13,6 @@ import android.view.View;
 
 
 public class SwitchButton extends android.support.v7.widget.AppCompatCheckBox {
-	private static final String TAG = "SwitchButton";
 	/**
 	 * 控件默认宽度
 	 */
@@ -155,9 +154,6 @@ public class SwitchButton extends android.support.v7.widget.AppCompatCheckBox {
 	}
 
 	/**
-	 * Author: QinHao
-	 * Email:qinhao@jeejio.com
-	 * Date:2019/6/3 9:45
 	 * Description:开始开关按钮切换状态和背景颜色过渡的动画
 	 */
 	private void startAnimate() {
@@ -188,11 +184,6 @@ public class SwitchButton extends android.support.v7.widget.AppCompatCheckBox {
 	}
 
 	/**
-	 * Author: QinHao
-	 * Email:qinhao@jeejio.com
-	 * Date:2019/6/3 9:04
-	 * Description:获取一个过渡期中当前颜色,fraction 为过渡系数,取值范围 0f-1f,值越接近 1,颜色就越接近 endColor
-	 *
 	 * @param fraction   当前渐变系数
 	 * @param startColor 过渡开始颜色
 	 * @param endColor   过渡结束颜色

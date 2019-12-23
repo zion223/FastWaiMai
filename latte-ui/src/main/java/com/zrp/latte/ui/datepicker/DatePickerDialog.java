@@ -169,6 +169,25 @@ public class DatePickerDialog implements OnItemSelectedListener {
         init();
         initEvents();
     }
+	/**
+	 * 自定义的三级选择,联动需要自己设置下一个loopView的内容
+	 *
+	 * @param title
+	 * @param context
+	 * @param year
+	 * @param month
+	 * @param day
+	 * @param confirmeListener
+	 */
+	public DatePickerDialog(String title, Context context, List<String> year, List<String> month, List<String> day, OnConfirmeListener confirmeListener) {
+		this.context = context;
+		this.title = title;
+		this.style = Style.Date;
+		this.confirmeListener = confirmeListener;
+		initViews(year, month, day);
+		init();
+		initEvents();
+	}
 
     /**
      * 初始化时间
@@ -200,25 +219,7 @@ public class DatePickerDialog implements OnItemSelectedListener {
 //        dayView.setListener(this);
     }
 
-    /**
-     * 自定义的三级选择,联动需要自己设置下一个loopView的内容
-     *
-     * @param title
-     * @param context
-     * @param year
-     * @param month
-     * @param day
-     * @param confirmeListener
-     */
-    public DatePickerDialog(String title, Context context, List<String> year, List<String> month, List<String> day, OnConfirmeListener confirmeListener) {
-        this.context = context;
-        this.title = title;
-        this.style = Style.Date;
-        this.confirmeListener = confirmeListener;
-        initViews(year, month, day);
-        init();
-        initEvents();
-    }
+
 
     private void initViews(List<String> year, List<String> month, List<String> day) {
         initViews();

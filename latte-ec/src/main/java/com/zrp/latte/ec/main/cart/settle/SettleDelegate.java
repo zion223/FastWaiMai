@@ -3,7 +3,9 @@ package com.zrp.latte.ec.main.cart.settle;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,12 +16,19 @@ import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressItemFields;
+import com.zrp.latte.ui.datepicker.DatePickerDialog;
+import com.zrp.latte.ui.datepicker.OnConfirmeListener;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.widget.SmoothCheckBox;
 import com.zrp.latte.ui.widget.SwitchButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSmoothCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
@@ -39,10 +48,24 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	LinearLayout mLlExchange;
 	@BindView(R2.id.tv_settle_paymoney)
 	TextView mTvPaymoney;
+	@BindView(R2.id.ll_settle_pickaddress)
+	LinearLayout mLlSettlePickAddress;
+	@BindView(R2.id.tv_settle_name)
+	TextView mTvAddressName;
+	@BindView(R2.id.tv_settle_phone)
+	TextView mTvAddressPhone;
+	@BindView(R2.id.ll_settle_address)
+	LinearLayout mLlSettleAddress;
+	@BindView(R2.id.tv_settle_arrivaltime)
+	TextView mTvArrivaltime;
 
 	private final SmoothCheckBox[] payBox = new SmoothCheckBox[3];
+
+
 	private Double originalMoney = 0.0;
-	public static final int PICKADDRESS = 10;
+	private DatePickerDialog mDatePickDialog = null;
+	public static final int PICK_ADDRESS = 10;
+
 	@Override
 	public Object setLayout() {
 		return R.layout.delegate_settlement;
@@ -53,14 +76,25 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 		payBox[0] = mCbWeixin;
 		payBox[1] = mCbAli;
 		payBox[2] = mCbHua;
-		for (int i = 0; i < payBox.length; i++) {
-			payBox[i].setOnSmoothCheckedChangeListener(this);
+		for (SmoothCheckBox aPayBox : payBox) {
+			aPayBox.setOnSmoothCheckedChangeListener(this);
 		}
 		mSbExchange.setOnCheckedChangeListener(this);
 		final String oldMoney = mTvPaymoney.getText().toString();
 		if (originalMoney.equals(0.0)) {
 			originalMoney = Double.valueOf(oldMoney.substring(oldMoney.indexOf("￥") + 1));
 		}
+		final List<String> arrivalType = new ArrayList<>();
+		arrivalType.add("准时达");
+		arrivalType.add("准时达");
+		arrivalType.add("准时达");
+
+		mDatePickDialog = new DatePickerDialog("请选择送达时间", getContext(), arrivalType, arrivalType, arrivalType, new OnConfirmeListener() {
+			@Override
+			public void result(String date) {
+				mTvArrivaltime.setText(date);
+			}
+		});
 
 	}
 
@@ -68,12 +102,11 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	@Override
 	public void onSmoothCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
 		if (isChecked) {
-			for (int i = 0; i < payBox.length; i++) {
-				SmoothCheckBox box = payBox[i];
+			for (SmoothCheckBox box : payBox) {
 				if (box.getId() == checkBox.getId()) {
-					payBox[i].setChecked(true);
+					box.setChecked(true);
 				} else {
-					payBox[i].setChecked(false);
+					box.setChecked(false);
 				}
 			}
 		}
@@ -106,19 +139,42 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 
 	@OnClick(R2.id.ll_settle_pickaddress)
 	public void onViewClickedPick() {
-		getSupportDelegate().startForResult(new AddressDelegate(), PICKADDRESS);
+		getSupportDelegate().startForResult(new AddressDelegate(), PICK_ADDRESS);
+	}
+
+	@OnClick(R2.id.ll_settle_address)
+	public void onViewClickedAddress() {
+		getSupportDelegate().startForResult(new AddressDelegate(), PICK_ADDRESS);
 	}
 
 
 	@Override
 	public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
-		if(requestCode == PICKADDRESS){
+		if (requestCode == PICK_ADDRESS && resultCode == RESULT_OK) {
 			final MultipleItemEntity addressEntity = (MultipleItemEntity) data.getSerializable("address");
 			final String name = addressEntity.getField(AddressItemFields.NAME);
 			final String phone = addressEntity.getField(AddressItemFields.PHONE);
 			final String address = addressEntity.getField(AddressItemFields.ADDRESS);
 			final Boolean isDefault = addressEntity.getField(AddressItemFields.DEFAULT);
-			Toast.makeText(getContext(), name+phone, Toast.LENGTH_SHORT).show();
+			mLlSettlePickAddress.setVisibility(View.GONE);
+			mTvAddressName.setText(name);
+			mTvAddressPhone.setText(phone);
+			mLlSettleAddress.setVisibility(View.VISIBLE);
 		}
 	}
+
+
+	@OnClick(R2.id.ll_settle_pick_discountcard)
+	public void onViewClickedPickDiscount() {
+
+	}
+
+
+	@OnClick(R2.id.tv_settle_arrivaltime)
+	public void onViewClickedArrivalTime() {
+		if (mDatePickDialog != null) {
+			mDatePickDialog.show();
+		}
+	}
+
 }

@@ -47,18 +47,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/ll_settle_pickaddress"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="60dp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="20dp"
@@ -82,7 +82,61 @@
                     android:layout_weight="1"
                     android:src="@drawable/arrow_expend_right" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_settle_address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:visibility="gone"
+                android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/avatar" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="10dp">
+                    <TextView
+                        android:id="@+id/tv_settle_address_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="姓名: "/>
+                    <TextView
+                        android:id="@+id/tv_settle_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_settle_address_name"
+                        android:layout_toRightOf="@id/tv_settle_address_name"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/tv_settle_address_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tv_settle_name"
+                        android:textColor="@color/black"
+                        android:text="手机号: "/>
+                    <TextView
+                        android:id="@+id/tv_settle_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/tv_settle_address_phone"
+                        android:layout_toRightOf="@id/tv_settle_address_phone"
+                        android:textColor="@color/black"/>
+                </RelativeLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:src="@drawable/arrow_expend_right" />
+            </LinearLayout>
             <com.zrp.latte.ui.widget.SplitLine
                 android:layout_width="match_parent"
                 android:layout_height="2dp" />
@@ -110,6 +164,7 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_settle_arrivaltime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -302,6 +357,7 @@
                 android:background="@color/app_background" />
 
             <LinearLayout
+                android:id="@+id/ll_settle_pick_discountcard"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:orientation="horizontal"

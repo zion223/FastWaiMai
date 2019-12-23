@@ -49,9 +49,9 @@
                     android:layout_marginRight="10dp">
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_user_avatar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/tao_user_2" />
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/avatar" />
                     <TextView
                         android:id="@+id/tv_user_name"
                         android:layout_width="wrap_content"
