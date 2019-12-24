@@ -1,11 +1,16 @@
 package com.zrp.latte.ec.main.cart.settle;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,12 +18,14 @@ import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressItemFields;
 import com.zrp.latte.ui.datepicker.DatePickerDialog;
 import com.zrp.latte.ui.datepicker.OnConfirmeListener;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
+import com.zrp.latte.ui.widget.PickArrivalTimeDialog;
 import com.zrp.latte.ui.widget.SmoothCheckBox;
 import com.zrp.latte.ui.widget.SwitchButton;
 
@@ -26,9 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSmoothCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 
@@ -61,9 +66,8 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 
 	private final SmoothCheckBox[] payBox = new SmoothCheckBox[3];
 
-
+	private PickArrivalTimeDialog mArrivalTimeDialog;
 	private Double originalMoney = 0.0;
-	private DatePickerDialog mDatePickDialog = null;
 	public static final int PICK_ADDRESS = 10;
 
 	@Override
@@ -84,15 +88,11 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 		if (originalMoney.equals(0.0)) {
 			originalMoney = Double.valueOf(oldMoney.substring(oldMoney.indexOf("￥") + 1));
 		}
-		final List<String> arrivalType = new ArrayList<>();
-		arrivalType.add("准时达");
-		arrivalType.add("准时达");
-		arrivalType.add("准时达");
-
-		mDatePickDialog = new DatePickerDialog("请选择送达时间", getContext(), arrivalType, arrivalType, arrivalType, new OnConfirmeListener() {
+		mArrivalTimeDialog = new PickArrivalTimeDialog(Latte.getApplication());
+		mArrivalTimeDialog.setListener(new PickArrivalTimeDialog.OnArrivalTimePickListener() {
 			@Override
-			public void result(String date) {
-				mTvArrivaltime.setText(date);
+			public void onTimePick(String time, double money) {
+				Toast.makeText(getContext(), time+money, Toast.LENGTH_LONG).show();
 			}
 		});
 
@@ -172,8 +172,8 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 
 	@OnClick(R2.id.tv_settle_arrivaltime)
 	public void onViewClickedArrivalTime() {
-		if (mDatePickDialog != null) {
-			mDatePickDialog.show();
+		if(mArrivalTimeDialog != null){
+			mArrivalTimeDialog.show();
 		}
 	}
 
