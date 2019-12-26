@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  * //设置是否循环播放
  * //loopView.setNotLoop();
  * //滚动监听
- * loopView.setListener(new OnItemSelectedListener() {
+ * loopView.setmListener(new OnItemSelectedListener() {
  *
  * @Override public void onItemSelected(int index) {
  * Log.d("debug", "Item " + index);

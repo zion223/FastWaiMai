@@ -10,8 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:layout_gravity="center_vertical"
-        android:gravity="center"
-        android:textSize="17sp"
+        android:paddingLeft="10dp"
+        android:gravity="left"
+        android:textSize="15sp"
+        android:textColor="@color/black"
         android:text="19:00-19:45"/>
     <TextView
         android:id="@+id/tv_item_arrival_distribution_money"
@@ -19,8 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:gravity="center"
-        android:textSize="17sp"
         android:layout_gravity="center_vertical"
+        android:textColor="@color/black"
         android:text="2.5元配送费"/>
 
     <ImageView

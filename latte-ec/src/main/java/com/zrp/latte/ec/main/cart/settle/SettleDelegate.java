@@ -1,36 +1,22 @@
 package com.zrp.latte.ec.main.cart.settle;
 
-import android.app.AlertDialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
-import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressItemFields;
-import com.zrp.latte.ui.datepicker.DatePickerDialog;
-import com.zrp.latte.ui.datepicker.OnConfirmeListener;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.widget.PickArrivalTimeDialog;
 import com.zrp.latte.ui.widget.SmoothCheckBox;
 import com.zrp.latte.ui.widget.SwitchButton;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -63,11 +49,18 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	LinearLayout mLlSettleAddress;
 	@BindView(R2.id.tv_settle_arrivaltime)
 	TextView mTvArrivaltime;
+	@BindView(R2.id.tv_delivery_money)
+	TextView mTvDeliveryMoney;
+	@BindView(R2.id.tv_settle_exchange_money_show)
+	TextView mtvExchangeMoneyShow;
 
 	private final SmoothCheckBox[] payBox = new SmoothCheckBox[3];
 
+
+
 	private PickArrivalTimeDialog mArrivalTimeDialog;
 	private Double originalMoney = 0.0;
+	private boolean isExchanged = false;
 	public static final int PICK_ADDRESS = 10;
 
 	@Override
@@ -88,14 +81,19 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 		if (originalMoney.equals(0.0)) {
 			originalMoney = Double.valueOf(oldMoney.substring(oldMoney.indexOf("￥") + 1));
 		}
-		mArrivalTimeDialog = new PickArrivalTimeDialog(Latte.getApplication());
-		mArrivalTimeDialog.setListener(new PickArrivalTimeDialog.OnArrivalTimePickListener() {
+		mArrivalTimeDialog = new PickArrivalTimeDialog(getContext());
+		mArrivalTimeDialog.setmListener(new PickArrivalTimeDialog.OnArrivalTimePickListener() {
 			@Override
-			public void onTimePick(String time, double money) {
-				Toast.makeText(getContext(), time+money, Toast.LENGTH_LONG).show();
+			public void onTimePick(int dayType, String time, double money) {
+				if(dayType == 1){
+					mTvArrivaltime.setText(getContext().getString(R.string.tomorrow)+time);
+				}else{
+					mTvArrivaltime.setText(time);
+				}
+				mTvDeliveryMoney.setText(String.format("￥%s", money));
+				calculatePrice(isExchanged);
 			}
 		});
-
 	}
 
 	//支付方式
@@ -120,20 +118,8 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	//积分兑换
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		final String detail = mTvExchangeDetail.getText().toString();
-		final Double exchangeMoney = Double.valueOf(detail.substring(detail.indexOf("￥") + 1));
-
-		mTvExchangeMoney.setText(String.format("-￥%s", exchangeMoney));
-		if (isChecked) {
-			mLlExchange.setVisibility(View.VISIBLE);
-			Toast.makeText(getContext(), "已兑换" + exchangeMoney, Toast.LENGTH_SHORT).show();
-			final double realMoney = originalMoney - exchangeMoney;
-			mTvPaymoney.setText(String.format("￥%s", realMoney));
-		} else {
-			mLlExchange.setVisibility(View.INVISIBLE);
-			mTvPaymoney.setText(String.format("￥%s", originalMoney));
-			Toast.makeText(getContext(), "取消兑换" + exchangeMoney, Toast.LENGTH_SHORT).show();
-		}
+		isExchanged = isChecked;
+		calculatePrice(isChecked);
 	}
 
 
@@ -172,9 +158,32 @@ public class SettleDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 
 	@OnClick(R2.id.tv_settle_arrivaltime)
 	public void onViewClickedArrivalTime() {
-		if(mArrivalTimeDialog != null){
+		if (mArrivalTimeDialog != null) {
 			mArrivalTimeDialog.show();
 		}
 	}
+
+	private void calculatePrice(boolean exchange) {
+		double realMoney = 0.0;
+		if (exchange) {
+			final String detail = mTvExchangeDetail.getText().toString();
+			final Double exchangeMoney = Double.valueOf(detail.substring(detail.indexOf("￥") + 1));
+			mTvExchangeMoney.setText(String.format("-￥%s", exchangeMoney));
+			mtvExchangeMoneyShow.setText(String.format("已优惠￥%s", exchangeMoney));
+			mLlExchange.setVisibility(View.VISIBLE);
+			mtvExchangeMoneyShow.setVisibility(View.VISIBLE);
+			realMoney = originalMoney - exchangeMoney;
+		} else {
+			realMoney = originalMoney;
+			mLlExchange.setVisibility(View.INVISIBLE);
+			mtvExchangeMoneyShow.setVisibility(View.INVISIBLE);
+		}
+		final String deliveryDetail = mTvDeliveryMoney.getText().toString();
+		final Double delivery = Double.valueOf(deliveryDetail.substring(deliveryDetail.indexOf("￥") + 1));
+		realMoney += delivery;
+
+		mTvPaymoney.setText(String.format("￥%s", realMoney));
+	}
+
 
 }

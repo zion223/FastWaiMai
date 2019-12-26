@@ -1,7 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">latte-ui</string>
     <string name="pickerview_submit">确定</string>
     <string name="pickerview_cancel">取消</string>
-    <string name="choose_arrival_time">选择预计送达时间</string>
+    <string name="choose_arrival_time" tools:ignore="ExtraTranslation">选择预计送达时间</string>
     <string name="cancle">取消</string>
+    <string name="immediate_delivery">立即送出</string>
+    <string name="currency_suffix">元配送费</string>
 </resources>

@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,57 +21,77 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.example.latte.ui.R;
-import com.example.latte.ui.R2;
-import com.zrp.latte.ui.recycler.ItemType;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
+import com.zrp.latte.util.timer.DateUtil;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 
-public class PickArrivalTimeDialog extends Dialog {
+public class PickArrivalTimeDialog extends Dialog implements View.OnClickListener{
 
-	@BindView(R2.id.tv_arrival_time_title)
-	TextView mTvArrivalTimeTitle;
-	@BindView(R2.id.tv_arrival_time_toady)
-	TextView mTvArrivalTimeToady;
-	@BindView(R2.id.tv_arrival_time_tomorrow)
-	TextView mTvArrivalTimeTomorrow;
-	@BindView(R2.id.rv_arrival_time)
-	RecyclerView mRvArrivalTime;
+	private TextView mTvArrivalTimeTitle;
+	private TextView mTvArrivalTimeToady;
+	private TextView mTvArrivalTimeTomorrow;
+	private RecyclerView mRvArrivalTime;
+	private Button mCancleButton;
 
-	private final LinkedList<MultipleItemEntity> ENTITYS = new LinkedList<>();
+	private LinkedList<MultipleItemEntity> todayEntities = new LinkedList<>();
+	private LinkedList<MultipleItemEntity> tomorrowEntities = new LinkedList<>();
 
-	private OnArrivalTimePickListener listener;
+	private final ArrivalTimeDialogListener listener = new ArrivalTimeDialogListener();
+
+	private OnArrivalTimePickListener mListener;
+	private ArrivalTimeAdapter adapter = null;
+
+	private int mTodayPrePosition = 0;
+	private int mTomorrowPrePosition = 0;
 
 	private static final int ITEM_ARRIVAL_TIME_NORMAL = 30;
+	//配送具体时间
 	private static final int ARRIVAL_TIME_TIME = 31;
+	//配送费
 	private static final int ARRIVAL_TIME_MONEY = 32;
+	//配送是今天还是明天
+	private static final int ARRIVAL_TIME_DAYTYPE = 33;
 
 	public PickArrivalTimeDialog(@NonNull Context context) {
 		super(context);
 	}
 
-	public void setListener(OnArrivalTimePickListener listener) {
-		this.listener = listener;
+	public void setmListener(OnArrivalTimePickListener mListener) {
+		this.mListener = mListener;
 	}
 
 	public PickArrivalTimeDialog(@NonNull Context context, String title, OnArrivalTimePickListener listener) {
 		super(context);
-		this.listener = listener;
+		this.mListener = listener;
 		mTvArrivalTimeTitle.setText(title);
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.dialog_discountcard_choose);
+		setContentView(R.layout.dialog_settle_arrival_time);
+
+		mTvArrivalTimeTitle = (TextView) findViewById(R.id.tv_arrival_time_title);
+		mTvArrivalTimeToady = (TextView) findViewById(R.id.tv_arrival_time_toady);
+		mTvArrivalTimeTomorrow = (TextView) findViewById(R.id.tv_arrival_time_tomorrow);
+		mRvArrivalTime = (RecyclerView) findViewById(R.id.rv_arrival_time);
+		mCancleButton = (Button) findViewById(R.id.bt_cancle);
+
+		mTvArrivalTimeToady.setText(DateUtil.getWeek());
+		mTvArrivalTimeTomorrow.setText(DateUtil.getWeek(1));
+
+		mCancleButton.setOnClickListener(this);
+		mTvArrivalTimeTomorrow.setOnClickListener(this);
+		mTvArrivalTimeToady.setOnClickListener(this);
+
+		initTodayArrivalTime();
+		initTomorrowArrivalTime();
 		final Window window = getWindow();
 		if(window != null){
-			window.setContentView(R.layout.dialog_discountcard_choose);
 			window.setGravity(Gravity.BOTTOM);
 			window.setWindowAnimations(R.style.anim_panel_up_from_bottom);
 			window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -81,69 +102,72 @@ public class PickArrivalTimeDialog extends Dialog {
 			params.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
 			window.setAttributes(params);
 		}
-		String time = "12:200-14:00";
-		String money = "1.5元配送费";
-		for(int i = 0; i < 6; i++){
+
+		adapter = new ArrivalTimeAdapter(todayEntities);
+
+		mRvArrivalTime.setAdapter(adapter);
+		final LinearLayoutManager manager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+		mRvArrivalTime.setLayoutManager(manager);
+		mRvArrivalTime.addOnItemTouchListener(listener);
+	}
+
+	@Override
+	public void onClick(View v) {
+		int id = v.getId();
+		if( id == R.id.bt_cancle){
+			dismiss();
+		}else if(id == R.id.tv_arrival_time_toady){
+			mTvArrivalTimeToady.setBackgroundColor(Color.WHITE);
+			mTvArrivalTimeTomorrow.setBackgroundColor(Color.parseColor("#11111111"));
+			adapter.setNewData(todayEntities);
+		}else if(id == R.id.tv_arrival_time_tomorrow){
+			mTvArrivalTimeToady.setBackgroundColor(Color.parseColor("#11111111"));
+			mTvArrivalTimeTomorrow.setBackgroundColor(Color.WHITE);
+			adapter.setNewData(tomorrowEntities);
+		}
+	}
+
+	private void initTodayArrivalTime() {
+
+		final MultipleItemEntity nowEntity = MultipleItemEntity.builder()
+				.setItemType(ITEM_ARRIVAL_TIME_NORMAL)
+				.setField(ARRIVAL_TIME_TIME, getContext().getString(R.string.immediate_delivery))
+				.setField(MultipleFields.TAG, true)
+				.setField(ARRIVAL_TIME_MONEY, "2")
+				.setField(ARRIVAL_TIME_DAYTYPE, 0)
+				.build();
+		todayEntities.add(nowEntity);
+		String time = "20:40";
+		String money = "5";
+		for(int i = 0; i < 12; i++){
 			final MultipleItemEntity entity = MultipleItemEntity.builder()
 					.setItemType(ITEM_ARRIVAL_TIME_NORMAL)
 					.setField(ARRIVAL_TIME_TIME, time)
+					.setField(MultipleFields.TAG, false)
 					.setField(ARRIVAL_TIME_MONEY, money)
+					.setField(ARRIVAL_TIME_DAYTYPE, 0)
 					.build();
-			ENTITYS.add(entity);
+			todayEntities.add(entity);
 		}
-
-		final ArrivalTimeAdapter arrivalTimeAdapter = new ArrivalTimeAdapter(ENTITYS);
-
-		mRvArrivalTime.setAdapter(arrivalTimeAdapter);
-		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
-		mRvArrivalTime.setLayoutManager(manager);
-		mRvArrivalTime.addOnItemTouchListener(new SimpleClickListener(){
-			@Override
-			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-				final MultipleItemEntity entity = (MultipleItemEntity) adapter.getData().get(position);
-
-				if(listener != null){
-					final String tempMoney = entity.getField(ARRIVAL_TIME_MONEY);
-					final String time = entity.getField(ARRIVAL_TIME_TIME);
-					double money = Double.parseDouble(tempMoney.substring(0, tempMoney.length()-4));
-					final ImageView checkView = (ImageView) findViewById(R2.id.iv_item_arrival_flag);
-					checkView.setVisibility(View.VISIBLE);
-					listener.onTimePick(time, money);
-				}
-			}
-
-			@Override
-			public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
-
-			}
-
-			@Override
-			public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-
-			}
-
-			@Override
-			public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
-
-			}
-		});
 	}
 
-	@OnClick(R2.id.tv_arrival_time_toady)
-	public void onViewClickedToady(View view) {
-
-	}
-	@OnClick(R2.id.tv_arrival_time_tomorrow)
-	public void onViewClickedTomorrow(View view) {
-
-	}
-	@OnClick(R2.id.bt_cancle)
-	public void onViewClickedCancle(View view) {
-		dismiss();
+	private void initTomorrowArrivalTime() {
+		String time = "13:00";
+		String money = "5";
+		for(int i = 0; i < 12; i++){
+			final MultipleItemEntity entity = MultipleItemEntity.builder()
+					.setItemType(ITEM_ARRIVAL_TIME_NORMAL)
+					.setField(ARRIVAL_TIME_TIME, time)
+					.setField(MultipleFields.TAG, false)
+					.setField(ARRIVAL_TIME_MONEY, money)
+					.setField(ARRIVAL_TIME_DAYTYPE, 1)
+					.build();
+			tomorrowEntities.add(entity);
+		}
 	}
 
 	public interface OnArrivalTimePickListener {
-		public void onTimePick(String time, double money);
+		void onTimePick(int dayType, String time, double money);
 	}
 
 	class ArrivalTimeAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, BaseViewHolder> {
@@ -157,15 +181,72 @@ public class PickArrivalTimeDialog extends Dialog {
 		protected void convert(BaseViewHolder helper, MultipleItemEntity item) {
 			switch (helper.getItemViewType()) {
 				case ITEM_ARRIVAL_TIME_NORMAL:
-					final TextView timeView =helper.getView(R.id.tv_item_arrival_time);
+					final TextView timeView = helper.getView(R.id.tv_item_arrival_time);
 					timeView.setText((String)item.getField(ARRIVAL_TIME_TIME));
-					final TextView moneyView =helper.getView(R.id.tv_item_arrival_distribution_money);
-					moneyView.setText((String)item.getField(ARRIVAL_TIME_MONEY));
-
+					final TextView moneyView = helper.getView(R.id.tv_item_arrival_distribution_money);
+					final ImageView choosedView = helper.getView(R.id.iv_item_arrival_flag);
+					moneyView.setText(String.format("%s%s", item.getField(ARRIVAL_TIME_MONEY), getContext().getString(R.string.currency_suffix)));
+					boolean choosed = item.getField(MultipleFields.TAG);
+					if(choosed){
+						choosedView.setVisibility(View.VISIBLE);
+						timeView.setTextColor(Color.BLUE);
+						moneyView.setTextColor(Color.BLUE);
+					}else{
+						choosedView.setVisibility(View.INVISIBLE);
+						timeView.setTextColor(Color.BLACK);
+						moneyView.setTextColor(Color.BLACK);
+					}
 					break;
 				default:
 					break;
 			}
 		}
+
 	}
+	class ArrivalTimeDialogListener extends SimpleClickListener{
+
+		@Override
+		public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+			final MultipleItemEntity entity = (MultipleItemEntity) adapter.getData().get(position);
+			if(mListener != null){
+				final double money = Double.parseDouble((String) entity.getField(ARRIVAL_TIME_MONEY));
+				final int dayType = entity.getField(ARRIVAL_TIME_DAYTYPE);
+				final String time = entity.getField(ARRIVAL_TIME_TIME);
+				if(dayType == 0 &&mTodayPrePosition != position){
+					((MultipleItemEntity)adapter.getData().get(mTodayPrePosition)).setField(MultipleFields.TAG, false);
+					adapter.notifyItemChanged(mTodayPrePosition);
+					entity.setField(MultipleFields.TAG, true);
+					adapter.notifyItemChanged(position);
+					mTodayPrePosition = position;
+				}else if(mTomorrowPrePosition != position){
+						((MultipleItemEntity)adapter.getData().get(mTomorrowPrePosition)).setField(MultipleFields.TAG, false);
+						adapter.notifyItemChanged(mTomorrowPrePosition);
+						entity.setField(MultipleFields.TAG, true);
+						adapter.notifyItemChanged(position);
+						mTomorrowPrePosition = position;
+					}
+				if(position != 0){
+					((MultipleItemEntity)adapter.getData().get(0)).setField(MultipleFields.TAG, false);
+				}
+				mListener.onTimePick(dayType, time, money);
+				dismiss();
+			}
+		}
+
+		@Override
+		public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+
+		}
+
+		@Override
+		public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+		}
+
+		@Override
+		public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+
+		}
+	}
+
 }

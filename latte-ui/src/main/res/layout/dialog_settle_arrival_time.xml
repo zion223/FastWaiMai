@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/app_background">
+    android:layout_height="300dp"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tv_arrival_time_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="47dp"
         android:text="@string/choose_arrival_time"
         android:textColor="@color/black"
         android:textSize="15sp"
@@ -22,42 +22,41 @@
         android:background="@color/app_background"/>
     <TextView
         android:id="@+id/tv_arrival_time_toady"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/view_line"
         android:gravity="center"
         android:background="@color/white"
-        android:textColor="@color/black"
-        android:text="今天"/>
+        android:textColor="@color/black" />
     <View
-        android:layout_width="150dp"
-        android:layout_height="2dp"
-        android:layout_below="@+id/tv_arrival_time_toady"
-        android:background="@color/app_background"/>
+        android:layout_width="130dp"
+        android:layout_height="0.5dp"
+        android:layout_above="@+id/tv_arrival_time_tomorrow"
+        android:background="@color/lightgray"/>
 
     <TextView
         android:id="@+id/tv_arrival_time_tomorrow"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/tv_arrival_time_toady"
         android:gravity="center"
-        android:background="@color/white"
-        android:textColor="@color/black"
-        android:text="明天"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_arrival_time"
-        android:layout_width="match_parent"
+        android:background="@color/app_background"
+        android:textColor="@color/black" />
+    <View
+        android:layout_width="130dp"
         android:layout_height="match_parent"
-        android:layout_below="@id/tv_arrival_time_title"
-        android:layout_toRightOf="@+id/tv_arrival_time_toady"/>
-
+        android:layout_below="@+id/tv_arrival_time_tomorrow"
+        android:background="@color/app_background" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_arrival_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_arrival_time_title"
+            android:layout_toRightOf="@+id/tv_arrival_time_toady"/>
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/bt_cancle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:gravity="center"

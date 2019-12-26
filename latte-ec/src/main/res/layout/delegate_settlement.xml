@@ -237,14 +237,11 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp">
 
-                <com.joanzapata.iconify.widget.IconTextView
+                <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:text="{fa-weixin}"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="50sp"
-                    tools:ignore="HardcodedText" />
+                    android:src="@drawable/weixinpay"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -280,14 +277,11 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp">
 
-                <com.joanzapata.iconify.widget.IconTextView
+                <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:text="{fa-weixin}"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="50sp"
-                    tools:ignore="HardcodedText" />
+                    android:src="@drawable/alipay"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -323,14 +317,11 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp">
 
-                <com.joanzapata.iconify.widget.IconTextView
+                <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
-                    android:text="{fa-weixin}"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="50sp"
-                    tools:ignore="HardcodedText" />
+                    android:src="@drawable/huapay"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -501,12 +492,13 @@
                     android:textSize="15sp" />
 
                 <TextView
+                    android:id="@+id/tv_delivery_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="8"
+                    android:text="0.0"
                     android:gravity="right"
-                    android:text="￥2.5"
                     android:textSize="15sp" />
 
             </LinearLayout>
@@ -537,6 +529,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="8"
                     android:gravity="right"
+                    android:textColor="@color/red"
                     android:text="-￥2.5"
                     android:textSize="15sp" />
 
@@ -550,22 +543,33 @@
         android:layout_gravity="bottom"
         android:minHeight="45dp"
         android:layout_weight="1"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp">
+        android:background="@color/black">
+        <TextView
+            android:id="@+id/tv_settle_exchange_money_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:gravity="left"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"
+            android:paddingLeft="10dp"
+            android:text="已优惠￥2"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="8"
             android:gravity="right"
-            android:text="实付"/>
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:text="合计"/>
         <TextView
             android:id="@+id/tv_settle_paymoney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
             android:gravity="center"
             android:textSize="18sp"
             android:text="￥12.9"/>
@@ -574,8 +578,8 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:layout_gravity="center_vertical"
-            android:background="@color/red"
-            android:textColor="@color/white"
+            android:background="@color/gold"
+            android:textColor="@color/black"
             android:text="提交订单"/>
 
     </LinearLayout>
