@@ -86,6 +86,7 @@ dependencies {
     compile 'com.github.yalantis:ucrop:2.2.2-native'
     //分割线
     implementation 'com.github.kjt666:TicketDivideLine:v1.1'
+
     implementation project(path: ':latte-annotations')
 
 }

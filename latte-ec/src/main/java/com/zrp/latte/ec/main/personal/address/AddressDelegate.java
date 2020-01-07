@@ -64,9 +64,14 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
 
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-        final MultipleItemEntity address = (MultipleItemEntity) adapter.getData().get(position);
+        final MultipleItemEntity entity = (MultipleItemEntity) adapter.getData().get(position);
+        final String name = entity.getField(AddressItemFields.NAME);
+        String surname = name.substring(0, 1);
+        final String phone = entity.getField(AddressItemFields.PHONE);
+        final Boolean isDefault = entity.getField(AddressItemFields.DEFAULT);
+        final String gender = entity.getField(AddressItemFields.GENDER);
         final Bundle bundle = new Bundle();
-        bundle.putSerializable("address", address);
+        bundle.putString("address", surname + gender+"("+phone+")");
         getSupportDelegate().setFragmentResult(RESULT_OK, bundle);
         getSupportDelegate().onDestroy();
         getSupportDelegate().pop();

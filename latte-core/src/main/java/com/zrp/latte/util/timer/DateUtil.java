@@ -1,5 +1,6 @@
 package com.zrp.latte.util.timer;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -52,5 +53,11 @@ public final class DateUtil {
 		}
 		return "明天"+week;
 	}
+	public static String getImmediatelyArrivalTime(){
+		final SimpleDateFormat df = new SimpleDateFormat("mm:ss");//设置日期格式
+		System.out.println(df.format(System.currentTimeMillis() + 30 * 60 * 1000));// new Date()为获取当前系统时间
+		return "大约14:00送达";
+	}
+
 
 }

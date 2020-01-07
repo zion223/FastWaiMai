@@ -26,6 +26,7 @@ dependencies {
     implementation project(path: ':latte-ec')
     annotationProcessor project(path: ':latte-compiler')
     implementation project(path: ':latte-annotations')
+    androidTestImplementation 'junit:junit:4.12'
     //compile project(path: ':latte-core')
 
 }

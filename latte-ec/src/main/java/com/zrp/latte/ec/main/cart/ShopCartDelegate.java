@@ -21,14 +21,17 @@ import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeAdapter;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeConverter;
-import com.zrp.latte.ec.main.cart.settle.SettleDelegate;
+import com.zrp.latte.ec.main.cart.order.SettleDelegate;
+import com.zrp.latte.ec.main.cart.order.SettleItemType;
 import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
+import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.recyclerview.ShopCartItemTouchHelperCallback;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -127,18 +130,10 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
      * 结算
      */
     @OnClick(R2.id.tv_shop_cart_pay)
-    void shopCartPay() {
-        //TODO 后台生成订单进行支付 提交订单确认Delegate
-        //FastPay.create(this).beginPayDialog();
+    void onClickSettle() {
         getParentDelegate().getSupportDelegate().start(new SettleDelegate());
     }
 
-    /**
-     * 提交到后台服务器生成订单
-     */
-    private void createOrder() {
-
-    }
 
     @Override
     public void checkItemCount() {

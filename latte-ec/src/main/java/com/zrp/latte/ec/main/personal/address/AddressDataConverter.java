@@ -19,6 +19,7 @@ public class AddressDataConverter extends DataConverter {
             final JSONObject address = addressArray.getJSONObject(i);
             final int id = address.getIntValue("id");
             final String name = address.getString("name");
+            final String gender = address.getString("gender");
             final String phone = address.getString("phone");
             final String addressDetail = address.getString("address");
             final Boolean isDefault = address.getBoolean("default");
@@ -27,6 +28,7 @@ public class AddressDataConverter extends DataConverter {
                     .setItemType(AddressItemType.ITEM_ADDRESS)
                     .setField(MultipleFields.ID, id)
                     .setField(AddressItemFields.NAME, name)
+                    .setField(AddressItemFields.GENDER, gender)
                     .setField(AddressItemFields.PHONE, phone)
                     .setField(AddressItemFields.ADDRESS, addressDetail)
                     .setField(AddressItemFields.DEFAULT, isDefault)

@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,7 +33,7 @@ import butterknife.OnClick;
 public class AddressEditDelegate extends LatteDelegate {
 
     @BindView(R2.id.tv_address_edit_save)
-    TextView mTvAddressSave;
+    ImageView mTvAddressSave;
     @BindView(R2.id.edit_address_edit_name)
     EditText mEditAddressName;
     @BindView(R2.id.edit_address_edit_phone)

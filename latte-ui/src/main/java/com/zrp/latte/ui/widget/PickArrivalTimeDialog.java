@@ -167,7 +167,8 @@ public class PickArrivalTimeDialog extends Dialog implements View.OnClickListene
 	}
 
 	public interface OnArrivalTimePickListener {
-		void onTimePick(int dayType, String time, double money);
+		//dayType: 0-立即送达  1-指定时间 2-明天
+		void onTimePick(String type, String time, double money);
 	}
 
 	class ArrivalTimeAdapter extends BaseMultiItemQuickAdapter<MultipleItemEntity, BaseViewHolder> {
@@ -208,17 +209,21 @@ public class PickArrivalTimeDialog extends Dialog implements View.OnClickListene
 		@Override
 		public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 			final MultipleItemEntity entity = (MultipleItemEntity) adapter.getData().get(position);
+			String type = null;
 			if(mListener != null){
 				final double money = Double.parseDouble((String) entity.getField(ARRIVAL_TIME_MONEY));
 				final int dayType = entity.getField(ARRIVAL_TIME_DAYTYPE);
-				final String time = entity.getField(ARRIVAL_TIME_TIME);
-				if(dayType == 0 &&mTodayPrePosition != position){
+				String time = entity.getField(ARRIVAL_TIME_TIME);
+
+				if(dayType == 0 && mTodayPrePosition != position){
 					((MultipleItemEntity)adapter.getData().get(mTodayPrePosition)).setField(MultipleFields.TAG, false);
+
 					adapter.notifyItemChanged(mTodayPrePosition);
 					entity.setField(MultipleFields.TAG, true);
 					adapter.notifyItemChanged(position);
 					mTodayPrePosition = position;
 				}else if(mTomorrowPrePosition != position){
+						time = "明天" + time;
 						((MultipleItemEntity)adapter.getData().get(mTomorrowPrePosition)).setField(MultipleFields.TAG, false);
 						adapter.notifyItemChanged(mTomorrowPrePosition);
 						entity.setField(MultipleFields.TAG, true);
@@ -228,7 +233,12 @@ public class PickArrivalTimeDialog extends Dialog implements View.OnClickListene
 				if(position != 0){
 					((MultipleItemEntity)adapter.getData().get(0)).setField(MultipleFields.TAG, false);
 				}
-				mListener.onTimePick(dayType, time, money);
+				if(dayType == 0 && position == 0){
+					type = "立即送达";
+				}else{
+					type = "指定时间";
+				}
+				mListener.onTimePick(type, time, money);
 				dismiss();
 			}
 		}

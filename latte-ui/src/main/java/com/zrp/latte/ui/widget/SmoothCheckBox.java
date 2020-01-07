@@ -26,8 +26,7 @@ public class SmoothCheckBox extends View implements Checkable {
 
 	private static final int COLOR_TICK = Color.WHITE;
 	private static final int COLOR_UNCHECKED = Color.WHITE;
-	private static final int COLOR_CHECKED = Color.parseColor("#228B22");
-	//private static final int COLOR_CHECKED = Color.GREEN;
+	private static final int COLOR_CHECKED = Color.parseColor("#FFD700");
 	private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
 
 	private static final int DEF_DRAW_SIZE = 25;
