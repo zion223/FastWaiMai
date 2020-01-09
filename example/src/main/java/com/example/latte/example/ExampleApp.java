@@ -44,7 +44,7 @@ public class ExampleApp extends MultiDexApplication {
         //分页左边栏
         interceptors.add(new DebugInterceptor("api/sort",R.raw.categories));
         //个人页面数据
-        interceptors.add(new DebugInterceptor("api/personal",R.raw.personal));
+        //interceptors.add(new DebugInterceptor("api/personal",R.raw.personal));
         //分页右边栏
         interceptors.add(new DebugInterceptor("api/content/0",R.raw.lk001));
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));

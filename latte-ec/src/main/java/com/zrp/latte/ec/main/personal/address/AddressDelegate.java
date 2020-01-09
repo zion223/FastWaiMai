@@ -1,12 +1,12 @@
 package com.zrp.latte.ec.main.personal.address;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte.latte_ec.R;
@@ -23,8 +23,8 @@ import butterknife.OnClick;
 
 public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.OnItemClickListener {
 
-    @BindView(R2.id.icon_address_add)
-    IconTextView mIconAddressAdd;
+    @BindView(R2.id.tv_address_add)
+    TextView mTvAddressAdd;
     @BindView(R2.id.rv_address_view)
     RecyclerView mRvAddress;
 
@@ -50,6 +50,7 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
                         mAdapter = new AddressAdapter(converter.convert(), AddressDelegate.this);
                         mAdapter.setOnItemClickListener(AddressDelegate.this);
                         mRvAddress.setAdapter(mAdapter);
+
                     }
                 })
                 .build()
@@ -57,7 +58,7 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
     }
 
 
-    @OnClick(R2.id.icon_address_back)
+    @OnClick(R2.id.iv_address_backarrow)
     public void onViewClickedReturn() {
         getSupportDelegate().pop();
     }
@@ -65,7 +66,7 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
     @Override
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
         final MultipleItemEntity entity = (MultipleItemEntity) adapter.getData().get(position);
-        final String name = entity.getField(AddressItemFields.NAME);
+        final String name = entity.getField(AddressItemFields.SURNAME);
         String surname = name.substring(0, 1);
         final String phone = entity.getField(AddressItemFields.PHONE);
         final Boolean isDefault = entity.getField(AddressItemFields.DEFAULT);

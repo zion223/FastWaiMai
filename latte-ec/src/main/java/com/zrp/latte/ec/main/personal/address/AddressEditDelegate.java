@@ -55,7 +55,7 @@ public class AddressEditDelegate extends LatteDelegate {
     private String address = null;
     private boolean isDefault = false;
 
-    public static AddressEditDelegate create(Integer id,String name, String phone, String address, Boolean isDefault) {
+    public static AddressEditDelegate create(Integer id, String name, String phone, String address, Boolean isDefault) {
         final Bundle args = new Bundle();
         args.putInt("id", id);
         args.putString("name", name);

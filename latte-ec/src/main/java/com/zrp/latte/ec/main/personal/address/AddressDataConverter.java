@@ -17,20 +17,23 @@ public class AddressDataConverter extends DataConverter {
         final int addressSize = addressArray.size();
         for(int i = 0; i < addressSize; i++){
             final JSONObject address = addressArray.getJSONObject(i);
+
             final int id = address.getIntValue("id");
             final String name = address.getString("name");
             final String gender = address.getString("gender");
             final String phone = address.getString("phone");
-            final String addressDetail = address.getString("address");
+            final String preAddress = address.getString("preaddress");
+            final String sufAddress = address.getString("sufaddress");
             final Boolean isDefault = address.getBoolean("default");
 
             final MultipleItemEntity addressEntity = MultipleItemEntity.builder()
                     .setItemType(AddressItemType.ITEM_ADDRESS)
                     .setField(MultipleFields.ID, id)
-                    .setField(AddressItemFields.NAME, name)
+                    .setField(AddressItemFields.SURNAME, name)
                     .setField(AddressItemFields.GENDER, gender)
                     .setField(AddressItemFields.PHONE, phone)
-                    .setField(AddressItemFields.ADDRESS, addressDetail)
+                    .setField(AddressItemFields.ADDRESS_PREFIX, preAddress)
+                    .setField(AddressItemFields.ADDRESS_SUFFIX, sufAddress)
                     .setField(AddressItemFields.DEFAULT, isDefault)
                     .build();
             ENTITYS.add(addressEntity);

@@ -1,9 +1,10 @@
 package com.zrp.latte.ec.main.personal.address;
 
 public enum  AddressItemFields {
-    NAME,
+    SURNAME,
     GENDER,
     PHONE,
-    ADDRESS,
+    ADDRESS_PREFIX,
+    ADDRESS_SUFFIX,
     DEFAULT
 }

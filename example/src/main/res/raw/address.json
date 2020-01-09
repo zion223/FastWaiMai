@@ -4,19 +4,21 @@
   "data":[
     {
       "id":1,
-      "name":"张张",
+      "name":"张",
       "gender":"先生",
       "phone":"15073591684",
       "default":true,
-      "address":"山东省青岛市市南区"
+      "preaddress":"弘信山庄",
+      "sufaddress":"33单元601"
     },
     {
       "id":2,
-      "name":"周周",
+      "name": "周",
       "gender":"女士",
       "phone":"1336548921",
-      "default":false,
-      "address":"山东省青岛市市北区"
+      "default": false,
+      "preaddress": "动漫产业园",
+      "sufaddress": "E座601"
     }
   ]
 }

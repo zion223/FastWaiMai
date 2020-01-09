@@ -22,11 +22,11 @@ import com.example.latte.ui.R;
 
 
 public class SmoothCheckBox extends View implements Checkable {
-	private static final String KEY_INSTANCE_STATE = "InstanceState";
+	private static final String KEY_INSTANCE_STATE = "KEY_INSTANCE_STATE";
 
 	private static final int COLOR_TICK = Color.WHITE;
 	private static final int COLOR_UNCHECKED = Color.WHITE;
-	private static final int COLOR_CHECKED = Color.parseColor("#FFD700");
+	private static final int COLOR_CHECKED = Color.parseColor("#66CDAA");
 	private static final int COLOR_FLOOR_UNCHECKED = Color.parseColor("#DFDFDF");
 
 	private static final int DEF_DRAW_SIZE = 25;
