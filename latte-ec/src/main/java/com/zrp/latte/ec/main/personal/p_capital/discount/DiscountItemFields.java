@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.discount;
+package com.zrp.latte.ec.main.personal.p_capital.discount;
 
 public enum  DiscountItemFields {
 	SHOP_NAME,

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.LatteDelegate;
-import com.zrp.latte.ec.main.personal.address.AddressDelegate;
+import com.zrp.latte.ec.main.personal.p_function.address.AddressDelegate;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.widget.PickArrivalTimeDialog;
 import com.zrp.latte.ui.widget.SwitchButton;

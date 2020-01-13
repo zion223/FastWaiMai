@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.address;
+package com.zrp.latte.ec.main.personal.p_function.address;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

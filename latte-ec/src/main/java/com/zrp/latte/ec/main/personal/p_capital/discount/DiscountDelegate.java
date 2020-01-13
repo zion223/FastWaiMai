@@ -1,19 +1,16 @@
-package com.zrp.latte.ec.main.personal.discount;
+package com.zrp.latte.ec.main.personal.p_capital.discount;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
-import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ui.tab.TabPagerAdapter;
 

@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.discount;
+package com.zrp.latte.ec.main.personal.p_capital.discount;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;

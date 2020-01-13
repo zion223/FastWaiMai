@@ -1,8 +1,7 @@
-package com.zrp.latte.ec.main.personal.address;
+package com.zrp.latte.ec.main.personal.p_function.address;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.ui.recycler.MultipleFields;

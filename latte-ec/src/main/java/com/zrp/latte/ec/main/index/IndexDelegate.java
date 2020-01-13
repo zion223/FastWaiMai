@@ -51,8 +51,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecycleView;
-    @BindView(R2.id.sr1_index)
-    SwipeRefreshLayout mRefreshLayout;
     @BindView(R2.id.icon_index_scan)
     IconTextView mIconScan;
     @BindView(R2.id.icon_index_message)
@@ -66,7 +64,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @BindView(R2.id.vp_index_sort)
     ViewPager mViewPager;
 
-    private RefreshHandler mRefreshHandler = null;
     private MultipleRecyclerAdapter mAdapter = null;
 
     private List<SpecZoneBean> mSpecData = null;
@@ -128,14 +125,13 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-        mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
+        //mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
     }
 
 
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        initRefreshLayout();
         initRecyclerView();
         initTabLayout();
         //加载广告数据和分类数据
@@ -202,14 +198,14 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         mSpecRecyclerView.setLayoutManager(staggeredGridLayoutManager);
     }
 
-    private void initRefreshLayout() {
-        mRefreshLayout.setColorSchemeResources(
-                android.R.color.holo_blue_light,
-                android.R.color.holo_orange_dark,
-                android.R.color.holo_red_light
-        );
-        mRefreshLayout.setProgressViewOffset(true, 120, 300);
-    }
+//    private void initRefreshLayout() {
+//        mRefreshLayout.setColorSchemeResources(
+//                android.R.color.holo_blue_light,
+//                android.R.color.holo_orange_dark,
+//                android.R.color.holo_red_light
+//        );
+//        mRefreshLayout.setProgressViewOffset(true, 120, 300);
+//    }
 
 
     /**
@@ -220,9 +216,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
      */
     @Override
     public void onFocusChange(View view, boolean hasFocus) {
-        if (hasFocus) {
 
-        }
     }
 
 }

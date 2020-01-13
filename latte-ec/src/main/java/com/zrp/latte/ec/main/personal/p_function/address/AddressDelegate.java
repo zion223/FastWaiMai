@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.address;
+package com.zrp.latte.ec.main.personal.p_function.address;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
-import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;

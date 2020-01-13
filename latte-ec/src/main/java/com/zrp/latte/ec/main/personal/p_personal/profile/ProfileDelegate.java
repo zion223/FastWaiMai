@@ -1,4 +1,4 @@
-package com.zrp.latte.ec.main.personal.profile;
+package com.zrp.latte.ec.main.personal.p_personal.profile;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
-import com.joanzapata.iconify.widget.IconTextView;
 import com.yalantis.ucrop.UCrop;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;

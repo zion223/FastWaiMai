@@ -8,24 +8,19 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-import com.zrp.latte.ec.main.cart.order.SettleDelegate;
-import com.zrp.latte.ec.main.personal.address.AddressDelegate;
-import com.zrp.latte.ec.main.personal.discount.DiscountDelegate;
-import com.zrp.latte.ec.main.personal.profile.ProfileDelegate;
-import com.zrp.latte.ec.main.personal.setting.SettingDelegate;
+import com.zrp.latte.ec.main.personal.p_function.address.AddressDelegate;
+import com.zrp.latte.ec.main.personal.p_capital.discount.DiscountDelegate;
+import com.zrp.latte.ec.main.personal.p_personal.profile.ProfileDelegate;
+import com.zrp.latte.ec.main.personal.p_personal.setting.SettingDelegate;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class PersonalDelegate extends BottomItemDelegate {
 
@@ -52,20 +47,21 @@ public class PersonalDelegate extends BottomItemDelegate {
 	 * tv_personal_benefit 165元
 	 * <p>
 	 * <p>
-	 * 个人资料(ProfileDelegate)
-	 * 设置 消息
+	 * 个人(p_personal)
+	 *      个人资料(ProfileDelegate)、设置(SettingDelegate) 消息
 	 * <p>
-	 * 我的资产
-	 * 红包、代金券(DiscountDelegate)、津贴
-	 * 我的钱包
-	 * 借钱、买单、享优惠
-	 * 我的功能
-	 * 我的地址  (AddressDelegate)
-	 * 我的足迹
-	 * 收藏的店
-	 * 答谢记录
-	 * 我的评价
-	 * 我的服务
+	 * 我的资产(p_capital)
+	 *      红包、代金券(DiscountDelegate)、津贴
+	 * 我的钱包(p_wallert)
+	 *      借钱(BorrowDelegate)、买单、享优惠
+	 * 我的功能(p_function)
+	 *      我的地址  (AddressDelegate)
+	 *      我的足迹
+	 *      收藏的店
+	 *      答谢记录
+	 *      我的评价
+	 * 我的服务(p_service)
+	 *
 	 */
 
 	@Override
@@ -135,5 +131,11 @@ public class PersonalDelegate extends BottomItemDelegate {
 	@OnClick(R2.id.iv_personal_setting)
 	public void onViewClickedSetting() {
 		getParentDelegate().getSupportDelegate().start(new SettingDelegate());
+	}
+
+
+	@OnClick(R2.id.rl_personal_borrow)
+	public void onViewClickedBorrow() {
+
 	}
 }

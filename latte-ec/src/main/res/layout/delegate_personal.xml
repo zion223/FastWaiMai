@@ -243,6 +243,7 @@
                     android:orientation="horizontal">
 
                     <RelativeLayout
+                        android:id="@+id/rl_personal_borrow"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="15dp"
