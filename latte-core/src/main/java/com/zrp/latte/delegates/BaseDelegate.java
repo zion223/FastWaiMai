@@ -33,7 +33,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     public abstract Object setLayout();
 
-    public abstract void onBindView(@Nullable Bundle savedInstanceState,@NonNull View view);
+    public abstract void onBindView(@Nullable Bundle savedInstanceState,@NonNull View view) throws Exception;
 
 
     @Override
@@ -72,7 +72,11 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
             throw new ClassCastException("setLayout() must be int or View");
         }
         mUnbinder = ButterKnife.bind(this, rootView);
-        onBindView(savedInstanceState, rootView);
+        try {
+            onBindView(savedInstanceState, rootView);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return rootView;
     }
 

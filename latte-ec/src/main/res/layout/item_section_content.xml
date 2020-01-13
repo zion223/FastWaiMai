@@ -22,7 +22,8 @@
         android:orientation="vertical"
         android:layout_marginLeft="@dimen/margin_3dp"
         android:clipChildren="false"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingRight="5dp">
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/tv_goods_name"
             android:layout_width="wrap_content"

@@ -16,9 +16,11 @@ import android.widget.TextView;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
+import com.zrp.latte.ec.main.cart.order.SettleDelegate;
 import com.zrp.latte.ec.main.personal.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.discount.DiscountDelegate;
 import com.zrp.latte.ec.main.personal.profile.ProfileDelegate;
+import com.zrp.latte.ec.main.personal.setting.SettingDelegate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,11 +39,9 @@ public class PersonalDelegate extends BottomItemDelegate {
 	TextView mTvPayment;
 	@BindView(R2.id.tv_personal_benefit)
 	TextView mTvBenefit;
-	Unbinder unbinder;
 
 
 	/**
-	 *
 	 * 我的资产
 	 * tv_personal_hongbao  0个未使用
 	 * tv_personal_discount 12张未使用
@@ -53,18 +53,18 @@ public class PersonalDelegate extends BottomItemDelegate {
 	 * <p>
 	 * <p>
 	 * 个人资料(ProfileDelegate)
-	 * 		设置 消息
-	 *
+	 * 设置 消息
+	 * <p>
 	 * 我的资产
-	 * 		红包、代金券(DiscountDelegate)、津贴
+	 * 红包、代金券(DiscountDelegate)、津贴
 	 * 我的钱包
-	 * 		借钱、买单、享优惠
+	 * 借钱、买单、享优惠
 	 * 我的功能
-	 * 		我的地址  (AddressDelegate)
-	 * 		我的足迹
-	 * 		收藏的店
-	 * 		答谢记录
-	 * 		我的评价
+	 * 我的地址  (AddressDelegate)
+	 * 我的足迹
+	 * 收藏的店
+	 * 答谢记录
+	 * 我的评价
 	 * 我的服务
 	 */
 
@@ -115,18 +115,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 	}
 
-//	@OnClick(R2.id.tv_all_order)
-//	void onClickAllOrder() {
-//		getParentDelegate().getSupportDelegate().start(OrderPageViewDelegate.create(OrderStatusType.ALL));
-//	}
-
-//
-//
-//	@OnClick(R2.id.iv_goto_discount)
-//	public void onViewClickedDiscount() {
-//		getParentDelegate().getSupportDelegate().start(new DiscountPageViewDelegate());
-//	}
-
 
 	@OnClick(R2.id.tv_personal_name)
 	public void onViewClickedEditDetail() {
@@ -139,22 +127,13 @@ public class PersonalDelegate extends BottomItemDelegate {
 		getParentDelegate().getSupportDelegate().start(new AddressDelegate());
 	}
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		// TODO: inflate a fragment view
-		View rootView = super.onCreateView(inflater, container, savedInstanceState);
-		unbinder = ButterKnife.bind(this, rootView);
-		return rootView;
-	}
-
-	@Override
-	public void onDestroyView() {
-		super.onDestroyView();
-		unbinder.unbind();
-	}
-
 	@OnClick(R2.id.rl_personal_discount)
 	public void onViewClickedDiscount() {
 		getParentDelegate().getSupportDelegate().start(new DiscountDelegate());
+	}
+
+	@OnClick(R2.id.iv_personal_setting)
+	public void onViewClickedSetting() {
+		getParentDelegate().getSupportDelegate().start(new SettingDelegate());
 	}
 }

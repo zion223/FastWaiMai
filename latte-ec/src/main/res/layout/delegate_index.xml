@@ -74,13 +74,13 @@
                 android:textColor="@android:color/white"
                 android:textSize="25sp"/>
             <!-- 搜索框-->
-            <!-- 设置圆角 @drawable/rounded_edittext-->
+            <!-- 设置圆角 @drawable/index_search_round-->
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="4"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/index_search_round"
                 android:hint="@string/search"
                 android:paddingLeft="20dp"/>
             <com.joanzapata.iconify.widget.IconTextView

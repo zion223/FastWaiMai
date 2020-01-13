@@ -7,32 +7,34 @@
         android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/app_main">
+        android:background="@color/white">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_edit_return"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:text="{fa-angle-left}"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="30sp" />
+           <ImageView
+               android:id="@+id/iv_profile_backarrow"
+               android:layout_width="20dp"
+               android:layout_height="match_parent"
+               android:src="@drawable/left_arrow"
+               android:layout_marginLeft="15dp"/>
 
+            <View
+                android:id="@+id/view_profile_line"
+                android:layout_width="3dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_profile_backarrow"
+                android:background="@color/app_background"/>
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/margin_7dp"
-                android:layout_centerVertical="true"
-                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/view_profile_line"
+                android:gravity="center_vertical"
                 android:text="@string/profile"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
             <ImageView
                 android:id="@+id/tv_prpfile_edit_save"
                 android:layout_width="30dp"
@@ -223,7 +225,7 @@
         android:layout_height="40dp"
         android:gravity="center"
         android:textSize="15dp"
-        android:textColor="@color/black"
+        android:textColor="@color/red"
         android:paddingLeft="15dp"
         android:background="@color/white"
         android:text="退出登录"/>

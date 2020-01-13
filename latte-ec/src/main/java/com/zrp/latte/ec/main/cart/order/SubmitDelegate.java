@@ -1,10 +1,19 @@
 package com.zrp.latte.ec.main.cart.order;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -12,8 +21,12 @@ import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ui.widget.CountDownView;
 import com.zrp.latte.ui.widget.SmoothCheckBox;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 
 public class SubmitDelegate extends LatteDelegate implements SmoothCheckBox.OnSmoothCheckedChangeListener, CountDownView.OnTimeCompleteListener {
 
@@ -32,8 +45,10 @@ public class SubmitDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	SmoothCheckBox mCbAlipay;
 	@BindView(R2.id.tv_submit_shengyu_show)
 	CountDownView mTvPayLeftTime;
+	@BindView(R2.id.tv_submit_money)
+	TextView mTvPayMoney;
 
-	private SmoothCheckBox[] payBox = new SmoothCheckBox[4];
+	private ArrayList<SmoothCheckBox> payList = new ArrayList<>();
 
 	@Override
 	public Object setLayout() {
@@ -48,30 +63,33 @@ public class SubmitDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 		//订单支付剩余时间15min开始倒计时
 		initPayLeftTime();
 
+		//支付金额
+		final SpannableString paymoney = new SpannableString("￥24.8");
+		paymoney.setSpan(new AbsoluteSizeSpan(20, true), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		mTvPayMoney.setText(paymoney);
 	}
 
 
-
-
 	private void initPayLeftTime() {
-		mTvPayLeftTime.initTime(15,0);
+		mTvPayLeftTime.initTime(15, 0);
 		mTvPayLeftTime.start();
 		mTvPayLeftTime.setOnTimeCompleteListener(this);
 	}
 
 	private void initPayCheckBox() {
-		payBox[0] = mCbMeituanPay;
-		payBox[1] = mCbWeixinPay;
-		payBox[2] = mCbQqPay;
-		payBox[3] = mCbAlipay;
-		for (SmoothCheckBox tempBox : payBox) {
+		payList.add(mCbMeituanPay);
+		payList.add(mCbWeixinPay);
+		payList.add(mCbQqPay);
+		payList.add(mCbAlipay);
+
+		for (SmoothCheckBox tempBox : payList) {
 			tempBox.setOnSmoothCheckedChangeListener(this);
 		}
 	}
 
 
 	@OnClick(R2.id.ll_submit_showzhifubao)
-	public void onViewClicked() {
+	public void onViewClickedShowAlipay() {
 		mLlSubmitZhifubao.setVisibility(View.VISIBLE);
 		mLlSubmitShowzhifubao.setVisibility(View.GONE);
 	}
@@ -80,7 +98,7 @@ public class SubmitDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	@Override
 	public void onSmoothCheckedChanged(SmoothCheckBox checkBox, boolean isChecked) {
 		if (isChecked) {
-			for (SmoothCheckBox box : payBox) {
+			for (SmoothCheckBox box : payList) {
 				if (box.getId() == checkBox.getId()) {
 					box.setChecked(true);
 				} else {
@@ -94,5 +112,18 @@ public class SubmitDelegate extends LatteDelegate implements SmoothCheckBox.OnSm
 	@Override
 	public void onTimeComplete() {
 		getSupportDelegate().pop();
+	}
+
+
+	@OnClick(R2.id.icon_address_back)
+	public void onViewClickedBack() {
+		getSupportDelegate().pop();
+	}
+
+
+
+	@OnClick(R2.id.btn_settle_submit_order)
+	public void onViewClickedSubmit() {
+		Toast.makeText(getContext(), "提交订单",Toast.LENGTH_SHORT).show();
 	}
 }

@@ -108,7 +108,7 @@ public class ProfileDelegate extends BottomItemDelegate implements RadioButton.O
 	}
 
 
-	@OnClick(R2.id.icon_address_edit_return)
+	@OnClick(R2.id.iv_profile_backarrow)
 	public void onViewClickedReturn(View view) {
 		getSupportDelegate().pop();
 	}

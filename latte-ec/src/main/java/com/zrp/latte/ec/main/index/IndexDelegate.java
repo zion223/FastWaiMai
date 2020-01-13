@@ -3,6 +3,7 @@ package com.zrp.latte.ec.main.index;
 import android.Manifest;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,10 +15,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.zaaach.citypicker.CityPicker;
+import com.zaaach.citypicker.adapter.OnPickListener;
+import com.zaaach.citypicker.model.City;
+import com.zaaach.citypicker.model.HotCity;
+import com.zaaach.citypicker.model.LocateState;
+import com.zaaach.citypicker.model.LocatedCity;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.index.scaner.ScannerDelegate;
@@ -66,13 +74,50 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @OnClick(R2.id.icon_index_scan)
     void onClickScan() {
         //扫描二维码
-        String[] perms = {Manifest.permission.CAMERA};
-        //EasyPermission中请求的权限需要在Manifest中申请
-        if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
-            getSupportDelegate().startForResult(new ScannerDelegate(), CameraRequestCodes.SCAN);
-        } else {
-            EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
-        }
+//        String[] perms = {Manifest.permission.CAMERA};
+//        //EasyPermission中请求的权限需要在Manifest中申请
+//        if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
+//            getSupportDelegate().startForResult(new ScannerDelegate(), CameraRequestCodes.SCAN);
+//        } else {
+//            EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
+//        }
+        List<HotCity> hotCities = new ArrayList<>();
+        hotCities.add(new HotCity("北京", "北京", "101010100")); //code为城市代码
+        hotCities.add(new HotCity("上海", "上海", "101020100"));
+        hotCities.add(new HotCity("广州", "广东", "101280101"));
+        hotCities.add(new HotCity("深圳", "广东", "101280601"));
+        hotCities.add(new HotCity("杭州", "浙江", "101210101"));
+        CityPicker.from(getActivity()) //activity或者fragment
+                .enableAnimation(true)	//启用动画效果，默认无
+                //.setAnimationStyle(anim)	//自定义动画
+                //APP自身已定位的城市，传null会自动定位（默认）
+                .setLocatedCity(null)
+                .setHotCities(hotCities)	//指定热门城市
+                .setOnPickListener(new OnPickListener() {
+                    @Override
+                    public void onPick(int position, City data) {
+                        Toast.makeText(Latte.getApplication(), data.getName(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel(){
+                        Toast.makeText(Latte.getApplication(), "取消选择", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onLocate() {
+                        //定位接口，需要APP自身实现，这里模拟一下定位
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //定位完成之后更新数据
+//                                CityPicker.getInstance()
+//                                        .locateComplete(new LocatedCity("深圳", "广东", "101280601"), LocateState.SUCCESS);
+                            }
+                        }, 3000);
+                    }
+                })
+                .show();
     }
 
 
