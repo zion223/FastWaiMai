@@ -1,71 +1,70 @@
 package com.zrp.latte.ec.main.personal.discount;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.support.design.widget.TabLayout;
+import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
-import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
-import com.zrp.latte.ui.recycler.DataConverter;
-import com.zrp.latte.ui.recycler.MultipleItemEntity;
+import com.zrp.latte.ui.tab.TabPagerAdapter;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class DiscountDelegate extends BottomItemDelegate {
 
-    private static final String ARGS_DISCOUNT_STATUS = "ARGS_DISCOUNT_STATUS";
 
-    @BindView(R2.id.rv_all_normal)
-    RecyclerView recyclerView;
+	@BindView(R2.id.tl_discount_status)
+	TabLayout mTabLayout;
+	@BindView(R2.id.vp_discount_pager)
+	ViewPager mViewPager;
 
 
-    private DiscountAdapter mAdapter = null;
+	@Override
+	public Object setLayout() {
+		return R.layout.delegate_discount;
+	}
 
-    @Override
-    public Object setLayout() {
-        return R.layout.delegate_normal_recyclerview;
-    }
+	@Override
+	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
+		super.onBindView(savedInstanceState, view);
+		final String[] mTitles = {"满减卷(3)", "商品卷(0)"};
 
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-        super.onBindView(savedInstanceState, view);
-        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(manager);
-        Bundle arguments = getArguments();
-        final int status = arguments.getInt(ARGS_DISCOUNT_STATUS);
-        RestClient.builder()
-                .url("api/discount/" + status)
-                .loader(getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        final DataConverter converter = new DiscountDataConverter().setJsonData(response);
-                        LinkedList<MultipleItemEntity> entities = converter.convert();
-                        mAdapter = new DiscountAdapter(entities);
-                        recyclerView.setAdapter(mAdapter);
+		final List<Fragment> mFragments = new ArrayList<>();
+		for (int i = 0; i < 2; i++) {
+			mFragments.add(DiscountViewPageDelegate.create(i));
+		}
+		final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
 
-                    }
-                })
-                .build()
-                .get();
+		mViewPager.setAdapter(adapter);
+		mViewPager.setOffscreenPageLimit(2);
+		mTabLayout.setTabMode(TabLayout.MODE_FIXED);
+		mTabLayout.setBackgroundColor(Color.WHITE);
+		mTabLayout.setupWithViewPager(mViewPager);
+	}
 
-    }
-    public static DiscountDelegate create(int orderStatus) {
-        final Bundle args = new Bundle();
-        args.putInt(ARGS_DISCOUNT_STATUS, orderStatus);
-        final DiscountDelegate delegate = new DiscountDelegate();
-        delegate.setArguments(args);
-        return delegate;
-    }
+
+	@OnClick(R2.id.iv_discount_backarrow)
+	public void onViewClickedReturn() {
+		getSupportDelegate().pop();
+	}
 
 
 
+//	@OnClick(R2.id.btn_discount_exchange)
+//	public void onViewClickedExchange() {
+//		Toast.makeText(Latte.getApplication(), "已经兑换了",Toast.LENGTH_SHORT).show();
+//	}
 }

@@ -1,14 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     app:cardCornerRadius="5dp"
-    app:cardElevation="5dp"
+    app:cardElevation="1dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/avatar" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tv_item_discount_shopname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="1111111"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_item_discount_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_discount_shopname"
+                    android:layout_marginTop="2dp"
+                    android:text="2222" />
+
+                <TextView
+                    android:id="@+id/tv_item_discount_expiretime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_discount_type"
+                    android:layout_marginTop="5dp"
+                    android:textSize="11sp"
+                    android:text="有效期至2313" />
+
+                <TextView
+                    android:id="@+id/tv_item_discount_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/tomato"
+                    android:layout_marginRight="5dp"
+                    android:textSize="30sp"
+                    android:text="￥7" />
+
+                <TextView
+                    android:id="@+id/tv_item_discount_condition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_item_discount_money"
+                    android:layout_alignTop="@+id/tv_item_discount_expiretime"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="9dp"
+                    android:textSize="11sp"
+                    android:text="满111可用" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <com.zrp.latte.ui.widget.DiscountDivideLine
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="left|center_vertical"
+                android:layout_weight="9"
+                android:textSize="10sp"
+                android:text="可与其他活动同时享受"/>
+            <TextView
+                android:id="@+id/tv_item_discount_apply"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:background="@color/tomato"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="立即使用"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -82,5 +200,6 @@
                 android:textColor="@color/black"
                 android:text="有效期: 2019.9.02-2019.9.03"/>
         </RelativeLayout>
-    </LinearLayout>
+    </LinearLayout>-->
+
 </android.support.v7.widget.CardView>

@@ -84,8 +84,6 @@ dependencies {
     compile 'io.github.mayubao:pay_library:1.0.1'
     //图片裁剪
     compile 'com.github.yalantis:ucrop:2.2.2-native'
-    //分割线
-    implementation 'com.github.kjt666:TicketDivideLine:v1.1'
 
     implementation project(path: ':latte-annotations')
 

@@ -7,75 +7,63 @@
     <android.support.v7.widget.Toolbar
         android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_orange_dark">
-
+        android:layout_height="50dp"
+        android:background="@color/white">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_discount_back"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_discount_backarrow"
+                android:layout_width="20dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:paddingTop="10dp"
+                android:src="@drawable/left_arrow"
+                android:layout_marginLeft="5dp"/>
+
+            <View
+                android:id="@+id/view_profile_line"
+                android:layout_width="3dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:text="{fa-angle-left}"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="30sp" />
+                android:layout_toRightOf="@id/iv_discount_backarrow"
+                android:background="@color/app_background"/>
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_10dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="@string/mydiscount"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/view_profile_line"
+                android:gravity="center_vertical"
+                android:text="@string/discounttitle"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/tv_address_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:text="赠送好友"/>
 
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/white">
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/tv_discount_exchange_code"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:gravity="center_vertical"
-            android:layout_margin="5dp"
-            android:layout_marginLeft="10dp"
-            android:background="@color/white"
-            android:hint="@string/exchange_code"/>
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_discount_exchange"
-            android:layout_margin="@dimen/margin_5dp"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:text="@string/exchange"
-            android:background="@color/red"
-            android:textColor="@color/white"
-            android:gravity="center"/>
-
-    </LinearLayout>
     <android.support.design.widget.TabLayout
         android:id="@+id/tl_discount_status"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         app:tabIndicatorColor="@color/pink"
-        app:tabIndicatorHeight="3dp"
         app:tabSelectedTextColor="@color/colorPrimaryDark"
-        app:tabTextColor="@android:color/black"/>
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/gray"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_discount_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@color/app_background"/>
 </LinearLayout>

@@ -5,13 +5,19 @@
   "data": [
     {
       "id":1,
-      "disocuntmoney":"1.5:元",
-      "expiretime":"2019.11.30-2019.12.30"
+      "shopname":"牛三爷嫩牛五方",
+      "type": "共享卷",
+      "expiretime":"2019.11.30",
+      "money":"￥7",
+      "condition": "满40可用"
     },
     {
       "id":1,
-      "disocuntmoney":"4:元",
-      "expiretime":"2019.11.25-2019.12.25"
+      "shopname":"四季粥铺",
+      "type": "共享卷",
+      "expiretime":"2019.11.30",
+      "money":"￥10",
+      "condition": "满50可用"
     }
   ]
 }

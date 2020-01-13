@@ -8,4 +8,15 @@
         <attr name="color_unchecked" format="color"/>
         <attr name="color_unchecked_stroke" format="color"/>
     </declare-styleable>
+    <declare-styleable name="DiscountDivideLine">
+        <attr name="divid_line_color" format="color"/>
+        <attr name="divide_line_length" format="dimension"/>
+        <attr name="divide_line_interval" format="dimension"/>
+        <attr name="port_shape_color" format="color"/>
+        <attr name="port_shape_diameter" format="dimension"/>
+        <attr name="line_orientation" format="enum">
+            <enum name="line_vertical" value="0"/>
+            <enum name="line_horizontal" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>
