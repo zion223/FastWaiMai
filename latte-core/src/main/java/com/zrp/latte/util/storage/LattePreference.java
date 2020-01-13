@@ -8,10 +8,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.zrp.latte.app.Latte;
 
 
-/**
- * Created by 傅令杰 on 2017/4/22
- */
-
 public final class LattePreference {
 
     /**

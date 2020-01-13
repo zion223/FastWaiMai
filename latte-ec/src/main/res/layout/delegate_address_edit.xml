@@ -51,7 +51,10 @@
     <EditText
         android:id="@+id/edit_address_edit_name"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:background="@null"
         android:textSize="15sp"
@@ -60,8 +63,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_2dp"
-        android:background="@color/app_background"
-        />
+        android:background="@color/app_background" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -69,7 +71,7 @@
         <EditText
             android:id="@+id/edit_address_edit_phone"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="8"
             android:gravity="center_vertical"
             android:background="@null"
@@ -96,6 +98,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_address_edit_detail"
@@ -104,8 +108,7 @@
             android:layout_weight="8"
             android:layout_marginLeft="10dp"
             android:paddingTop="5dp"
-            android:layout_gravity="center_vertical"
-            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
             android:textSize="15sp"
             android:singleLine="false"/>
 
@@ -145,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="46dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="15dp"
             android:checked="false"
             android:longClickable="false"/>
     </LinearLayout>

@@ -7,43 +7,44 @@
     <android.support.v7.widget.Toolbar
         android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/holo_orange_dark">
-
+        android:layout_height="50dp"
+        android:background="@color/white">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_back"
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_address_backarrow"
+                android:layout_width="20dp"
                 android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:paddingTop="10dp"
+                android:src="@drawable/left_arrow"
+                android:layout_marginLeft="5dp"/>
+
+            <View
+                android:id="@+id/view_profile_line"
+                android:layout_width="3dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:gravity="center"
-                android:text="{fa-angle-left}"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="30sp" />
+                android:layout_toRightOf="@id/iv_address_backarrow"
+                android:background="@color/app_background"/>
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_10dp"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="@string/shopcarttitle"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
-
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_address_add"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/view_profile_line"
+                android:gravity="center_vertical"
+                android:text="@string/addressTitle"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/tv_address_add"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:gravity="center"
-                android:text="{fa-plus-square-o}"
-                android:textColor="@android:color/white"
-                android:textSize="30sp" />
+                android:layout_centerVertical="true"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:text="新增地址"/>
 
         </RelativeLayout>
 
@@ -52,6 +53,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_address_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
