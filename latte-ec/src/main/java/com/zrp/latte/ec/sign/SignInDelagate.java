@@ -13,6 +13,7 @@ import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.zrp.latte.delegates.LatteDelegate;
+import com.zrp.latte.ec.main.EcBottomDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 
@@ -67,6 +68,7 @@ public class SignInDelagate extends LatteDelegate {
                 })
                 .build()
                 .post();
+        getSupportDelegate().start(new EcBottomDelegate());
     }
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {

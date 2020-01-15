@@ -53,7 +53,7 @@ dependencies {
     //圆角图片依赖
     //compile 'com.github.SheHuan:NiceImageView:1.0.5'
     //地址选择器
-    compile 'com.smartTop:jd-p_address:1.0.3'
+    compile 'com.smartTop:jd-address:1.0.3'
     api 'com.jakewharton:butterknife:8.6.0'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'

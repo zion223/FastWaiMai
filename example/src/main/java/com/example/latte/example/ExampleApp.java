@@ -36,7 +36,7 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/order/3",R.raw.order_evaluate));
         interceptors.add(new DebugInterceptor("api/order/4",R.raw.order_after_market));
         //收货地址
-        interceptors.add(new DebugInterceptor("api/p_address",R.raw.address));
+        interceptors.add(new DebugInterceptor("api/address",R.raw.address));
         //商品详情
         interceptors.add(new DebugInterceptor("api/goodsdetail",R.raw.goods_detail_1));
         //购物车猜你喜欢

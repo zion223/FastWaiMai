@@ -40,7 +40,7 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRvAddress.setLayoutManager(manager);
         RestClient.builder()
-                .url("api/p_address")
+                .url("api/address")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
@@ -71,7 +71,7 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
         final Boolean isDefault = entity.getField(AddressItemFields.DEFAULT);
         final String gender = entity.getField(AddressItemFields.GENDER);
         final Bundle bundle = new Bundle();
-        bundle.putString("p_address", surname + gender+"("+phone+")");
+        bundle.putString("address", surname + gender+"("+phone+")");
         getSupportDelegate().setFragmentResult(RESULT_OK, bundle);
         getSupportDelegate().onDestroy();
         getSupportDelegate().pop();

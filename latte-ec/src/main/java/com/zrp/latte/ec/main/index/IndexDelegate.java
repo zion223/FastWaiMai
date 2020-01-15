@@ -172,7 +172,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         for (int i = 0; i < 4; i++) {
             mFragments.add(new IndexTabDelegate());
         }
-        final TabPagerAdapter adapter = new TabPagerAdapter(getActivity().getSupportFragmentManager(), mTitles, mFragments);
+        final TabPagerAdapter adapter = new TabPagerAdapter(getChildFragmentManager(), mTitles, mFragments);
 
         mViewPager.setAdapter(adapter);
         mViewPager.setOffscreenPageLimit(4);

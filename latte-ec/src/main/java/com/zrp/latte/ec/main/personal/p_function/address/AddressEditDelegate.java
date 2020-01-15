@@ -60,7 +60,7 @@ public class AddressEditDelegate extends LatteDelegate {
         args.putInt("id", id);
         args.putString("name", name);
         args.putString("phone", phone);
-        args.putString("p_address", address);
+        args.putString("address", address);
         args.putBoolean("isDefault", isDefault);
         final AddressEditDelegate delegate = new AddressEditDelegate();
         delegate.setArguments(args);
@@ -75,7 +75,7 @@ public class AddressEditDelegate extends LatteDelegate {
             id = args.getInt("id");
             name = args.getString("name");
             phone = args.getString("phone");
-            address = args.getString("p_address");
+            address = args.getString("address");
             isDefault = args.getBoolean("isDefault");
         } else {
             throw new NullPointerException("Bundle is null");
