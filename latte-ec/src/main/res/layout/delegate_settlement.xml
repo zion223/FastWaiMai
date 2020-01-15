@@ -192,7 +192,7 @@
                         android:layout_weight="6"
                         android:background="@color/white"
                         android:gravity="center_vertical"
-                        android:paddingLeft="10dp"
+                        android:paddingLeft="20dp"
                         android:text="立即送达"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -229,7 +229,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_toLeftOf="@+id/tv_settle_shangjia_dizhi_ziqu"
-                    android:src="@drawable/tag"/>
+                    android:src="@drawable/settle_tag"/>
                 <TextView
                     android:id="@+id/tv_settle_shangjia_dizhi_ziqu"
                     android:layout_width="wrap_content"
@@ -370,7 +370,7 @@
                 android:layout_height="60dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:background="@drawable/gradual_background"
+                android:background="@drawable/settle_gradual_background"
                 android:orientation="horizontal"
                 android:paddingTop="10dp">
 
@@ -477,7 +477,7 @@
                     android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/manjian" />
+                    android:src="@drawable/settle_discount" />
 
                 <TextView
                     android:layout_width="wrap_content"

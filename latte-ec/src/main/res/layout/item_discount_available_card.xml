@@ -21,12 +21,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
                 android:src="@drawable/avatar" />
 
             <RelativeLayout
@@ -90,15 +90,12 @@
         </LinearLayout>
         <com.zrp.latte.ui.widget.DiscountDivideLine
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:layout_height="20dp" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="25dp"
             android:layout_marginLeft="20dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
@@ -113,7 +110,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical"
                 android:background="@color/tomato"

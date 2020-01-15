@@ -42,7 +42,7 @@ public class DiscountViewPageDelegate extends BottomItemDelegate {
         Bundle arguments = getArguments();
         final int status = arguments.getInt(ARGS_DISCOUNT_STATUS);
         RestClient.builder()
-                .url("api/discount/" + status)
+                .url("api/p_discount/" + status)
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override

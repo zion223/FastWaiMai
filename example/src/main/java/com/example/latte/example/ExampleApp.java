@@ -36,13 +36,13 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/order/3",R.raw.order_evaluate));
         interceptors.add(new DebugInterceptor("api/order/4",R.raw.order_after_market));
         //收货地址
-        interceptors.add(new DebugInterceptor("api/address",R.raw.address));
+        interceptors.add(new DebugInterceptor("api/p_address",R.raw.address));
         //商品详情
         interceptors.add(new DebugInterceptor("api/goodsdetail",R.raw.goods_detail_1));
         //购物车猜你喜欢
         interceptors.add(new DebugInterceptor("api/youlike",R.raw.youlike));
         //分页左边栏
-        interceptors.add(new DebugInterceptor("api/sort",R.raw.categories));
+        interceptors.add(new DebugInterceptor("api/p_sort",R.raw.categories));
         //个人页面数据
         //interceptors.add(new DebugInterceptor("api/personal",R.raw.personal));
         //分页右边栏
@@ -50,8 +50,8 @@ public class ExampleApp extends MultiDexApplication {
         interceptors.add(new DebugInterceptor("api/content/1",R.raw.lk002));
         interceptors.add(new DebugInterceptor("api/content/2",R.raw.lk003));
         //优惠券
-        interceptors.add(new DebugInterceptor("api/discount/0",R.raw.avaliable_discount));
-        interceptors.add(new DebugInterceptor("api/discount/1",R.raw.unavaliable_discount));
+        interceptors.add(new DebugInterceptor("api/p_discount/0",R.raw.avaliable_discount));
+        interceptors.add(new DebugInterceptor("api/p_discount/1",R.raw.unavaliable_discount));
         for(int i = 3;i < 16;i ++){
             interceptors.add(new DebugInterceptor("api/content/"+i,R.raw.lk003));
         }

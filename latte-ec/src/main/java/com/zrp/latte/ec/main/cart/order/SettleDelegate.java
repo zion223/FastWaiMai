@@ -133,7 +133,7 @@ public class SettleDelegate extends LatteDelegate implements CompoundButton.OnCh
 	@Override
 	public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
 		if (requestCode == PICK_ADDRESS && resultCode == RESULT_OK) {
-			final String detail = data.getString("address");
+			final String detail = data.getString("p_address");
 			mLlSettlePickAddress.setVisibility(View.GONE);
 			mTvAddress.setText(detail);
 			mLlSettleAddress.setVisibility(View.VISIBLE);

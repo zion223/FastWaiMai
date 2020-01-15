@@ -58,7 +58,7 @@
         android:layout_height="20dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/edit"/>
+        android:src="@drawable/item_address_edit"/>
 
     <View
         android:layout_width="match_parent"

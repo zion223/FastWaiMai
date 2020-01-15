@@ -41,7 +41,7 @@
                 android:layout_alignTop="@id/tv_personal_name"
                 android:layout_marginRight="25dp"
                 android:layout_toLeftOf="@id/iv_personal_alarm"
-                android:src="@drawable/setting" />
+                android:src="@drawable/p_setting" />
 
             <ImageView
                 android:id="@+id/iv_personal_alarm"
@@ -50,7 +50,7 @@
                 android:layout_alignTop="@id/tv_personal_name"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/alarm" />
+                android:src="@drawable/p_alarm" />
 
 
         </RelativeLayout>
@@ -98,7 +98,7 @@
                             android:layout_height="20dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="30dp"
-                            android:src="@drawable/redenvelope" />
+                            android:src="@drawable/p_redenvelope" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -133,7 +133,7 @@
                             android:layout_height="20dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="30dp"
-                            android:src="@drawable/discount" />
+                            android:src="@drawable/p_discount" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
                             android:layout_height="20dp"
                             android:layout_marginTop="3dp"
                             android:layout_marginLeft="30dp"
-                            android:src="@drawable/jintie" />
+                            android:src="@drawable/p_jintie" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -404,7 +404,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/address" />
+                            android:src="@drawable/p_address" />
 
                         <TextView
                             android:id="@+id/tv_personal_address"
@@ -427,7 +427,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/footmark" />
+                            android:src="@drawable/p_footmark" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -449,7 +449,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/collect" />
+                            android:src="@drawable/p_collect" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -471,7 +471,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/notes" />
+                            android:src="@drawable/p_notes" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -501,7 +501,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/comment" />
+                            android:src="@drawable/p_comment" />
 
                         <TextView
                             android:id="@+id/tv_personal_address1"
@@ -566,7 +566,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/help" />
+                            android:src="@drawable/p_help" />
 
                         <TextView
                             android:id="@+id/tv_personal_help"
@@ -589,7 +589,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/service" />
+                            android:src="@drawable/p_service" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -611,7 +611,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/sort" />
+                            android:src="@drawable/p_sort" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -678,7 +678,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/invite" />
+                            android:src="@drawable/p_invite" />
 
                         <TextView
                             android:id="@+id/tv_personal_invite"
@@ -701,7 +701,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/shangjiaruzhu" />
+                            android:src="@drawable/p_shopsettled" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -723,7 +723,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/recruit" />
+                            android:src="@drawable/p_recruit" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -745,7 +745,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/cooperate" />
+                            android:src="@drawable/p_cooperate" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -775,7 +775,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/commonweal"/>
+                            android:src="@drawable/p_commonweal"/>
 
                         <TextView
                             android:id="@+id/tv_personal_commonweal"
@@ -798,7 +798,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/energy" />
+                            android:src="@drawable/p_energy" />
 
                         <TextView
                             android:id="@+id/tv_personal_energy"
@@ -821,7 +821,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/join" />
+                            android:src="@drawable/p_join" />
 
                         <TextView
                             android:id="@+id/tv_personal_join"
@@ -844,7 +844,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/guess" />
+                            android:src="@drawable/p_guess" />
 
                         <TextView
                             android:id="@+id/tv_personal_guess"

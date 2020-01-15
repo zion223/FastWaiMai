@@ -129,7 +129,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/meituanpay" />
+            android:src="@drawable/pay_meituanpay" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -172,7 +172,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/weixinpay" />
+            android:src="@drawable/pay_weixinpay" />
 
         <TextView
             android:layout_width="0dp"
@@ -214,7 +214,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/qqpay" />
+            android:src="@drawable/pay_qqpay" />
 
         <TextView
             android:layout_width="0dp"
@@ -283,7 +283,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/zhifupay" />
+            android:src="@drawable/pay_zhifupay" />
 
         <TextView
             android:layout_width="0dp"

@@ -51,7 +51,7 @@ public class VerticalListDelegate extends LatteDelegate {
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		super.onLazyInitView(savedInstanceState);
 		RestClient.builder()
-				.url("api/sort")
+				.url("api/p_sort")
 				.loader(getContext())
 				.success(new ISuccess() {
 					@Override

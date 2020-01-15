@@ -18,6 +18,7 @@ import com.zrp.latte.ec.main.personal.p_function.address.AddressDelegate;
 import com.zrp.latte.ec.main.personal.p_capital.discount.DiscountDelegate;
 import com.zrp.latte.ec.main.personal.p_personal.profile.ProfileDelegate;
 import com.zrp.latte.ec.main.personal.p_personal.setting.SettingDelegate;
+import com.zrp.latte.ec.main.personal.p_wallert.borrow.BorrowDelegate;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -136,6 +137,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 	@OnClick(R2.id.rl_personal_borrow)
 	public void onViewClickedBorrow() {
-
+		getParentDelegate().getSupportDelegate().start(new BorrowDelegate());
 	}
 }

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/app_background">
+    android:background="@color/white">
     <android.support.v7.widget.Toolbar
         android:paddingTop="10dp"
         android:layout_width="match_parent"
@@ -14,25 +14,24 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/iv_setting_backarrow"
-                android:layout_width="20dp"
+                android:layout_width="25dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/left_arrow"
                 android:layout_marginLeft="5dp"/>
-
             <View
                 android:id="@+id/view_profile_line"
-                android:layout_width="3dp"
+                android:layout_width="2dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/iv_setting_backarrow"
                 android:background="@color/app_background"/>
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/view_profile_line"
                 android:gravity="center_vertical"
                 android:text="@string/setting"
@@ -62,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="清除缓存"/>
@@ -75,12 +74,12 @@
             android:gravity="center_vertical|right"
             android:layout_alignParentRight="true"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:text="0.0MB"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center_horizontal"
@@ -97,20 +96,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="wifi环境自动检测新版本"/>
-        <com.zrp.latte.ui.widget.SmoothCheckBox
+        <com.zrp.latte.ui.widget.SwitchButton
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
+            android:layout_height="30dp"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical|right"
             android:layout_alignParentRight="true" />
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center_horizontal"
@@ -127,13 +126,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="网络诊断"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:layout_alignParentRight="true"
@@ -141,7 +140,7 @@
     </LinearLayout>
     <View
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_gravity="center_horizontal"
@@ -158,13 +157,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="通用"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:layout_alignParentRight="true"
@@ -186,16 +185,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="9"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="13sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:text="关于这个"/>
         <ImageView
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="15dp"
             android:layout_weight="1"
             android:layout_gravity="center_vertical"
             android:layout_alignParentRight="true"
             android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background"/>
 </LinearLayout>

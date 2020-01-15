@@ -13,7 +13,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
-        android:src="@drawable/alipay" />
+        android:src="@drawable/pay_alipay" />
     <TextView
         android:id="@+id/tv_settle_discount"
         android:layout_width="20dp"
