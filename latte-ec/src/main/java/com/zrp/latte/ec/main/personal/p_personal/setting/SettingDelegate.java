@@ -32,7 +32,7 @@ public class SettingDelegate extends LatteDelegate {
 		final String totalCacheSize;
 		try {
 			totalCacheSize = DataCleanManager.getTotalCacheSize(Latte.getApplication());
-			mTvSettingCache.setText(String.format("%sMB", totalCacheSize));
+			mTvSettingCache.setText(totalCacheSize);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

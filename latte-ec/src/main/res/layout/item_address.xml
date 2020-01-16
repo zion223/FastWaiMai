@@ -54,8 +54,8 @@
         android:text="15078383888"/>
     <ImageView
         android:id="@+id/iv_item_address_edit"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/item_address_edit"/>

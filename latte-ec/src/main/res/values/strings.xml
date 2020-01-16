@@ -23,7 +23,6 @@
     <string name="computer">结算</string>
     <string name="canclepay">取消支付</string>
     <string name="edit">编辑</string>
-    <string name="exchange_code">请输入520兑换</string>
     <string name="profile">我的账号</string>
     <string name="search">search</string>
     <string name="settle">填写订单</string>
@@ -36,4 +35,9 @@
     <string name="discounttitle">商家代金券</string>
     <string name="setting">设置</string>
     <string name="zerocachesize">0MB</string>
+    <string name="mb">MB</string>
+    <string name="verifycode">验证码登录</string>
+    <string name="passwordcode">密码登录</string>
+    <string name="queryverifycode">获取验证码</string>
+    <string name="login">登录</string>
 </resources>
