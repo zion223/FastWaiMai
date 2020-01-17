@@ -4,19 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/red">
+    android:background="@color/coral">
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
         app:cardUseCompatPadding="true">
         <com.bigkoo.convenientbanner.ConvenientBanner
             android:id="@+id/banner_recycler_item"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-           />
+            android:layout_height="200dp" />
     </android.support.v7.widget.CardView>
 
     <ImageView

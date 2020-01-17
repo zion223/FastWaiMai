@@ -40,7 +40,7 @@ public class MultipleRecyclerAdapter extends
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
-        init();
+        initItemType();
     }
 
     @Override
@@ -83,14 +83,10 @@ public class MultipleRecyclerAdapter extends
                 break;
         }
     }
-    private void init(){
+    private void initItemType(){
         //设置不同的Item布局
-        //addItemType(ItemType.TEXT, R.layout.item_multiple_text);
-        //addItemType(ItemType.IMAGE, R.layout.item_multiple_image);
-        //addItemType(ItemType.TEXT_IMAGE, R.layout.item_multiple_image_text);
         addItemType(ItemType.BANNER, R.layout.item_multiple_banner);
         addItemType(ItemType.SORT, R.layout.item_multiple_sort);
-        //addItemType(ItemType.SPEC_ZONE, R.layout.item_multiple_spec);
 
         //设置宽度的监听
         setSpanSizeLookup(this);

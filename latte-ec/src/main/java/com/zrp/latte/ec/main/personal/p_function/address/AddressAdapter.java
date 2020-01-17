@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.latte.latte_ec.R;
+import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
@@ -13,11 +14,19 @@ import java.util.List;
 
 public class AddressAdapter extends MultipleRecyclerAdapter {
 
-    private final AddressDelegate DELEGATE;
+    private final LatteDelegate DELEGATE;
+    private final Type currentType;
 
-    AddressAdapter(List<MultipleItemEntity> data, AddressDelegate delegate) {
+    AddressAdapter(List<MultipleItemEntity> data, LatteDelegate delegate) {
         super(data);
         DELEGATE = delegate;
+        currentType = Type.ADDRESS;
+        addItemType(AddressItemType.ITEM_ADDRESS, R.layout.item_address);
+    }
+    public AddressAdapter(List<MultipleItemEntity> data) {
+        super(data);
+        DELEGATE = null;
+        currentType = Type.LOCATION;
         addItemType(AddressItemType.ITEM_ADDRESS, R.layout.item_address);
     }
 
@@ -39,16 +48,27 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                 holder.setText(R.id.tv_item_address_gender, gender);
                 holder.setText(R.id.tv_item_address_phone, phone);
                 final ImageView editView = holder.getView(R.id.iv_item_address_edit);
-                editView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //编辑单个地址
-                        DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(id, surname, phone, preAddress, isDefault));
-                    }
-                });
+                if(currentType == Type.ADDRESS){
+                    editView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            //编辑单个地址
+                            if(DELEGATE != null){
+                                DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(id, surname, phone, preAddress, isDefault));
+                            }
+                        }
+                    });
+                }else {
+                    editView.setVisibility(View.GONE);
+                }
+
             default:
                 break;
 
         }
+    }
+    enum Type{
+        ADDRESS,
+        LOCATION
     }
 }

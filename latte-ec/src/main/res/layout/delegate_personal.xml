@@ -14,13 +14,13 @@
             android:layout_height="80dp"
             android:layout_marginTop="20dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_personal_avatar"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/personal_avatar" />
 
             <TextView
                 android:id="@+id/tv_personal_name"
@@ -54,11 +54,59 @@
 
 
         </RelativeLayout>
-
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardBackgroundColor="#212D3B"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="1dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_personal_meituan_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#F0E6DA"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:text="美团会员"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_personal_meituan_vip"
+                    android:layout_alignLeft="@id/tv_personal_meituan_vip"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="#F0E6DA"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:text="开通得6张无门槛会员红包"/>
+                <TextView
+                    android:id="@+id/tv_personal_buy_vip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/personal_buy_round"
+                    android:layout_marginRight="10dp"
+                    android:padding="3dp"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    android:text="立即开通"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:cardCornerRadius="5dp"

@@ -3,6 +3,7 @@
     <string name="app_name">LatteEC</string>
     <string name="count2zero">该宝贝不能减少了哟</string>
     <string name="addressTitle">我的收货地址</string>
+    <string name="chooseTitle">选择收货地址</string>
     <string name="editaddress">编辑收货地址</string>
     <string name="save">保存</string>
     <string name="setdefaultaddress">设为默认地址</string>
@@ -24,13 +25,13 @@
     <string name="canclepay">取消支付</string>
     <string name="edit">编辑</string>
     <string name="profile">我的账号</string>
-    <string name="search">search</string>
+    <string name="indexsearch">苏格兰打卤面 满20减10</string>
     <string name="settle">填写订单</string>
     <string name="man">帅哥</string>
     <string name="female">美女</string>
     <string name="choose_address">选择收货地址</string>
     <string name="goshop">去购物</string>
-    <string name="tomorrow">明天 </string>
+    <string name="tomorrow">明天</string>
     <string name="submit_order_title">支付订单</string>
     <string name="discounttitle">商家代金券</string>
     <string name="setting">设置</string>

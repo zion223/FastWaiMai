@@ -1,7 +1,10 @@
 package com.zrp.latte.ec.main;
 
 import android.graphics.Color;
+import android.os.Bundle;
+import android.widget.Toast;
 
+import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BaseBottomDelegate;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.delegates.bottom.BottomTabBean;
@@ -12,16 +15,18 @@ import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.ec.main.personal.PersonalDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
 
+import org.greenrobot.greendao.generator.Index;
+
 import java.util.LinkedHashMap;
 
 public class EcBottomDelegate extends BaseBottomDelegate{
 
+    private BottomItemDelegate indexDelegate = new IndexDelegate();
 
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
-
-        items.put(new BottomTabBean("{fa-home}","首页"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-home}","首页"), indexDelegate);
         items.put(new BottomTabBean("{fa-sort}","分类"), new SortDelegate());
         items.put(new BottomTabBean("{fa-compass}","发现"), new DiscoverDelegate());
         items.put(new BottomTabBean("{fa-shopping-cart}","购物车"), new ShopCartDelegate());
@@ -40,5 +45,12 @@ public class EcBottomDelegate extends BaseBottomDelegate{
         return Color.parseColor("#ffff8800");
     }
 
+    @Override
+    public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
+
+        if (requestCode == 11 && resultCode == RESULT_OK) {
+            indexDelegate.onFragmentResult(requestCode, resultCode, data);
+        }
+    }
 
 }

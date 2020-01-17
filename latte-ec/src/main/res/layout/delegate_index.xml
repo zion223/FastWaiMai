@@ -3,12 +3,102 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_index"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/index_toorbar_background"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <!--自定义沉浸式状态栏 -->
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <!--location img -->
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/index_location" />
+                <!-- 搜索框-->
+                <!-- 设置圆角 @drawable/index_search_round-->
+                <TextView
+                    android:id="@+id/tv_index_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="8"
+                    android:text="青岛国际游戏动漫产业园"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/iv_index_message"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/index_message" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+        </android.support.v7.widget.Toolbar>
+
+        <RelativeLayout
+            android:id="@+id/rl_index_search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/index_toorbar_backgroundtwo">
+
+            <EditText
+                android:id="@+id/et_index_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/index_search_round"
+                android:gravity="center_vertical"
+                android:paddingLeft="30dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignLeft="@+id/et_index_search"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/index_search" />
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
         android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,15 +107,18 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index_spec"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <View
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:background="@color/white"/>
+                android:background="@color/white" />
+
             <android.support.design.widget.TabLayout
                 android:id="@+id/tl_index_sort"
                 android:layout_width="match_parent"
@@ -33,65 +126,22 @@
                 android:background="@color/white"
                 app:tabIndicatorColor="@color/pink"
                 app:tabIndicatorHeight="3dp"
-                app:tabTextColor="@android:color/black"
-                app:tabSelectedTextColor="@color/colorPrimaryDark"/>
+                app:tabSelectedTextColor="@color/colorPrimaryDark"
+                app:tabTextColor="@android:color/black" />
+
             <com.zrp.latte.ui.viewpager.CustomViewPager
                 android:id="@+id/vp_index_sort"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tb_index"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
+    <!--
+        android:background="@android:color/transparent"
         app:layout_behavior="com.zrp.latte.ec.main.index.TranslucentBehavior"
-        android:background="@android:color/transparent">
+    -->
 
-        <!--自定义沉浸式状态栏 -->
 
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <!--文字 -->
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_index_scan"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="{fa-qrcode}"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"/>
-            <!-- 搜索框-->
-            <!-- 设置圆角 @drawable/index_search_round-->
-            <android.support.v7.widget.AppCompatEditText
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_weight="4"
-                android:background="@drawable/index_search_round"
-                android:hint="@string/search"
-                android:paddingLeft="20dp"/>
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_index_message"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="{fa-bullhorn}"
-                android:textColor="@android:color/white"
-                android:textSize="25sp"/>
-
-        </android.support.v7.widget.LinearLayoutCompat>
-
-    </android.support.v7.widget.Toolbar>
 
 
 </android.support.design.widget.CoordinatorLayout>
