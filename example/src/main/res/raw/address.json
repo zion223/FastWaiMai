@@ -5,20 +5,35 @@
     {
       "id":1,
       "name":"张",
-      "gender":"先生",
+      "gender":0,
       "phone":"15073591684",
       "default":true,
       "preaddress":"弘信山庄",
-      "sufaddress":"33单元601"
+      "housenumber":"33单元601",
+      "sufaddress":"青岛市市南区",
+      "tag": 0
     },
     {
       "id":2,
       "name": "周",
-      "gender":"女士",
+      "gender":1,
       "phone":"1336548921",
       "default": false,
       "preaddress": "动漫产业园",
-      "sufaddress": "E座601"
+      "housenumber": "E座601",
+      "sufaddress": "青岛市市北区",
+      "tag": 1
+    },
+    {
+      "id":2,
+      "name": "王",
+      "gender":1,
+      "phone":"1336548921",
+      "default": false,
+      "preaddress": "光宇阳光地中海",
+      "housenumber": "9栋301",
+      "sufaddress": "重庆市渝北区余松路99号",
+      "tag": 4
     }
   ]
 }

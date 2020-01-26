@@ -2,6 +2,8 @@ package com.example.latte.example;
 
 import android.support.multidex.MultiDexApplication;
 
+import com.baidu.mapapi.CoordType;
+import com.baidu.mapapi.SDKInitializer;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.web.event.TestEvent;
@@ -20,7 +22,23 @@ public class ExampleApp extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        final ArrayList<Interceptor> interceptors = initInterceptors();
 
+        Latte.init(this)
+                .withApiHost("http://192.168.1.54:8082")
+                .withInterceptors(interceptors)
+                .withIcon(new FontAwesomeModule())
+                .withJavascriptInterface("latte")
+                .withWebEvent("test",new TestEvent())
+                .configure();
+        //在使用SDK各组件之前初始化context信息，传入ApplicationContext
+        SDKInitializer.initialize(this);
+        //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
+        //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
+        SDKInitializer.setCoordType(CoordType.BD09LL);
+    }
+
+    private ArrayList<Interceptor> initInterceptors() {
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
         //首页广告数据
@@ -55,13 +73,6 @@ public class ExampleApp extends MultiDexApplication {
         for(int i = 3;i < 16;i ++){
             interceptors.add(new DebugInterceptor("api/content/"+i,R.raw.lk003));
         }
-
-        Latte.init(this)
-                .withApiHost("http://192.168.1.54:8082")
-                .withInterceptors(interceptors)
-                .withIcon(new FontAwesomeModule())
-                .withJavascriptInterface("latte")
-                .withWebEvent("test",new TestEvent())
-                .configure();
+        return interceptors;
     }
 }

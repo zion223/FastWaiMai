@@ -18,7 +18,7 @@
         android:textSize="15sp"
         android:text="弘信山庄19号楼"/>
     <TextView
-        android:id="@+id/tv_item_address_suffix"
+        android:id="@+id/tv_item_address_house_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/tv_item_address_prefix"
@@ -54,7 +54,7 @@
         android:text="15078383888"/>
     <ImageView
         android:id="@+id/iv_item_address_edit"
-        android:layout_width="15dp"
+        android:layout_width="40dp"
         android:layout_height="15dp"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"

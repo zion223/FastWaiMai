@@ -16,6 +16,8 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
 
     private final LatteDelegate DELEGATE;
     private final Type currentType;
+    private static final String MALE = "先生";
+    private static final String FEMALE = "女士";
 
     AddressAdapter(List<MultipleItemEntity> data, LatteDelegate delegate) {
         super(data);
@@ -23,6 +25,7 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
         currentType = Type.ADDRESS;
         addItemType(AddressItemType.ITEM_ADDRESS, R.layout.item_address);
     }
+
     public AddressAdapter(List<MultipleItemEntity> data) {
         super(data);
         DELEGATE = null;
@@ -33,19 +36,25 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
     @Override
     protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
         super.convert(holder, entity);
+        String genderText;
         switch (holder.getItemViewType()){
             case AddressItemType.ITEM_ADDRESS:
-                final Integer id = entity.getField(MultipleFields.ID);
-                final String surname = entity.getField(AddressItemFields.SURNAME);
+                final String name = entity.getField(AddressItemFields.SURNAME);
                 final String phone = entity.getField(AddressItemFields.PHONE);
-                final String gender = entity.getField(AddressItemFields.GENDER);
+                final Integer gender = entity.getField(AddressItemFields.GENDER);
                 final String preAddress = entity.getField(AddressItemFields.ADDRESS_PREFIX);
                 final String sufAddress = entity.getField(AddressItemFields.ADDRESS_SUFFIX);
-                final Boolean isDefault = entity.getField(AddressItemFields.DEFAULT);
-                holder.setText(R.id.tv_item_address_firstname, surname);
-                holder.setText(R.id.tv_item_address_suffix, sufAddress);
+                final String houseNumber = entity.getField(AddressItemFields.HOUSE_NUMBER);
+                final int tag = entity.getField(AddressItemFields.ADDRESS_TAG);
+                holder.setText(R.id.tv_item_address_firstname, name);
+                holder.setText(R.id.tv_item_address_house_number, houseNumber);
                 holder.setText(R.id.tv_item_address_prefix, preAddress);
-                holder.setText(R.id.tv_item_address_gender, gender);
+                if(gender == 0){
+                    genderText = MALE;
+                }else{
+                    genderText = FEMALE;
+                }
+                holder.setText(R.id.tv_item_address_gender, genderText);
                 holder.setText(R.id.tv_item_address_phone, phone);
                 final ImageView editView = holder.getView(R.id.iv_item_address_edit);
                 if(currentType == Type.ADDRESS){
@@ -54,7 +63,8 @@ public class AddressAdapter extends MultipleRecyclerAdapter {
                         public void onClick(View v) {
                             //编辑单个地址
                             if(DELEGATE != null){
-                                DELEGATE.getSupportDelegate().start(AddressEditDelegate.create(id, surname, phone, preAddress, isDefault));
+                                DELEGATE.getSupportDelegate()
+                                        .start(AddressEditDelegate.create(houseNumber, name, phone, preAddress, sufAddress, tag, gender));
                             }
                         }
                     });

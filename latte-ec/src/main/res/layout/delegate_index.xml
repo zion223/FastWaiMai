@@ -29,8 +29,8 @@
 
                 <!--location img -->
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/index_location" />
                 <!-- 搜索框-->
@@ -40,13 +40,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="8"
                     android:text="青岛国际游戏动漫产业园"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
 
                 <ImageView
                     android:id="@+id/iv_index_message"

@@ -6,5 +6,7 @@ public enum  AddressItemFields {
     PHONE,
     ADDRESS_PREFIX,
     ADDRESS_SUFFIX,
+    HOUSE_NUMBER,
+    ADDRESS_TAG,
     DEFAULT
 }

@@ -22,6 +22,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDir 'libs'
+        }
+    }
 
 }
 
@@ -41,4 +46,5 @@ dependencies {
     compile project(':latte-ui')
     //圆形图片
     compile 'de.hdodenhof:circleimageview:2.1.0'
+    implementation files('libs\\BaiduLBS_Android.jar')
 }

@@ -20,11 +20,18 @@ public class AddressDataConverter extends DataConverter {
 
             final int id = address.getIntValue("id");
             final String name = address.getString("name");
-            final String gender = address.getString("gender");
+            // 0 : 先生
+            // 1 : 女士
+            final Integer gender = address.getIntValue("gender");
             final String phone = address.getString("phone");
+            //地址前缀
             final String preAddress = address.getString("preaddress");
+            //地址后缀
             final String sufAddress = address.getString("sufaddress");
+            //门牌号
+            final String houseNumber = address.getString("housenumber");
             final Boolean isDefault = address.getBoolean("default");
+            final Integer tag = address.getIntValue("tag");
 
             final MultipleItemEntity addressEntity = MultipleItemEntity.builder()
                     .setItemType(AddressItemType.ITEM_ADDRESS)
@@ -34,6 +41,8 @@ public class AddressDataConverter extends DataConverter {
                     .setField(AddressItemFields.PHONE, phone)
                     .setField(AddressItemFields.ADDRESS_PREFIX, preAddress)
                     .setField(AddressItemFields.ADDRESS_SUFFIX, sufAddress)
+                    .setField(AddressItemFields.HOUSE_NUMBER, houseNumber)
+                    .setField(AddressItemFields.ADDRESS_TAG, tag)
                     .setField(AddressItemFields.DEFAULT, isDefault)
                     .build();
             ENTITYS.add(addressEntity);

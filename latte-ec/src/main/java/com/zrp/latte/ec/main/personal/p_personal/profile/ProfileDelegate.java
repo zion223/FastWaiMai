@@ -84,7 +84,7 @@ public class ProfileDelegate extends BottomItemDelegate implements RadioButton.O
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		super.onBindView(savedInstanceState, view);
-		male = this.getString(R.string.man);
+		male = this.getString(R.string.male);
 		female = this.getString(R.string.female);
 		mGenderDialog = new AlertDialog.Builder(getContext()).create();
 		final Bundle profile = getArguments();

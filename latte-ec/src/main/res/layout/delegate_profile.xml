@@ -20,7 +20,7 @@
 
             <View
                 android:id="@+id/view_profile_line"
-                android:layout_width="3dp"
+                android:layout_width="1.5dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.latte.example">
 
+
     <application
         android:name="com.example.latte.example.ExampleApp"
         android:allowBackup="true"
@@ -11,8 +12,7 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_config"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.latte.example.ExampleActivity"
-           android:theme="@style/DefaultCityPickerTheme">
+        <activity android:name="com.example.latte.example.ExampleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +24,12 @@
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="GokwEhQKzcl5LgI6Yyg4lGdy6N2F7qps"/>
+        <service android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote"/>
     </application>
 
 </manifest>

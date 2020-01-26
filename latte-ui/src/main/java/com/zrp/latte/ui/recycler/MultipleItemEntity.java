@@ -7,7 +7,7 @@ import java.lang.ref.ReferenceQueue;
 import java.lang.ref.SoftReference;
 import java.util.LinkedHashMap;
 
-public class MultipleItemEntity implements MultiItemEntity,Serializable {
+public class MultipleItemEntity implements MultiItemEntity, Serializable {
 
 
     private final ReferenceQueue<LinkedHashMap<Object,Object>> ITEM_QUENE = new ReferenceQueue<>();

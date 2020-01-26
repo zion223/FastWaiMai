@@ -20,7 +20,7 @@
                 android:layout_marginLeft="5dp"/>
             <View
                 android:id="@+id/view_profile_line"
-                android:layout_width="2dp"
+                android:layout_width="1.5dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"

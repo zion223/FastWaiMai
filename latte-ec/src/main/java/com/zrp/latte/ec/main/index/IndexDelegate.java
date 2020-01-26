@@ -109,10 +109,12 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
 					mToolBar.setBackgroundColor(Color.WHITE);
 					mRlSearch.setBackgroundColor(Color.WHITE);
+					mToolBar.setVisibility(View.VISIBLE);
 				}
 				if (scrollY < oldScrollY) {
 					Log.e("=====", "上滑");
 					mRlSearch.setBackground(getResources().getDrawable(R.drawable.index_toorbar_backgroundtwo));
+					mToolBar.setVisibility(View.GONE);
 					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
 				}
 
