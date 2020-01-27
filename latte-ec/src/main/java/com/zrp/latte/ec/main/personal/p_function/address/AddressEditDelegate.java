@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.p_function.address;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,6 +28,7 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
@@ -70,6 +72,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearchResultListener{
 
@@ -212,33 +215,32 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 
-//        String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_PHONE_STATE
-//                ,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION
-//                ,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-//        mBaiduMap = mMapView.getMap();
-//        //EasyPermission中请求的权限需要在Manifest中申请
-//        if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
-//            MapStatus.Builder builder = new MapStatus.Builder();
-//            builder.zoom(18.0f);
-//
-////            final LatLng GEO_CHONGQING = new LatLng(29.5924475600, 106.4984776500);
-////            final LatLng GEO_CHONGQING_up = new LatLng(31.5924475600, 106.4984776500);
-////            MapStatusUpdate status1  = MapStatusUpdateFactory.newLatLng(GEO_CHONGQING);
-////            mBaiduMap.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-//            mBaiduMap.setMyLocationEnabled(true);
+        String[] perms = {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_PHONE_STATE
+                ,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION
+                ,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        //EasyPermission中请求的权限需要在Manifest中申请
+        if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.zoom(18.0f);
+            //监听输入框
+            monitorEditTextChage();
+            initGeoCoder();
+            initSuggestionSearch();
+            initPoiSearch();
+            initMap();
+            initLocation();
+            monitorMap();
+//            final LatLng GEO_CHONGQING = new LatLng(29.5924475600, 106.4984776500);
+//            final LatLng GEO_CHONGQING_up = new LatLng(31.5924475600, 106.4984776500);
+//            MapStatusUpdate status1  = MapStatusUpdateFactory.newLatLng(GEO_CHONGQING);
+//            mBaiduMap.setMapStatus(status1);
 //            mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-//        } else {
-//            EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
-//        }
 
-        //监听输入框
-        monitorEditTextChage();
-        initGeoCoder();
-        initSuggestionSearch();
-        initPoiSearch();
-        initMap();
-        initLocation();
-        monitorMap();
+        } else {
+            EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
+        }
+
+
         //姓名
         mEditAddressName.setText(name);
         //手机号
@@ -523,6 +525,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
             mTvSchoolTag.setBackground(getResources().getDrawable(R.drawable.address_tag_border));
         }
     }
+
     @OnClick(R2.id.tv_address_edit_school_tag)
     void onClickChooseSchoolTag(){
         if(tag == 1){
@@ -734,6 +737,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
             if (location.getLocType() == BDLocation.TypeGpsLocation
                     || location.getLocType() == BDLocation.TypeNetWorkLocation) {
                 navigateTo(location);
+                //navigateTo(29.5924475600, 106.4984776500);
                 cityName = location.getCity();
 
                 mTvCurrrentCity.setText(cityName);
@@ -770,6 +774,29 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
         MyLocationData locationData = locationBuilder.build();
         mBaiduMap.setMyLocationData(locationData);
     }
+    /**
+     * 根据收货地址的位置在地图上移动"我"的位置
+     */
+    private void navigateTo(double longitude, double latitude) {
+        if (isFirstLocation) {
+            currentLatLng = new LatLng(latitude, longitude);
+            MapStatus.Builder builder = new MapStatus.Builder();
+            MapStatus mapStatus = builder.target(currentLatLng).zoom(17.0f).build();
+            mBaiduMap.animateMapStatus(MapStatusUpdateFactory
+                    .newMapStatus(mapStatus));
+            isFirstLocation = false;
+
+            //反向地理解析（含有poi列表）
+            mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
+                    .location(currentLatLng));
+        }
+        MyLocationData.Builder locationBuilder = new MyLocationData.Builder();
+        locationBuilder.latitude(latitude);
+        locationBuilder.longitude(longitude);
+        MyLocationData locationData = locationBuilder.build();
+        mBaiduMap.setMyLocationData(locationData);
+    }
+
     private void monitorEditTextChage() {
         mEtSearchKeyword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -814,7 +841,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
             mMapView.onDestroy();
         }
         // 当不需要定位图层时关闭定位图层
-        mBaiduMap.setMyLocationEnabled(false);
+        //mBaiduMap.setMyLocationEnabled(false);
         // 取消监听函数
         if (mLocationClient != null) {
             mLocationClient.unRegisterLocationListener(myListener);

@@ -42,7 +42,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="8"
-                    android:text="青岛国际游戏动漫产业园"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -106,7 +105,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="130dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index_spec"

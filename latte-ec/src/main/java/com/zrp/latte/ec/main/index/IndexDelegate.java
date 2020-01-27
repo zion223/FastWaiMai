@@ -10,20 +10,21 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
@@ -41,10 +42,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
-
 
 public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
 
@@ -73,6 +71,10 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	private final RgbValue RGB_VALUE = RgbValue.create(255,69,0);
 	private List<SpecZoneBean> mSpecData = null;
 	private static final int LOCATION_CODE = 11;
+
+	private MyLocationListener myListener = new MyLocationListener();
+	public LocationClient mLocationClient = null;
+	private LocationClientOption option = null;
 
 	@OnClick(R2.id.tv_index_location)
 	void onClickLocation() {
@@ -121,6 +123,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 				if (scrollY == 0) {
 					Log.e("=====", "滑到顶部");
 					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
+					mToolBar.setVisibility(View.VISIBLE);
 				}
 
 				if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
@@ -128,6 +131,9 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 				}
 			}
 		});
+
+		initLocation();
+
 	}
 
 
@@ -227,6 +233,64 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		mTvLocation.setText(address);
 	}
 
+	public class MyLocationListener extends BDAbstractLocationListener {
+
+		@Override
+		public void onReceiveLocation(BDLocation location) {
+			if (location == null){
+				return;
+			}
+			mTvLocation.setText(location.getAddrStr().substring(5));
+		}
+	}
+	private void initLocation() {
+		// 声明LocationClient类
+		mLocationClient = new LocationClient(getContext());
+
+		// 利用LocationClientOption类配置定位SDK参数
+		option = new LocationClientOption();
+		option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+		// 可选，设置定位模式，默认高精度  LocationMode.Hight_Accuracy：高精度； LocationMode. Battery_Saving：低功耗； LocationMode. Device_Sensors：仅使用设备；
+
+		option.setCoorType("bd09ll");
+		// 可选，设置返回经纬度坐标类型，默认gcj02
+		// gcj02：国测局坐标；
+		// bd09ll：百度经纬度坐标；
+		// bd09：百度墨卡托坐标；
+		// 海外地区定位，无需设置坐标类型，统一返回wgs84类型坐标
+
+		option.setOpenGps(true);
+		// 可选，设置是否使用gps，默认false
+		// 使用高精度和仅用设备两种定位模式的，参数必须设置为true
+
+		option.setLocationNotify(true);
+		// 可选，设置是否当GPS有效时按照1S/1次频率输出GPS结果，默认false
+
+		option.setIgnoreKillProcess(true);
+		// 可选，定位SDK内部是一个service，并放到了独立进程。
+		// 设置是否在stop的时候杀死这个进程，默认（建议）不杀死，即setIgnoreKillProcess(true)
+
+		option.SetIgnoreCacheException(false);
+		// 可选，设置是否收集Crash信息，默认收集，即参数为false
+
+		option.setEnableSimulateGps(false);
+		// 可选，设置是否需要过滤GPS仿真结果，默认需要，即参数为false
+
+		option.setIsNeedLocationDescribe(true);
+		// 可选，是否需要位置描述信息，默认为不需要，即参数为false
+
+		option.setIsNeedLocationPoiList(true);
+		// 可选，是否需要周边POI信息，默认为不需要，即参数为false
+
+		option.setIsNeedAddress(true);// 获取详细信息
+		//设置扫描间隔
+//        option.setScanSpan(10000);
+
+		mLocationClient.setLocOption(option);
+		// 注册监听函数
+		mLocationClient.registerLocationListener(myListener);
+		mLocationClient.start();
+	}
 
 
 }
