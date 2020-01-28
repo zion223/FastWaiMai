@@ -116,7 +116,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 	@OnClick(R2.id.tv_personal_name)
 	public void onViewClickedEditDetail() {
 		getParentDelegate().getSupportDelegate().start(
-				ProfileDelegate.create(R.drawable.avatar, "趁微风不燥", "美女", "1997年10月10日", "15078383333"));
+				ProfileDelegate.create(R.drawable.personal_avatar, "趁微风不燥", "美女", "1997年10月10日", "15078383333"));
 	}
 
 	@OnClick(R2.id.rl_personal_address)

@@ -21,7 +21,7 @@
             <View
                 android:id="@+id/view_profile_line"
                 android:layout_width="1.5dp"
-                android:layout_height="30dp"
+                android:layout_height="15dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/iv_profile_backarrow"
@@ -76,11 +76,19 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_3dp"
             android:layout_marginBottom="@dimen/margin_3dp"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginRight="10dp"/>
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/app_background" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,7 +105,7 @@
             android:paddingLeft="10dp"
             android:textSize="15sp"
             android:textColor="@color/black"
-            android:text="昵称"/>
+            android:text="用户名"/>
 
         <TextView
             android:id="@+id/tv_profile_nickname"
@@ -107,14 +115,23 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
             android:background="@null"
             android:textSize="13sp"
             android:hint="昵称" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/app_background" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -141,16 +158,24 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
             android:background="@null"
             android:textSize="13sp"
             android:hint="性别" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_1dp"
-        android:background="@color/app_background"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/app_background" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -176,16 +201,24 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
             android:background="@null"
             android:textSize="13sp"
             android:hint="生日" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin_1dp"
         android:background="@color/app_background"
-        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -211,10 +244,17 @@
             android:layout_marginBottom="@dimen/margin_15dp"
             android:layout_weight="1"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|right"
+            android:paddingRight="10dp"
             android:background="@null"
             android:textSize="13sp"
             android:hint="手机号" />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow_expend_right"/>
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -224,6 +264,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
+        android:layout_gravity="bottom"
         android:textSize="15dp"
         android:textColor="@color/red"
         android:paddingLeft="15dp"
