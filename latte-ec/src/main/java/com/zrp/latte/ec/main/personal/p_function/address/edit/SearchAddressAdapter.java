@@ -1,31 +1,16 @@
 package com.zrp.latte.ec.main.personal.p_function.address.edit;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.PoiInfo;
 import com.baidu.mapapi.utils.DistanceUtil;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
-import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.latte.latte_ec.R;
 import com.zrp.latte.app.Latte;
-import com.zrp.latte.delegates.LatteDelegate;
-import com.zrp.latte.ec.main.personal.p_function.address.AddressEditDelegate;
-import com.zrp.latte.ec.main.personal.p_function.address.AddressItemFields;
-import com.zrp.latte.ec.main.personal.p_function.address.AddressItemType;
-import com.zrp.latte.ui.recycler.MultipleFields;
-import com.zrp.latte.ui.recycler.MultipleItemEntity;
-import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
-import com.zrp.latte.ui.recycler.MultipleViewHolder;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -37,7 +22,6 @@ public class SearchAddressAdapter extends BaseQuickAdapter<PoiInfo, BaseViewHold
     public SearchAddressAdapter(@Nullable List<PoiInfo> data, LatLng currentLatLng) {
         super(R.layout.item_search_address, data);
         this.currentLatLng = currentLatLng;
-
     }
 
     @Override

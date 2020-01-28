@@ -50,8 +50,7 @@
         android:id="@+id/mv_address_edit_map"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true" />
+        android:layout_height="match_parent"/>
     <LinearLayout
         android:id="@+id/ll_address_edit_input"
         android:layout_width="match_parent"
