@@ -519,7 +519,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 
 		mCardViewBottom.setVisibility(View.GONE);
 		mCardViewTop.setVisibility(View.GONE);
-		mLvSearchAddress.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.in_bottom));
+		mCardViewSearchAddress.setAnimation(AnimationUtils.loadAnimation(getContext(), R.anim.in_bottom));
 		mLlInputText.setVisibility(View.VISIBLE);
 		mCardViewSearchAddress.setVisibility(View.VISIBLE);
 		mLvSearchAddress.setVisibility(View.VISIBLE);
@@ -706,6 +706,9 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 
 	}
 
+	/**
+	 * 展示搜索的布局
+	 */
 	private void showSeachView() {
 		mMapView.setVisibility(View.GONE);
 		mCardViewSearchAddress.setVisibility(View.GONE);
@@ -804,7 +807,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 					.newMapStatus(mapStatus));
 			isFirstLocation = false;
 
-			//反向地理解析（含有poi列表）
+			//反向地理解析(含有poi列表)
 			mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
 					.location(currentLatLng));
 		}

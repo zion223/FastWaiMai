@@ -24,7 +24,7 @@
 
             <View
                 android:id="@+id/view_location_line"
-                android:layout_width="3dp"
+                android:layout_width="1.5dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:paddingRight="10dp"
+                android:paddingRight="20dp"
                 android:text="新增地址"
                 android:textColor="@color/black" />
 
@@ -57,7 +57,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:background="@color/white"
         android:orientation="horizontal">
 
@@ -105,8 +105,7 @@
                 android:gravity="center_vertical"
                 android:hint="请输入收货地址"
                 android:paddingLeft="20dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+
                 android:textSize="12sp" />
 
             <ImageView
@@ -143,6 +142,7 @@
             android:layout_gravity="center_vertical"
             android:src="@drawable/index_location_img"/>
         <TextView
+            android:id="@+id/tv_location_relocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
@@ -201,5 +201,9 @@
         android:id="@+id/rv_location_around"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"/>
+        android:layout_marginLeft="55dp"/>
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mv_location_hidden"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 </LinearLayout>

@@ -79,7 +79,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	@OnClick(R2.id.tv_index_location)
 	void onClickLocation() {
 
-		getParentDelegate().getSupportDelegate().startForResult(new LocationDelegate(), LOCATION_CODE);
+		getParentDelegate().getSupportDelegate().startForResult(LocationDelegate.create(mTvLocation.getText().toString()), LOCATION_CODE);
 
 		//扫描二维码
 //        String[] perms = {Manifest.permission.CAMERA};
@@ -116,8 +116,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 				if (scrollY < oldScrollY) {
 					Log.e("=====", "上滑");
 					mRlSearch.setBackground(getResources().getDrawable(R.drawable.index_toorbar_backgroundtwo));
-					mToolBar.setVisibility(View.GONE);
 					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
+					mToolBar.setVisibility(View.GONE);
 				}
 
 				if (scrollY == 0) {
