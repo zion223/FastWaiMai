@@ -4,20 +4,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Toolbar
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@android:color/holo_orange_dark"
-        android:gravity="center">
-        <android.support.v7.widget.AppCompatTextView
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <android.support.v7.widget.Toolbar
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:paddingTop="6dp"
-            android:text="分类"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-    </Toolbar>
+            android:layout_height="70dp"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="分类"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
     <!--
         左边栏是分类,右边栏是对应的商品
         baselineAligned:基准线对齐

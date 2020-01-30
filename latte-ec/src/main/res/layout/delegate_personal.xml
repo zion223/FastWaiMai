@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="30dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_personal_avatar"
