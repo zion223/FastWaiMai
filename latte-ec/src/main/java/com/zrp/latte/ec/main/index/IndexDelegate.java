@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.index;
 
+import android.Manifest;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.index.location.LocationDelegate;
 import com.zrp.latte.ec.main.index.spec.SpecZoneAdapter;
@@ -43,6 +45,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.EasyPermissions;
 
 public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
 
@@ -131,8 +134,14 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 				}
 			}
 		});
-
-		initLocation();
+		String[] perms = {Manifest.permission.READ_PHONE_STATE
+				, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
+				, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
+			initLocation();
+		}else{
+			EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
+		}
 
 	}
 

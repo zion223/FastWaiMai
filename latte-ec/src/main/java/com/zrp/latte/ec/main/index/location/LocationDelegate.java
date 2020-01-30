@@ -75,7 +75,6 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 	private MyLocationListener myListener = new MyLocationListener();
 	public LocationClient mLocationClient = null;
 	private LocationClientOption option = null;
-	private LatLng currentLatLng;//当前所在位置
 
 	//poi检索
 	private GeoCoder mGeoCoder;//反向地理解析，获取周边poi
@@ -88,12 +87,13 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 	private List<PoiInfo> poiInfoListForGeoCoder = new ArrayList<>();//地理反向解析获取的poi
 	private List<PoiInfo> poiInfoListForSearch = new ArrayList<>();//检索结果集合
 
-	private NearbyAddressAdapter mSearchAddressAdapter;
+	private NearbyAddressAdapter mNearbyAddressAdapter;
 	private String cityName = "";
 	private String keyword = "";
 
 
 	private static final String ARGS_LOCATION_DETAIL = "ARGS_LOCATION_DETAIL";
+	private String currentAddr = null;
 
 	public static LocationDelegate create(String address) {
 		final Bundle args = new Bundle();
@@ -238,19 +238,24 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 		});
 	}
 	private void initGeoCoderListView() {
-		mSearchAddressAdapter = new NearbyAddressAdapter(poiInfoListForGeoCoder);
-		mSearchAddressAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+		mNearbyAddressAdapter = new NearbyAddressAdapter(poiInfoListForGeoCoder);
+		mNearbyAddressAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
 			@Override
 			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-				final PoiInfo info = (PoiInfo) adapter.getItem(position);
 
-				Toast.makeText(Latte.getApplication(), "选中了" + info.getName() + info.getAddress(),Toast.LENGTH_LONG).show();
+				final PoiInfo info = (PoiInfo) adapter.getItem(position);
+				assert info != null;
+				final Bundle bundle = new Bundle();
+				bundle.putString("address", info.getAddress());
+				getSupportDelegate().setFragmentResult(RESULT_OK, bundle);
+				getSupportDelegate().onDestroy();
+				getSupportDelegate().pop();
 
 			}
 		});
 		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
 		mRvRoundAddress.setLayoutManager(manager);
-		mRvRoundAddress.setAdapter(mSearchAddressAdapter);
+		mRvRoundAddress.setAdapter(mNearbyAddressAdapter);
 	}
 
 	private void initPoiSearch() {
@@ -266,7 +271,9 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 
 	@OnClick(R2.id.tv_location_relocation)
 	public void onClickReLocation(View view){
-		mLocationClient.start();
+		if(currentAddr != null){
+			mTvLocationDetail.setText(currentAddr.substring(5));
+		}
 	}
 
 	@OnClick(R2.id.tv_index_location_city)
@@ -326,7 +333,7 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 		if (poiResult.error == SearchResult.ERRORNO.NO_ERROR) {
 			poiInfoListForSearch = poiResult.getAllPoi();
 			//showSeachView();
-			//initPoiSearchListView();
+			initPoiSearchListView();
 			return;
 		}
 
@@ -344,37 +351,20 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 		}
 	}
 
+
+	//初始化搜索建议
+	private void initPoiSearchListView() {
+
+	}
+
 	@Override
 	public void onGetPoiDetailResult(PoiDetailResult poiDetailResult) {
-		if (poiDetailResult.error != SearchResult.ERRORNO.NO_ERROR) {
-			Toast.makeText(getContext(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
-		} else {
-			Toast.makeText(getContext(),
-					poiDetailResult.getName() + ": " + poiDetailResult.getAddress(),
-					Toast.LENGTH_SHORT).show();
-		}
+
 	}
 
 	@Override
 	public void onGetPoiDetailResult(PoiDetailSearchResult poiDetailSearchResult) {
-		if (poiDetailSearchResult.error != SearchResult.ERRORNO.NO_ERROR) {
-			Toast.makeText(getContext(), "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
-		} else {
-			List<PoiDetailInfo> poiDetailInfoList = poiDetailSearchResult.getPoiDetailInfoList();
-			if (null == poiDetailInfoList || poiDetailInfoList.isEmpty()) {
-				Toast.makeText(getContext(), "抱歉，检索结果为空", Toast.LENGTH_SHORT).show();
-				return;
-			}
 
-			for (int i = 0; i < poiDetailInfoList.size(); i++) {
-				PoiDetailInfo poiDetailInfo = poiDetailInfoList.get(i);
-				if (null != poiDetailInfo) {
-					Toast.makeText(getContext(),
-							poiDetailInfo.getName() + ": " + poiDetailInfo.getAddress(),
-							Toast.LENGTH_SHORT).show();
-				}
-			}
-		}
 	}
 
 	@Override
@@ -393,12 +383,13 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 			if (location.getLocType() == BDLocation.TypeGpsLocation
 					|| location.getLocType() == BDLocation.TypeNetWorkLocation) {
 
-				final String currentAddr = location.getAddrStr();
-				currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+				currentAddr = location.getAddrStr();
+				//当前所在位置
+				LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
 				mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
 						.location(currentLatLng)
 						.radius(radius));
-				mTvLocationDetail.setText(currentAddr.substring(5));
+
 			}
 
 		}

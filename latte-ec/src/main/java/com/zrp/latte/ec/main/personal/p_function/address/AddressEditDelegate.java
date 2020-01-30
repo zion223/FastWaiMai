@@ -1,6 +1,5 @@
 package com.zrp.latte.ec.main.personal.p_function.address;
 
-import android.Manifest;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -57,14 +56,12 @@ import com.baidu.mapapi.search.poi.PoiSearch;
 import com.baidu.mapapi.search.sug.OnGetSuggestionResultListener;
 import com.baidu.mapapi.search.sug.SuggestionResult;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
-import com.baidu.mapapi.search.sug.SuggestionSearchOption;
 import com.baidu.mapapi.utils.DistanceUtil;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 
 
-import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.personal.p_function.address.edit.SearchAddressAdapter;
 import com.zrp.latte.ui.widget.ClearEditText;
@@ -76,7 +73,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import pub.devrel.easypermissions.EasyPermissions;
 
 public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearchResultListener {
 
@@ -84,11 +80,11 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 	@BindView(R2.id.btn_address_edit_save)
 	AppCompatButton mBtnSave;
 	@BindView(R2.id.edit_address_edit_name)
-	ClearEditText mEditAddressName;
+	ClearEditText mAddressName;
 	@BindView(R2.id.edit_address_edit_phone)
-	ClearEditText mEditAddressPhone;
+	ClearEditText mAddressPhone;
 	@BindView(R2.id.tv_address_edit_house_number)
-	ClearEditText mEditAddressHouseNumber;
+	ClearEditText mAddressHouseNumber;
 	@BindView(R2.id.mv_address_edit_map)
 	MapView mMapView;
 	@BindView(R2.id.btn_address_edit_delete)
@@ -226,37 +222,28 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 
-		String[] perms = {Manifest.permission.READ_PHONE_STATE
-				, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
-				, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-		//EasyPermission中请求的权限需要在Manifest中申请
-		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
-			MapStatus.Builder builder = new MapStatus.Builder();
-			builder.zoom(18.0f);
-			//监听输入框
-			monitorEditTextChage();
-			initGeoCoder();
-			initPoiSearch();
-			initSuggestionSearch();
-			initMap();
-			initLocation();
-            monitorMap();
+
+		final MapStatus.Builder builder = new MapStatus.Builder();
+		builder.zoom(18.0f);
+		//监听输入框
+		monitorEditTextChage();
+		initGeoCoder();
+		initPoiSearch();
+		initSuggestionSearch();
+		initMap();
+		initLocation();
+		monitorMap();
 //            final LatLng GEO_CHONGQING = new LatLng(29.5924475600, 106.4984776500);
 //            MapStatusUpdate status1  = MapStatusUpdateFactory.newLatLng(GEO_CHONGQING);
 //            mBaiduMap.setMapStatus(status1);
 //            mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 
-		} else {
-			EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
-		}
-
-
 		//姓名
-		mEditAddressName.setText(name);
+		mAddressName.setText(name);
 		//手机号
-		mEditAddressPhone.setText(phone);
+		mAddressPhone.setText(phone);
 		//门牌号
-		mEditAddressHouseNumber.setText(houseNumber);
+		mAddressHouseNumber.setText(houseNumber);
 		//地址前缀
 		mTvAddressPrefix.setText(addressPre);
 		//地址后缀
@@ -652,11 +639,11 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 				assert info != null;
 				LatLng choosedLocation = info.getLocation();
 				//移动marker的位置
-				if(marker != null){
+				if (marker != null) {
 					marker.setPosition(choosedLocation);
 				}
-            	final MapStatusUpdate status = MapStatusUpdateFactory.newLatLng(info.getLocation());
-            	mBaiduMap.setMapStatus(status);
+				final MapStatusUpdate status = MapStatusUpdateFactory.newLatLng(info.getLocation());
+				mBaiduMap.setMapStatus(status);
 				mCardViewSearchAddress.setVisibility(View.GONE);
 				mLlInputText.setVisibility(View.GONE);
 
@@ -682,10 +669,10 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 			public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 				final PoiInfo poiInfo = (PoiInfo) adapter.getItem(position);
 				assert poiInfo != null;
-				if(marker != null){
+				if (marker != null) {
 					marker.setPosition(poiInfo.getLocation());
 				}
-				final MapStatusUpdate status  = MapStatusUpdateFactory.newLatLng(poiInfo.getLocation());
+				final MapStatusUpdate status = MapStatusUpdateFactory.newLatLng(poiInfo.getLocation());
 				mBaiduMap.setMapStatus(status);
 				mTvAddressPrefix.setText(poiInfo.getName());
 				mTvAddressSuffix.setText(poiInfo.getAddress());
@@ -809,7 +796,8 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 
 			//反向地理解析(含有poi列表)
 			mGeoCoder.reverseGeoCode(new ReverseGeoCodeOption()
-					.location(currentLatLng));
+					.location(currentLatLng)
+					.radius(radius));
 		}
 		MyLocationData.Builder locationBuilder = new MyLocationData.Builder();
 		locationBuilder.latitude(location.getLatitude());
@@ -886,7 +874,7 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 			mMapView.onDestroy();
 		}
 		// 当不需要定位图层时关闭定位图层
-		//mBaiduMap.setMyLocationEnabled(false);
+		mBaiduMap.setMyLocationEnabled(false);
 		// 取消监听函数
 		if (mLocationClient != null) {
 			mLocationClient.unRegisterLocationListener(myListener);

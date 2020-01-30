@@ -10,6 +10,7 @@ import com.zrp.latte.activities.ProxyActivity;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.LatteDelegate;
 
+import com.zrp.latte.ec.launcher.LauncherDelegate;
 import com.zrp.latte.ec.main.EcBottomDelegate;
 import com.zrp.latte.ec.sign.ISignListener;
 import com.zrp.latte.ec.sign.SignInDelagate;
@@ -23,7 +24,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
 
     @Override
     public LatteDelegate setRootDelegate() {
-        return new SignInDelagate();
+        return new LauncherDelegate();
     }
 
 
@@ -55,7 +56,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
             case SIGNED:
                 Toast.makeText(this, "启动结束用户登陆了", Toast.LENGTH_SHORT).show();
                 //进入首页
-                //getSupportDelegate().startWithPop(new EcBottomDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 //跳去登录页

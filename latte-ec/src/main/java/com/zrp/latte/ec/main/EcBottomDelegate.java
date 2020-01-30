@@ -2,9 +2,7 @@ package com.zrp.latte.ec.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BaseBottomDelegate;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.delegates.bottom.BottomTabBean;
@@ -15,7 +13,6 @@ import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.ec.main.personal.PersonalDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
 
-import org.greenrobot.greendao.generator.Index;
 
 import java.util.LinkedHashMap;
 

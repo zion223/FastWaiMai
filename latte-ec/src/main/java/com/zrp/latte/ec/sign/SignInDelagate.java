@@ -6,9 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,13 +21,9 @@ import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
-/**
- * Login Dealegate
- */
+
 public class SignInDelagate extends LatteDelegate {
 
 	@BindView(R2.id.edit_sign_in_password)
@@ -42,7 +36,6 @@ public class SignInDelagate extends LatteDelegate {
 	ImageView mIvPasswordShowType;
 	@BindView(R2.id.tv_sign_in_type)
 	TextView mTvSignInType;
-	Unbinder unbinder;
 	@BindView(R2.id.ll_sign_in_password)
 	LinearLayout mLlSignInPassword;
 	private ISignListener mISignListener = null;
