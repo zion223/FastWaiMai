@@ -87,10 +87,10 @@ public class PersonalDelegate extends BottomItemDelegate {
 			@Override
 			public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 				//TotalScrollRange : 72
-				//int range = mAppbarLayout.getTotalScrollRange();
+				int range = mAppbarLayout.getTotalScrollRange();
 				layoutParams.topMargin = Math.abs(verticalOffset) / 2;
 
-				if(verticalOffset != 0){
+				if(verticalOffset != 0&& Math.abs(verticalOffset) != range){
 					mLlToorBarSetting.setLayoutParams(layoutParams);
 				}
 			}
