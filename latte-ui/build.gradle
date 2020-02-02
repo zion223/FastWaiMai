@@ -55,7 +55,8 @@ dependencies {
     //地址选择器
     compile 'com.smartTop:jd-address:1.0.3'
     api 'com.jakewharton:butterknife:8.6.0'
-
+    //下拉刷新控件
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 
 }

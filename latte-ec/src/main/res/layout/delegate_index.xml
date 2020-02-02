@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh_layout_index"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<android.support.design.widget.CoordinatorLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
+
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout_index"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/tb_index"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:background="@drawable/index_toorbar_background"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <!--自定义沉浸式状态栏 -->
+            app:layout_scrollFlags="scroll">
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="30dp"
+
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
@@ -42,14 +49,15 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="5dp"
                     android:layout_weight="8"
+                    android:text="定位中"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/iv_index_message"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/index_message" />
 
@@ -57,36 +65,45 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <RelativeLayout
-            android:id="@+id/rl_index_search"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@drawable/index_toorbar_backgroundtwo">
+            android:minHeight="60dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:background="@drawable/index_toorbar_background">
 
-            <EditText
-                android:id="@+id/et_index_search"
+            <RelativeLayout
+                android:id="@+id/rl_index_search"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/index_search_round"
-                android:gravity="center_vertical"
-                android:paddingLeft="30dp"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:textSize="12sp" />
+                android:background="@drawable/shape_corner_up">
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_alignLeft="@+id/et_index_search"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/index_search" />
-        </RelativeLayout>
+                <EditText
+                    android:id="@+id/et_index_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/index_search_round"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignLeft="@+id/et_index_search"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/index_search" />
+            </RelativeLayout>
+
+        </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -94,8 +111,9 @@
         android:id="@+id/nestScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         android:focusableInTouchMode="true"
-        android:fillViewport="true">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,8 +123,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="130dp"/>
+                android:layout_height="wrap_content" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_index_spec"
@@ -141,6 +158,5 @@
     -->
 
 
-
-
 </android.support.design.widget.CoordinatorLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

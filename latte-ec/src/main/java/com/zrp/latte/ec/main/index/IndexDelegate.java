@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,8 +18,11 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,6 +32,9 @@ import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.zrp.latte.app.Latte;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.index.location.LocationDelegate;
@@ -38,7 +45,9 @@ import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.MultipleRecyclerAdapter;
 import com.zrp.latte.ui.recycler.RgbValue;
+import com.zrp.latte.ui.refresh.CustomRefreshHeader;
 import com.zrp.latte.ui.tab.TabPagerAdapter;
+import com.zrp.latte.util.dimen.DimenUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +62,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	RecyclerView mRecycleView;
 	@BindView(R2.id.rl_index_search)
 	RelativeLayout mRlSearch;
+	@BindView(R2.id.app_bar_layout_index)
+	AppBarLayout mAppBarLayout;
 	@BindView(R2.id.iv_index_message)
 	ImageView mIconMessage;
 	@BindView(R2.id.tb_index)
@@ -69,6 +80,8 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	EditText mEtSearch;
 	@BindView(R2.id.nestScrollView)
 	NestedScrollView mNestScrollView;
+	@BindView(R2.id.refresh_layout_index)
+	SmartRefreshLayout mRefreshLayout;
 
 	private MultipleRecyclerAdapter mAdapter = null;
 	private final RgbValue RGB_VALUE = RgbValue.create(255,69,0);
@@ -105,28 +118,57 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 		//mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
+		mRefreshLayout.setRefreshHeader(new CustomRefreshHeader(getActivity()));
+		//下拉高度
+		mRefreshLayout.setHeaderHeight(80);
+		mRefreshLayout.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+			@Override
+			public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+				mRefreshLayout.finishLoadMore(2000, true, false);
+			}
+
+			@Override
+			public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+				mRefreshLayout.finishRefresh(2000, true, false);
+			}
+		});
 		mEtSearch.setHint(getResources().getString(R.string.indexsearch));
+		mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+			@Override
+			public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+				int toolBarHeight = mToolBar.getHeight();
+				Log.e("=====", "verticalOffset " + verticalOffset +" toolBarHeight"+toolBarHeight);
+				if (Math.abs(verticalOffset) <= toolBarHeight) {
+					mToolBar.setAlpha(1.0f - Math.abs(verticalOffset) * 1.0f / toolBarHeight);
+				}
+			}
+		});
 		mNestScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
 			@Override
 			public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 				if (scrollY > oldScrollY) {
-					Log.e("=====", "下滑" + "scrollY" + scrollY + "oldScrollY" + oldScrollY);
 
-					mToolBar.setBackgroundColor(Color.WHITE);
-					mRlSearch.setBackgroundColor(Color.WHITE);
-					mToolBar.setVisibility(View.VISIBLE);
+					//Log.e("=====", "上滑" + "scrollY " + scrollY + " oldScrollY " + oldScrollY );
+
+//					mToolBar.setBackgroundColor(Color.WHITE);
+//					mRlSearch.setBackgroundColor(Color.WHITE);
+//					mToolBar.setVisibility(View.VISIBLE);
 				}
 				if (scrollY < oldScrollY) {
-					Log.e("=====", "上滑");
-					mRlSearch.setBackground(getResources().getDrawable(R.drawable.index_toorbar_backgroundtwo));
-					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
-					mToolBar.setVisibility(View.GONE);
+
+					//Log.e("=====", "下滑" + "scrollY"+scrollY + ":"+"oldScrollY" + oldScrollY);
+//					mRlSearch.setBackground(getResources().getDrawable(R.drawable.index_toorbar_backgroundtwo));
+//					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
+//					mToolBar.setVisibility(View.GONE);
+
 				}
 
 				if (scrollY == 0) {
 					Log.e("=====", "滑到顶部");
-					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
-					mToolBar.setVisibility(View.VISIBLE);
+//					mToolBar.setBackground(getResources().getDrawable(R.drawable.index_toorbar_background));
+//					mToolBar.setVisibility(View.VISIBLE);
+
 				}
 
 				if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
@@ -144,6 +186,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		}
 
 	}
+
 
 
 	@Override
