@@ -37,7 +37,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
-        StatusBarCompat.translucentStatusBar(this, true);
+        //StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override

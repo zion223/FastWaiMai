@@ -4,11 +4,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.latte.latte_ec.R;
@@ -35,6 +38,11 @@ public class PersonalDelegate extends BottomItemDelegate {
 	TextView mTvPayment;
 	@BindView(R2.id.tv_personal_benefit)
 	TextView mTvBenefit;
+	@BindView(R2.id.center_appbar_layout)
+	AppBarLayout mAppbarLayout;
+	@BindView(R2.id.rl_personal_toolbar_setting)
+	LinearLayout mLlToorBarSetting;
+
 
 
 	/**
@@ -73,6 +81,23 @@ public class PersonalDelegate extends BottomItemDelegate {
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
 
+		initView();
+		final CollapsingToolbarLayout.LayoutParams layoutParams = (CollapsingToolbarLayout.LayoutParams) mLlToorBarSetting.getLayoutParams();
+		mAppbarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+			@Override
+			public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+				//TotalScrollRange : 72
+				//int range = mAppbarLayout.getTotalScrollRange();
+				layoutParams.topMargin = Math.abs(verticalOffset) / 2;
+
+				if(verticalOffset != 0){
+					mLlToorBarSetting.setLayoutParams(layoutParams);
+				}
+			}
+		});
+	}
+
+	private void initView() {
 		final SpannableString redEnvelope = new SpannableString("0个未使用");
 		redEnvelope.setSpan(new ForegroundColorSpan(Color.parseColor("#FF0000")), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		redEnvelope.setSpan(new AbsoluteSizeSpan(17, true), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -103,7 +128,6 @@ public class PersonalDelegate extends BottomItemDelegate {
 
 		mTvPayment.setText(payment);
 		mTvBenefit.setText(benefit);
-
 	}
 
 	@Override
