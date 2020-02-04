@@ -25,7 +25,7 @@ public class RestClient {
 
 
     private final String URL;
-    private static final WeakHashMap<String,Object> PARAMS = RestCreator.getParams();
+    private final WeakHashMap<String,Object> PARAMS = RestCreator.getParams();
     private final String DOWNLOAD_DIR;
     private final String EXTENSION;
     private final String NAME;

@@ -16,13 +16,13 @@ import okhttp3.RequestBody;
 
 public class RestClientBuilder {
 
-    private  String mUrl = null;
-    private  static final WeakHashMap<String,Object> PARAMS = RestCreator.getParams();
-    private  IRequest mIRequest = null;
-    private  ISuccess mISuccess = null;
-    private  IFailure mIFailure = null;
-    private  IError mIError = null;
-    private  RequestBody mBody = null;
+    private String mUrl = null;
+    private static final WeakHashMap<String,Object> PARAMS = RestCreator.getParams();
+    private IRequest mIRequest = null;
+    private ISuccess mISuccess = null;
+    private IFailure mIFailure = null;
+    private IError mIError = null;
+    private RequestBody mBody = null;
     private Context mContext = null;
     private LoaderStyle mStyle = null;
     private File mFile = null;
