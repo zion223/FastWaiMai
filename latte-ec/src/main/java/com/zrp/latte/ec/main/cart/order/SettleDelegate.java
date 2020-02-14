@@ -73,9 +73,6 @@ public class SettleDelegate extends LatteDelegate implements CompoundButton.OnCh
 
 	@Override
 	public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
-
-
-
 		mSbReceipt.setOnCheckedChangeListener(this);
 		final String originalPayMoney = mTvPaymoney.getText().toString();
 		if (originalMoney.equals(0.0)) {

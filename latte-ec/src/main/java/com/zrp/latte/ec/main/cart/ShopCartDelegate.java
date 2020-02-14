@@ -22,16 +22,13 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeAdapter;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeConverter;
 import com.zrp.latte.ec.main.cart.order.SettleDelegate;
-import com.zrp.latte.ec.main.cart.order.SettleItemType;
 import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
-import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 import com.zrp.latte.ui.recyclerview.ShopCartItemTouchHelperCallback;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,7 +36,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener {
-
 
 
     private ShopCartAdapter mAdapter;
@@ -98,12 +94,6 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         for (MultipleItemEntity entity : deletedEntity) {
             //int removePisotion;
 
-            //初始值: 0a 1b 2c 3d 4e
-            //要删除的项 0a 2c 4e
-            //删除 0a 后 0b 1c 2d 3e
-            //删除 1c 后 0b 1d 2e
-            //删除 2e 后 0b 1d
-
             final int removePisotion = entity.getField(ShopCartItemFields.POSITION);
             entity.getField(ShopCartItemFields.TITLE);
             if (removePisotion <= mAdapter.getItemCount()) {
@@ -136,28 +126,6 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
 
 
     @Override
-    public void checkItemCount() {
-        final int totalCount = mAdapter.getItemCount();
-        if (totalCount == 0) {
-            //购物车中没有商品
-            @SuppressLint("RestrictedApi")
-            //去购物 UI显示
-            final View stubView = mStubNoItem.inflate();
-            final AppCompatTextView stubToBuy = (AppCompatTextView) stubView.findViewById(R.id.tv_stub_to_buy);
-            stubToBuy.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    getSupportDelegate().start(new IndexDelegate());
-                }
-            });
-            mRecyclerView.setVisibility(View.GONE);
-        } else {
-            mRecyclerView.setVisibility(View.VISIBLE);
-        }
-    }
-
-
-    @Override
     public Object setLayout() {
         return R.layout.delegate_shopcart;
     }
@@ -166,9 +134,10 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         super.onBindView(savedInstanceState, view);
-        //初始化全选按钮的Tag
-        mIconSelectAll.setTag(0);
-
+        //初始化全选按钮的Tag  默认全部选中状态
+        mIconSelectAll.setTag(1);
+	    mIconSelectAll.setTextColor(
+			    ContextCompat.getColor(Latte.getApplication(), R.color.app_main));
     }
 
     @Override
@@ -199,13 +168,14 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
                 .get();
     }
 
+    //购物车数据回调
     @Override
     public void onSuccess(String response) {
         final LinkedList<MultipleItemEntity> data =
                 new ShopCartDataConverter().setJsonData(response).convert();
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mAdapter = new ShopCartAdapter(data);
-        mAdapter.setCartItemListener(this);
+	    mAdapter.setCartItemListener(this);
         final ItemTouchHelper.Callback callback = new ShopCartItemTouchHelperCallback(mAdapter);
         final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
         itemTouchHelper.attachToRecyclerView(mRecyclerView);
@@ -216,6 +186,27 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         mTvTotalPrice.setText(String.valueOf(totalPrice));
     }
 
+
+	@Override
+	public void checkItemCount() {
+		final int totalCount = mAdapter.getItemCount();
+		if (totalCount == 0) {
+			//购物车中没有商品
+			@SuppressLint("RestrictedApi")
+			//去购物 UI显示
+			final View stubView = mStubNoItem.inflate();
+			final AppCompatTextView stubToBuy = (AppCompatTextView) stubView.findViewById(R.id.tv_stub_to_buy);
+			stubToBuy.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					getSupportDelegate().start(new IndexDelegate());
+				}
+			});
+			mRecyclerView.setVisibility(View.GONE);
+		} else {
+			mRecyclerView.setVisibility(View.VISIBLE);
+		}
+	}
 
     @Override
     public void onItemClick(double totalPrice) {

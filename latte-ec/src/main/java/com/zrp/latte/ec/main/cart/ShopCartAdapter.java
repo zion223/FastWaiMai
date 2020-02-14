@@ -25,7 +25,7 @@ import java.util.LinkedList;
 
 public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTouchMoveListener {
 
-	private boolean mIsSelectedAll = false;
+	private boolean mIsSelectedAll = true;
 	private ICartItemListener mCartItemListener = null;
 	private double mTotalPrice = 0.00;
 
@@ -34,7 +34,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 			.centerCrop()
 			.dontAnimate();
 
-	protected ShopCartAdapter(LinkedList<MultipleItemEntity> data) {
+	ShopCartAdapter(LinkedList<MultipleItemEntity> data) {
 		super(data);
 		//第一次初始化总价格
 		for(MultipleItemEntity entity:data){
@@ -59,7 +59,6 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 				final String desc = entity.getField(ShopCartItemFields.DESC);
 				final int count = entity.getField(ShopCartItemFields.COUNT);
 				final double price = entity.getField(ShopCartItemFields.PRICE);
-				//final boolean isSelected = entity.getField(ShopCartItemFields.IS_SELECTED);
 
 				//取出布局中的控件
 				final AppCompatImageView imgThumb = holder.getView(R.id.image_item_shop_cart);
@@ -148,14 +147,14 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter implements IItemTou
 		}
 	}
 
-	public void setIsSelectedAll(boolean mIsSelectedAll) {
+	void setIsSelectedAll(boolean mIsSelectedAll) {
 		this.mIsSelectedAll = mIsSelectedAll;
 	}
 
-	public void setCartItemListener(ICartItemListener cartItemListener) {
+	void setCartItemListener(ICartItemListener cartItemListener) {
 		this.mCartItemListener = cartItemListener;
 	}
-	public double getTotalPrice() {
+	double getTotalPrice() {
 		return mTotalPrice;
 	}
 
