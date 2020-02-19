@@ -1,5 +1,5 @@
 # FastEC
-仿写 https://github.com/Geek-James/ddBuy 项目安卓版本
+仿写 美团外卖应用
 
 ## APP截图
 ![avatar](/example/src/main/res/drawable/index1.png)
