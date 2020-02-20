@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:networkSecurityConfig="@xml/network_config"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.latte.example.ExampleActivity">
+        <activity android:name="com.example.latte.example.ExampleActivity" android:theme="@style/DefaultCityPickerTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
