@@ -17,8 +17,6 @@ import com.zrp.latte.ec.sign.SignInDelagate;
 import com.zrp.latte.ui.launcher.ILauncherListener;
 import com.zrp.latte.ui.launcher.OnLauncherFinishTag;
 
-import qiu.niorgai.StatusBarCompat;
-
 
 public class ExampleActivity extends ProxyActivity implements ISignListener, ILauncherListener {
 
@@ -37,10 +35,10 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
-        //StatusBarCompat.translucentStatusBar(this, true);
+
     }
 
-    @Override
+	@Override
     public void onSignInSuccess() {
         Toast.makeText(Latte.getApplication(),"登陆成功",Toast.LENGTH_SHORT).show();
     }

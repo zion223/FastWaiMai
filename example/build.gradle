@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.example.fastec.example"
@@ -9,6 +9,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
@@ -31,6 +32,5 @@ dependencies {
     annotationProcessor project(path: ':latte-compiler')
     implementation project(path: ':latte-annotations')
     androidTestImplementation 'junit:junit:4.12'
-    //compile project(path: ':latte-core')
 
 }
