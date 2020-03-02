@@ -12,6 +12,7 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     private final String []titles;
     private final List<Fragment> fragments;
 
+    //TODO 影响性能
     public TabPagerAdapter(FragmentManager fm, String[] titles, List<Fragment> fragments) {
         super(fm);
         this.titles = titles;

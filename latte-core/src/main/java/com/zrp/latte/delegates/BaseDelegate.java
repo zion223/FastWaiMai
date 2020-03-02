@@ -33,7 +33,7 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
 
     public abstract Object setLayout();
 
-    public abstract void onBindView(@Nullable Bundle savedInstanceState,@NonNull View view) throws Exception;
+    public abstract void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) throws Exception;
 
 
     @Override

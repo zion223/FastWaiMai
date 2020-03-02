@@ -585,10 +585,6 @@ public class AddressEditDelegate extends LatteDelegate implements OnGetPoiSearch
 		super.onPause();
 	}
 
-	@Override
-	public boolean onBackPressedSupport() {
-		return super.onBackPressedSupport();
-	}
 
 	/**
 	 * 获取POI搜索结果，包括searchInCity，searchNearby，searchInBound返回的搜索结果

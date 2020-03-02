@@ -58,7 +58,7 @@
                 android:text="$12.0"/>
             <ImageView
                 android:id="@+id/iv_card_add"
-                android:src="@drawable/shopcart"
+                android:src="@drawable/ic_cart"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

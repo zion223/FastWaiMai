@@ -23,9 +23,7 @@ import java.util.Map;
 import butterknife.BindView;
 import me.yokeyword.fragmentation.ISupportFragment;
 
-/**
- * 底部 Delegate
- */
+
 public abstract class BaseBottomDelegate extends LatteDelegate implements View.OnClickListener{
 
     public static final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
@@ -77,7 +75,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         final int size = ITEMS.size();
         for(int i = 0; i < size; i++){
-            LayoutInflater.from(getContext()).inflate(R.layout.bottom_item_icon_text_layout,mBottomBar);
+            LayoutInflater.from(getContext()).inflate(R.layout.bottom_item_icon_text_layout, mBottomBar);
             final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
             //设置每一个item的点击事件
             item.setTag(i);

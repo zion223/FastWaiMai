@@ -2,6 +2,7 @@ package com.zrp.latte.ec.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 
 import com.zrp.latte.delegates.bottom.BaseBottomDelegate;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
@@ -49,5 +50,6 @@ public class EcBottomDelegate extends BaseBottomDelegate{
             indexDelegate.onFragmentResult(requestCode, resultCode, data);
         }
     }
+
 
 }

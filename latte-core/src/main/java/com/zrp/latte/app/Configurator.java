@@ -31,12 +31,11 @@ public class Configurator {
         return LATTE_CONFIGS;
     }
     private static class Holder {
-        public static final Configurator INSTANCE = new Configurator();
+        static final Configurator INSTANCE = new Configurator();
     }
     public final void configure(){
         initIcons();
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
-
     }
 
     private void checkConfiguration(){

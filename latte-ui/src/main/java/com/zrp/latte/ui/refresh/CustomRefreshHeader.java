@@ -5,7 +5,6 @@ import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,20 +23,21 @@ public class CustomRefreshHeader extends LinearLayout implements RefreshHeader {
 	private AnimationDrawable pullDownAnim;
 	//private AnimationDrawable refreshingAnim;
 	private boolean hasSetPullDownAnim = false;
+	private Context context;
 
 	public CustomRefreshHeader(Context context) {
-		this(context, null, 0);
+		this(context, null);
 	}
 
-	public CustomRefreshHeader(Context context, @Nullable AttributeSet attrs) {
-		this(context, attrs, 0);
+	public CustomRefreshHeader(Context context, @Nullable AttributeSet attr) {
+		this(context, attr, 0);
 	}
 
 	public CustomRefreshHeader(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		View view = View.inflate(context, R.layout.widget_custom_refresh_header, this);
 		mImage = (ImageView) view.findViewById(R.id.iv_refresh_header);
-
+		this.context = context;
 	}
 
 	@NonNull

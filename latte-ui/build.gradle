@@ -50,8 +50,6 @@ dependencies {
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
     //商品详情
     compile 'cn.yc:YCSlideLib:1.1.2'
-    //圆角图片依赖
-    //compile 'com.github.SheHuan:NiceImageView:1.0.5'
     //地址选择器
     compile 'com.smartTop:jd-address:1.0.3'
     api 'com.jakewharton:butterknife:8.6.0'

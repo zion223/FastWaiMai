@@ -1,10 +1,10 @@
 package com.zrp.latte.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
+import android.view.MotionEvent;
 
 import com.example.latte.latte.R;
 import com.zrp.latte.delegates.LatteDelegate;
@@ -17,6 +17,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 public abstract class ProxyActivity extends AppCompatActivity implements ISupportActivity {
 
     private final SupportActivityDelegate DELEGATE = new SupportActivityDelegate(this);
+
+	private OnTouchListener listener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,7 +45,15 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         }
     }
 
-    @Override
+	@Override
+	public boolean dispatchTouchEvent(MotionEvent ev) {
+    	if(listener != null){
+    		listener.onTouch(ev);
+	    }
+		return super.dispatchTouchEvent(ev);
+	}
+
+	@Override
     public SupportActivityDelegate getSupportDelegate() {
         return DELEGATE;
     }
@@ -77,6 +87,14 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
     public void onBackPressed() {
         super.onBackPressed();
         DELEGATE.onBackPressed();
+    }
+
+	public void setListener(OnTouchListener listener) {
+		this.listener = listener;
+	}
+
+    public interface OnTouchListener {
+    	void onTouch(MotionEvent event);
     }
 
 }

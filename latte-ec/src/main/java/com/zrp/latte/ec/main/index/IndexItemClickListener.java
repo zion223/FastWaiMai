@@ -16,7 +16,6 @@ import com.zrp.latte.ui.recycler.MultipleFields;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 
-
 public class IndexItemClickListener extends SimpleClickListener {
 
     private final LatteDelegate DELEGATE;

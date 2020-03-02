@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/shopcart" />
+            android:src="@drawable/ic_cart" />
 
         <TextView
             android:id="@+id/tv_like_name"
@@ -64,7 +64,7 @@
                 android:textSize="15sp"/>
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_like_add_shopcart"
-                android:src="@drawable/shopcart"
+                android:src="@drawable/ic_cart"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
