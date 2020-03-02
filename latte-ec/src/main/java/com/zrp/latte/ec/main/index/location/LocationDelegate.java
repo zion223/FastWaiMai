@@ -82,7 +82,7 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 	private SuggestionSearch mSuggestionSearch = null;//地点检索输入提示检索（Sug检索）
 	private LatLng center;//地图中心点坐标
 	private int radius = 600;//poi检索半径
-	private int loadIndex = 0;//分页页码（分页功能我就不写了，常用的东西，你们自个加吧）
+	private int loadIndex = 0;//分页页码
 	private int pageSize = 50;
 	private List<PoiInfo> poiInfoListForGeoCoder = new ArrayList<>();//地理反向解析获取的poi
 	private List<PoiInfo> poiInfoListForSearch = new ArrayList<>();//检索结果集合
@@ -128,6 +128,13 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 
 	}
 
+
+	@Override
+	public void onDestroyView() {
+		super.onDestroyView();
+		mLocationClient.stop();
+	}
+
 	private void initMyAddress() {
 		//我的收货地址
 		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
@@ -161,8 +168,8 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 	}
 
 	private void initLocation() {
-		// 声明LocationClient类
-		mLocationClient = new LocationClient(getContext());
+		// 声明LocationClient类 使用ApplicationContext
+		mLocationClient = new LocationClient(getProxyActivity().getApplicationContext());
 
 		// 利用LocationClientOption类配置定位SDK参数
 		option = new LocationClientOption();
@@ -254,8 +261,10 @@ public class LocationDelegate extends LatteDelegate implements OnGetPoiSearchRes
 			}
 		});
 		final LinearLayoutManager manager = new LinearLayoutManager(getContext());
-		mRvRoundAddress.setLayoutManager(manager);
-		mRvRoundAddress.setAdapter(mNearbyAddressAdapter);
+		if(mRvRoundAddress != null){
+			mRvRoundAddress.setLayoutManager(manager);
+			mRvRoundAddress.setAdapter(mNearbyAddressAdapter);
+		}
 	}
 
 	private void initPoiSearch() {

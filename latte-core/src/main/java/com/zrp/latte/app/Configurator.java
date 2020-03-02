@@ -15,10 +15,10 @@ import okhttp3.Interceptor;
 
 public class Configurator {
 
-    public static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
-    public static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
-    public static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
-    public static final Handler HANDLER = new Handler();
+    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
+	private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+	private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+	private static final Handler HANDLER = new Handler();
 
     private Configurator(){
         LATTE_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);

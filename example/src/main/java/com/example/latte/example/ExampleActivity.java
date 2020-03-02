@@ -18,6 +18,7 @@ import com.zrp.latte.ui.launcher.ILauncherListener;
 import com.zrp.latte.ui.launcher.OnLauncherFinishTag;
 
 
+
 public class ExampleActivity extends ProxyActivity implements ISignListener, ILauncherListener {
 
     @Override
@@ -35,7 +36,6 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
-
     }
 
 	@Override
@@ -54,7 +54,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener, ILa
             case SIGNED:
                 Toast.makeText(this, "启动结束用户登陆了", Toast.LENGTH_SHORT).show();
                 //进入首页
-                getSupportDelegate().startWithPop(new EcBottomDelegate());
+                getSupportDelegate().start(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 //跳去登录页

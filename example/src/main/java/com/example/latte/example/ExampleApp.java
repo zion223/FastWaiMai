@@ -11,6 +11,7 @@ import com.zrp.latte.net.interceptor.DebugInterceptor;
 
 import java.util.ArrayList;
 
+import me.yokeyword.fragmentation.Fragmentation;
 import okhttp3.Interceptor;
 
 
@@ -36,6 +37,12 @@ public class ExampleApp extends MultiDexApplication {
         //自4.3.0起，百度地图SDK所有接口均支持百度坐标和国测局坐标，用此方法设置您使用的坐标类型.
         //包括BD09LL和GCJ02两种坐标，默认是BD09LL坐标。
         SDKInitializer.setCoordType(CoordType.BD09LL);
+	    Fragmentation.builder()
+			    // 显示悬浮球 ; 其他Mode:SHAKE: 摇一摇唤出   NONE：隐藏
+			    .stackViewMode(Fragmentation.SHAKE)
+			    .debug(BuildConfig.DEBUG)
+                .install();
+
     }
 
     private ArrayList<Interceptor> initInterceptors() {

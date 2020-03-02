@@ -16,7 +16,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -60,6 +59,8 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import pub.devrel.easypermissions.EasyPermissions;
 
 public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener{
@@ -91,8 +92,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	@BindView(R2.id.iv_cart)
 	CircleImageView mIvCartView;
 
-	private static final String TAG = "IndexDelegate";
-
 	private MultipleRecyclerAdapter mAdapter = null;
 	private List<SpecZoneBean> mSpecData = null;
 
@@ -115,7 +114,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 	/**
 	 * 需要动态申请的权限
 	 */
-	private final String[]  perms = {Manifest.permission.READ_PHONE_STATE
+	private final String[] perms = {Manifest.permission.READ_PHONE_STATE
 			, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION
 			, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
@@ -140,12 +139,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		initNormalView();
 		initRecyclerView();
 		initData();
-		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
-			initLocation();
-		}else{
-			EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
-		}
-
 	}
 
 
@@ -154,6 +147,11 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		super.onLazyInitView(savedInstanceState);
 		initTouchListener();
 		initTabLayout();
+		if (EasyPermissions.hasPermissions(Latte.getApplication(), perms)) {
+			initLocation();
+		}else{
+			EasyPermissions.requestPermissions(this, "请打开相关权限", 1, perms);
+		}
 	}
 
 	private void initNormalView() {
@@ -233,7 +231,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 				switch (event.getAction()){
 					//手指按下
 					case MotionEvent.ACTION_DOWN:
-						Log.d(TAG, "onTouch: ACTION_DOWN");
 						if(System.currentTimeMillis() - upTime > 1000){
 							if(timer != null){
 								timer.cancel();
@@ -243,7 +240,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 						break;
 					//手指滑动 状态
 					case MotionEvent.ACTION_MOVE:
-						Log.d(TAG, "onTouch: ACTION_MOVE");
 						if(Math.abs(startY - event.getY()) > 10){
 							if(isShowFloatImage){
 								hideFloatImage(moveDistance);
@@ -253,13 +249,13 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 						break;
 					//手指抬起后 1s后显示悬浮按钮
 					case MotionEvent.ACTION_UP:
-						Log.d(TAG, "onTouch: ACTION_UP");
 						if(!isShowFloatImage){
 							upTime = System.currentTimeMillis();
 							timer = new Timer();
 							timer.schedule(new FloatTask(), 1000);
 						}
 						break;
+
 				}
 			}
 		});
@@ -340,6 +336,12 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		mTvLocation.setText(address);
 	}
 
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		mLocationClient.stop();
+	}
+
 	//进入购物车界面
 	@OnClick(R2.id.iv_cart)
 	void onClickViewCart(){
@@ -348,7 +350,10 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
 	}
 
-
+	@Override
+	public FragmentAnimator onCreateFragmentAnimator() {
+		return new DefaultHorizontalAnimator();
+	}
 
 	private class FloatTask extends TimerTask{
 		@Override
@@ -420,8 +425,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		option.setIsNeedLocationDescribe(true);
 		option.setIsNeedLocationPoiList(true);
 		option.setIsNeedAddress(true);
-		//设置扫描间隔
-//        option.setScanSpan(10000);
 
 		mLocationClient.setLocOption(option);
 		// 注册监听函数

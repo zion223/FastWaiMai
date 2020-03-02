@@ -117,7 +117,6 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
 
         mCurrentDelegate = tag;
-
     }
 
     private void resetColor(){

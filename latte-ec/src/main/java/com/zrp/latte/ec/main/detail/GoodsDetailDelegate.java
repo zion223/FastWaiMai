@@ -195,12 +195,6 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
-    @Override
-    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        return super.onCreateAnimation(transit, enter, nextAnim);
-    }
-
-
     @OnClick(R2.id.icon_goods_back)
     public void onViewClickedReturn() {
         getSupportDelegate().pop();

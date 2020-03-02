@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.NestedScrollingParent2;
 import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.example.latte.latte_ec.R;
@@ -36,7 +35,6 @@ public class ShopCartNestedScrollView extends NestedScrollView implements Nested
 	@Override
 	public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int axes, int type) {
 		likeDataHeight = child.findViewById(R.id.rv_you_like).getTop();
-		Log.e(TAG, "猜你喜欢的RecyclerView高度" + likeDataHeight);
 		return true;
 	}
 	/**
@@ -73,7 +71,6 @@ public class ShopCartNestedScrollView extends NestedScrollView implements Nested
 	public void onNestedPreScroll(@NonNull View target, int dx, int dy, @NonNull int[] consumed, int type) {
 		//当滑动距离（dy）大于0，并且当前Y轴小于RecyclerView开始滚动的位置就让NestedScrollView滚动，滑动距离消费不完则由RecyclerView消费
 		if (dy > 0 && getScrollY() < likeDataHeight) {
-			Log.e(TAG, "由NestedScrollView滑动" + dy);
 			scrollBy(0, dy);
 			consumed[1] = dy;
 		}

@@ -69,7 +69,7 @@ public class SignInDelagate extends LatteDelegate {
 				})
 				.build()
 				.post();
-		getSupportDelegate().start(new EcBottomDelegate());
+		getSupportDelegate().startWithPop(new EcBottomDelegate());
 	}
 
 	@OnClick(R2.id.iv_sign_in_wechat)

@@ -198,4 +198,5 @@ public abstract class BaseDelegate extends Fragment implements ISupportFragment 
         return DELEGATE.onBackPressedSupport();
     }
 
+
 }

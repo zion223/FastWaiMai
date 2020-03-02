@@ -60,7 +60,7 @@ public class SignUpDelegate extends LatteDelegate {
     @OnClick(R2.id.tv_link_sign_in)
     void onClickLink(){
         //前往登录页面
-        getSupportDelegate().start(new SignInDelagate());
+        getSupportDelegate().startWithPop(new SignInDelagate());
     }
 
 
