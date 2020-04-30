@@ -6,9 +6,9 @@
     android:layout_height="50dp"
     android:layout_alignParentBottom="true"
     android:baselineAligned="true"
-    android:orientation="horizontal"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:orientation="horizontal">
 
     <RelativeLayout
         android:id="@+id/rl_favor"
@@ -17,6 +17,15 @@
         android:layout_weight="1"
         android:background="@android:color/white"
         android:paddingBottom="5dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="喜欢"
+            android:textSize="12sp" />
 
         <com.joanzapata.iconify.widget.IconTextView
             android:id="@+id/icon_favor"
@@ -28,15 +37,6 @@
             android:text="{fa-heart-o}"
             android:textSize="20sp" />
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="喜欢"
-            android:textSize="12sp" />
-
     </RelativeLayout>
 
     <RelativeLayout
@@ -45,9 +45,18 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@android:color/white"
-        android:paddingBottom="5dp"
         android:clipChildren="false"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:paddingBottom="5dp">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="购物车"
+            android:textSize="12sp" />
 
         <com.joanzapata.iconify.widget.IconTextView
             android:id="@+id/icon_shop_cart"
@@ -58,14 +67,6 @@
             android:gravity="center"
             android:text="{fa-shopping-cart}"
             android:textSize="20sp" />
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:text="购物车"
-            android:textSize="12sp" />
 
         <com.zrp.latte.ui.widget.CircleTextView
             android:id="@+id/tv_shopping_cart_amount"
@@ -77,9 +78,9 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="2dp"
             android:gravity="center"
-            android:visibility="invisible"
             android:textColor="@android:color/white"
             android:textSize="12sp"
+            android:visibility="invisible"
             tools:ignore="RtlHardcoded" />
 
     </RelativeLayout>

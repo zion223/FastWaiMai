@@ -27,16 +27,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.bigkoo.convenientbanner.ConvenientBanner
-                        android:id="@+id/detail_banner"
-                        android:layout_width="match_parent"
-                        android:layout_height="260dp" />
-                    <!--使用Fragment 降低耦合 -->
                     <android.support.v7.widget.ContentFrameLayout
                         android:id="@+id/frame_goods_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@+id/detail_banner" />
+                    <!--使用Fragment 降低耦合 -->
+                    <com.bigkoo.convenientbanner.ConvenientBanner
+                        android:id="@+id/detail_banner"
+                        android:layout_width="match_parent"
+                        android:layout_height="260dp" />
                 </RelativeLayout>
 
                 <!--要放在下面  否则CollapsingToolbarLayout 和 CoordinatorLayout不能正确的处理上下滑动的事件 -->
@@ -50,6 +50,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <android.support.v7.widget.AppCompatTextView
+                            android:id="@+id/tv_detail_title_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/goodsdetail"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp" />
+
                         <com.joanzapata.iconify.widget.IconTextView
                             android:id="@+id/icon_goods_back"
                             android:layout_width="wrap_content"
@@ -59,15 +68,6 @@
                             android:text="{fa_angle_left}"
                             android:textColor="@android:color/black"
                             android:textSize="26sp" />
-
-                        <android.support.v7.widget.AppCompatTextView
-                            android:id="@+id/tv_detail_title_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:text="@string/goodsdetail"
-                            android:textColor="@android:color/black"
-                            android:textSize="20sp" />
                     </RelativeLayout>
                 </android.support.v7.widget.Toolbar>
                 <!--如果将TabLayout写在这里，将透明-->
@@ -87,8 +87,8 @@
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:tabTextColor="@color/black"
-                app:tabSelectedTextColor="@color/pink"/>
+                app:tabSelectedTextColor="@color/pink"
+                app:tabTextColor="@color/black" />
         </android.support.design.widget.AppBarLayout>
 
         <android.support.v4.view.ViewPager

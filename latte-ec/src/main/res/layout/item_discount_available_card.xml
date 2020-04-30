@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
     app:cardCornerRadius="5dp"
     app:cardElevation="1dp"
     app:cardUseCompatPadding="true">
@@ -23,19 +23,19 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
                 android:src="@drawable/avatar" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingLeft="10dp"
+                android:paddingBottom="5dp"
 
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp">
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
                 <TextView
                     android:id="@+id/tv_item_discount_shopname"
@@ -43,8 +43,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="1111111"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -61,65 +61,69 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_item_discount_type"
                     android:layout_marginTop="5dp"
-                    android:textSize="11sp"
-                    android:text="有效期至2313" />
+                    android:text="有效期至2313"
+                    android:textSize="11sp" />
 
                 <TextView
                     android:id="@+id/tv_item_discount_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/tomato"
                     android:layout_marginRight="5dp"
-                    android:textSize="30sp"
-                    android:text="￥7" />
+                    android:layout_marginTop="5dp"
+                    android:text="￥7"
+                    android:textColor="@color/tomato"
+                    android:textSize="30sp" />
 
                 <TextView
                     android:id="@+id/tv_item_discount_condition"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_item_discount_money"
-                    android:layout_alignTop="@+id/tv_item_discount_expiretime"
                     android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/tv_item_discount_expiretime"
+                    android:layout_below="@+id/tv_item_discount_money"
                     android:layout_marginRight="9dp"
-                    android:textSize="11sp"
-                    android:text="满111可用" />
+                    android:text="满111可用"
+                    android:textSize="11sp" />
 
             </RelativeLayout>
         </LinearLayout>
-        <com.zrp.latte.ui.widget.DiscountDivideLine
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:layout_marginLeft="20dp"
-            android:paddingBottom="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:gravity="left|center_vertical"
                 android:layout_weight="9"
-                android:textSize="10sp"
-                android:text="可与其他活动同时享受"/>
+                android:gravity="left|center_vertical"
+                android:text="可与其他活动同时享受"
+                android:textSize="10sp" />
+
             <TextView
                 android:id="@+id/tv_item_discount_apply"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="3"
                 android:background="@color/tomato"
-                android:textColor="@color/white"
                 android:gravity="center"
                 android:padding="2dp"
-                android:text="立即使用"/>
+                android:text="立即使用"
+                android:textColor="@color/white" />
 
         </LinearLayout>
+
+        <com.zrp.latte.ui.widget.DiscountDivideLine
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
 
     </LinearLayout>

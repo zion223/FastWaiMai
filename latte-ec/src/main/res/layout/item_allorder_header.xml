@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
     <LinearLayout
@@ -15,16 +15,16 @@
             android:id="@+id/ll_item_allorder_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_item_allorder_orderid"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="@dimen/padding_10dp"
                 android:background="@color/white"
+                android:padding="@dimen/padding_10dp"
                 android:text="订单编号：1111111111111" />
 
             <TextView
@@ -32,8 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_10dp"
-                android:textColor="@color/red"
-                android:text="待支付" />
+                android:text="待支付"
+                android:textColor="@color/red" />
 
         </LinearLayout>
 
@@ -41,12 +41,11 @@
             android:id="@+id/tv_item_allorder_shopname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_1dp"
             android:paddingLeft="@dimen/padding_10dp"
             android:paddingRight="@dimen/padding_10dp"
-            android:layout_marginTop="@dimen/margin_1dp"
             android:text="芭芭拉服装店"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>

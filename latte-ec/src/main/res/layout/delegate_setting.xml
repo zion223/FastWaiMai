@@ -1,33 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-    <android.support.v7.widget.Toolbar
-        android:paddingTop="10dp"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_setting_clear_cache"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:gravity="center_vertical"
+            android:text="清除缓存"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_setting_cache"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:gravity="center_vertical|right"
+            android:text="0.0MB"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:gravity="center_vertical"
+            android:text="wifi环境自动检测新版本"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+
+        <com.zrp.latte.ui.widget.SwitchButton
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/arrow_expend_right" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:gravity="center_vertical"
+            android:text="网络诊断"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/arrow_expend_right" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:gravity="center_vertical"
+            android:text="通用"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:src="@drawable/arrow_expend_right" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="9"
+            android:gravity="center_vertical"
+            android:text="关于这个"
+            android:textColor="@color/black"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/app_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/app_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/app_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/app_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/app_background" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_background" />
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingTop="10dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
                 android:id="@+id/iv_setting_backarrow"
                 android:layout_width="25dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/left_arrow"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/left_arrow" />
+
             <View
                 android:id="@+id/view_profile_line"
                 android:layout_width="1.5dp"
                 android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/iv_setting_backarrow"
-                android:background="@color/app_background"/>
+                android:background="@color/app_background" />
+
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -42,163 +226,4 @@
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:id="@+id/ll_setting_clear_cache"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="清除缓存"/>
-        <TextView
-            android:id="@+id/tv_setting_cache"
-            android:layout_width="0dp"
-            android:layout_height="20dp"
-            android:layout_weight="2"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical|right"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:text="0.0MB"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="wifi环境自动检测新版本"/>
-        <com.zrp.latte.ui.widget.SwitchButton
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="2"
-            android:layout_gravity="center_vertical|right"
-            android:layout_alignParentRight="true" />
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="网络诊断"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="15dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/arrow_expend_right"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="通用"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="15dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/arrow_expend_right"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:paddingLeft="20dp"
-        android:paddingRight="10dp"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="关于这个"/>
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="15dp"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/arrow_expend_right"/>
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/app_background"/>
 </LinearLayout>

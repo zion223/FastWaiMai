@@ -6,6 +6,87 @@
     android:background="@color/app_background"
     android:orientation="vertical">
 
+    <android.support.v7.widget.LinearLayoutCompat
+        android:id="@+id/ll_shop_cart_compat"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:minHeight="50dp"
+        android:orientation="horizontal">
+
+        <!--全选图标模块-->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_shop_cart_pay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/app_main"
+            android:gravity="center"
+            android:text="@string/computer"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+        <!--全选部分结束-->
+
+        <!--合计部分-->
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/total"
+                android:textColor="@android:color/darker_gray"
+                tools:ignore="HardcodedText" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_shop_cart_total_price"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="￥0.01"
+                android:textColor="@color/app_main"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText,RtlHardcoded" />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:minHeight="50dp"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/selectall"
+                android:textColor="@color/app_main" />
+
+            <com.joanzapata.iconify.widget.IconTextView
+                android:id="@+id/icon_shop_cart_select_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="{fa-check-circle}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="20sp" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -58,28 +139,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <!-- 购物车数据-->
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_shop_cart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <!--猜你喜欢提示 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:orientation="horizontal">
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="2dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="3"
-                    android:background="@color/bg_Gray" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -94,7 +163,20 @@
                     android:layout_gravity="center"
                     android:layout_weight="3"
                     android:background="@color/bg_Gray" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:background="@color/bg_Gray" />
             </LinearLayout>
+
+            <!--猜你喜欢提示 -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_shop_cart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
             <!-- 猜你喜欢数据-->
             <android.support.v7.widget.RecyclerView
@@ -115,86 +197,5 @@
                 android:orientation="horizontal" />
         </LinearLayout>
     </com.zrp.latte.ec.main.cart.ShopCartNestedScrollView>
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/ll_shop_cart_compat"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="bottom"
-        android:layout_weight="1"
-        android:minHeight="50dp"
-        android:orientation="horizontal">
-
-        <!--全选图标模块-->
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:minHeight="50dp"
-            android:orientation="horizontal">
-
-            <com.joanzapata.iconify.widget.IconTextView
-                android:id="@+id/icon_shop_cart_select_all"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="{fa-check-circle}"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="20sp" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/selectall"
-                android:textColor="@color/app_main" />
-        </android.support.v7.widget.LinearLayoutCompat>
-        <!--全选部分结束-->
-
-        <!--合计部分-->
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:minHeight="50dp"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/total"
-                android:textColor="@android:color/darker_gray"
-                tools:ignore="HardcodedText" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_shop_cart_total_price"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center|left"
-                android:text="￥0.01"
-                android:textColor="@color/app_main"
-                android:textSize="20sp"
-                tools:ignore="HardcodedText,RtlHardcoded" />
-
-        </android.support.v7.widget.LinearLayoutCompat>
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/tv_shop_cart_pay"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/app_main"
-            android:gravity="center"
-            android:text="@string/computer"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            tools:ignore="HardcodedText" />
-
-    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.v7.widget.LinearLayoutCompat>

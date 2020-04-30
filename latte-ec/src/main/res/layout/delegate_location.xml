@@ -5,56 +5,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:paddingTop="10dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/iv_location_backarrow"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/left_arrow" />
-
-            <View
-                android:id="@+id/view_location_line"
-                android:layout_width="1.5dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/iv_location_backarrow"
-                android:background="@color/app_background" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/view_location_line"
-                android:gravity="center_vertical"
-                android:text="@string/choose_address"
-                android:textColor="@android:color/black"
-                android:textSize="17sp" />
-
-            <TextView
-                android:id="@+id/tv_location_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="20dp"
-                android:text="新增地址"
-                android:textColor="@color/black" />
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
@@ -67,15 +17,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
             android:src="@drawable/index_location" />
-
-        <TextView
-            android:id="@+id/tv_index_location_city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:text="青岛"
-            android:textColor="@color/black" />
 
         <ImageView
             android:layout_width="15dp"
@@ -97,10 +38,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@null"
                 android:gravity="center_vertical"
                 android:hint="请输入收货地址"
@@ -115,95 +56,168 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/index_search" />
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_index_location_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:text="青岛"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/index_location_img" />
+
+        <TextView
+            android:id="@+id/tv_location_detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="5"
+            android:text="青岛国际游戏动漫产业园"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_location_relocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text="重新定位"
+            android:textColor="@color/gold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/index_home" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="我的收货地址" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/index_location" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_vertical"
+            android:text="附近地址" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp">
-        <TextView
-            android:id="@+id/tv_location_detail"
-            android:layout_width="0dp"
-            android:layout_weight="5"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/black"
-            android:text="青岛国际游戏动漫产业园"/>
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/index_location_img"/>
-        <TextView
-            android:id="@+id/tv_location_relocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/gold"
-            android:layout_gravity="center_vertical"
-            android:text="重新定位"/>
-    </LinearLayout>
+        android:background="@color/app_background" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/app_background"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp">
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/index_home"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="我的收货地址"/>
-    </LinearLayout>
+        android:background="@color/app_background" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_location_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp">
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/index_location"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:text="附近地址"/>
-    </LinearLayout>
+        android:layout_marginLeft="35dp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_location_around"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="55dp"/>
+        android:layout_marginLeft="55dp" />
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingTop="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_location_backarrow"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/left_arrow" />
+
+            <TextView
+                android:id="@+id/tv_location_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="20dp"
+                android:text="新增地址"
+                android:textColor="@color/black" />
+
+            <View
+                android:id="@+id/view_location_line"
+                android:layout_width="1.5dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/iv_location_backarrow"
+                android:background="@color/app_background" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/view_location_line"
+                android:gravity="center_vertical"
+                android:text="@string/choose_address"
+                android:textColor="@android:color/black"
+                android:textSize="17sp" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mv_location_hidden"
         android:layout_width="0dp"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp" />
 </LinearLayout>

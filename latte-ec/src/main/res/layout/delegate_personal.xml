@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:imagetext="http://schemas.android.com/apk/res-auto"
@@ -28,16 +26,67 @@
             android:id="@+id/collapsing_toobar"
             android:layout_width="match_parent"
             android:layout_height="80dp"
+            app:collapsedTitleGravity="center"
+            app:collapsedTitleTextAppearance="@style/personal_tool_bar_collapsed"
             app:contentScrim="@color/white"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="趁微风不燥"
-            app:titleEnabled="true"
             app:expandedTitleMarginStart="75dp"
             app:expandedTitleMarginTop="10dp"
-            app:collapsedTitleTextAppearance="@style/personal_tool_bar_collapsed"
             app:expandedTitleTextAppearance="@style/personal_tool_bar_expanded"
-            app:collapsedTitleGravity="center">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="趁微风不燥"
+            app:titleEnabled="true">
 
+
+            <LinearLayout
+                android:id="@+id/rl_personal_toolbar_setting"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_personal_setting"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/p_setting" />
+
+                <ImageView
+                    android:id="@+id/iv_personal_alarm"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/p_alarm" />
+
+                <TextView
+                    android:id="@+id/tv_personal_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="7"
+                    android:gravity="center_vertical"
+
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_personal_avatar"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="10dp" />
+
+
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="55dp"
@@ -48,55 +97,6 @@
                 android:src="@drawable/personal_avatar"
                 app:layout_collapseMode="parallax"
                 tools:ignore="RtlHardcoded" />
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin" />
-            <LinearLayout
-                android:id="@+id/rl_personal_toolbar_setting"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="horizontal">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv_personal_avatar"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_marginLeft="10dp" />
-
-                <TextView
-                    android:id="@+id/tv_personal_name"
-                    android:layout_width="0dp"
-                    android:layout_weight="7"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-
-                    android:textColor="@color/black"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/iv_personal_setting"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="25dp"
-                    android:src="@drawable/p_setting" />
-
-                <ImageView
-                    android:id="@+id/iv_personal_alarm"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="15dp"
-                    android:src="@drawable/p_alarm" />
-
-
-            </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -108,6 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,53 +168,57 @@
                 app:cardBackgroundColor="#212D3B"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
                         android:id="@+id/tv_personal_meituan_vip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="美团会员"
                         android:textColor="#F0E6DA"
-                        android:textStyle="bold"
                         android:textSize="11sp"
-                        android:text="美团会员"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/tv_personal_meituan_vip"
                         android:layout_alignLeft="@id/tv_personal_meituan_vip"
-                        android:layout_marginTop="8dp"
+                        android:layout_below="@id/tv_personal_meituan_vip"
                         android:layout_marginBottom="5dp"
+                        android:layout_marginTop="8dp"
+                        android:text="开通得6张无门槛会员红包"
                         android:textColor="#F0E6DA"
-                        android:textStyle="bold"
                         android:textSize="13sp"
-                        android:text="开通得6张无门槛会员红包"/>
+                        android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tv_personal_buy_vip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/personal_buy_round"
-                        android:layout_marginRight="10dp"
-                        android:padding="7dp"
-                        android:gravity="center_vertical"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/personal_buy_round"
+                        android:gravity="center_vertical"
+                        android:padding="7dp"
+                        android:text="立即开通"
                         android:textColor="@color/black"
                         android:textSize="11sp"
-                        android:text="立即开通"/>
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -221,17 +226,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_personal_money"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:text="我的资产"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -249,8 +243,8 @@
                                 android:id="@+id/iv_personal_hongbao"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:layout_marginTop="3dp"
                                 android:layout_marginLeft="30dp"
+                                android:layout_marginTop="3dp"
                                 android:src="@drawable/p_redenvelope" />
 
                             <TextView
@@ -284,8 +278,8 @@
                                 android:id="@+id/iv_personal_discount"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:layout_marginTop="3dp"
                                 android:layout_marginLeft="30dp"
+                                android:layout_marginTop="3dp"
                                 android:src="@drawable/p_discount" />
 
                             <TextView
@@ -318,8 +312,8 @@
                                 android:id="@+id/iv_personal_bounty"
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
-                                android:layout_marginTop="3dp"
                                 android:layout_marginLeft="30dp"
+                                android:layout_marginTop="3dp"
                                 android:src="@drawable/p_jintie" />
 
                             <TextView
@@ -343,6 +337,17 @@
                                 android:text="20元可叠加满减" />
                         </RelativeLayout>
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_personal_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="我的资产"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -351,8 +356,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -361,32 +366,13 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white">
 
-                    <TextView
-                        android:id="@+id/tv_personal_wallert"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:text="我的钱包"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="17dp"
-                        android:layout_marginRight="3dp"
-                        android:layout_toLeftOf="@id/iv_personal_wallert_right"
-                        android:text="进入钱包" />
-
                     <ImageView
                         android:id="@+id/iv_personal_wallert_right"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginTop="20dp"
                         android:layout_marginRight="13dp"
+                        android:layout_marginTop="20dp"
                         android:src="@drawable/arrow_expend_right" />
 
                     <LinearLayout
@@ -418,8 +404,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/tv_personal_borrow"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
                                 android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
                                 android:text="借钱"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
@@ -430,8 +416,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/tv_personal_borrow_name"
                                 android:layout_centerHorizontal="true"
-                                android:textSize="11sp"
-                                android:text="最高12期免息" />
+                                android:text="最高12期免息"
+                                android:textSize="11sp" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -455,8 +441,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/tv_personal_payment"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
                                 android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
                                 android:text="买单"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
@@ -465,11 +451,11 @@
                                 android:id="@+id/tv_personal_maidan_detail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
                                 android:layout_below="@+id/tv_personal_payment_name"
                                 android:layout_centerHorizontal="true"
-                                android:layout_alignParentBottom="true"
-                                android:textSize="11sp"
-                                android:text="领免费红包" />
+                                android:text="领免费红包"
+                                android:textSize="11sp" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -493,8 +479,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/tv_personal_benefit"
                                 android:layout_centerHorizontal="true"
-                                android:layout_marginTop="5dp"
                                 android:layout_marginBottom="5dp"
+                                android:layout_marginTop="5dp"
                                 android:text="美食享优惠"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
@@ -503,13 +489,32 @@
                                 android:id="@+id/tv_personal_benefit_detail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
                                 android:layout_below="@+id/tv_personal_benefit_name"
                                 android:layout_centerHorizontal="true"
-                                android:layout_alignParentBottom="true"
-                                android:textSize="11sp"
-                                android:text="随机最高减" />
+                                android:text="随机最高减"
+                                android:textSize="11sp" />
                         </RelativeLayout>
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_personal_wallert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="我的钱包"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3dp"
+                        android:layout_marginTop="17dp"
+                        android:layout_toLeftOf="@id/iv_personal_wallert_right"
+                        android:text="进入钱包" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -517,8 +522,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -526,17 +531,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_personal_function"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:text="我的功能"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:id="@+id/ll_personal_function_top"
@@ -673,6 +667,17 @@
                             android:layout_weight="3" />
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/tv_personal_function"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="我的功能"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -680,8 +685,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -689,17 +694,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_personal_serivce"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:text="我的服务"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
 
                     <LinearLayout
 
@@ -784,6 +778,17 @@
                         </RelativeLayout>
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/tv_personal_serivce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="我的服务"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -791,8 +796,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="1dp">
 
@@ -800,17 +805,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white">
-
-                    <TextView
-                        android:id="@+id/tv_personal_suggest"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
-                        android:paddingBottom="10dp"
-                        android:text="更多推荐"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:id="@+id/ll_personal_suggest_top"
@@ -928,7 +922,7 @@
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_centerHorizontal="true"
-                                android:src="@drawable/p_commonweal"/>
+                                android:src="@drawable/p_commonweal" />
 
                             <TextView
                                 android:id="@+id/tv_personal_commonweal"
@@ -940,6 +934,7 @@
                                 android:text="美团公益"
                                 android:textColor="@color/black" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -963,6 +958,7 @@
                                 android:text="能量捐赠"
                                 android:textColor="@color/black" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -986,6 +982,7 @@
                                 android:text="餐饮加盟"
                                 android:textColor="@color/black" />
                         </RelativeLayout>
+
                         <RelativeLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -1012,6 +1009,17 @@
 
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_personal_suggest"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="15dp"
+                        android:text="更多推荐"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>

@@ -1,35 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    >
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_item_allorder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:id="@+id/ll_item_allorder"
         android:orientation="horizontal">
+
         <ImageView
             android:id="@+id/iv_item_allorder_pic"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_margin="@dimen/margin_10dp"/>
+            android:layout_margin="@dimen/margin_10dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_item_allorder_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_5dp"
-                android:padding="@dimen/padding_10dp"
-                android:text="2016秋季新款女装简约纯色百搭衬衫"
-                android:textColor="@color/black" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -40,23 +32,33 @@
                     android:id="@+id/tv_item_allorder_item_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tv_item_allorder_item_price"
                     android:padding="@dimen/padding_10dp"
                     android:text="共一件"
-                    android:textSize="@dimen/common_font_size_12"
-                    android:layout_toLeftOf="@+id/tv_item_allorder_item_price"
-                    android:layout_centerVertical="true" />
+                    android:textSize="@dimen/common_font_size_12" />
+
                 <TextView
                     android:id="@+id/tv_item_allorder_item_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:padding="@dimen/padding_10dp"
                     android:text="¥288.00"
-                    android:textSize="@dimen/common_font_size_16"
                     android:textColor="@color/red"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true" />
+                    android:textSize="@dimen/common_font_size_16" />
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_item_allorder_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_5dp"
+                android:padding="@dimen/padding_10dp"
+                android:text="2016秋季新款女装简约纯色百搭衬衫"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 

@@ -5,47 +5,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_discount_backarrow"
-                android:layout_width="20dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="8dp"
-                android:src="@drawable/arrow_expend_left" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_weight="8"
-                android:gravity="center_vertical|center"
-                android:text="美团生活费•借钱"
-                android:textColor="@android:color/black"
-                android:textSize="15sp" />
-
-            <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/borrow_service" />
-
-        </LinearLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -88,138 +47,12 @@
                     android:textSize="13sp" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:background="@color/white"
-                android:paddingLeft="30dp"
-                android:paddingTop="25dp"
-                android:paddingRight="30dp">
-
-                <TextView
-                    android:id="@+id/tv_borrow_lilv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="日利率" />
-
-                <TextView
-                    android:id="@+id/tv_borrow_lilvnum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="0.03%起"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_borrow_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_lilv"
-                    android:layout_marginTop="5dp"
-                    android:text="放款方式" />
-
-                <TextView
-                    android:id="@+id/tv_borrow_type_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_lilvnum"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:text="立即放款到银行卡"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tv_borrow_huankuan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_type"
-                    android:layout_marginTop="5dp"
-                    android:text="还款方式" />
-
-                <TextView
-                    android:id="@+id/tv_borrow_huankuanfangshi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_type_text"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:text="分期还、提前还"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_huankuan"
-                    android:layout_marginTop="5dp"
-                    android:text="分期期限" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_borrow_huankuanfangshi"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="5dp"
-                    android:text="可选1、3、6、12期"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:background="@color/papayawhip"
-                android:paddingLeft="10dp"
-                android:paddingTop="3dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="3dp"
-                android:text="年底福利,送30天免息卷"
-                android:textColor="@color/orange"
-                android:textSize="13sp" />
-
-            <android.support.v7.widget.AppCompatButton
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/btn_borrow"
-                android:gravity="center"
-                android:text="领取额度"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:text="点击以下按钮即表示你已经阅读并且同意《相关协议》"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
-                android:text="开通简便极速借出"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -257,8 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -289,16 +122,6 @@
                     android:textSize="11sp" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="还款灵活方便"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -307,9 +130,9 @@
 
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="80dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_round">
 
                     <LinearLayout
@@ -330,26 +153,19 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:gravity="center_horizontal"
                             android:layout_marginTop="10dp"
+                            android:gravity="center_horizontal"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:text="借款后随借随还更灵活" />
                     </LinearLayout>
                 </FrameLayout>
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_vertical"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/borrow_plus" />
-
                 <FrameLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="80dp"
                     android:layout_marginRight="20dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_round">
 
                     <LinearLayout
@@ -370,14 +186,279 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
-                            android:gravity="center_horizontal"
                             android:layout_marginTop="10dp"
+                            android:gravity="center_horizontal"
                             android:paddingLeft="10dp"
                             android:paddingRight="10dp"
                             android:text="添加银行卡后随时自动还款更灵活" />
                     </LinearLayout>
                 </FrameLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/borrow_plus" />
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/white"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="25dp">
+
+                <TextView
+                    android:id="@+id/tv_borrow_lilv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日利率" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_lilvnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="0.03%起"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_borrow_lilv"
+                    android:layout_marginTop="5dp"
+                    android:text="放款方式" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_borrow_lilvnum"
+                    android:layout_marginTop="5dp"
+                    android:text="立即放款到银行卡"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_huankuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_borrow_type"
+                    android:layout_marginTop="5dp"
+                    android:text="还款方式" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_huankuanfangshi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_borrow_type_text"
+                    android:layout_marginTop="5dp"
+                    android:text="分期还、提前还"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_borrow_huankuan"
+                    android:layout_marginTop="5dp"
+                    android:text="分期期限" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_borrow_huankuanfangshi"
+                    android:layout_marginTop="5dp"
+                    android:text="可选1、3、6、12期"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_borrow_tianping"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/borrow_balance" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_tainping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_borrow_tianping"
+                    android:text="严格遵守国家法律规定"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_borrow_tainping"
+                    android:layout_below="@+id/tv_borrow_tainping"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/iv_borrow_tianping"
+                    android:gravity="left"
+                    android:text="资质齐全资质齐全资质齐全资质齐全资质齐全" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_borrow_xinxi"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/borrow_note" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_xinxi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_borrow_xinxi"
+                    android:text="信息透明"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_borrow_xinxi"
+                    android:layout_below="@+id/tv_borrow_xinxi"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/iv_borrow_xinxi"
+                    android:gravity="left"
+                    android:text="免费申请资费透明" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_borrow_baozhang"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/borrow_ensure" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_baozhang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_borrow_baozhang"
+                    android:text="账户安全有保障"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_borrow_baozhang"
+                    android:layout_below="@+id/tv_borrow_baozhang"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/iv_borrow_baozhang"
+                    android:gravity="left"
+                    android:text="系统全程加密个人信息，监控个人账户安全，放款全程监控" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_borrow_bank"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/borrow_bank" />
+
+                <TextView
+                    android:id="@+id/tv_borrow_bank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/iv_borrow_bank"
+                    android:text="优质银行深度支持"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/tv_borrow_bank"
+                    android:layout_below="@+id/tv_borrow_bank"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/iv_borrow_bank"
+                    android:gravity="left"
+                    android:text="贷款服务由重庆美团机构及合作运营商支持，合作银行支持但不限于三亿银行" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@color/papayawhip"
+                android:paddingBottom="3dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="3dp"
+                android:text="年底福利,送30天免息卷"
+                android:textColor="@color/orange"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="点击以下按钮即表示你已经阅读并且同意《相关协议》"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:text="开通简便极速借出"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="还款灵活方便"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -388,126 +469,61 @@
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold" />
-            <RelativeLayout
+
+            <android.support.v7.widget.AppCompatButton
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_marginTop="20dp">
-                <ImageView
-                    android:id="@+id/iv_borrow_tianping"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/borrow_balance"/>
-                <TextView
-                    android:id="@+id/tv_borrow_tainping"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/iv_borrow_tianping"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="严格遵守国家法律规定"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/iv_borrow_tianping"
-                    android:layout_alignLeft="@id/tv_borrow_tainping"
-                    android:layout_below="@+id/tv_borrow_tainping"
-                    android:gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:text="资质齐全资质齐全资质齐全资质齐全资质齐全"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:id="@+id/iv_borrow_xinxi"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/borrow_note"/>
-                <TextView
-                    android:id="@+id/tv_borrow_xinxi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/iv_borrow_xinxi"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="信息透明"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/iv_borrow_xinxi"
-                    android:layout_alignLeft="@id/tv_borrow_xinxi"
-                    android:layout_below="@+id/tv_borrow_xinxi"
-                    android:gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:text="免费申请资费透明"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:id="@+id/iv_borrow_baozhang"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/borrow_ensure"/>
-                <TextView
-                    android:id="@+id/tv_borrow_baozhang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/iv_borrow_baozhang"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="账户安全有保障"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/iv_borrow_baozhang"
-                    android:layout_alignLeft="@id/tv_borrow_baozhang"
-                    android:layout_below="@+id/tv_borrow_baozhang"
-                    android:gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:text="系统全程加密个人信息，监控个人账户安全，放款全程监控"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:id="@+id/iv_borrow_bank"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/borrow_bank"/>
-                <TextView
-                    android:id="@+id/tv_borrow_bank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_toRightOf="@id/iv_borrow_bank"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:text="优质银行深度支持"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/iv_borrow_bank"
-                    android:layout_alignLeft="@id/tv_borrow_bank"
-                    android:layout_below="@+id/tv_borrow_bank"
-                    android:gravity="left"
-                    android:layout_marginTop="10dp"
-                    android:text="贷款服务由重庆美团机构及合作运营商支持，合作银行支持但不限于三亿银行"/>
-            </RelativeLayout>
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_borrow"
+                android:gravity="center"
+                android:text="领取额度"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
+
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_discount_backarrow"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:src="@drawable/arrow_expend_left" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/borrow_service" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="8"
+                android:gravity="center_vertical|center"
+                android:text="美团生活费•借钱"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
 </LinearLayout>

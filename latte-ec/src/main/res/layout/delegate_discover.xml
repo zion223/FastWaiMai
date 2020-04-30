@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <android.support.v7.widget.ContentFrameLayout
+        android:id="@+id/web_discovery_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--webView -->
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:background="@android:color/holo_orange_dark"
         android:gravity="center">
+
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
             android:text="@string/discovertitle"
             android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
     </android.support.v7.widget.Toolbar>
-
-    <!--webView -->
-    <android.support.v7.widget.ContentFrameLayout
-        android:id="@+id/web_discovery_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </LinearLayout>

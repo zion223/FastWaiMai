@@ -3,69 +3,73 @@
     android:id="@+id/rl_item_address"
     android:layout_width="match_parent"
     android:layout_height="70dp"
-    android:paddingRight="15dp"
-    android:paddingTop="10dp"
+    android:background="@android:color/white"
     android:paddingLeft="15dp"
-    android:background="@android:color/white">
+    android:paddingRight="15dp"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:id="@+id/iv_item_address_edit"
+        android:layout_width="40dp"
+        android:layout_height="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/item_address_edit" />
+
+    <TextView
+        android:id="@+id/tv_item_address_house_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/tv_item_address_prefix"
+        android:text="3单元601"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_item_address_firstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_address_prefix"
+        android:text="张"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_item_address_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_address_prefix"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@+id/tv_item_address_firstname"
+        android:text="先生"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/tv_item_address_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_item_address_prefix"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/tv_item_address_gender"
+        android:text="15078383888"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/tv_item_address_prefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:textStyle="bold"
+        android:text="弘信山庄19号楼"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:text="弘信山庄19号楼"/>
-    <TextView
-        android:id="@+id/tv_item_address_house_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_item_address_prefix"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:layout_marginLeft="15dp"
-        android:text="3单元601"/>
-    <TextView
-        android:id="@+id/tv_item_address_firstname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_item_address_prefix"
-        android:textSize="13sp"
-        android:text="张"/>
-    <TextView
-        android:id="@+id/tv_item_address_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_item_address_firstname"
-        android:layout_below="@+id/tv_item_address_prefix"
-        android:textSize="13sp"
-        android:layout_marginLeft="15dp"
-        android:text="先生"/>
-    <TextView
-        android:id="@+id/tv_item_address_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_item_address_gender"
-        android:layout_below="@+id/tv_item_address_prefix"
-        android:textSize="13sp"
-        android:layout_marginLeft="20dp"
-        android:text="15078383888"/>
-    <ImageView
-        android:id="@+id/iv_item_address_edit"
-        android:layout_width="40dp"
-        android:layout_height="15dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/item_address_edit"/>
+        android:textStyle="bold" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/app_background"/>
-
+        android:background="@color/app_background" />
 
 
 </RelativeLayout>

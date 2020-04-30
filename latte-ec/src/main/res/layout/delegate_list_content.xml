@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clipChildren="false"
-    android:clipToPadding="false">
+    android:clipToPadding="false"
+    android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tl_order_status"
@@ -15,13 +14,13 @@
         app:tabIndicatorColor="@color/pink"
         app:tabIndicatorHeight="3dp"
         app:tabSelectedTextColor="@color/colorPrimaryDark"
-        app:tabTextColor="@android:color/black"/>
+        app:tabTextColor="@android:color/black" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false" />
 
 </android.support.v7.widget.LinearLayoutCompat>

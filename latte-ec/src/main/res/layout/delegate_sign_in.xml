@@ -5,12 +5,190 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="56dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingLeft="30dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="4dp"
+                android:src="@drawable/arrow_expend_right" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="+86"
+                android:textColor="@color/gold"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_sign_in_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:paddingLeft="30dp">
+
+            <EditText
+                android:id="@+id/edit_sign_in_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:layout_weight="9"
+                android:background="@null"
+                android:hint="请输入密码"
+                android:inputType="textPassword"
+                android:paddingRight="30dp" />
+
+            <ImageView
+                android:id="@+id/iv_sign_in_change_password_show"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:src="@drawable/sign_password_hide" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_sign_in_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:text="验证码登录"
+                android:textColor="@color/gold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="right"
+                android:text="遇到问题"
+                android:textColor="@color/gold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_sign_in_wechat"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="80dp"
+                android:src="@drawable/sign_weixin" />
+
+            <ImageView
+                android:id="@+id/iv_sign_in_qq"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="80dp"
+                android:src="@drawable/sign_qq" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="5" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="30dp"
+            android:text="欢迎登录美团"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/app_background" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="24dp"
+            android:background="@color/app_background" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_sign_in"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="登录"
+            android:textColor="@android:color/white"
+            tools:ignore="HardcodedText" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_link_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="还没有账户？现在注册吧"
+            android:textSize="16sp"
+            tools:ignore="HardcodedText" />
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -24,186 +202,24 @@
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/arrow_expend_left" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="8"/>
-
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
-                android:gravity="center"
                 android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="帮助"
                 android:textColor="@color/gold"
-                android:textSize="15sp"
-                android:text="帮助" />
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8" />
 
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
-
-
-        <android.support.v7.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            android:orientation="vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="56dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginBottom="40dp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:text="欢迎登录美团"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:paddingLeft="30dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="16sp"
-                    android:text="+86"
-                    android:textColor="@color/gold"/>
-                <ImageView
-                    android:layout_width="10dp"
-                    android:layout_height="15dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/arrow_expend_right"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:hint="请输入手机号"
-                    android:background="@null"
-                    android:inputType="number"/>
-            </LinearLayout>
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="24dp"
-                android:background="@color/app_background"/>
-            <LinearLayout
-                android:id="@+id/ll_sign_in_password"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:paddingLeft="30dp"
-                android:orientation="horizontal">
-                <EditText
-                    android:id="@+id/edit_sign_in_password"
-                    android:layout_width="0dp"
-                    android:layout_weight="9"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:paddingRight="30dp"
-                    android:hint="请输入密码"
-                    android:background="@null"
-                    android:inputType="textPassword"/>
-                <ImageView
-                    android:id="@+id/iv_sign_in_change_password_show"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/sign_password_hide"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="24dp"
-                android:background="@color/app_background"/>
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_sign_in"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/btn_sign_in"
-                android:gravity="center"
-                android:padding="12dp"
-                android:text="登录"
-                android:textColor="@android:color/white"
-                tools:ignore="HardcodedText" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp">
-                <TextView
-                    android:id="@+id/tv_sign_in_type"
-                    android:layout_width="0dp"
-                    android:layout_weight="5"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/gold"
-                    android:text="验证码登录"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="5"
-                    android:textColor="@color/gold"
-                    android:gravity="right"
-                    android:text="遇到问题"/>
-            </LinearLayout>
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/tv_link_sign_up"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="20dp"
-                android:gravity="center"
-                android:text="还没有账户？现在注册吧"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/iv_sign_in_wechat"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="80dp"
-                    android:src="@drawable/sign_weixin"/>
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="5"/>
-                <ImageView
-                    android:id="@+id/iv_sign_in_qq"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginRight="80dp"
-                    android:src="@drawable/sign_qq"/>
-            </LinearLayout>
-        </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v7.widget.LinearLayoutCompat>

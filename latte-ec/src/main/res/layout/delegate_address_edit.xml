@@ -4,12 +4,381 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background">
+
+    <LinearLayout
+        android:id="@+id/ll_address_edit_input"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/et_address_edit_keyword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/border_search"
+            android:gravity="center_vertical"
+            android:hint="请输入街道、小区、楼宇等名称"
+            android:padding="6dp"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/arrow" />
+
+        <TextView
+            android:id="@+id/tv_address_edit_city"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="昆明"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_address_edit_poisearch"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="95dp"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_address_edit_poiSearch"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:cacheColorHint="#00000000"
+            android:descendantFocusability="beforeDescendants"
+            android:drawSelectorOnTop="true"
+            android:fastScrollEnabled="true"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_address_edit_top"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="180dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_address_edit_detail_pre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="光宇阳光地中海"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tv_address_edit_detail_suf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_address_edit_detail_pre"
+                android:layout_below="@+id/tv_address_edit_detail_pre"
+                android:layout_marginTop="5dp"
+                android:text="重庆市渝北区余松路299号" />
+
+            <TextView
+                android:id="@+id/tv_address_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/address_edit_border"
+                android:padding="5dp"
+                android:text="修改地址"
+                android:textColor="@color/orange" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_address_edit_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="250dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="门牌号"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.zrp.latte.ui.widget.ClearEditText
+                    android:id="@+id/tv_address_edit_house_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="9栋301"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="标签"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_address_edit_home_tag"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/address_tag_border"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="家"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_address_edit_school_tag"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/address_tag_border"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="学校"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_address_edit_company_tag"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/address_tag_border"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="公司"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioBtn_address_edit_male"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:gravity="center" />
+
+                <RadioButton
+                    android:id="@+id/radioBtn_address_edit_female"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="先生"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="联系人"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:text="女士"
+                    android:textColor="@color/black" />
+
+                <com.zrp.latte.ui.widget.ClearEditText
+                    android:id="@+id/edit_address_edit_name"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:text="张"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:text="手机号"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <com.zrp.latte.ui.widget.ClearEditText
+                    android:id="@+id/edit_address_edit_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="150000000"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/app_background" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/app_background" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/app_background" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="70dp"
+                android:background="@color/app_background" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btn_address_edit_save"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/save_address_background"
+                android:gravity="center"
+                android:text="保存地址"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_address_edit_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="450dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="1dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lv_address_edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:drawSelectorOnTop="true"
+            android:visibility="gone" />
+    </android.support.v7.widget.CardView>
+
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp">
+        android:paddingRight="10dp"
+        android:paddingTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +392,15 @@
                 android:layout_marginLeft="8dp"
                 android:src="@drawable/arrow_expend_left" />
 
+            <TextView
+                android:id="@+id/btn_address_edit_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/delete"
+                android:textColor="@color/black" />
+
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -33,359 +411,13 @@
                 android:textColor="@android:color/black"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/btn_address_edit_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="@string/delete"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center_vertical"/>
-
         </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
 
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mv_address_edit_map"
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <LinearLayout
-        android:id="@+id/ll_address_edit_input"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        android:background="@color/white"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv_address_edit_city"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="昆明"
-            android:textSize="14sp" />
-
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center_vertical"
-            android:src="@mipmap/arrow" />
-
-        <EditText
-            android:id="@+id/et_address_edit_keyword"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_weight="1"
-            android:background="@drawable/border_search"
-            android:gravity="center_vertical"
-            android:hint="请输入街道、小区、楼宇等名称"
-            android:padding="6dp"
-            android:textSize="14sp" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/ll_address_edit_poisearch"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        android:layout_marginTop="95dp"
-        android:visibility="gone">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/lv_address_edit_poiSearch"
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:cacheColorHint="#00000000"
-            android:descendantFocusability="beforeDescendants"
-            android:fastScrollEnabled="true"
-            android:scrollbars="none"
-            android:drawSelectorOnTop="true"/>
-    </LinearLayout>
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_address_edit_top"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="1dp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tv_address_edit_detail_pre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="光宇阳光地中海"/>
-            <TextView
-                android:id="@+id/tv_address_edit_detail_suf"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_address_edit_detail_pre"
-                android:layout_alignLeft="@+id/tv_address_edit_detail_pre"
-                android:layout_marginTop="5dp"
-                android:text="重庆市渝北区余松路299号"/>
-            <TextView
-                android:id="@+id/tv_address_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:textColor="@color/orange"
-                android:background="@drawable/address_edit_border"
-                android:layout_marginTop="5dp"
-                android:padding="5dp"
-                android:layout_marginRight="10dp"
-                android:text="修改地址"/>
-
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_address_edit_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="1dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:text="门牌号"/>
-                <com.zrp.latte.ui.widget.ClearEditText
-                    android:id="@+id/tv_address_edit_house_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                    android:text="9栋301"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/app_background"
-                android:layout_marginLeft="70dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:text="标签"/>
-
-                <TextView
-                    android:id="@+id/tv_address_edit_home_tag"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/address_tag_border"
-                    android:text="家"
-                    android:textSize="14sp"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/tv_address_edit_school_tag"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/address_tag_border"
-                    android:textSize="14sp"
-                    android:text="学校"
-                    android:textColor="@color/black"/>
-                <TextView
-                    android:id="@+id/tv_address_edit_company_tag"
-                    android:layout_width="45dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:background="@drawable/address_tag_border"
-                    android:textSize="14sp"
-                    android:text="公司"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/app_background"
-                android:layout_marginLeft="70dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:text="联系人"/>
-                <com.zrp.latte.ui.widget.ClearEditText
-                    android:id="@+id/edit_address_edit_name"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:background="@null"
-                    android:text="张"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"/>
-
-                <RadioButton
-                    android:id="@+id/radioBtn_address_edit_male"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/black"
-                    android:text="先生"/>
-                <RadioButton
-                    android:id="@+id/radioBtn_address_edit_female"
-                    android:layout_width="30dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"
-                    android:textColor="@color/black"
-                    android:text="女士"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/app_background"
-                android:layout_marginLeft="70dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:gravity="center_vertical"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/black"
-                    android:text="手机号"/>
-                <com.zrp.latte.ui.widget.ClearEditText
-                    android:id="@+id/edit_address_edit_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@null"
-                    android:text="150000000"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/app_background"
-                android:layout_marginLeft="70dp"/>
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/btn_address_edit_save"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/black"
-                android:background="@drawable/save_address_background"
-                android:textSize="16sp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center"
-                android:text="保存地址"/>
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_address_edit_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="450dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentBottom="true"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="1dp"
-        android:visibility="gone">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/lv_address_edit_search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="@null"
-            android:drawSelectorOnTop="true"
-            android:visibility="gone"/>
-    </android.support.v7.widget.CardView>
+        android:layout_marginTop="50dp" />
 </RelativeLayout>

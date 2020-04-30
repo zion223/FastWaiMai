@@ -2,55 +2,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:paddingLeft="5dp"
-    android:paddingTop="10dp"
     android:paddingBottom="5dp"
+    android:paddingLeft="5dp"
     android:paddingRight="15dp"
-    android:background="@color/white">
+    android:paddingTop="10dp">
+
     <ImageView
         android:id="@+id/iv_settle_img"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
         android:src="@drawable/pay_alipay" />
+
     <TextView
         android:id="@+id/tv_settle_discount"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_toRightOf="@+id/iv_settle_img"
         android:layout_marginLeft="13dp"
+        android:layout_toRightOf="@+id/iv_settle_img"
         android:background="@drawable/shape_round_corner"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:text="折"/>
+        android:text="折"
+        android:textColor="@color/white" />
+
     <TextView
         android:id="@+id/tv_item_settle_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tv_settle_discount"
         android:layout_marginLeft="15dp"
-        android:textSize="16sp"
+        android:layout_toRightOf="@+id/tv_settle_discount"
+        android:text="烤鸭烤鸭口岸鸭烤"
         android:textColor="@color/black"
-        android:text="烤鸭烤鸭口岸鸭烤"/>
+        android:textSize="16sp" />
+
     <TextView
         android:id="@+id/tv_item_settle_num"
         android:layout_width="30dp"
         android:layout_height="15dp"
-        android:layout_marginLeft="10dp"
         android:layout_alignBottom="@+id/iv_settle_img"
+        android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/iv_settle_img"
         android:paddingLeft="7dp"
-        android:textSize="16sp"
+        android:text="×1"
         android:textColor="@color/gray"
-        android:text="×1"/>
+        android:textSize="16sp" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:text="￥22.6"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="16sp"
-        android:text="￥22.6"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>
