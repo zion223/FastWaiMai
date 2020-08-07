@@ -41,7 +41,7 @@ public class WebDelegateImpl extends WebDelegate implements IWebViewInitializer{
 		//跳转URL
 		if(getUrl() != null){
 			//原生的webView 方法进行加载
-			Router.getInstance().loadPage(this,getUrl());
+			Router.getInstance().loadPage(this, getUrl());
 		}
 	}
 

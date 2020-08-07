@@ -56,7 +56,7 @@ public abstract class WebDelegate extends LatteDelegate {
 				mWebView.setWebChromeClient(initializer.initWebChromeClient());
 				//注入JS接口  在Configurator中加载的
 				final String name = Latte.getConfiguration(ConfigType.JAVASCRIPT_INTERFACE.name());
-				mWebView.addJavascriptInterface(LatteWebInterface.create(this),name);
+				mWebView.addJavascriptInterface(LatteWebInterface.create(this), name);
 				mIsWebViewAvilable = true;
 			}else{
 				throw new NullPointerException("initializer is null");

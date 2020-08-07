@@ -52,7 +52,7 @@ public class Router {
 		}
 	}
 	private void loadLocalPage(WebView webView, String url){
-		loadWebPage(webView,"file:///android_asset/"+url);
+		loadWebPage(webView, url);
 	}
 
 }
