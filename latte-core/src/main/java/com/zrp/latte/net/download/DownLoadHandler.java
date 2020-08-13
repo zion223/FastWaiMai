@@ -47,41 +47,41 @@ public class DownLoadHandler {
 
 
     public final void handlerDownload(){
-        if(REQUEST != null){
+        if (REQUEST != null) {
             REQUEST.onRequestStart();
         }
-        RestCreator.getRestService().download(URL,PARAMS)
-                .enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if(response.isSuccessful()){
-
-                            final ResponseBody body = response.body();
-
-                            final SaveFileTask saveFileTask = new SaveFileTask(REQUEST,SUCCESS);
-                            saveFileTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,DOWNLOAD_DIR,EXTENSION,body,NAME);
-
-                            //文件是否判断下载完全
-                            if(saveFileTask.isCancelled()){
-                                if(REQUEST != null){
-                                    REQUEST.onRequestEnd();
-                                }
-                            }
-
-                        }else{
-                            if(ERROR != null){
-                                ERROR.onError(response.code(),response.message());
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        if(FAILURE != null){
-                            FAILURE.onFailure();
-                        }
-                    }
-                });
+//        RestCreator.getRestService().download(URL,PARAMS)
+//                .enqueue(new Callback<ResponseBody>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                        if(response.isSuccessful()){
+//
+//                            final ResponseBody body = response.body();
+//
+//                            final SaveFileTask saveFileTask = new SaveFileTask(REQUEST,SUCCESS);
+//                            saveFileTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,DOWNLOAD_DIR,EXTENSION,body,NAME);
+//
+//                            //文件是否判断下载完全
+//                            if(saveFileTask.isCancelled()){
+//                                if(REQUEST != null){
+//                                    REQUEST.onRequestEnd();
+//                                }
+//                            }
+//
+//                        }else{
+//                            if(ERROR != null){
+//                                ERROR.onError(response.code(),response.message());
+//                            }
+//
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                        if(FAILURE != null){
+//                            FAILURE.onFailure();
+//                        }
+//                    }
+//                });
     }
 }

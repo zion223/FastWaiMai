@@ -11,6 +11,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -29,7 +30,7 @@ public interface RxRestService {
     Observable<String> post(@Url String url, @FieldMap Map<String, Object> params);
 
     @POST
-    Observable<String> postRaw(@Url String url, @Body RequestBody body);
+    Observable<String> postRaw(@HeaderMap Map<String, Object> headers, @Url String url, @Body RequestBody body);
 
     @PUT
     @FormUrlEncoded

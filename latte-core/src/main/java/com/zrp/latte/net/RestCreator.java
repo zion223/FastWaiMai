@@ -2,6 +2,7 @@ package com.zrp.latte.net;
 
 import com.zrp.latte.app.ConfigType;
 import com.zrp.latte.app.Latte;
+import com.zrp.latte.net.rx.RxRestService;
 
 import java.util.ArrayList;
 import java.util.WeakHashMap;
@@ -53,12 +54,12 @@ public class RestCreator {
                 .build();
     }
 
-    private static final class RestServiceHolder{
-        static final RestService REST_SERVICE =
-                RetrofitHolder.RETROFIT_CLIENT.create(RestService.class);
+    private static final class RestServiceHolder {
+        static final RxRestService REST_SERVICE =
+                RetrofitHolder.RETROFIT_CLIENT.create(RxRestService.class);
     }
 
-    public static RestService getRestService(){
+    public static RxRestService getRestService() {
         return RestServiceHolder.REST_SERVICE;
     }
 }

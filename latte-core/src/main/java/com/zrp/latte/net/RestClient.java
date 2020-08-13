@@ -8,6 +8,7 @@ import com.zrp.latte.net.callback.IRequest;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.net.callback.RequestCallBack;
 import com.zrp.latte.net.download.DownLoadHandler;
+import com.zrp.latte.net.rx.RxRestService;
 import com.zrp.latte.ui.loader.LatteLoader;
 import com.zrp.latte.ui.loader.LoaderStyle;
 
@@ -15,6 +16,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
+import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -66,18 +68,18 @@ public class RestClient {
         return new RestClientBuilder();
     }
 
-    private void request(HttpMethod method){
-        RestService service = RestCreator.getRestService();
-        Call<String> call = null ;
+    private Observable<String> request(HttpMethod method) {
+        RxRestService service = RestCreator.getRestService();
+        Observable<String> call = null;
 
-        if(REQUEST != null){
+        if (REQUEST != null) {
             REQUEST.onRequestStart();
         }
 
-        if(LOADER_STYLE != null){
+        if (LOADER_STYLE != null) {
             LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
-        switch (method){
+        switch (method) {
             case GET:
                 call = service.get(URL, PARAMS);
                 break;
@@ -109,27 +111,28 @@ public class RestClient {
                 break;
 
         }
-        if(call != null){
-            call.enqueue(getRequestCallback());
-        }
+        return call;
+//        if(call != null){
+//            call.enqueue(getRequestCallback());
+//        }
     }
 
-    private Callback<String> getRequestCallback(){
-        return new RequestCallBack(REQUEST,SUCCESS,FAILURE,ERROR, LOADER_STYLE);
+    private Callback<String> getRequestCallback() {
+        return new RequestCallBack(REQUEST, SUCCESS, FAILURE, ERROR, LOADER_STYLE);
     }
 
-    public final void get(){
-        request(HttpMethod.GET);
+    public final Observable<String> get() {
+        return request(HttpMethod.GET);
     }
 
-    public final void post() {
+    public final Observable<String> post() {
         if (BODY == null) {
-            request(HttpMethod.POST);
+            return request(HttpMethod.POST);
         } else {
             if (!PARAMS.isEmpty()) {
                 throw new RuntimeException("params must be null!");
             }
-            request(HttpMethod.POST_RAW);
+            return request(HttpMethod.POST_RAW);
         }
     }
 
