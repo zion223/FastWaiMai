@@ -18,6 +18,6 @@
 
 ## License
 
-[MIT](https://github.com/Jayruiping/FastEC/blob/master/LICENSE)
+[MIT](https://github.com/zion223/FastEC/blob/master/LICENSE)
 
 Copyright (c) 2019 zhang
