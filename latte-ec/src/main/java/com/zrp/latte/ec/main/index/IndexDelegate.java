@@ -31,6 +31,7 @@ import com.baidu.location.BDAbstractLocationListener;
 import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.baidu.location.LocationClientOption;
+import com.blankj.utilcode.util.ToastUtils;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.leaf.library.StatusBarUtil;
@@ -59,6 +60,11 @@ import java.util.TimerTask;
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -294,32 +300,47 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
 	private void initData() {
 		//加载广告数据和分类数据
-		RestClient.builder()
+		Observable<String> homeObservable = RestClient.builder()
 				.url("api/home")
-				.success(new ISuccess() {
-					@Override
-					public void onSuccess(String response) {
+				.build()
+				.post()
+				.subscribeOn(Schedulers.io());
+		//加载特色专区数据
+		Observable<String> specObservable = RestClient.builder()
+				.url("api/spec")
+				.build()
+				.post()
+				.subscribeOn(Schedulers.io());
 
-						mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(response));
+		Observable.zip(homeObservable, specObservable, new BiFunction<String, String, IndexAndSpecBean>() {
+			@Override
+			public IndexAndSpecBean apply(String s, String s2) {
+				IndexAndSpecBean indexAndSpecBean = new IndexAndSpecBean();
+				indexAndSpecBean.home = s;
+				indexAndSpecBean.spec = s2;
+				return indexAndSpecBean;
+			}
+		})
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Consumer<IndexAndSpecBean>() {
+					@Override
+					public void accept(IndexAndSpecBean indexAndSpecBean) {
+						mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(indexAndSpecBean.home));
 						mAdapter.openLoadAnimation();
 						mBannerRecycleView.setAdapter(mAdapter);
-					}
-				})
-				.build()
-				.post();
-		//加载特色专区数据
-		RestClient.builder()
-				.url("api/spec")
-				.success(new ISuccess() {
-					@Override
-					public void onSuccess(String response) {
-						mSpecData = new SpecZoneDataConverter().convert(response);
+
+						mSpecData = new SpecZoneDataConverter().convert(indexAndSpecBean.spec);
 						final SpecZoneAdapter mSpecZoneAdapter = new SpecZoneAdapter(R.layout.item_multiple_spec, R.layout.item_multiple_spec_header, mSpecData);
 						mSpecRecyclerView.setAdapter(mSpecZoneAdapter);
 					}
+				}, new Consumer<Throwable>() {
+					@Override
+					public void accept(Throwable throwable) {
+						ToastUtils.showLong("数据获取失败");
+					}
 				})
-				.build()
-				.post();
+				.dispose();
+
 	}
 
 	/**
