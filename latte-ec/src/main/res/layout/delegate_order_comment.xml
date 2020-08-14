@@ -4,45 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp">
-
-        <TextView
-            android:id="@+id/tv_comment_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/img_order_comment"
-            android:text="评分"
-            android:textColor="@color/black" />
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/img_order_comment"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp" />
-
-        <com.zrp.latte.ui.widget.StarLayout
-            android:id="@+id/custom_star_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tv_comment_title"
-            android:layout_toRightOf="@id/img_order_comment" />
-
-    </RelativeLayout>
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/et_order_comment"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@android:color/white"
-        android:gravity="top|left"
-        android:hint="写下评论"
-        android:padding="10dp" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/tb_shop_cart"
         android:layout_width="match_parent"
@@ -68,6 +29,45 @@
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_order_comment"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:id="@+id/tv_comment_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/img_order_comment"
+            android:text="评分"
+            android:textColor="@color/black" />
+
+        <com.zrp.latte.ui.widget.StarLayout
+            android:id="@+id/custom_star_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_comment_title"
+            android:layout_toRightOf="@id/img_order_comment" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/et_order_comment"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/white"
+        android:gravity="top|left"
+        android:hint="写下评论"
+        android:padding="10dp" />
 
     <!--<com.flj.latte.ui.widget.AutoPhotoLayout
         android:id="@+id/custom_auto_photo_layout"

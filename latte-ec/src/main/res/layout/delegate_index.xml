@@ -23,46 +23,6 @@
                 android:fitsSystemWindows="true"
                 android:orientation="vertical">
 
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="@drawable/index_toorbar_background"
-                    android:minHeight="60dp"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                    <RelativeLayout
-                        android:id="@+id/rl_index_search"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/shape_corner_up">
-
-                        <EditText
-                            android:id="@+id/et_index_search"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginBottom="10dp"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/index_search_round"
-                            android:gravity="center_vertical"
-                            android:paddingBottom="8dp"
-                            android:paddingLeft="30dp"
-                            android:paddingTop="8dp"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:layout_alignLeft="@+id/et_index_search"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="10dp"
-                            android:src="@drawable/index_search" />
-                    </RelativeLayout>
-
-                </FrameLayout>
-
                 <android.support.design.widget.CollapsingToolbarLayout
                     android:id="@+id/collapsingtoolbar"
                     android:layout_width="match_parent"
@@ -82,10 +42,10 @@
                         <android.support.v7.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp"
-
                             android:layout_marginLeft="5dp"
+
                             android:layout_marginRight="15dp"
+                            android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
 
                             <!--location img -->
@@ -96,13 +56,6 @@
                                 android:src="@drawable/index_location" />
                             <!-- 搜索框-->
                             <!-- 设置圆角 @drawable/index_search_round-->
-                            <ImageView
-                                android:id="@+id/iv_index_message"
-                                android:layout_width="15dp"
-                                android:layout_height="15dp"
-                                android:layout_gravity="center_vertical"
-                                android:src="@drawable/index_message" />
-
                             <TextView
                                 android:id="@+id/tv_index_location"
                                 android:layout_width="0dp"
@@ -115,12 +68,59 @@
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
 
+                            <ImageView
+                                android:id="@+id/iv_index_message"
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/index_message" />
+
                         </android.support.v7.widget.LinearLayoutCompat>
 
                     </android.support.v7.widget.Toolbar>
 
 
                 </android.support.design.widget.CollapsingToolbarLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/index_toorbar_background"
+                    android:minHeight="60dp"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_index_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/shape_corner_up">
+
+                        <EditText
+                            android:id="@+id/et_index_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/index_search_round"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="30dp"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_alignLeft="@+id/et_index_search"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/index_search" />
+                    </RelativeLayout>
+
+                </FrameLayout>
             </android.support.design.widget.AppBarLayout>
 
             <android.support.v4.widget.NestedScrollView
@@ -138,6 +138,16 @@
                     android:orientation="vertical">
 
 
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_index"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_index_spec"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
                     <View
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
@@ -153,16 +163,6 @@
                         app:tabSelectedTextColor="@color/colorPrimaryDark"
                         app:tabTextColor="@android:color/black" />
 
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_index"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_index_spec"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
                     <com.zrp.latte.ui.viewpager.CustomViewPager
                         android:id="@+id/vp_index_sort"
                         android:layout_width="match_parent"
@@ -173,7 +173,6 @@
             </android.support.v4.widget.NestedScrollView>
 
         </android.support.design.widget.CoordinatorLayout>
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_cart"
             android:layout_width="60dp"
@@ -182,7 +181,7 @@
             android:layout_marginLeft="280dp"
             android:layout_marginTop="450dp"
             android:contentDescription="@null"
-            android:src="@drawable/ic_cart" />
+            android:src="@drawable/ic_cart"/>
 
     </RelativeLayout>
 </com.scwang.smartrefresh.layout.SmartRefreshLayout><!--
