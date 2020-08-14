@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.order;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,10 +12,12 @@ import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class OrderDelegate extends BottomItemDelegate {
@@ -51,27 +54,34 @@ public class OrderDelegate extends BottomItemDelegate {
         return R.layout.delegate_normal_recyclerview;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         super.onBindView(savedInstanceState, view);
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRvAllOrder.setLayoutManager(manager);
         Bundle arguments = getArguments();
-        final int status = arguments.getInt(ARGS_ORDER_STATUS);
-        RestClient.builder()
-                .url("api/order/" + status)
-                .loader(getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        final DataConverter converter = new OrderListDataConverter().setJsonData(response);
-                        mAdapter = new OrderListAdapter(converter.convert());
-                        mRvAllOrder.setAdapter(mAdapter);
-                        //mRvAllOrder.addOnItemTouchListener(new OrderListClickListener(OrderDelegate.this));
-                    }
-                })
-                .build()
-                .get();
+        if (arguments != null) {
+            final int status = arguments.getInt(ARGS_ORDER_STATUS);
+            RestClient.builder()
+                    .url("api/order/" + status)
+                    .build()
+                    .get()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<String>() {
+                        @Override
+                        public void accept(String response) throws Exception {
+                            final DataConverter converter = new OrderListDataConverter().setJsonData(response);
+                            mAdapter = new OrderListAdapter(converter.convert());
+                            mRvAllOrder.setAdapter(mAdapter);
+                            //mRvAllOrder.addOnItemTouchListener(new OrderListClickListener(OrderDelegate.this));
+                        }
+                    });
+
+        }
+
+
     }
 
 
