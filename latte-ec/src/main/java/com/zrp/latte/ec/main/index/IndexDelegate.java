@@ -62,6 +62,7 @@ import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -303,33 +304,33 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 		Observable<String> homeObservable = RestClient.builder()
 				.url("api/home")
 				.build()
-				.post()
+				.get()
 				.subscribeOn(Schedulers.io());
 		//加载特色专区数据
 		Observable<String> specObservable = RestClient.builder()
 				.url("api/spec")
 				.build()
-				.post()
+				.get()
 				.subscribeOn(Schedulers.io());
 
-		Observable.zip(homeObservable, specObservable, new BiFunction<String, String, IndexAndSpecBean>() {
-			@Override
-			public IndexAndSpecBean apply(String s, String s2) {
-				IndexAndSpecBean indexAndSpecBean = new IndexAndSpecBean();
-				indexAndSpecBean.home = s;
-				indexAndSpecBean.spec = s2;
-				return indexAndSpecBean;
-			}
-		})
+		Disposable dis = Observable.zip(homeObservable, specObservable, new BiFunction<String, String, IndexAndSpecBean>() {
+					@Override
+					public IndexAndSpecBean apply(String s, String s2) {
+						IndexAndSpecBean indexAndSpecBean = new IndexAndSpecBean();
+						indexAndSpecBean.data1 = s;
+						indexAndSpecBean.data2 = s2;
+						return indexAndSpecBean;
+					}
+				})
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(new Consumer<IndexAndSpecBean>() {
 					@Override
 					public void accept(IndexAndSpecBean indexAndSpecBean) {
-						mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(indexAndSpecBean.home));
+						mAdapter = MultipleRecyclerAdapter.create(new IndexDataConverter().setJsonData(indexAndSpecBean.data1));
 						mAdapter.openLoadAnimation();
 						mBannerRecycleView.setAdapter(mAdapter);
 
-						mSpecData = new SpecZoneDataConverter().convert(indexAndSpecBean.spec);
+						mSpecData = new SpecZoneDataConverter().convert(indexAndSpecBean.data2);
 						final SpecZoneAdapter mSpecZoneAdapter = new SpecZoneAdapter(R.layout.item_multiple_spec, R.layout.item_multiple_spec_header, mSpecData);
 						mSpecRecyclerView.setAdapter(mSpecZoneAdapter);
 					}
@@ -338,8 +339,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 					public void accept(Throwable throwable) {
 						ToastUtils.showLong("数据获取失败");
 					}
-				})
-				.dispose();
+				});
 
 	}
 
