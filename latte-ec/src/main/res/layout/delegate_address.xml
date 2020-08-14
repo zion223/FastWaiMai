@@ -4,17 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_address_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp" />
-
     <android.support.v7.widget.Toolbar
+        android:paddingTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:paddingTop="10dp">
+        android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,18 +18,8 @@
                 android:id="@+id/iv_address_backarrow"
                 android:layout_width="20dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/left_arrow" />
-
-            <TextView
-                android:id="@+id/tv_address_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="10dp"
-                android:text="新增地址"
-                android:textColor="@color/black" />
+                android:src="@drawable/left_arrow"
+                android:layout_marginLeft="5dp" />
 
             <View
                 android:id="@+id/view_profile_line"
@@ -56,8 +40,24 @@
                 android:textColor="@android:color/black"
                 android:textSize="17sp" />
 
+            <TextView
+                android:id="@+id/tv_address_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="10dp"
+                android:textColor="@color/black"
+                android:text="新增地址" />
+
         </RelativeLayout>
 
     </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_address_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>

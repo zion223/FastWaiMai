@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.personal.p_function.address;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.LatteDelegate;
+import com.zrp.latte.ec.main.personal.order.OrderListAdapter;
+import com.zrp.latte.ec.main.personal.order.OrderListDataConverter;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.DataConverter;
@@ -19,6 +22,9 @@ import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.OnItemClickListener {
 
@@ -35,25 +41,28 @@ public class AddressDelegate extends LatteDelegate implements BaseQuickAdapter.O
         return R.layout.delegate_address;
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View view) {
         final LinearLayoutManager manager = new LinearLayoutManager(getContext());
         mRvAddress.setLayoutManager(manager);
         RestClient.builder()
                 .url("api/address")
-                .success(new ISuccess() {
+                .build()
+                .get()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
                     @Override
-                    public void onSuccess(String response) {
+                    public void accept(String response) throws Exception {
                         final DataConverter converter =
                                 new AddressDataConverter().setJsonData(response);
                         mAdapter = new AddressAdapter(converter.convert(), AddressDelegate.this);
                         mAdapter.setOnItemClickListener(AddressDelegate.this);
                         mRvAddress.setAdapter(mAdapter);
-
                     }
-                })
-                .build()
-                .get();
+                });
+
     }
 
 
