@@ -77,7 +77,7 @@ public class RestClient {
         }
 
         if (LOADER_STYLE != null) {
-            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
+            //LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
         switch (method) {
             case GET:
