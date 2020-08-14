@@ -24,7 +24,7 @@ public class SignHandler {
     //登录Handler
     public static void onSignIn(String response, ISignListener signListener){
 
-        final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
+        //final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
 
         AccountManager.setSignState(true);
         //登录成功

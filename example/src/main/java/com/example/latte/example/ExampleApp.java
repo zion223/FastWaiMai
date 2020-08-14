@@ -24,7 +24,6 @@ public class ExampleApp extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         final ArrayList<Interceptor> interceptors = initInterceptors();
-
         Latte.init(this)
                 .withApiHost("http://192.168.1.54:8082")
                 .withInterceptors(interceptors)
@@ -49,17 +48,19 @@ public class ExampleApp extends MultiDexApplication {
         //Retrofit拦截器
         final ArrayList<Interceptor> interceptors = new ArrayList<>();
         //首页广告数据
-        interceptors.add(new DebugInterceptor("api/home",R.raw.home));
+        interceptors.add(new DebugInterceptor("api/home", R.raw.home));
+        //登录请求
+        interceptors.add(new DebugInterceptor("api/signin", R.raw.login));
         //首页特色专区
-        interceptors.add(new DebugInterceptor("api/spec",R.raw.home_spec));
+        interceptors.add(new DebugInterceptor("api/spec", R.raw.home_spec));
         //购物车数据
-        interceptors.add(new DebugInterceptor("api/shopcart",R.raw.shop_cart));
+        interceptors.add(new DebugInterceptor("api/shopcart", R.raw.shop_cart));
         //订单数据
-        interceptors.add(new DebugInterceptor("api/order/0",R.raw.order_all));
-        interceptors.add(new DebugInterceptor("api/order/1",R.raw.order_pay));
-        interceptors.add(new DebugInterceptor("api/order/2",R.raw.order_receive));
-        interceptors.add(new DebugInterceptor("api/order/3",R.raw.order_evaluate));
-        interceptors.add(new DebugInterceptor("api/order/4",R.raw.order_after_market));
+        interceptors.add(new DebugInterceptor("api/order/0", R.raw.order_all));
+        interceptors.add(new DebugInterceptor("api/order/1", R.raw.order_pay));
+        interceptors.add(new DebugInterceptor("api/order/2", R.raw.order_receive));
+        interceptors.add(new DebugInterceptor("api/order/3", R.raw.order_evaluate));
+        interceptors.add(new DebugInterceptor("api/order/4", R.raw.order_after_market));
         //收货地址
         interceptors.add(new DebugInterceptor("api/address",R.raw.address));
         //商品详情

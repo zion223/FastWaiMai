@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.sign;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,10 +19,12 @@ import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.EcBottomDelegate;
 import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class SignInDelagate extends LatteDelegate {
@@ -56,19 +59,22 @@ public class SignInDelagate extends LatteDelegate {
 		getSupportDelegate().start(new SignUpDelegate());
 	}
 
+	@SuppressLint("CheckResult")
 	@OnClick(R2.id.btn_sign_in)
 	void onClickSignIn() {
 		//登录
 		RestClient.builder()
-				.url("")
-				.success(new ISuccess() {
+				.url("/api/signin")
+				.build()
+				.get()
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Consumer<String>() {
 					@Override
-					public void onSuccess(String response) {
+					public void accept(String response) throws Exception {
 						SignHandler.onSignIn(response, mISignListener);
 					}
-				})
-				.build()
-				.post();
+				});
 		getSupportDelegate().startWithPop(new EcBottomDelegate());
 	}
 
