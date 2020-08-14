@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ViewStubCompat;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.latte.latte_ec.R;
 import com.example.latte.latte_ec.R2;
@@ -22,6 +23,7 @@ import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeAdapter;
 import com.zrp.latte.ec.main.cart.like.ShopCartLikeConverter;
 import com.zrp.latte.ec.main.cart.order.SettleDelegate;
+import com.zrp.latte.ec.main.index.IndexAndSpecBean;
 import com.zrp.latte.ec.main.index.IndexDelegate;
 import com.zrp.latte.net.RestClient;
 import com.zrp.latte.net.callback.ISuccess;
@@ -34,6 +36,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener {
 
@@ -143,29 +151,59 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
+        //zip 操作符合并请求数据
         //购物车数据
-        RestClient.builder()
+        Observable<String> shopObservable = RestClient.builder()
                 .url("api/shopcart")
-                .loader(getContext())
-                .success(this)
                 .build()
-                .get();
+                .get()
+                .subscribeOn(Schedulers.io());
         //猜你喜欢 数据
-        RestClient.builder()
+        Observable<String> likeObservable = RestClient.builder()
                 .url("api/youlike")
-                .loader(getContext())
-                .success(new ISuccess() {
+                .build()
+                .get()
+                .subscribeOn(Schedulers.io());
+        Disposable dis = Observable.zip(shopObservable, likeObservable, new BiFunction<String, String, IndexAndSpecBean>() {
                     @Override
-                    public void onSuccess(String response) {
-                        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
-                        mYouLikeRecyclerView.setLayoutManager(gridLayoutManager);
-                        final List<MultipleItemEntity> data = new ShopCartLikeConverter().setJsonData(response).convert();
-                        final ShopCartLikeAdapter likeAdapter = new ShopCartLikeAdapter(data);
-                        mYouLikeRecyclerView.setAdapter(likeAdapter);
+                    public IndexAndSpecBean apply(String s, String s2) {
+                        IndexAndSpecBean indexAndSpecBean = new IndexAndSpecBean();
+                        indexAndSpecBean.data1 = s;
+                        indexAndSpecBean.data2 = s2;
+                        return indexAndSpecBean;
                     }
                 })
-                .build()
-                .get();
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<IndexAndSpecBean>() {
+                    @Override
+                    public void accept(IndexAndSpecBean indexAndSpecBean) {
+                        //shopcart数据
+                        final LinkedList<MultipleItemEntity> data =
+                                new ShopCartDataConverter().setJsonData(indexAndSpecBean.data1).convert();
+                        final LinearLayoutManager manager = new LinearLayoutManager(getContext());
+                        mAdapter = new ShopCartAdapter(data);
+                        mAdapter.setCartItemListener(ShopCartDelegate.this);
+                        final ItemTouchHelper.Callback callback = new ShopCartItemTouchHelperCallback(mAdapter);
+                        final ItemTouchHelper itemTouchHelper = new ItemTouchHelper(callback);
+                        itemTouchHelper.attachToRecyclerView(mRecyclerView);
+                        mRecyclerView.setAdapter(mAdapter);
+                        mRecyclerView.setLayoutManager(manager);
+                        checkItemCount();
+                        final double totalPrice = mAdapter.getTotalPrice();
+                        mTvTotalPrice.setText(String.valueOf(totalPrice));
+                        //猜你喜欢数据
+                        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+                        mYouLikeRecyclerView.setLayoutManager(gridLayoutManager);
+                        final List<MultipleItemEntity> data2 = new ShopCartLikeConverter().setJsonData(indexAndSpecBean.data2).convert();
+                        final ShopCartLikeAdapter likeAdapter = new ShopCartLikeAdapter(data2);
+                        mYouLikeRecyclerView.setAdapter(likeAdapter);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) {
+                        Toast.makeText(getContext(), "数据获取失败", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 
     //购物车数据回调
