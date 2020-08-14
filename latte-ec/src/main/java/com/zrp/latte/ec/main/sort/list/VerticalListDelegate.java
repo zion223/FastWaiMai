@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.sort.list;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,12 +13,14 @@ import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.LatteDelegate;
 import com.zrp.latte.ec.main.sort.SortDelegate;
 import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class VerticalListDelegate extends LatteDelegate {
 
@@ -47,23 +50,26 @@ public class VerticalListDelegate extends LatteDelegate {
 	 * 初始化数据
 	 * @param savedInstanceState
 	 */
+	@SuppressLint("CheckResult")
 	@Override
 	public void onLazyInitView(@Nullable Bundle savedInstanceState) {
 		super.onLazyInitView(savedInstanceState);
 		RestClient.builder()
 				.url("api/p_sort")
-				.loader(getContext())
-				.success(new ISuccess() {
+				.build()
+				.get()
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Consumer<String>() {
 					@Override
-					public void onSuccess(String response) {
+					public void accept(String response) throws Exception {
 						final List<MultipleItemEntity> data =
-							new VerticalListDataConverter().setJsonData(response).convert();
+								new VerticalListDataConverter().setJsonData(response).convert();
 						final SortDelegate delegate = getParentDelegate();
 						mAdapter = new SortRecyclerAdapter(data, delegate);
 						mRecyclerView.setAdapter(mAdapter);
 					}
-				})
-				.build()
-				.get();
+				});
+
 	}
 }

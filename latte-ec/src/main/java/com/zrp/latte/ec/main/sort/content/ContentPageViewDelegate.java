@@ -1,5 +1,6 @@
 package com.zrp.latte.ec.main.sort.content;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,13 +15,15 @@ import com.example.latte.latte_ec.R2;
 import com.zrp.latte.delegates.bottom.BottomItemDelegate;
 import com.zrp.latte.ui.tab.TabPagerAdapter;
 import com.zrp.latte.net.RestClient;
-import com.zrp.latte.net.callback.ISuccess;
 import com.zrp.latte.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 public class ContentPageViewDelegate extends BottomItemDelegate {
 
@@ -66,14 +69,18 @@ public class ContentPageViewDelegate extends BottomItemDelegate {
         initData();
     }
 
+    @SuppressLint("CheckResult")
     private void initData() {
         RestClient.builder()
                 .url("api/content/" + mCategoryId)
-                .loader(getContext())
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
+                .build()
+                .get()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
 
+                    @Override
+                    public void accept(String response) throws Exception {
                         mData = new SectionDataConverter().convert(response);
                         final String[] mTitles = new String[mData.getHeaders().size()];
                         if(mData.getHeaders() != null){
@@ -95,9 +102,8 @@ public class ContentPageViewDelegate extends BottomItemDelegate {
                         mTabLayout.setBackgroundColor(Color.WHITE);
                         mTabLayout.setupWithViewPager(mViewPager);
                     }
-                })
-                .build()
-                .get();
+                });
+
     }
 
 }
