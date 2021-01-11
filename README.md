@@ -1,4 +1,4 @@
-# FastEC
+# FastWaiMai
 仿写 美团外卖应用
 
 ## APP截图
@@ -18,6 +18,6 @@
 
 ## License
 
-[MIT](https://github.com/zion223/FastEC/blob/master/LICENSE)
+[MIT](https://github.com/zion223/FastWaiMai/blob/master/LICENSE)
 
 Copyright (c) 2019 zhang
